@@ -33,6 +33,9 @@ jobs:
     runs-on: ubuntu-latest
     # Chromium and its system libraries come preinstalled: no browser download on every run
     container: mcr.microsoft.com/playwright:v1.47.2-jammy
+    defaults:
+      run:
+        shell: bash
     env:
       SITE_URL: https://navajowhite-whale-731377.hostingersite.com
       PAGES: ${{ inputs.pages || 'all' }}
