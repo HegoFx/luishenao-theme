@@ -1,0 +1,66 @@
+# Read-only inventory of the WordPress install behind the deploy SSH key.
+# Runs on demand, or on a push to a claude/** branch that touches this file.
+# It never writes: no plugin, option, content or database changes.
+name: Inventario WordPress (solo lectura)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['claude/**']
+    paths: ['.github/workflows/wp-info.yml']
+
+jobs:
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configurar SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Inventario
+        env:
+          THEME_PATH: ${{ secrets.THEME_PATH }}
+        run: |
+          ssh -p "${{ secrets.SSH_PORT }}" -i ~/.ssh/id_ed25519 \
+            "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" \
+            "THEME_PATH='$THEME_PATH' bash -s" <<'EOF'
+          set +e
+          WP_ROOT="$(cd "$THEME_PATH/../../.." && pwd)"
+          wp() { command wp --path="$WP_ROOT" --skip-plugins --skip-themes "$@"; }
+          section() { echo; echo "===== $1 ====="; }
+
+          section "Servidor"
+          echo "WP root (relativo a home): ${WP_ROOT#$HOME/}"
+          php -v | head -1
+          command -v wp && command wp --version
+          section "Sitios en esta cuenta (~/domains)"
+          ls -1 ~/domains 2>/dev/null || echo "sin carpeta domains"
+          section "WordPress"
+          wp core version
+          wp option get home
+          wp option get siteurl
+          wp option get blogname
+          wp option get permalink_structure
+          wp option get blog_public
+          wp option get show_on_front
+          wp option get page_on_front
+          wp option get page_for_posts
+          section "Temas"
+          wp theme list --fields=name,status,version
+          section "Plugins"
+          wp plugin list --fields=name,status,version,update
+          section "Usuarios (roles)"
+          wp user list --fields=ID,user_login,roles
+          section "Contenido"
+          wp post list --post_type=page --fields=ID,post_title,post_name,post_status --post_status=any
+          echo "Entradas: $(wp post list --post_type=post --post_status=any --format=count)"
+          echo "Medios: $(wp post list --post_type=attachment --format=count)"
+          section "Plantillas editadas en el Editor del sitio (tapan el código)"
+          wp post list --post_type=wp_template,wp_template_part --fields=ID,post_name,post_type --post_status=any
+          section "Capacidades WP-CLI"
+          command wp cli info 2>/dev/null | head -20
+          command wp help 2>/dev/null | sed -n '/SUBCOMMANDS/,/^$/p'
+          EOF
