@@ -54,6 +54,13 @@ add_action( 'wp_head', function () {
 	);
 }, 1 );
 
+// Fallback favicon until a Site Icon is set in Settings → General (avoids a 404 on /favicon.ico).
+add_action( 'wp_head', function () {
+	if ( ! has_site_icon() ) {
+		printf( '<link rel="icon" href="%s" type="image/svg+xml">' . "\n", esc_url( get_theme_file_uri( 'assets/img/favicon.svg' ) ) );
+	}
+}, 2 );
+
 add_action( 'init', function () {
 	register_block_pattern_category( 'lh-home', array( 'label' => __( 'Luis Henao · Home', 'luishenao' ) ) );
 	register_block_pattern_category( 'lh-secciones', array( 'label' => __( 'Luis Henao · Secciones', 'luishenao' ) ) );

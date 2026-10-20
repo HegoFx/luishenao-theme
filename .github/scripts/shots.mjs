@@ -20,6 +20,7 @@ for (const [dname, dev] of Object.entries(devices)) {
 	const errors = [];
 	page.on('pageerror', e => errors.push(String(e)));
 	page.on('console', m => m.type() === 'error' && errors.push(m.text()));
+	page.on('response', r => r.status() >= 400 && !r.url().includes('no-existe') && errors.push(`${r.status()} ${r.url()}`));
 	for (const [pname, path] of Object.entries(pages)) {
 		await page.goto(base + path, { waitUntil: 'networkidle' });
 		await page.waitForTimeout(1500);

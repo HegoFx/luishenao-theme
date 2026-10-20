@@ -403,6 +403,8 @@ body.admin-bar .lh-header { top: calc(32px + 14px); }
 @media (max-width: 820px) {
 	.lh-pains, .lh-two { grid-template-columns: 1fr; }
 	.lh-hide-m { display: none; }
+	.lh-hero-meta { flex-wrap: wrap; gap: 4px 16px; }
+	.lh-hero-meta > p { white-space: nowrap; }
 	.lh-hero-stage { height: auto; min-height: 0; }
 	.lh-hero-stage::after { display: none; }
 	.lh-hero-img { display: none; }
