@@ -26,8 +26,9 @@ add_action( 'wp_enqueue_scripts', function () {
 	$ver = WP_DEBUG ? time() : LH_VERSION;
 
 	wp_enqueue_style( 'lh-main', "$uri/css/main.css", array(), $ver );
-	// No dependencies: the mode switch works even if GSAP never loads.
-	wp_enqueue_script( 'lh-mode', "$uri/js/mode.js", array(), $ver, array( 'strategy' => 'defer', 'in_footer' => true ) );
+	// No GSAP dependency: menu and mode switch work even if it never loads. ui.js first, it clones the switch.
+	wp_enqueue_script( 'lh-ui', "$uri/js/ui.js", array(), $ver, array( 'strategy' => 'defer', 'in_footer' => true ) );
+	wp_enqueue_script( 'lh-mode', "$uri/js/mode.js", array( 'lh-ui' ), $ver, array( 'strategy' => 'defer', 'in_footer' => true ) );
 
 	wp_enqueue_script( 'gsap', "$uri/vendor/gsap.min.js", array(), '3.12.5', array( 'strategy' => 'defer', 'in_footer' => true ) );
 	wp_enqueue_script( 'gsap-st', "$uri/vendor/ScrollTrigger.min.js", array( 'gsap' ), '3.12.5', array( 'strategy' => 'defer', 'in_footer' => true ) );

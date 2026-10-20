@@ -38,6 +38,21 @@ for (const [dname, dev] of Object.entries(devices)) {
 			await page.screenshot({ path: `shots/${pname}-${dname}-${String(n).padStart(2, '0')}.png` });
 		}
 		console.log(`${pname} ${dname}: height ${h}px, ${n} shots`);
+		// phones: also capture the menu open, and the back-to-top button after scrolling
+		if (dev.isMobile && (pname === 'home' || pname === 'en')) {
+			await page.evaluate(() => window.scrollTo(0, 0));
+			await page.waitForTimeout(600);
+			const burger = await page.$('.lh-burger');
+			if (burger) {
+				await burger.click();
+				await page.waitForTimeout(700);
+				await page.screenshot({ path: `shots/${pname}-${dname}-menu.png` });
+				await burger.click();
+				await page.waitForTimeout(400);
+			} else {
+				errors.push('no .lh-burger in ' + path);
+			}
+		}
 	}
 	if (errors.length) console.log(`JS errors (${dname}):\n` + [...new Set(errors)].join('\n'));
 	await ctx.close();
