@@ -7,7 +7,8 @@
 	const sync = () => document.querySelectorAll('.lh-mode').forEach(b => {
 		const isDark = root.dataset.theme === 'dark';
 		b.setAttribute('aria-pressed', String(isDark));
-		b.setAttribute('aria-label', isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+		const en = root.lang.startsWith('en');
+		b.setAttribute('aria-label', isDark ? (en ? 'Switch to light mode' : 'Cambiar a modo claro') : (en ? 'Switch to dark mode' : 'Cambiar a modo oscuro'));
 	});
 	document.addEventListener('click', e => {
 		if (!e.target.closest('.lh-mode')) return;

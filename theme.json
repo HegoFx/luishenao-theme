@@ -75,7 +75,9 @@
   },
   "templateParts": [
     { "name": "header", "title": "Header", "area": "header" },
-    { "name": "footer", "title": "Footer", "area": "footer" }
+    { "name": "footer", "title": "Footer", "area": "footer" },
+    { "name": "header-en", "title": "Header (English)", "area": "header" },
+    { "name": "footer-en", "title": "Footer (English)", "area": "footer" }
   ],
   "customTemplates": [
     { "name": "page-landing", "title": "Landing (ancho completo, sin título)", "postTypes": [ "page" ] }
