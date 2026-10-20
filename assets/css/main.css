@@ -55,7 +55,8 @@ html[data-theme="dark"] {
 	--glass-hi: rgba(237, 232, 223, .08);
 }
 html[data-theme="dark"] .lh-dark:not(.lh-footer) { box-shadow: inset 0 1px 0 rgba(237, 232, 223, .08); }
-html[data-theme="dark"] .lh-price { box-shadow: inset 0 0 0 1px rgba(237, 232, 223, .1); }
+html[data-theme="dark"] .lh-price { background: linear-gradient(160deg, #1D2642, #151A2A); box-shadow: inset 0 0 0 1px rgba(91, 130, 234, .35); }
+html[data-theme="dark"] .lh-form { background: var(--dark-2); }
 html[data-theme="dark"] .wp-block-button:not(.is-style-ghost) .wp-block-button__link { color: var(--on-accent); }
 html[data-theme="dark"] img { filter: brightness(.94); }
 
