@@ -1,0 +1,33 @@
+# Uploads the theme to Hostinger on every push to main.
+# Only this theme folder is synced: content, uploads and the database are never touched.
+# Required repository secrets: SSH_HOST, SSH_PORT, SSH_USER, SSH_KEY, THEME_PATH
+name: Deploy a Hostinger
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configurar SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Subir el tema
+        run: |
+          rsync -az --delete \
+            --exclude '.git' --exclude '.github' --exclude '.gitignore' --exclude 'README.md' \
+            -e "ssh -p ${{ secrets.SSH_PORT }} -i ~/.ssh/id_ed25519" \
+            ./ "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.THEME_PATH }}/"
