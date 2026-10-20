@@ -1,6 +1,7 @@
 ---
 title: "Thumbtack en español: cómo funciona para contratistas y si le conviene a tu negocio de closets"
-excerpt: Thumbtack te puede traer clientes, pero la app está pensada en inglés, cobras por lead y compites con otros profesionales. Te explico cómo funciona, cuánto cuesta y cuándo vale la pena para closets.
+seo_title: Thumbtack en español: cómo funciona y si te conviene
+excerpt: Thumbtack en español: cómo funciona para contratistas, cuánto cuesta cada lead y si le conviene a tu negocio de closets.
 category: Plataformas de leads
 image: whatsapp-manos.webp
 ---

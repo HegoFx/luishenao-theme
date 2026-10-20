@@ -1,6 +1,7 @@
 ---
 title: "Cómo hacer publicidad en Facebook para tu negocio de closets (paso a paso)"
-excerpt: La guía para dueños de negocio que quieren anunciarse en Facebook e Instagram y recibir clientes de verdad, no solo likes. Cuánto cuesta, qué necesitas y los errores que más dinero queman.
+seo_title: Cómo hacer publicidad en Facebook para tu negocio
+excerpt: Cómo hacer publicidad en Facebook para tu negocio de closets: paso a paso, cuánto cuesta y los errores que más dinero queman.
 category: Meta Ads
 image: bts-grabando.webp
 ---

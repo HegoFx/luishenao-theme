@@ -1,6 +1,7 @@
 ---
 title: "Facebook Ads for Contractors: A Playbook for Closet and Home Renovation Companies"
-excerpt: Targeting, creative, offer, budget and follow-up for contractors who sell high-ticket home projects on Facebook and Instagram, with the mistakes that burn the most money.
+seo_title: Facebook Ads for Contractors: Closet & Remodel Playbook
+excerpt: Facebook ads for contractors that book estimates: targeting, creative, offer, budget and follow-up for closet and home renovation companies.
 category: Meta Ads
 image: homeowners-closet.webp
 ---

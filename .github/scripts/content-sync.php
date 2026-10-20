@@ -142,6 +142,11 @@ function lh_sync_upsert( array $it, $existing_id, $backup_dir, array &$report ) 
 	}
 	update_post_meta( $id, '_lh_sync_hash', md5( get_post_field( 'post_content', $id ) ) );
 	pll_set_post_language( $id, $it['lang'] );
+	if ( ! empty( $it['seo_title'] ) ) {
+		update_post_meta( $id, '_lh_seo_title', $it['seo_title'] );
+	} else {
+		delete_post_meta( $id, '_lh_seo_title' );
+	}
 	if ( ! empty( $it['template'] ) ) {
 		update_post_meta( $id, '_wp_page_template', $it['template'] );
 	}

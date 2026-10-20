@@ -1,6 +1,7 @@
 ---
 title: "Facebook Ads vs Boost Post: Why Boosting Wastes a Closet Company's Budget"
-excerpt: The Boost button is the fastest way to spend money on Facebook and one of the slowest ways to get booked estimates. Here's what changes when you run a real campaign in Ads Manager.
+seo_title: Facebook Ads vs Boost Post: What Closet Companies Need
+excerpt: Facebook ads vs boost post: why boosting gets likes, not closet jobs, and how to switch to a lead campaign that books estimates.
 category: Meta Ads
 image: bts-grabando.webp
 ---

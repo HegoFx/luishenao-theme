@@ -1,6 +1,7 @@
 ---
 title: "Facebook Ads for Leads: How Closet Companies Get Homeowners Who Actually Answer"
-excerpt: Getting leads from Facebook is easy. Getting leads that pick up, have a budget and live in your area takes the right form, the right questions and fast follow-up. Here's the setup that works for custom closets.
+seo_title: Facebook Ads for Leads: Get Closet Leads That Answer
+excerpt: Facebook ads for leads that actually answer: the form, the qualifying questions and the follow-up that work for custom closet companies.
 category: Meta Ads
 image: whatsapp-manos.webp
 ---

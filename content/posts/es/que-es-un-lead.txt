@@ -1,6 +1,7 @@
 ---
 title: "¿Qué es un lead? Y cuál vale la pena pagar si tienes un negocio de closets"
-excerpt: Un lead es una persona que mostró interés en lo que vendes y te dejó cómo contactarla. Pero no todos valen lo mismo. Te explico la diferencia entre un lead, un lead calificado y un cliente.
+seo_title: ¿Qué es un lead? Y cuál vale la pena pagar (closets)
+excerpt: ¿Qué es un lead? La diferencia entre lead, lead calificado y cliente, y cuál vale la pena pagar si tienes un negocio de closets.
 category: Conseguir clientes
 image: reunion-dueno.webp
 ---
