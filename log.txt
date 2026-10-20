@@ -1,0 +1,29 @@
+home desk: height 11698px, 17 shots
+blog desk: height 3197px, 5 shots
+sobre desk: height 3602px, 6 shots
+e404 desk: height 1104px, 2 shots
+en desk: height 11684px, 17 shots
+enblog desk: height 3074px, 5 shots
+enabout desk: height 3567px, 5 shots
+landing desk: height 7439px, 11 shots
+enlanding desk: height 7516px, 11 shots
+post desk: height 5427px, 8 shots
+enpost desk: height 6463px, 9 shots
+JS errors (desk):
+Failed to load resource: the server responded with a status of 404 ()
+home mob: height 13089px, 20 shots
+blog mob: height 5184px, 8 shots
+sobre mob: height 3739px, 6 shots
+e404 mob: height 876px, 2 shots
+en mob: height 12956px, 20 shots
+enblog mob: height 4671px, 7 shots
+enabout mob: height 3739px, 6 shots
+landing mob: height 9250px, 14 shots
+enlanding mob: height 9202px, 14 shots
+post mob: height 6431px, 10 shots
+enpost mob: height 7820px, 12 shots
+JS errors (mob):
+Failed to load resource: the server responded with a status of 404 ()
+home deskdark: height 11698px, 17 shots
+home mobdark: height 13089px, 20 shots
+total: 105s
