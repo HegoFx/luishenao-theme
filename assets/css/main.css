@@ -406,7 +406,6 @@ body.admin-bar .lh-header { top: calc(32px + 14px); }
 }
 .lh-giant .w { display: inline-block; }
 .lh-legal { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-top: 22px !important; font-size: 12px; }
-.lh-sign { font-family: var(--serif); font-style: italic; font-size: 34px; color: var(--accent-d); }
 
 /* ---------- interior pages ---------- */
 .lh-page-hero { padding: clamp(130px, 14vw, 180px) 0 clamp(40px, 6vw, 70px); }
