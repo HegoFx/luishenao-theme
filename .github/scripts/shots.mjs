@@ -4,7 +4,7 @@ import { chromium } from 'playwright';
 import { mkdirSync } from 'node:fs';
 
 const base = process.env.SITE_URL.replace(/\/$/, '');
-const pages = { home: '/', blog: '/blog/', sobre: '/sobre-mi/', e404: '/no-existe-xyz/' };
+const pages = { home: '/', blog: '/blog/', sobre: '/sobre-mi/', e404: '/no-existe-xyz/', en: '/en/', enblog: '/en/articles/', enabout: '/en/about/' };
 const devices = {
 	desk: { viewport: { width: 1440, height: 900 } },
 	mob: { viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true },

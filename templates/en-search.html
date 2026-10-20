@@ -1,0 +1,37 @@
+<!-- wp:template-part {"slug":"header","tagName":"header","className":"lh-header"} /-->
+
+<!-- wp:group {"tagName":"main","className":"lh-main","layout":{"type":"constrained"}} -->
+<main class="wp-block-group lh-main"><!-- wp:group {"tagName":"section","align":"full","className":"lh-sec lh-page-hero"} -->
+<section class="wp-block-group alignfull lh-sec lh-page-hero"><!-- wp:group {"className":"lh-wrap"} -->
+<div class="wp-block-group lh-wrap"><!-- wp:paragraph {"className":"is-style-label"} -->
+<p class="is-style-label">Search</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:query-title {"type":"search","className":"lh-giant-title"} /-->
+
+<!-- wp:search {"label":"Search","showLabel":false,"placeholder":"Search the blog","buttonText":"Search"} /--></div>
+<!-- /wp:group --></section>
+<!-- /wp:group -->
+
+<!-- wp:group {"align":"full","className":"lh-sec lh-posts"} -->
+<div class="wp-block-group alignfull lh-sec lh-posts"><!-- wp:group {"className":"lh-wrap"} -->
+<div class="wp-block-group lh-wrap"><!-- wp:query {"queryId":1,"query":{"perPage":9,"inherit":true}} -->
+<div class="wp-block-query"><!-- wp:post-template {"className":"lh-post-grid","layout":{"type":"grid","columnCount":3}} -->
+<!-- wp:group {"className":"lh-post-card"} -->
+<div class="wp-block-group lh-post-card"><!-- wp:post-title {"level":3,"isLink":true} /-->
+
+<!-- wp:post-excerpt {"excerptLength":22} /--></div>
+<!-- /wp:group -->
+<!-- /wp:post-template -->
+
+<!-- wp:query-no-results -->
+<!-- wp:paragraph -->
+<p>Nothing matched that search. Try another word.</p>
+<!-- /wp:paragraph -->
+<!-- /wp:query-no-results --></div>
+<!-- /wp:query --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group --></main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"div"} /-->

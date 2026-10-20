@@ -5,15 +5,24 @@
 	if (!gsap || !LH) return;
 	const root = document.documentElement;
 	const isMobile = () => matchMedia('(max-width: 820px)').matches;
+	const en = root.lang.startsWith('en');
 
 	/* ---------- 2. live leads (sample data until GHL feeds real ones) ---------- */
-	const leadData = [
+	// English leads arrive by SMS into the CRM; Spanish ones by WhatsApp
+	const leadData = en ? [
+		['MG', 'Megan G.', 'Tampa, FL', 'Walk-in · $8k–12k · this month'],
+		['JR', 'Jason R.', 'Orlando, FL', '2 reach-ins · $5k–7k · 30 days'],
+		['AL', 'Ashley L.', 'Scottsdale, AZ', 'Walk-in + garage · $12k+ · 60 days'],
+		['CP', 'Chris P.', 'Houston, TX', 'Primary closet · $7k–9k · this month'],
+		['DT', 'Dana T.', 'Austin, TX', 'Walk-in · $9k–11k · 45 days'],
+	] : [
 		['MG', 'María G.', 'Houston, TX', 'Walk-in · $8k–12k · este mes'],
 		['JR', 'José R.', 'Orlando, FL', 'Reach-in x2 · $5k–7k · 30 días'],
 		['AL', 'Ashley L.', 'Scottsdale, AZ', 'Walk-in + garage · $12k+ · 60 días'],
 		['CP', 'Carlos P.', 'Miami, FL', 'Primary closet · $7k–9k · este mes'],
 		['DT', 'Dana T.', 'Austin, TX', 'Walk-in · $9k–11k · 45 días'],
 	];
+	const t = en ? { head: 'NEW LEAD · SMS', now: 'now', ok: '✓ pre-qualified' } : { head: 'NUEVO LEAD · WHATSAPP', now: 'ahora', ok: '✓ pre-filtrado' };
 	let leadTimer, li = 0;
 	const leadsBox = document.createElement('div');
 	leadsBox.className = 'lh-leads';
@@ -30,8 +39,8 @@
 			const [ini, n, city, what] = leadData[li++ % leadData.length];
 			const el = document.createElement('div');
 			el.className = 'lh-lead';
-			el.innerHTML = `<div class="av">${ini}</div><div><div class="top"><span>NUEVO LEAD · WHATSAPP</span><span>ahora</span></div>
-				<div class="who">${n} · ${city}</div><div class="what"><span class="ok">✓ pre-filtrado</span> · ${what}</div></div>`;
+			el.innerHTML = `<div class="av">${ini}</div><div><div class="top"><span>${t.head}</span><span>${t.now}</span></div>
+				<div class="who">${n} · ${city}</div><div class="what"><span class="ok">${t.ok}</span> · ${what}</div></div>`;
 			leadsBox.appendChild(el);
 			const cards = [...leadsBox.children], m = isMobile();
 			cards.forEach((c, i) => {

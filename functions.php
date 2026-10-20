@@ -95,6 +95,57 @@ add_action( 'init', function () {
 	register_block_style( 'core/paragraph', array( 'name' => 'label', 'label' => __( 'Etiqueta mono', 'luishenao' ) ) );
 } );
 
+/*
+ * Bilingual site (Polylang): Spanish at /, English at /en/.
+ * Polylang handles URLs, hreflang and linking each page to its translation. The theme swaps
+ * what Polylang free can't translate in a block theme: header/footer parts, theme patterns
+ * and templates. English versions live next to the Spanish ones as *-en / en-* files.
+ */
+function lh_is_en() {
+	return function_exists( 'pll_current_language' ) && 'en' === pll_current_language( 'slug' );
+}
+
+// header → header-en, luishenao/cta-final → luishenao/en-cta-final (when the English one exists).
+add_filter( 'render_block_data', function ( $block ) {
+	if ( ! lh_is_en() ) {
+		return $block;
+	}
+	$name = $block['blockName'] ?? '';
+	$slug = $block['attrs']['slug'] ?? '';
+	if ( 'core/template-part' === $name && in_array( $slug, array( 'header', 'footer' ), true ) ) {
+		$block['attrs']['slug'] = "$slug-en";
+	} elseif ( 'core/pattern' === $name && str_starts_with( $slug, 'luishenao/' ) && ! str_starts_with( $slug, 'luishenao/en-' ) ) {
+		$en = 'luishenao/en-' . substr( $slug, strlen( 'luishenao/' ) );
+		if ( WP_Block_Patterns_Registry::get_instance()->is_registered( $en ) ) {
+			$block['attrs']['slug'] = $en;
+		}
+	}
+	return $block;
+} );
+
+// Templates with text get an en- twin (templates/en-404.html…): try it first on English pages.
+foreach ( array( '404', 'archive', 'home', 'index', 'search', 'single' ) as $lh_type ) {
+	add_filter( "{$lh_type}_template_hierarchy", function ( $templates ) {
+		return lh_is_en() ? array_merge( array_map( fn( $t ) => "en-$t", $templates ), $templates ) : $templates;
+	} );
+}
+
+// [lh_lang]: link to this page in the other language (its home when there is no translation).
+add_shortcode( 'lh_lang', function () {
+	if ( ! function_exists( 'pll_the_languages' ) ) {
+		return '';
+	}
+	$out = '';
+	foreach ( (array) pll_the_languages( array( 'raw' => 1, 'hide_current' => 1, 'hide_if_empty' => 0 ) ) as $l ) {
+		$label = 'en' === $l['slug'] ? 'English version' : 'Versión en español';
+		$out  .= sprintf(
+			'<a class="lh-lang" href="%s" hreflang="%s" lang="%s" aria-label="%s">%s</a>',
+			esc_url( $l['url'] ), esc_attr( $l['slug'] ), esc_attr( $l['slug'] ), esc_attr( $label ), esc_html( strtoupper( $l['slug'] ) )
+		);
+	}
+	return $out;
+} );
+
 /**
  * List block markup for patterns.
  */

@@ -60,6 +60,15 @@ html[data-theme="dark"] .lh-form { background: var(--dark-2); }
 html[data-theme="dark"] .wp-block-button:not(.is-style-ghost) .wp-block-button__link { color: var(--on-accent); }
 html[data-theme="dark"] img { filter: brightness(.94); }
 
+/* language switch in the nav */
+.lh-lang {
+	display: grid; place-items: center; height: 36px; padding: 0 11px; border-radius: 999px; border: 1px solid var(--line);
+	font-family: var(--mono); font-size: 12px; letter-spacing: .06em; color: var(--ink); text-decoration: none; transition: background .25s;
+}
+.lh-lang:hover { background: rgba(var(--shade), .06); color: var(--ink); }
+html[data-theme="dark"] .lh-lang:hover { background: rgba(237, 232, 223, .08); }
+html[lang^="en"] .lh-amt::after { content: " /mo"; }
+
 /* color mode switch in the nav */
 .lh-mode {
 	flex: 0 0 auto; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line);
