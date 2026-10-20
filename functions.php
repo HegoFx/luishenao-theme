@@ -29,6 +29,8 @@ add_action( 'wp_enqueue_scripts', function () {
 	// No GSAP dependency: menu and mode switch work even if it never loads. ui.js first, it clones the switch.
 	wp_enqueue_script( 'lh-ui', "$uri/js/ui.js", array(), $ver, array( 'strategy' => 'defer', 'in_footer' => true ) );
 	wp_enqueue_script( 'lh-mode', "$uri/js/mode.js", array( 'lh-ui' ), $ver, array( 'strategy' => 'defer', 'in_footer' => true ) );
+	// Ad click IDs and UTMs → GoHighLevel forms (docs/tracking.md). In the head, so it tags the embeds as soon as the page is parsed.
+	wp_enqueue_script( 'lh-track', "$uri/js/track.js", array(), $ver, array( 'strategy' => 'defer' ) );
 
 	wp_enqueue_script( 'gsap', "$uri/vendor/gsap.min.js", array(), '3.12.5', array( 'strategy' => 'defer', 'in_footer' => true ) );
 	wp_enqueue_script( 'gsap-st', "$uri/vendor/ScrollTrigger.min.js", array( 'gsap' ), '3.12.5', array( 'strategy' => 'defer', 'in_footer' => true ) );
