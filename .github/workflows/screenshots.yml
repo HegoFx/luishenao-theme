@@ -1,10 +1,18 @@
-# Screenshots of the staging site (desktop and mobile), pushed to the `screenshots` branch
+# Screenshots of the staging site (desktop, mobile and dark mode), pushed to the `screenshots` branch
 # so Claude can review the live design from a session that cannot reach the site.
-# Runs after every content publish (which follows each deploy), on demand, or on a push to a claude/** branch that touches it.
+# Runs after every content publish (which follows each deploy), on demand, or on a push to a
+# claude/** branch that touches it. On demand you can limit pages and devices to get results faster.
 name: Capturas del sitio
 
 on:
   workflow_dispatch:
+    inputs:
+      pages:
+        description: 'Páginas, separadas por coma (home, en, blog, landing, post...) o "all"'
+        default: all
+      devices:
+        description: 'Dispositivos: desk, mob, deskdark, mobdark, o "all"'
+        default: all
   workflow_run:
     workflows: ['Publicar contenido (staging)']
     types: [completed]
@@ -23,21 +31,28 @@ jobs:
   shots:
     if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
+    # Chromium and its system libraries come preinstalled: no browser download on every run
+    container: mcr.microsoft.com/playwright:v1.47.2-jammy
+    defaults:
+      run:
+        shell: bash
     env:
       SITE_URL: https://navajowhite-whale-731377.hostingersite.com
+      PAGES: ${{ inputs.pages || 'all' }}
+      DEVICES: ${{ inputs.devices || 'all' }}
     steps:
       - uses: actions/checkout@v4
 
-      - name: Instalar Playwright
+      - name: Preparar
         run: |
-          npm init -y >/dev/null
-          npm i playwright@1.47.2
-          npx playwright install --with-deps chromium
+          (command -v git >/dev/null || (apt-get update -qq && apt-get install -y -qq git >/dev/null)) &
+          npm init -y >/dev/null && npm i --no-audit --no-fund playwright@1.47.2 >/dev/null
+          wait
 
       - name: Capturar
         run: |
           # give the server a moment after a deploy
-          sleep 20
+          [ "${{ github.event_name }}" = "workflow_run" ] && sleep 15
           mkdir -p shots
           node .github/scripts/shots.mjs | tee shots/log.txt || true
 
@@ -48,5 +63,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
-          git commit -qm "Capturas de ${GITHUB_SHA::7}"
+          git commit -qm "Capturas de ${GITHUB_SHA::7} (${PAGES} · ${DEVICES})"
           git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" screenshots

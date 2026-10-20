@@ -19,7 +19,7 @@ Lee esto antes de investigar. Actualízalo cuando confirmes algo nuevo del servi
 - `.github/workflows/wp-info.yml`: inventario de solo lectura (WP-CLI, plugins, páginas, usuarios, plantillas editadas). Corre al hacer push de ese archivo a una rama `claude/**` o a mano.
 - El modo Auto bloquea workflows que lean o escriban producción aunque Luis lo apruebe en el chat. Pídele cambiar a "Accept edits" para aprobar ese push.
 - Cloud: el push va por la Claude GitHub App (ya instalada en HegoFx/luishenao-theme). Si da 403, revisar esa instalación.
-- El proxy no deja abrir el sitio desde la sesión. Para verlo: `.github/workflows/screenshots.yml` corre tras cada deploy (o a mano) y sube capturas escritorio/móvil + log de errores a la rama `screenshots` (`git fetch origin screenshots`).
+- El proxy no deja abrir el sitio desde la sesión (si Luis agrega el dominio en Network access del entorno, usar el Chromium local). Para verlo: `.github/workflows/screenshots.yml` corre tras cada publicación o a mano con inputs `pages` y `devices` (ej. `home` y `mob`) para correr solo eso; sube capturas + log a la rama `screenshots` (`git fetch origin screenshots`).
 - `.github/workflows/wp-media.yml`: backup de la base en `~/backups` (fuera de public_html; `wp db export` falla, usa `mariadb-dump`), reemplaza URLs del tema .jpg→.webp y regenera medios. Ya se corrió el 2026-10-20.
 - Hostinger a veces tarda en responder SSH: los workflows reintentan `ssh-keyscan`.
 
