@@ -131,15 +131,22 @@ body.admin-bar .lh-header { top: calc(32px + 14px); }
 }
 .lh-wordmark .w { display: inline-block; }
 .lh-hero-meta { display: flex; justify-content: space-between; gap: 16px; margin: 18px 0 !important; }
-.lh-hero-stage { position: relative; height: min(78vh, 760px); min-height: 540px; }
+/* the stage breaks out of the wrap: image runs edge to edge, copy stays on the content grid */
+.lh-hero-stage {
+	position: relative; height: min(82vh, 820px); min-height: 560px;
+	width: 100vw; margin-inline: calc(50% - 50vw) !important;
+	--edge: max(var(--gut), calc((100vw - var(--max)) / 2 + var(--gut)));
+}
+.lh-hero-stage .lh-ph { border-radius: 0; }
+.lh-hero-stage .lh-ph figcaption { left: var(--edge); top: 16px; }
 .lh-hero-stage::after {
-	content: ""; position: absolute; inset: 0; border-radius: var(--r); pointer-events: none; z-index: 1;
+	content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
 	background: linear-gradient(90deg, rgba(243,240,234,.92) 0%, rgba(243,240,234,.75) 32%, rgba(243,240,234,0) 58%);
 }
 .lh-hero-img { position: absolute !important; inset: 0; }
 .lh-hero-img-m { display: none; }
 .lh-hero-copy {
-	position: absolute; left: clamp(20px, 4vw, 56px); bottom: clamp(20px, 4vw, 56px);
+	position: absolute; left: var(--edge); bottom: clamp(28px, 5vw, 64px);
 	z-index: 2; max-width: 560px;
 }
 .lh-hero-copy > * { margin-block: 0; }
@@ -149,7 +156,7 @@ body.admin-bar .lh-header { top: calc(32px + 14px); }
 .lh-note { margin-top: 16px !important; }
 
 .lh-leads {
-	position: absolute; right: clamp(14px, 3vw, 40px); bottom: clamp(14px, 3vw, 40px);
+	position: absolute; right: var(--edge, 40px); bottom: clamp(28px, 5vw, 64px);
 	z-index: 3; width: 290px; height: 250px; pointer-events: none;
 }
 .lh-lead {
@@ -390,7 +397,8 @@ body.admin-bar .lh-header { top: calc(32px + 14px); }
 	.lh-hero-img { display: none; }
 	.lh-hero-img-m { display: block; aspect-ratio: 3 / 4; }
 	.lh-hero-img-m img { object-position: 50% 18%; }
-	.lh-hero-copy { position: relative; left: 0; bottom: 0; padding: 24px 0 0; }
+	.lh-hero-copy { position: relative; left: 0; bottom: 0; padding: 24px var(--gut) 0; }
+	.lh-hero-stage .lh-ph figcaption { left: 12px; top: 12px; }
 	.lh-leads { left: 12px; right: 12px; bottom: 12px; width: auto; height: 90px; }
 	.lh-rod-pin { height: auto; padding-bottom: 70px; }
 	.lh-rod-vp { overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding-top: 4px; }
@@ -406,7 +414,7 @@ body.admin-bar .lh-header { top: calc(32px + 14px); }
 
 /* ---------- editor: keep everything visible and editable ---------- */
 .editor-styles-wrapper .lh-header { position: relative; top: 0; pointer-events: auto; }
-.editor-styles-wrapper .lh-hero-stage { height: auto; min-height: 0; }
+.editor-styles-wrapper .lh-hero-stage { height: auto; min-height: 0; width: auto; margin-inline: 0 !important; }
 .editor-styles-wrapper .lh-hero-stage::after { display: none; }
 .editor-styles-wrapper .lh-hero-img { position: relative !important; }
 .editor-styles-wrapper .lh-hero-img-m { display: block; max-width: 280px; }
