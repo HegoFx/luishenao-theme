@@ -31,6 +31,14 @@ Lee esto antes de investigar. Actualízalo cuando confirmes algo nuevo del servi
 - El inglés no es traducción literal: el dueño americano recibe los leads por SMS en su pipeline de GoHighLevel, el CTA es "Book a 15-min call" (#book) y Colombia se presenta como ventaja.
 - Pendiente: calendario de GHL real en #book, página de privacidad (ES y EN) y artículos en inglés.
 
+## SEO y GEO (tema, sin plugin)
+- `inc/seo.php`: `lh_seo()` es la única fuente de datos del negocio por idioma (títulos, descripciones, precio, oferta). Alimenta títulos, meta description, canonical, Open Graph/Twitter, JSON-LD y `/llms.txt`. Si cambia el precio o la oferta, se cambia ahí.
+- Meta description: el extracto de la página manda; si no tiene, usa el texto de `lh_seo()`.
+- FAQPage del JSON-LD se arma con los bloques Detalles de la página (coincide con lo visible).
+- `.github/workflows/seo-check.yml` revisa las páginas públicas tras cada deploy (necesita User-Agent de navegador: Hostinger da 403 a clientes desconocidos).
+- El staging tenía un `llms.txt` físico de otra plantilla ("Glamora"); se movió a `~/backups` con `wp-cleanup.yml`. Revisar lo mismo en producción.
+- Checklist de lanzamiento en luishenaoai.online: `blog_public`=1, verificar que el `robots.txt` no bloquee a Googlebot (el del staging lo pone Hostinger), sitemap `/wp-sitemap.xml`, Search Console con los dos idiomas, que la protección anti-bots de Hostinger no bloquee GPTBot/ClaudeBot/PerplexityBot, y que no haya `llms.txt` físico.
+
 ## Imágenes
 - Tema: solo WebP en `assets/img`, cada una al ancho en que se muestra (hero/panorámica 1920, retrato 1200, tarjetas del rod 900).
 - Uploads: `functions.php` convierte JPG/PNG a WebP calidad 80 y genera solo thumbnail, 768 y 1536; originales >1920 se reducen a 1920.
