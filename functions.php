@@ -26,6 +26,8 @@ add_action( 'wp_enqueue_scripts', function () {
 	$ver = WP_DEBUG ? time() : LH_VERSION;
 
 	wp_enqueue_style( 'lh-main', "$uri/css/main.css", array(), $ver );
+	// No dependencies: the mode switch works even if GSAP never loads.
+	wp_enqueue_script( 'lh-mode', "$uri/js/mode.js", array(), $ver, array( 'strategy' => 'defer', 'in_footer' => true ) );
 
 	wp_enqueue_script( 'gsap', "$uri/vendor/gsap.min.js", array(), '3.12.5', array( 'strategy' => 'defer', 'in_footer' => true ) );
 	wp_enqueue_script( 'gsap-st', "$uri/vendor/ScrollTrigger.min.js", array( 'gsap' ), '3.12.5', array( 'strategy' => 'defer', 'in_footer' => true ) );
@@ -36,6 +38,11 @@ add_action( 'wp_enqueue_scripts', function () {
 		wp_enqueue_script( 'lh-home', "$uri/js/home.js", array( 'lh-site' ), $ver, array( 'strategy' => 'defer', 'in_footer' => true ) );
 	}
 } );
+
+// Color mode before first paint: the visitor's saved choice, else their device setting.
+add_action( 'wp_head', function () {
+	echo "<script>(function(d){var t;try{t=localStorage.getItem('lh-theme')}catch(e){}d.dataset.theme=t||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')})(document.documentElement)</script>\n";
+}, 0 );
 
 // Flag that motion is on so reveal states only hide content when the scripts will show it again.
 // If GSAP never arrives (blocked, offline), the flag is dropped and everything stays visible.

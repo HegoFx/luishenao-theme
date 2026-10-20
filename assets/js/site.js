@@ -73,7 +73,7 @@
 		scrollTrigger: { trigger: el, start: 'top 98%', toggleActions: 'play none play reverse' } }));
 
 	/* pain cards draw their top rule */
-	document.querySelectorAll('.lh-pain').forEach(el => gsap.fromTo(el, { borderTopColor: 'rgba(18,17,16,0)' }, { borderTopColor: 'rgba(18,17,16,1)', duration: .8,
+	document.querySelectorAll('.lh-pain').forEach(el => gsap.fromTo(el, { '--rule': 0 }, { '--rule': 1, duration: .8,
 		scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play reverse play reverse' } }));
 
 	addEventListener('load', () => ScrollTrigger.refresh());
