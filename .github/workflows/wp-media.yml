@@ -44,7 +44,12 @@ jobs:
           section "Backup"
           mkdir -p ~/backups
           F=~/backups/staging-$(date +%Y%m%d-%H%M%S).sql
-          wp db export "$F" --quiet
+          if ! wp db export "$F" 2>&1; then
+            echo "wp db export falló; uso mariadb-dump directo"
+            MYSQL_PWD="$(wp config get DB_PASSWORD)" mariadb-dump --single-transaction \
+              -h "$(wp config get DB_HOST)" -u "$(wp config get DB_USER)" "$(wp config get DB_NAME)" > "$F"
+          fi
+          [ -s "$F" ] || { echo "Backup vacío, me detengo"; exit 1; }
           echo "Backup: ${F#$HOME/} ($(du -h "$F" | cut -f1))"
 
           section "Referencias .jpg del tema antes"
