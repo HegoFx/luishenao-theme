@@ -8,12 +8,16 @@ const pages = { home: '/', blog: '/blog/', sobre: '/sobre-mi/', e404: '/no-exist
 const devices = {
 	desk: { viewport: { width: 1440, height: 900 } },
 	mob: { viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true },
+	// dark mode follows the device setting until the visitor picks one: only the home, to keep runs short
+	deskdark: { viewport: { width: 1440, height: 900 }, colorScheme: 'dark', only: ['home'] },
+	mobdark: { viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, colorScheme: 'dark', only: ['home'] },
 };
 
 mkdirSync('shots', { recursive: true });
 const browser = await chromium.launch();
 for (const [dname, dev] of Object.entries(devices)) {
-	const ctx = await browser.newContext(dev);
+	const { only, ...opts } = dev;
+	const ctx = await browser.newContext(opts);
 	// skip the closet-doors intro
 	await ctx.addInitScript(() => { try { sessionStorage.setItem('lh-doors', '1'); } catch (e) {} });
 	const page = await ctx.newPage();
@@ -22,6 +26,7 @@ for (const [dname, dev] of Object.entries(devices)) {
 	page.on('console', m => m.type() === 'error' && errors.push(m.text()));
 	page.on('response', r => r.status() >= 400 && !r.url().includes('no-existe') && errors.push(`${r.status()} ${r.url()}`));
 	for (const [pname, path] of Object.entries(pages)) {
+		if (only && !only.includes(pname)) continue;
 		await page.goto(base + path, { waitUntil: 'networkidle' });
 		await page.waitForTimeout(1500);
 		const h = await page.evaluate(() => document.documentElement.scrollHeight);
