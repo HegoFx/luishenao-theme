@@ -1,0 +1,26 @@
+# Crawls the public staging pages after every deploy and reports titles, descriptions, canonical,
+# hreflang, Open Graph, JSON-LD, llms.txt and robots.txt. Read-only: no secrets, no SSH.
+name: Revisión SEO
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: ['Deploy a Hostinger']
+    types: [completed]
+  push:
+    branches: ['claude/**']
+    paths: ['.github/workflows/seo-check.yml', '.github/scripts/seo-check.py']
+
+jobs:
+  seo:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    env:
+      SITE_URL: https://navajowhite-whale-731377.hostingersite.com
+    steps:
+      - uses: actions/checkout@v4
+      - name: Revisar
+        run: |
+          # give the server a moment after a deploy
+          [ "${{ github.event_name }}" = "workflow_run" ] && sleep 20
+          python3 .github/scripts/seo-check.py

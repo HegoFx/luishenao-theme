@@ -163,3 +163,5 @@ function lh_list( array $items, $class = 'lh-checks' ) {
 function lh_img( $file ) {
 	return esc_url( get_theme_file_uri( "assets/img/$file" ) );
 }
+
+require get_theme_file_path( 'inc/seo.php' );

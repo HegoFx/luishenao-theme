@@ -1,0 +1,57 @@
+# Staging cleanup for SEO/GEO: moves the stale llms.txt left by Hostinger's template (it describes
+# another site) out of public_html into ~/backups, and reports loose files in the web root and
+# where robots.txt comes from. Nothing is deleted. Only touches the staging WP root.
+name: Limpieza SEO (staging)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['claude/**']
+    paths: ['.github/workflows/wp-cleanup.yml']
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configurar SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          for i in 1 2 3 4 5; do
+            ssh-keyscan -T 15 -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null && [ -s ~/.ssh/known_hosts ] && break
+            echo "ssh-keyscan intento $i falló, reintentando..."; sleep $((i * 5))
+          done
+          [ -s ~/.ssh/known_hosts ]
+
+      - name: Limpiar
+        env:
+          THEME_PATH: ${{ secrets.THEME_PATH }}
+        run: |
+          ssh -p "${{ secrets.SSH_PORT }}" -i ~/.ssh/id_ed25519 \
+            "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" \
+            "THEME_PATH='$THEME_PATH' bash -s" <<'EOF'
+          set -e
+          WP_ROOT="$(cd "$THEME_PATH/../../.." && pwd)"
+          case "$WP_ROOT" in *hostingersite.com/public_html) ;; *) echo "No es el staging: $WP_ROOT"; exit 1 ;; esac
+          wp() { command wp --path="$WP_ROOT" "$@"; }
+          section() { echo; echo "===== $1 ====="; }
+
+          section "Archivos sueltos en la raíz web"
+          ls -la "$WP_ROOT" | grep -vE ' (wp-[a-z-]+\.php|index\.php|xmlrpc\.php|wp-admin|wp-content|wp-includes|\.|\.\.)$'
+
+          section "llms.txt"
+          if [ -f "$WP_ROOT/llms.txt" ]; then
+            mkdir -p ~/backups
+            head -3 "$WP_ROOT/llms.txt"
+            mv "$WP_ROOT/llms.txt" ~/backups/llms.txt.hostinger-$(date +%Y%m%d-%H%M%S)
+            echo "Movido a ~/backups (era de otra plantilla)"
+          else
+            echo "No hay llms.txt físico"
+          fi
+
+          section "robots.txt"
+          if [ -f "$WP_ROOT/robots.txt" ]; then echo "Archivo físico:"; cat "$WP_ROOT/robots.txt"; else echo "Virtual (lo genera WordPress o un plugin)"; fi
+          grep -rl "Googlebot" "$WP_ROOT/wp-content/mu-plugins" 2>/dev/null | sed "s#$WP_ROOT/##" || true
+          echo "blog_public: $(wp option get blog_public)"
+          EOF
