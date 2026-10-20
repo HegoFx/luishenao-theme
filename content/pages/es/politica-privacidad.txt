@@ -26,13 +26,14 @@ No vendo tus datos a nadie.
 Uso proveedores que procesan datos en mi nombre y bajo sus propias políticas de seguridad:
 
 - **Meta** (Facebook e Instagram): el Píxel de Meta y la API de Conversiones registran visitas y envíos de formulario para medir los anuncios.
+- **Google** (Google Ads y Google Analytics): mide visitas y qué anuncio trajo cada contacto.
 - **GoHighLevel**: guarda los datos de contacto y las conversaciones.
 - **Hostinger**: aloja este sitio web.
 - **WhatsApp**, cuando prefieres que hablemos por ahí.
 
 ## Cookies
 
-Este sitio usa cookies propias para recordar preferencias, como el modo claro u oscuro y el idioma, y cookies de Meta para medir los anuncios. Puedes bloquearlas o borrarlas desde la configuración de tu navegador; el sitio sigue funcionando sin ellas.
+Este sitio usa cookies propias para recordar preferencias, como el modo claro u oscuro y el idioma, una cookie propia que guarda por 90 días de qué anuncio o campaña llegaste, y cookies de Meta y Google para medir los anuncios. Puedes bloquearlas o borrarlas desde la configuración de tu navegador; el sitio sigue funcionando sin ellas.
 
 ## Cuánto tiempo los guardo
 

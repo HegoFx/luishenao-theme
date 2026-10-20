@@ -29,7 +29,12 @@ Lee esto antes de investigar. Actualízalo cuando confirmes algo nuevo del servi
 - El tema traduce lo que Polylang free no puede en un tema de bloques (`functions.php`, `lh_is_en()`): en inglés usa `parts/header-en.html` y `footer-en.html`, los patterns `luishenao/en-*` en vez de `luishenao/*` y prueba primero las plantillas `templates/en-*.html`.
 - Al cambiar un texto del tema, cambia también su gemelo en inglés. Selector de idioma: shortcode `[lh_lang]` en la nav.
 - El inglés no es traducción literal: el dueño americano recibe los leads por SMS en su pipeline de GoHighLevel, el CTA es "Book a 15-min call" (#book) y Colombia se presenta como ventaja.
-- Pendiente: calendario de GHL real en #book, página de privacidad (ES y EN) y artículos en inglés.
+- Pendiente: calendario de GHL real en #book.
+
+## Tracking (`docs/tracking.md`)
+- Conversiones de Google Ads y Meta salen de GHL (gclid / CAPI), no del sitio. GA4 y etiqueta base de Ads con Site Kit; Meta Pixel por código (falta el ID).
+- `assets/js/track.js`: guarda gclid/gbraid/wbraid/fbclid/UTM en la cookie `lh_attr` (90 días, último clic) y los agrega a iframes y enlaces de GHL (incluye `data-src` de LiteSpeed) y a inputs ocultos. Probado en Chromium local con páginas de prueba.
+- Las políticas de privacidad ya mencionan Google y esa cookie.
 
 ## SEO y GEO (tema, sin plugin)
 - `inc/seo.php`: `lh_seo()` es la única fuente de datos del negocio por idioma (títulos, descripciones, precio, oferta). Alimenta títulos, meta description, canonical, Open Graph/Twitter, JSON-LD y `/llms.txt`. Si cambia el precio o la oferta, se cambia ahí.

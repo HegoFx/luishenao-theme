@@ -26,12 +26,13 @@ I don't sell your data to anyone.
 I use providers that process data on my behalf, under their own security policies:
 
 - **Meta** (Facebook and Instagram): the Meta Pixel and Conversions API record visits, bookings and form submissions to measure ads.
+- **Google** (Google Ads and Google Analytics): measures visits and which ad brought each contact.
 - **GoHighLevel**: stores contact details, bookings and conversations.
 - **Hostinger**: hosts this website.
 
 ## Cookies
 
-This site uses its own cookies to remember preferences, such as light or dark mode and language, and Meta cookies to measure ads. You can block or delete them in your browser settings; the site still works without them.
+This site uses its own cookies to remember preferences, such as light or dark mode and language, a first-party cookie that remembers for 90 days which ad or campaign brought you here, and Meta and Google cookies to measure ads. You can block or delete them in your browser settings; the site still works without them.
 
 ## How long I keep it
 
