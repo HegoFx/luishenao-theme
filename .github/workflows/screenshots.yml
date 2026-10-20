@@ -1,0 +1,52 @@
+# Screenshots of the staging site (desktop and mobile), pushed to the `screenshots` branch
+# so Claude can review the live design from a session that cannot reach the site.
+# Runs after every deploy, on demand, or on a push to a claude/** branch that touches it.
+name: Capturas del sitio
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: ['Deploy a Hostinger']
+    types: [completed]
+  push:
+    branches: ['claude/**']
+    paths: ['.github/workflows/screenshots.yml', '.github/scripts/shots.mjs']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: screenshots
+  cancel-in-progress: true
+
+jobs:
+  shots:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    env:
+      SITE_URL: https://navajowhite-whale-731377.hostingersite.com
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalar Playwright
+        run: |
+          npm init -y >/dev/null
+          npm i playwright@1.47.2
+          npx playwright install --with-deps chromium
+
+      - name: Capturar
+        run: |
+          # give the server a moment after a deploy
+          sleep 20
+          mkdir -p shots
+          node .github/scripts/shots.mjs | tee shots/log.txt || true
+
+      - name: Publicar en la rama screenshots
+        run: |
+          cd shots
+          git init -q -b screenshots
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -qm "Capturas de ${GITHUB_SHA::7}"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" screenshots

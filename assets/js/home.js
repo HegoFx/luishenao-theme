@@ -144,7 +144,8 @@
 		gsap.matchMedia().add('(min-width: 821px)', () => {
 			steps.forEach((s, i) => {
 				if (i === steps.length - 1) return;
-				gsap.to(s, { scale: .94 - (steps.length - i) * .01, opacity: .55, ease: 'none',
+				// dim with an overlay (--dim), never opacity: a see-through card shows the one behind it
+				gsap.to(s, { scale: .94 - (steps.length - i) * .01, '--dim': 1, ease: 'none',
 					scrollTrigger: { trigger: steps[i + 1], start: 'top bottom', end: 'top 160px', scrub: true } });
 			});
 		});
