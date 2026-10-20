@@ -84,7 +84,9 @@ function lh_description() {
 	if ( is_singular() ) {
 		$post = get_queried_object();
 		$text = has_excerpt( $post ) ? $post->post_excerpt : wp_strip_all_tags( strip_shortcodes( excerpt_remove_blocks( $post->post_content ) ) );
-		return wp_trim_words( $text, 28, '…' );
+		$text = trim( preg_replace( '/\s+/', ' ', $text ) );
+		// Google shows about 155 characters: cut on a word boundary only when longer.
+		return mb_strlen( $text ) > 158 ? rtrim( mb_substr( $text, 0, mb_strrpos( mb_substr( $text, 0, 155 ), ' ' ) ), ',;:' ) . '…' : $text;
 	}
 	if ( is_category() || is_tag() ) {
 		return wp_strip_all_tags( term_description() );
@@ -100,6 +102,10 @@ add_filter( 'pre_get_document_title', function ( $title ) {
 	}
 	if ( is_home() && ! is_paged() ) {
 		return lh_seo()['blog_title'];
+	}
+	// Posts can carry a shorter title for Google than their H1 (set by content-sync from seo_title).
+	if ( is_singular() && ( $seo = get_post_meta( get_queried_object_id(), '_lh_seo_title', true ) ) ) {
+		return $seo;
 	}
 	return $title;
 } );
@@ -161,7 +167,9 @@ const LH_NOINDEX_PAGES = array( 'gracias', 'thank-you' );
 add_filter( 'wp_robots', function ( $robots ) {
 	if ( is_page( LH_NOINDEX_PAGES ) ) {
 		$robots['noindex'] = true;
-		$robots['follow']  = true;
+		if ( empty( $robots['nofollow'] ) ) {
+			$robots['follow'] = true;
+		}
 	}
 	return $robots;
 } );

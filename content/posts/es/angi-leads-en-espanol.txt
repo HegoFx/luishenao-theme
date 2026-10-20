@@ -1,6 +1,7 @@
 ---
 title: "Angi Leads en español: cómo funciona, cuánto cuesta y si vale la pena para closets"
-excerpt: Angi Leads, antes HomeAdvisor, te vende solicitudes de home owners. Te explico en español cómo funciona, cuánto cuesta en realidad cada closet vendido y cuándo te conviene.
+seo_title: Angi Leads en español: cuánto cuesta y si vale la pena
+excerpt: Angi Leads en español: cómo funciona, cuánto cuesta en realidad cada closet vendido y cuándo le conviene a tu negocio.
 category: Plataformas de leads
 image: blog-mesa.webp
 ---

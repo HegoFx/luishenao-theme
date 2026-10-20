@@ -442,7 +442,10 @@ body.admin-bar .lh-header { top: calc(32px + 14px); }
 .lh-prose blockquote { border-left: 2px solid var(--accent); padding-left: 24px; margin-inline: 0; }
 .lh-prose a { color: var(--accent); text-underline-offset: 3px; }
 
+.lh-post-hero .lh-giant-title { font-size: clamp(36px, 5.4vw, 80px) !important; line-height: 1; max-width: 22ch; }
 .lh-prose figure.wp-block-table { margin: 2em 0; overflow-x: auto; }
+.lh-prose .wp-block-table thead { border-bottom: 1px solid var(--ink); }
+.lh-prose .wp-block-table th, .lh-prose .wp-block-table td { border: 0; border-bottom: 1px solid var(--line); }
 .lh-prose table { width: 100%; border-collapse: collapse; font-size: 16px; line-height: 1.5; }
 .lh-prose th, .lh-prose td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
 .lh-prose th { font-weight: 600; background: var(--paper); }

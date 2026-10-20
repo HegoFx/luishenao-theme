@@ -92,7 +92,7 @@ for path in ('/llms.txt', '/robots.txt', '/wp-sitemap.xml'):
     try:
         status, body, headers = get(path)
         print(f'status {status} · {headers.get("Content-Type", "")}')
-        print('\n'.join(body.splitlines()[:40]))
+        print('\n'.join(body.splitlines()[:80]))
     except Exception as e:  # noqa: BLE001
         print('ERROR', e)
         if path == '/llms.txt':

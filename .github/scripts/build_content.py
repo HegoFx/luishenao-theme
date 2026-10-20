@@ -7,6 +7,7 @@ Source format (one file per page or post, content/<pages|posts>/<es|en>/<slug>.t
     excerpt: ...            meta description and intro
     category: ...           posts only
     image: file.webp        featured image, from assets/img
+    seo_title: ...          optional, shorter title for Google (60 characters max)
     template: page-landing  optional page template
     pair: about             pages only: same key in es and en links the two translations
     ---
@@ -108,6 +109,7 @@ def convert(path, kind, lang):
         'image': meta.get('image', ''),
         'template': meta.get('template', ''),
         'pair': meta.get('pair', ''),
+        'seo_title': meta.get('seo_title', ''),
         'words': words,
         'content': '\n\n'.join(block(c, lang) for c in chunks),
     }
