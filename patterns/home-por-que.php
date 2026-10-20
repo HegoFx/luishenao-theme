@@ -17,7 +17,7 @@ $lh_diffs = array(
 <!-- wp:group {"tagName":"section","align":"full","className":"lh-sec lh-why"} -->
 <section class="wp-block-group alignfull lh-sec lh-why"><!-- wp:group {"className":"lh-wrap lh-why-grid"} -->
 <div class="wp-block-group lh-wrap lh-why-grid"><!-- wp:image {"sizeSlug":"large","className":"lh-ph lh-r-img lh-why-img"} -->
-<figure class="wp-block-image size-large lh-ph lh-r-img lh-why-img"><img src="<?php echo lh_img( 'luis-retrato.jpg' ); ?>" alt="Retrato de Luis Henao"/><figcaption class="wp-element-caption">Placeholder IA → retrato real tuyo, luz natural</figcaption></figure>
+<figure class="wp-block-image size-large lh-ph lh-r-img lh-why-img"><img src="<?php echo lh_img( 'luis-retrato.webp' ); ?>" alt="Retrato de Luis Henao"/><figcaption class="wp-element-caption">Placeholder IA → retrato real tuyo, luz natural</figcaption></figure>
 <!-- /wp:image -->
 
 <!-- wp:group -->
