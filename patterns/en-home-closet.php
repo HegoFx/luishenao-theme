@@ -8,7 +8,7 @@
 
 $lh_cards = array(
 	array( 'img', 'bts-grabando.webp', 'Luis filming an ad in a closet showroom', 'AI placeholder → real photo: you filming an ad', '01 · Content', 'I shoot and edit ads around your real closet installs.' ),
-	array( 'stat', 'Speed to lead', '21x', 'more likely to convert', 'when you reach a lead within 5 minutes. Source: Harvard Business Review.' ),
+	array( 'stat', 'Speed to lead', '21x', 'more likely to qualify the lead', 'when you reach out within 5 minutes instead of 30. Source: Lead Response Management Study (MIT and InsideSales).' ),
 	array( 'img', 'whatsapp-manos.webp', 'A qualified lead arriving by text', 'AI placeholder → real screenshot of a lead text (redacted)', '02 · Pre-qualified', 'The lead hits your phone by text with budget, timeline and zip code confirmed.' ),
 	array( 'stat', 'First response', '78%', 'buy from whoever responds first', "That's why the reply script is included." ),
 	array( 'img', 'reunion-dueno.webp', 'Luis reviewing a campaign with a closet company owner', 'AI placeholder → real photo: call or visit with a client', '03 · Direct line', 'You talk to me. Not account #847 handed to a junior.' ),

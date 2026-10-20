@@ -66,6 +66,6 @@
 <!-- /wp:group -->
 
 <!-- wp:paragraph {"className":"lh-marquee"} -->
-<p class="lh-marquee">Meta Ads · GoHighLevel CRM · SMS pre-qualification · Custom closets only · English and Spanish · Florida · Texas · Arizona</p>
+<p class="lh-marquee">More estimates that close · Fewer tire kickers · A full calendar · Custom closets only · Florida · Texas · Arizona · English and Spanish</p>
 <!-- /wp:paragraph --></section>
 <!-- /wp:group -->

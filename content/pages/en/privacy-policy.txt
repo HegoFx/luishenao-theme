@@ -1,0 +1,50 @@
+---
+title: Privacy Policy
+excerpt: What data I collect when you book a call or visit this site, what I use it for and how to ask me to delete it.
+pair: privacy
+---
+Last updated: October 20, 2026.
+
+This site belongs to Luis Henao, who provides Meta Ads services for custom closet companies in the United States. This page explains, in plain English, what data I collect, what I use it for and what rights you have.
+
+## What I collect
+
+- **Information you give me** when you fill out a form or book a call: your name, company name, mobile number, the state you operate in and details about your business, such as how many closets you sell a month.
+- **Browsing data**: pages you visit, device and browser type, and which ad or site sent you here. This is collected with cookies and similar technologies.
+- **Conversations**: messages we exchange by text, phone, Messenger, Instagram or email.
+
+## How I use it
+
+- To reply to you and see whether the pilot makes sense for your business.
+- To deliver the service if we work together.
+- To measure and improve my ads, for example to know how many people booked a call after seeing an ad.
+
+I don't sell your data to anyone.
+
+## Who I share it with
+
+I use providers that process data on my behalf, under their own security policies:
+
+- **Meta** (Facebook and Instagram): the Meta Pixel and Conversions API record visits, bookings and form submissions to measure ads.
+- **GoHighLevel**: stores contact details, bookings and conversations.
+- **Hostinger**: hosts this website.
+
+## Cookies
+
+This site uses its own cookies to remember preferences, such as light or dark mode and language, and Meta cookies to measure ads. You can block or delete them in your browser settings; the site still works without them.
+
+## How long I keep it
+
+I keep your data while we have a business relationship or an active conversation, and for up to 24 months after our last contact, unless you ask me to delete it sooner.
+
+## Your rights
+
+You can ask me at any time what data I hold about you, to correct it or to delete it. California residents also have rights under the CCPA, including the right to know and the right to delete. For any of these requests, reach out through the same channel we've been talking on; I reply within 30 days.
+
+## Children
+
+This site is meant for business owners. I don't knowingly collect data from anyone under 18.
+
+## Changes
+
+If I change this policy, I update the date at the top. Material changes are announced on this page.

@@ -66,6 +66,6 @@
 <!-- /wp:group -->
 
 <!-- wp:paragraph {"className":"lh-marquee"} -->
-<p class="lh-marquee">Bilingüe EN / ES · Meta Ads · GoHighLevel · Pre-filtro en WhatsApp · Solo custom closets · Florida · Texas · Arizona</p>
+<p class="lh-marquee">Más estimates que cierran · Menos curiosos · Tu calendario lleno · Solo custom closets · Florida · Texas · Arizona · Español e inglés</p>
 <!-- /wp:paragraph --></section>
 <!-- /wp:group -->

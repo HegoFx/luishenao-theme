@@ -1,0 +1,63 @@
+---
+title: "Facebook Ads vs Boost Post: Why Boosting Wastes a Closet Company's Budget"
+excerpt: The Boost button is the fastest way to spend money on Facebook and one of the slowest ways to get booked estimates. Here's what changes when you run a real campaign in Ads Manager.
+category: Meta Ads
+image: bts-grabando.webp
+---
+**Short answer:** Boosting a post optimizes for likes, comments and views from a broad audience. A Facebook ad campaign built in Ads Manager with the Leads objective optimizes for people who fill out your form, lets you ask qualifying questions and shows you what each booked estimate costs. If you want customers, not engagement, skip the Boost button.
+
+## What actually happens when you boost
+
+When you press Boost on a post, Meta takes your best-looking content and shows it to more people. That feels like progress: the likes go up, people comment "beautiful!" and maybe someone messages you. But under the hood:
+
+- The goal is usually **engagement or reach**, so Meta finds people who like and comment, not people who buy closets.
+- Targeting and placement options are **limited** compared to a full campaign.
+- There's **no lead form with qualifying questions**, so you can't filter by budget or timeline.
+- **Testing is hard.** You can't easily compare two images or two headlines and keep the winner.
+
+The result is a beautiful post with a lot of likes from people who will never pay $6,000 for a closet.
+
+## What a real campaign gives you
+
+| | Boost post | Ads Manager campaign |
+|---|---|---|
+| Optimizes for | Likes, comments, views | Leads or booked calls |
+| Qualifying questions | No | Yes, in an instant form |
+| A/B testing | Very limited | Built in |
+| Retargeting video viewers | Limited | Yes |
+| Cost per booked estimate | Hard to know | Measured |
+
+## When boosting is fine
+
+Boosting isn't evil, it's just a different tool. It makes sense when:
+
+- You have a great install video and want more local people to see your brand.
+- You're promoting an event, like an open house at your showroom.
+- You want to warm up an audience that you'll later retarget with a real lead campaign.
+
+Just don't expect a boosted post to fill your calendar.
+
+!cta
+
+## How to switch from boosting to a lead campaign
+
+1. **Open Ads Manager** and create a campaign with the **Leads** objective.
+2. **Set your location** to the zip codes or radius you actually serve.
+3. **Use your best boosted post as the ad.** If it got a lot of engagement, the creative already works.
+4. **Build an instant form** with budget, timeline, zip code and type of space. Choose the higher intent option.
+5. **Connect the form to your phone** so you get a text the moment a lead arrives, and reply within five minutes.
+6. **Run two or three ads for two weeks,** then keep the one with the lowest cost per booked estimate.
+
+## Frequently asked questions
+
+?? Is boosting a post the same as running a Facebook ad?
+No. Both cost money and both show your content to more people, but a boost is optimized for engagement with limited options, while an Ads Manager campaign can be optimized for leads, with forms, testing and measurement.
+
+?? Why do boosted posts get likes but no customers?
+Because Meta gives you exactly what the boost asks for: engagement. People who like and comment are not the same people who request a $6,000 estimate.
+
+?? Should a closet company ever boost posts?
+Sometimes, for brand awareness or an event. For booked estimates, use a Leads campaign in Ads Manager with qualifying questions.
+
+?? How much should I spend instead of boosting?
+Put the same money into a Leads campaign. Most closet companies need at least $900 a month in ad spend to get clear data within a month.
