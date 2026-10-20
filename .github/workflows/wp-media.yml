@@ -1,0 +1,76 @@
+# One-off media migration on the staging site: theme image URLs .jpg → .webp in saved content,
+# and media library regenerated with the theme's sizes (old subsizes deleted).
+# Backs up the database first, outside public_html. Only touches the staging WP root.
+name: Migrar medios a WebP (staging)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['claude/**']
+    paths: ['.github/workflows/wp-media.yml']
+
+jobs:
+  media:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configurar SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          for i in 1 2 3 4 5; do
+            ssh-keyscan -T 15 -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null && [ -s ~/.ssh/known_hosts ] && break
+            echo "ssh-keyscan intento $i falló, reintentando..."; sleep $((i * 5))
+          done
+          [ -s ~/.ssh/known_hosts ]
+
+      - name: Migrar
+        env:
+          THEME_PATH: ${{ secrets.THEME_PATH }}
+        run: |
+          ssh -p "${{ secrets.SSH_PORT }}" -i ~/.ssh/id_ed25519 \
+            "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" \
+            "THEME_PATH='$THEME_PATH' bash -s" <<'EOF'
+          set -e
+          WP_ROOT="$(cd "$THEME_PATH/../../.." && pwd)"
+          case "$WP_ROOT" in *hostingersite.com/public_html) ;; *) echo "No es el staging: $WP_ROOT"; exit 1 ;; esac
+          wp() { command wp --path="$WP_ROOT" "$@"; }
+          section() { echo; echo "===== $1 ====="; }
+          P="$(wp db prefix)"
+
+          section "Soporte WebP"
+          wp eval 'echo wp_image_editor_supports(array("mime_type"=>"image/webp")) ? "WebP: si\n" : "WebP: NO\n";'
+
+          section "Backup"
+          mkdir -p ~/backups
+          F=~/backups/staging-$(date +%Y%m%d-%H%M%S).sql
+          if ! wp db export "$F" 2>&1; then
+            echo "wp db export falló; uso mariadb-dump directo"
+            MYSQL_PWD="$(wp config get DB_PASSWORD)" mariadb-dump --single-transaction \
+              -h "$(wp config get DB_HOST)" -u "$(wp config get DB_USER)" "$(wp config get DB_NAME)" > "$F"
+          fi
+          [ -s "$F" ] || { echo "Backup vacío, me detengo"; exit 1; }
+          echo "Backup: ${F#$HOME/} ($(du -h "$F" | cut -f1))"
+
+          section "Referencias .jpg del tema antes"
+          wp db query "SELECT ID, post_type, post_title FROM ${P}posts WHERE post_content LIKE '%assets/img/%.jpg%'"
+
+          section "Reemplazo .jpg -> .webp"
+          for f in "$THEME_PATH"/assets/img/*.webp; do
+            n="$(basename "$f" .webp)"
+            wp search-replace "assets/img/$n.jpg" "assets/img/$n.webp" "${P}posts" --precise --report-changed-only
+          done
+
+          section "Referencias .jpg del tema después"
+          wp db query "SELECT ID, post_type, post_title FROM ${P}posts WHERE post_content LIKE '%assets/img/%.jpg%'"
+
+          section "Medios: regenerar con los tamaños del tema"
+          wp post list --post_type=attachment --fields=ID,post_title,post_mime_type
+          wp media regenerate --yes
+          for id in $(wp post list --post_type=attachment --field=ID); do
+            echo "ID $id:"; wp post meta get "$id" _wp_attachment_metadata --format=json | php -r '$m=json_decode(stream_get_contents(STDIN),true); echo "  full: ".$m["file"]."\n"; foreach(($m["sizes"]??[]) as $k=>$s) echo "  $k: ".$s["file"]."\n";'
+          done
+
+          section "Home responde"
+          wp option get home | xargs -I{} curl -s -o /dev/null -w "HTTP %{http_code}\n" {}
+          EOF
