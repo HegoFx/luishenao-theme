@@ -54,6 +54,25 @@ add_action( 'wp_head', function () {
 	);
 }, 1 );
 
+/*
+ * Uploads: JPG/PNG become WebP, and only the sizes the theme actually serves are generated.
+ * Kept: thumbnail (admin grid), medium_large 768 (phones), 1536x1536 (desktop/retina).
+ * Originals over 1920px are scaled down to a 1920px WebP.
+ */
+add_filter( 'image_editor_output_format', function ( $formats ) {
+	$formats['image/jpeg'] = 'image/webp';
+	$formats['image/png']  = 'image/webp';
+	return $formats;
+} );
+add_filter( 'wp_editor_set_quality', function ( $quality, $mime ) {
+	return 'image/webp' === $mime ? 80 : $quality;
+}, 10, 2 );
+add_filter( 'intermediate_image_sizes_advanced', function ( $sizes ) {
+	unset( $sizes['medium'], $sizes['large'], $sizes['2048x2048'] );
+	return $sizes;
+} );
+add_filter( 'big_image_size_threshold', fn() => 1920 );
+
 // Fallback favicon until a Site Icon is set in Settings → General (avoids a 404 on /favicon.ico).
 add_action( 'wp_head', function () {
 	if ( ! has_site_icon() ) {

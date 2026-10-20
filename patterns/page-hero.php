@@ -21,7 +21,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:image {"sizeSlug":"full","className":"lh-ph lh-r-img lh-parallax"} -->
-<figure class="wp-block-image size-full lh-ph lh-r-img lh-parallax"><img src="<?php echo lh_img( 'bts-grabando.jpg' ); ?>" alt="Luis Henao grabando contenido"/><figcaption class="wp-element-caption">Placeholder IA → foto real panorámica</figcaption></figure>
+<figure class="wp-block-image size-full lh-ph lh-r-img lh-parallax"><img src="<?php echo lh_img( 'bts-grabando.webp' ); ?>" alt="Luis Henao grabando contenido"/><figcaption class="wp-element-caption">Placeholder IA → foto real panorámica</figcaption></figure>
 <!-- /wp:image --></div>
 <!-- /wp:group --></section>
 <!-- /wp:group -->

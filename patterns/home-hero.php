@@ -28,11 +28,11 @@
 
 <!-- wp:group {"className":"lh-hero-stage"} -->
 <div class="wp-block-group lh-hero-stage"><!-- wp:image {"sizeSlug":"full","className":"lh-ph lh-hero-img"} -->
-<figure class="wp-block-image size-full lh-ph lh-hero-img"><img src="<?php echo lh_img( 'hero-luis.jpg' ); ?>" alt="Luis Henao en su escritorio revisando campañas de Meta Ads"/><figcaption class="wp-element-caption">Placeholder IA → aquí va: video tuyo de 6–8 s en loop, hablando a cámara</figcaption></figure>
+<figure class="wp-block-image size-full lh-ph lh-hero-img"><img src="<?php echo lh_img( 'hero-luis.webp' ); ?>" alt="Luis Henao en su escritorio revisando campañas de Meta Ads"/><figcaption class="wp-element-caption">Placeholder IA → aquí va: video tuyo de 6–8 s en loop, hablando a cámara</figcaption></figure>
 <!-- /wp:image -->
 
 <!-- wp:image {"sizeSlug":"full","className":"lh-ph lh-hero-img-m"} -->
-<figure class="wp-block-image size-full lh-ph lh-hero-img-m"><img src="<?php echo lh_img( 'luis-retrato.jpg' ); ?>" alt="Luis Henao"/><figcaption class="wp-element-caption">Placeholder IA → versión vertical para celular</figcaption></figure>
+<figure class="wp-block-image size-full lh-ph lh-hero-img-m"><img src="<?php echo lh_img( 'luis-retrato.webp' ); ?>" alt="Luis Henao"/><figcaption class="wp-element-caption">Placeholder IA → versión vertical para celular</figcaption></figure>
 <!-- /wp:image -->
 
 <!-- wp:group {"className":"lh-hero-copy"} -->

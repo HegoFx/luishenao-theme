@@ -7,12 +7,12 @@
  */
 
 $lh_cards = array(
-	array( 'img', 'bts-grabando.jpg', 'Luis grabando un anuncio en un showroom de closets', 'Placeholder IA → foto real: tú grabando un anuncio', '01 · Contenido', 'Grabo y edito anuncios alrededor de trabajos reales de closets.' ),
+	array( 'img', 'bts-grabando.webp', 'Luis grabando un anuncio en un showroom de closets', 'Placeholder IA → foto real: tú grabando un anuncio', '01 · Contenido', 'Grabo y edito anuncios alrededor de trabajos reales de closets.' ),
 	array( 'stat', 'Speed to lead', '21x', 'más probabilidad de convertir', 'cuando contactas un lead en menos de 5 minutos. Fuente: Harvard Business Review.' ),
-	array( 'img', 'whatsapp-manos.jpg', 'Lead llegando a WhatsApp', 'Placeholder IA → pantallazo real de un lead (datos censurados)', '02 · Pre-filtro', 'El lead llega a tu WhatsApp con presupuesto, timeline y zip code confirmados.' ),
+	array( 'img', 'whatsapp-manos.webp', 'Lead llegando a WhatsApp', 'Placeholder IA → pantallazo real de un lead (datos censurados)', '02 · Pre-filtro', 'El lead llega a tu WhatsApp con presupuesto, timeline y zip code confirmados.' ),
 	array( 'stat', 'Primera respuesta', '78%', 'le compra a quien responde primero', 'Por eso el script de respuesta va incluido.' ),
-	array( 'img', 'reunion-dueno.jpg', 'Luis revisando una campaña con un dueño de negocio de closets', 'Placeholder IA → foto real: llamada o visita con un cliente', '03 · Trato directo', 'Hablas conmigo. No eres la cuenta número 847 de un junior.' ),
-	array( 'img', 'homeowners-closet.jpg', 'Home owners en su nuevo walk-in closet', 'Placeholder IA → closet terminado de un cliente', '04 · El objetivo', 'Menos estimates perdidos. Más closets instalados.' ),
+	array( 'img', 'reunion-dueno.webp', 'Luis revisando una campaña con un dueño de negocio de closets', 'Placeholder IA → foto real: llamada o visita con un cliente', '03 · Trato directo', 'Hablas conmigo. No eres la cuenta número 847 de un junior.' ),
+	array( 'img', 'homeowners-closet.webp', 'Home owners en su nuevo walk-in closet', 'Placeholder IA → closet terminado de un cliente', '04 · El objetivo', 'Menos estimates perdidos. Más closets instalados.' ),
 	array( 'stat', 'Tu mercado', '$13.7B', 'en custom closets en Norteamérica', 'creciendo 7.2% al año. Fuente: Business Research Insights 2026.' ),
 );
 ?>
