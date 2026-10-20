@@ -18,7 +18,12 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
+          # Hostinger sometimes answers slowly: retry instead of failing the whole run
+          for i in 1 2 3 4 5; do
+            ssh-keyscan -T 15 -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null && [ -s ~/.ssh/known_hosts ] && break
+            echo "ssh-keyscan intento $i falló, reintentando..."; sleep $((i * 5))
+          done
+          [ -s ~/.ssh/known_hosts ]
 
       - name: Inventario
         env:
