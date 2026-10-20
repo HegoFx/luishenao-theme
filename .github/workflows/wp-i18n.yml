@@ -1,0 +1,74 @@
+# Bilingual setup on the staging site: installs Polylang, creates Spanish/English and the
+# English pages from the en-* theme patterns. Backs up the database first. Safe to re-run.
+name: Bilingüe con Polylang (staging)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['claude/**']
+    paths: ['.github/workflows/wp-i18n.yml', '.github/scripts/i18n-setup.php']
+
+jobs:
+  i18n:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configurar SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          for i in 1 2 3 4 5; do
+            ssh-keyscan -T 15 -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null && [ -s ~/.ssh/known_hosts ] && break
+            echo "ssh-keyscan intento $i falló, reintentando..."; sleep $((i * 5))
+          done
+          [ -s ~/.ssh/known_hosts ]
+
+      - name: Subir script
+        run: scp -P "${{ secrets.SSH_PORT }}" -i ~/.ssh/id_ed25519 .github/scripts/i18n-setup.php "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/i18n-setup.php"
+
+      - name: Configurar
+        env:
+          THEME_PATH: ${{ secrets.THEME_PATH }}
+        run: |
+          ssh -p "${{ secrets.SSH_PORT }}" -i ~/.ssh/id_ed25519 \
+            "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" \
+            "THEME_PATH='$THEME_PATH' bash -s" <<'EOF'
+          set -e
+          WP_ROOT="$(cd "$THEME_PATH/../../.." && pwd)"
+          case "$WP_ROOT" in *hostingersite.com/public_html) ;; *) echo "No es el staging: $WP_ROOT"; exit 1 ;; esac
+          wp() { command wp --path="$WP_ROOT" "$@"; }
+          section() { echo; echo "===== $1 ====="; }
+
+          section "Backup"
+          mkdir -p ~/backups
+          F=~/backups/staging-$(date +%Y%m%d-%H%M%S)-pre-i18n.sql
+          MYSQL_PWD="$(wp config get DB_PASSWORD)" mariadb-dump --single-transaction \
+            -h "$(wp config get DB_HOST)" -u "$(wp config get DB_USER)" "$(wp config get DB_NAME)" > "$F"
+          [ -s "$F" ] || { echo "Backup vacío, me detengo"; exit 1; }
+          echo "Backup: ${F#$HOME/} ($(du -h "$F" | cut -f1))"
+
+          section "Polylang"
+          wp plugin is-installed polylang || wp plugin install polylang
+          wp plugin activate polylang
+          wp plugin list --name=polylang --fields=name,status,version
+
+          section "Configuración"
+          wp eval-file ~/i18n-setup.php
+          rm -f ~/i18n-setup.php
+          wp rewrite flush
+
+          section "Páginas"
+          wp post list --post_type=page --fields=ID,post_title,post_name,post_status --lang=
+
+          section "URLs"
+          HOME_URL="$(wp option get home)"
+          for p in / /en/ /blog/ /en/articles/ /sobre-mi/ /en/about/; do
+            curl -s -o /dev/null -w "%{http_code}  $p\n" "$HOME_URL$p"
+          done
+          echo; echo "hreflang en /:"
+          curl -s "$HOME_URL/" | grep -o '<link rel="alternate" [^>]*hreflang[^>]*>' || echo "(ninguno)"
+          echo; echo "<html lang> en /en/:"
+          curl -sL "$HOME_URL/en/" | grep -o '<html [^>]*>' | head -1
+          EOF
