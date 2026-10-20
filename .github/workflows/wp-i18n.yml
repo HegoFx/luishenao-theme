@@ -70,5 +70,5 @@ jobs:
           echo; echo "hreflang en /:"
           curl -s "$HOME_URL/" | grep -o '<link rel="alternate" [^>]*hreflang[^>]*>' || echo "(ninguno)"
           echo; echo "<html lang> en /en/:"
-          curl -s "$HOME_URL/en/" | grep -o '<html [^>]*>' | head -1
+          curl -sL "$HOME_URL/en/" | grep -o '<html [^>]*>' | head -1
           EOF

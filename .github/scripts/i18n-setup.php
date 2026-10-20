@@ -130,5 +130,15 @@ lh_en_page(
 	'I help independent custom closet companies in the US get homeowners who are ready to buy, not tire kickers.'
 );
 
+// Polylang caches each language's front page and posts page: rebuild it now that the translations exist,
+// or /en/ redirects to /en/home/ instead of serving the English front page.
+if ( $lang_api && method_exists( $lang_api, 'clean_cache' ) ) {
+	$lang_api->clean_cache();
+}
+if ( method_exists( $model, 'clean_languages_cache' ) ) {
+	$model->clean_languages_cache();
+}
+delete_transient( 'pll_languages_list' );
+
 flush_rewrite_rules();
 WP_CLI::success( 'Bilingüe listo' );
