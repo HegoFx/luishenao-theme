@@ -1,0 +1,79 @@
+---
+title: "Facebook Ads for Contractors: A Playbook for Closet and Home Renovation Companies"
+excerpt: Targeting, creative, offer, budget and follow-up for contractors who sell high-ticket home projects on Facebook and Instagram, with the mistakes that burn the most money.
+category: Meta Ads
+image: homeowners-closet.webp
+---
+**Short answer:** Facebook ads work for contractors when you target homeowners within your real service radius, show your own finished projects, offer a clear next step like a free design consultation, ask qualifying questions in the form and call back within minutes. Start with at least $30 a day for a month, test two or three ads, and judge them by cost per booked estimate.
+
+This playbook is written for custom closet companies, but it applies to most home renovation contractors who sell projects from $3,000 up.
+
+## 1. Targeting: smaller is usually better
+
+- **Location first.** Use the zip codes or radius you actually serve. A lead 50 miles away is not a lead.
+- **Let Meta find the buyers.** With a good form and the Leads objective, broad targeting inside your area often beats stacking interests. Meta learns who submits and finds more people like them.
+- **Watch for special categories.** Ads that Meta considers housing-related get fewer targeting options. Closet and remodeling services usually aren't in that category, but if your ad gets flagged, adjust the copy rather than fighting the review.
+
+## 2. Creative: your work is the ad
+
+The best performing creative for home renovation is almost always real:
+
+- **Before and after** of the same space.
+- **A 15 to 30 second walkthrough** of a finished project, shot on a phone.
+- **You on camera** explaining one detail: the soft-close drawers, the LED strip, the island.
+- **Client reaction**, if a client agrees to be filmed.
+
+Stock photos look like every other ad. Your own installs look like proof.
+
+## 3. The offer: make the next step easy
+
+"Call us for a quote" asks for a commitment. These work better for high-ticket projects:
+
+- Free in-home design consultation
+- 3D design of your closet before you decide
+- A seasonal reason to act now, such as booking before the holidays or a move-in date
+
+## 4. The form: filter before you drive
+
+Use an instant form with the higher intent option and ask:
+
+1. Budget range
+2. Timeline (this month, 1 to 3 months, just researching)
+3. Zip code
+4. Type of project
+
+Each question lowers volume a little and raises quality a lot. That's the trade you want when every estimate costs you an afternoon.
+
+!cta
+
+## 5. Budget: enough to learn
+
+Plan on **at least $900 a month** ($30 a day) for one month in your own ad account. Less than that and you won't have enough results to know what works. Run two or three ads at once, and after about two weeks pause the ones with the highest cost per booked estimate.
+
+## 6. Follow-up: where most contractors lose the job
+
+A homeowner who fills your form is usually talking to two or three companies. The widely cited Lead Response Management study by MIT and InsideSales found that leads contacted within 5 minutes were about 21 times more likely to qualify than those contacted after 30 minutes.
+
+Set up an automatic text the second a lead arrives and call within the hour. If you're on a job site, the automatic text buys you time.
+
+## The five mistakes that burn the most money
+
+- Boosting posts instead of running a Leads campaign.
+- Asking only for name and phone, then complaining about lead quality.
+- Using stock photos instead of real projects.
+- Replying the next day.
+- Judging ads by cost per lead instead of cost per booked estimate.
+
+## Frequently asked questions
+
+?? Do Facebook ads work for contractors?
+Yes, especially for visual, high-ticket work like closets, kitchens and remodels. The ones that fail usually skip qualifying questions or reply too slowly.
+
+?? How much should a contractor spend on Facebook ads?
+Start with at least $900 a month for one month. That's enough to test two or three ads and see your cost per booked estimate.
+
+?? What's the best Facebook ad for home renovation?
+A short video or before and after of your own finished project, with a clear offer like a free design consultation.
+
+?? Should contractors use Facebook lead forms?
+Yes, with the higher intent setting and three or four qualifying questions. Lead forms are fast on mobile and let you filter before you spend time on the phone.

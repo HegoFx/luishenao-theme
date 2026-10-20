@@ -7,9 +7,9 @@
  */
 
 $lh_steps = array(
-	array( '01', 'Meta Ads dirigidos a home owners de tu zona', 'Campañas para tu zona de servicio, con imágenes, carruseles y video hechos alrededor de trabajos reales de closets.' ),
-	array( '02', 'Pre-filtro automático', 'Cada persona que responde recibe preguntas sobre presupuesto, timeline y ubicación. Los curiosos se quedan fuera.' ),
-	array( '03', 'Directo a tu WhatsApp', 'Los home owners calificados llegan a tu WhatsApp, Messenger o Instagram, con un script listo para que respondas rápido.' ),
+	array( '01', 'Te ven los home owners correctos', 'Tus anuncios aparecen frente a dueños de casa de tu zona que ya están pensando en un closet, con fotos y videos de tus propios trabajos.' ),
+	array( '02', 'Los curiosos se quedan afuera', 'Antes de llegar a ti, cada persona confirma presupuesto, timeline y ubicación. Tú no pierdes ni un minuto filtrando.' ),
+	array( '03', 'Tú solo hablas con compradores', 'Te llegan directo a tu WhatsApp, con un mensaje listo para responder rápido y agendar el estimate.' ),
 );
 ?>
 <!-- wp:group {"tagName":"section","align":"full","anchor":"como","className":"lh-sec lh-how"} -->
@@ -20,11 +20,11 @@ $lh_steps = array(
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"className":"lh-title lh-r-mask"} -->
-<h2 class="wp-block-heading lh-title lh-r-mask">Anuncios, un filtro y <em>una conversación.</em></h2>
+<h2 class="wp-block-heading lh-title lh-r-mask">Tú haces closets. <em>Yo te traigo con quién.</em></h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"lh-r"} -->
-<p class="lh-r">Sin dashboards que aprender. Sin reportes de 40 páginas. Recibes home owners que ya confirmaron presupuesto, timeline y ubicación antes de hablar contigo.</p>
+<p class="lh-r">Sin dashboards que aprender ni reportes de 40 páginas. Tú sigues haciendo lo que mejor sabes hacer y yo me encargo de que lleguen las personas correctas.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 

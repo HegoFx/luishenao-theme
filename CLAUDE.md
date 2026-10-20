@@ -39,6 +39,12 @@ Lee esto antes de investigar. Actualízalo cuando confirmes algo nuevo del servi
 - El staging tenía un `llms.txt` físico de otra plantilla ("Glamora"); se movió a `~/backups` con `wp-cleanup.yml`. Revisar lo mismo en producción.
 - Checklist de lanzamiento en luishenaoai.online: `blog_public`=1, verificar que el `robots.txt` no bloquee a Googlebot (el del staging lo pone Hostinger), sitemap `/wp-sitemap.xml`, Search Console con los dos idiomas, que la protección anti-bots de Hostinger no bloquee GPTBot/ClaudeBot/PerplexityBot, y que no haya `llms.txt` físico.
 
+## Contenido en código
+- `content/pages/<es|en>/*.txt` y `content/posts/<es|en>/*.txt`: front matter + sintaxis simple (## títulos, - listas, | tablas, ?? pregunta FAQ, !cta). `build_content.py` los pasa a bloques (rechaza "—").
+- `content-sync.php` (vía `wp-content.yml`, corre tras cada deploy) publica eso más Inicio/Home y la landing (`clientes-para-negocios-de-closets` ↔ `custom-closet-leads`) armados con patterns. Guarda `_lh_sync_hash`: si alguien editó la página en WordPress, la omite.
+- Orden de workflows: deploy → contenido → capturas y revisión SEO.
+- Los artículos ES y EN no son traducciones entre sí (keywords distintas). Investigación y criterio de quick wins: `docs/seo-geo.md`.
+
 ## Imágenes
 - Tema: solo WebP en `assets/img`, cada una al ancho en que se muestra (hero/panorámica 1920, retrato 1200, tarjetas del rod 900).
 - Uploads: `functions.php` convierte JPG/PNG a WebP calidad 80 y genera solo thumbnail, 768 y 1536; originales >1920 se reducen a 1920.

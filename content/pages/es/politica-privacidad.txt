@@ -1,0 +1,51 @@
+---
+title: Política de privacidad
+excerpt: Qué datos recojo cuando aplicas al piloto o visitas este sitio, para qué los uso y cómo puedes pedir que los borre.
+pair: privacy
+---
+Última actualización: 20 de octubre de 2026.
+
+Este sitio pertenece a Luis Henao, que ofrece servicios de publicidad en Meta Ads para negocios de custom closets en Estados Unidos. En esta página explico, en palabras simples, qué datos recojo, para qué los uso y qué derechos tienes.
+
+## Qué datos recojo
+
+- **Datos que tú me das** al llenar un formulario o agendar una llamada: nombre, nombre del negocio, número de teléfono o WhatsApp, estado donde operas y datos sobre tu negocio, como cuántos closets vendes al mes.
+- **Datos de navegación**: páginas que visitas, tipo de dispositivo y navegador, y de qué anuncio o sitio llegaste. Se recogen con cookies y tecnologías similares.
+- **Conversaciones**: los mensajes que intercambiamos por WhatsApp, SMS, Messenger, Instagram o correo.
+
+## Para qué los uso
+
+- Para responderte y evaluar si el piloto tiene sentido para tu negocio.
+- Para prestarte el servicio si llegamos a trabajar juntos.
+- Para medir y mejorar mis anuncios, por ejemplo saber cuántas personas llenaron el formulario después de ver un anuncio.
+
+No vendo tus datos a nadie.
+
+## Con quién los comparto
+
+Uso proveedores que procesan datos en mi nombre y bajo sus propias políticas de seguridad:
+
+- **Meta** (Facebook e Instagram): el Píxel de Meta y la API de Conversiones registran visitas y envíos de formulario para medir los anuncios.
+- **GoHighLevel**: guarda los datos de contacto y las conversaciones.
+- **Hostinger**: aloja este sitio web.
+- **WhatsApp**, cuando prefieres que hablemos por ahí.
+
+## Cookies
+
+Este sitio usa cookies propias para recordar preferencias, como el modo claro u oscuro y el idioma, y cookies de Meta para medir los anuncios. Puedes bloquearlas o borrarlas desde la configuración de tu navegador; el sitio sigue funcionando sin ellas.
+
+## Cuánto tiempo los guardo
+
+Guardo tus datos mientras haya una relación comercial o una conversación activa, y hasta 24 meses después del último contacto, salvo que me pidas borrarlos antes.
+
+## Tus derechos
+
+Puedes pedirme en cualquier momento que te diga qué datos tengo sobre ti, que los corrija o que los borre. Si vives en California, tienes además los derechos de la CCPA, incluido el derecho a saber y a borrar. Para cualquiera de estas solicitudes escríbeme por el mismo canal por el que hablamos; respondo en un máximo de 30 días.
+
+## Menores de edad
+
+Este sitio está dirigido a dueños de negocios. No recojo a sabiendas datos de menores de 18 años.
+
+## Cambios
+
+Si cambio esta política, actualizo la fecha de arriba. Los cambios importantes los aviso en esta misma página.

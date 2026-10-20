@@ -1,0 +1,73 @@
+---
+title: "Facebook Ads for Leads: How Closet Companies Get Homeowners Who Actually Answer"
+excerpt: Getting leads from Facebook is easy. Getting leads that pick up, have a budget and live in your area takes the right form, the right questions and fast follow-up. Here's the setup that works for custom closets.
+category: Meta Ads
+image: whatsapp-manos.webp
+---
+**Short answer:** Facebook ads for leads work for custom closet companies when you do three things: use a lead form that asks budget, timeline and zip code before the homeowner submits, show your own installs in the ad, and reply within five minutes. Skip any of the three and you'll get cheap leads that never answer.
+
+Most closet owners who say "Facebook leads are garbage" ran a form that asked only for a name and phone number. That form is built for volume, not for buyers.
+
+## Lead form, landing page or messages?
+
+Meta gives you three main ways to collect leads. Each one trades volume for quality differently:
+
+| Option | How it works | Best for |
+|---|---|---|
+| Instant form | The homeowner fills a form without leaving Facebook or Instagram | Most closet companies; fast and mobile friendly |
+| Landing page | The ad sends people to a page on your site with a form or calendar | Higher intent, needs a fast, clear page and tracking |
+| Messages | The ad opens Messenger, Instagram or WhatsApp | Owners who reply fast and like to qualify by chat |
+
+For most independent closet companies, an instant form set to higher intent is the best starting point. In the form settings, Meta lets you choose between more volume and higher intent; the higher intent option adds a review step so the homeowner confirms their info before sending. Fewer leads, better ones.
+
+## The questions that filter tire kickers
+
+Every question you add costs you some volume and buys you quality. For custom closets, these three pay for themselves:
+
+1. **Budget.** "What's your budget for this project?" with ranges like under $3k, $3k to $6k, $6k to $10k, $10k or more. People under your minimum filter themselves out.
+2. **Timeline.** "When would you like it installed?" This month, in 1 to 3 months, just researching. "Just researching" is useful to know before you drive anywhere.
+3. **Zip code.** It sounds obvious, but ads leak outside your area. A zip code field protects your calendar.
+
+Optional and powerful: "Which space?" (walk-in, reach-in, garage, pantry). It tells you the ticket before you call.
+
+## Your ad has to sell the closet, not the discount
+
+Homeowners stop scrolling for transformations, not for coupons. What works:
+
+- **Real installs.** Photos and short videos of your own work beat stock images every time.
+- **Before and after.** The messy closet next to the finished one is the oldest trick in the book because it works.
+- **The owner on camera.** Fifteen seconds of you explaining one design detail builds more trust than any headline.
+- **A clear next step.** "Get a free design consultation" is better than "Contact us."
+
+!cta
+
+## Speed is half the result
+
+The widely cited Lead Response Management study by MIT and InsideSales found that leads contacted within 5 minutes were about 21 times more likely to qualify than leads contacted after 30 minutes. A homeowner who fills your form at 8 pm is also looking at two competitors. The first one to reply usually books the visit.
+
+You don't need a call center for this. An automatic text the second the form arrives ("Hi Sarah, this is Mike from ABC Closets, I got your request for a walk-in closet, is now a good time to talk?") plus a call from you within the hour covers most of it.
+
+## Measure cost per estimate, not cost per lead
+
+A $20 lead that never answers is more expensive than a $70 lead who books. Track these four numbers every week:
+
+- Leads received
+- Leads who answered and booked an estimate
+- Estimates that became signed jobs
+- Ad spend
+
+Divide ad spend by booked estimates and by signed jobs. Those two numbers tell you whether your Facebook ads work, not the cost per lead shown in Ads Manager.
+
+## Frequently asked questions
+
+?? Are Facebook lead forms or landing pages better for closet companies?
+Start with an instant form set to higher intent, with budget, timeline and zip code questions. It's faster to launch and converts well on mobile. Add a landing page later if you want even higher intent and have tracking in place.
+
+?? How many questions should a Facebook lead form have?
+Three to four qualifying questions is the sweet spot for a custom closet: budget, timeline, zip code and the type of space. More than that and good homeowners start to drop off.
+
+?? Why don't my Facebook leads answer the phone?
+Usually because the form was too easy to submit, the ad attracted people looking for a discount, or the reply came hours later. Fix the form, show real work and reply within minutes.
+
+?? How much should I spend on Facebook ads for leads?
+Enough to get real data in a month. For a closet company that's usually at least $900 a month in ad spend, paid in your own ad account, so you can test two or three ads and see which one books estimates.

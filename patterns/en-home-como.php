@@ -7,9 +7,9 @@
  */
 
 $lh_steps = array(
-	array( '01', 'Meta Ads aimed at homeowners in your area', 'Campaigns for your service area, with images, carousels and video built around your real closet jobs.' ),
-	array( '02', 'Automatic pre-qualification', 'Every lead answers a few quick questions by text about budget, timeline and location. Browsers drop off on their own.' ),
-	array( '03', 'Straight to your phone and CRM', 'Qualified homeowners are texted to you and land in your GoHighLevel pipeline, with a reply script ready so you can respond fast.' ),
+	array( '01', 'The right homeowners see you', 'Your ads show up for homeowners in your service area who are already thinking about a closet, using photos and video of your own work.' ),
+	array( '02', 'Tire kickers drop off', "Before they reach you, every lead confirms budget, timeline and location. You don't spend a minute screening." ),
+	array( '03', 'You only talk to buyers', "They're texted straight to your phone and saved in your CRM, with a reply ready so you can book the estimate fast." ),
 );
 ?>
 <!-- wp:group {"tagName":"section","align":"full","anchor":"how","className":"lh-sec lh-how"} -->
@@ -20,11 +20,11 @@ $lh_steps = array(
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"className":"lh-title lh-r-mask"} -->
-<h2 class="wp-block-heading lh-title lh-r-mask">Ads, a filter and <em>a conversation.</em></h2>
+<h2 class="wp-block-heading lh-title lh-r-mask">You build closets. <em>I bring you the buyers.</em></h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"lh-r"} -->
-<p class="lh-r">No dashboards to learn. No 40-page reports. You get homeowners who already confirmed budget, timeline and location before they talk to you.</p>
+<p class="lh-r">No dashboards to learn, no 40-page reports. You keep doing what you do best and I make sure the right people show up.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 

@@ -4,7 +4,7 @@ import json, os, re, sys, urllib.request
 from html.parser import HTMLParser
 
 BASE = os.environ['SITE_URL'].rstrip('/')
-PAGES = ['/', '/en/', '/blog/', '/en/articles/', '/sobre-mi/', '/en/about/']
+PAGES = ['/', '/en/', '/blog/', '/en/articles/', '/sobre-mi/', '/en/about/', '/clientes-para-negocios-de-closets/', '/en/custom-closet-leads/', '/que-es-un-lead/', '/thumbtack-en-espanol/', '/en/is-angi-leads-worth-it/', '/en/facebook-ads-for-leads/', '/politica-privacidad/', '/gracias/']
 
 
 class Head(HTMLParser):

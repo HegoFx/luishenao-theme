@@ -8,7 +8,7 @@
 
 $lh_cards = array(
 	array( 'img', 'bts-grabando.webp', 'Luis grabando un anuncio en un showroom de closets', 'Placeholder IA → foto real: tú grabando un anuncio', '01 · Contenido', 'Grabo y edito anuncios alrededor de trabajos reales de closets.' ),
-	array( 'stat', 'Speed to lead', '21x', 'más probabilidad de convertir', 'cuando contactas un lead en menos de 5 minutos. Fuente: Harvard Business Review.' ),
+	array( 'stat', 'Speed to lead', '21x', 'más probabilidad de calificar al lead', 'si lo contactas en 5 minutos en vez de 30. Fuente: Lead Response Management Study (MIT e InsideSales).' ),
 	array( 'img', 'whatsapp-manos.webp', 'Lead llegando a WhatsApp', 'Placeholder IA → pantallazo real de un lead (datos censurados)', '02 · Pre-filtro', 'El lead llega a tu WhatsApp con presupuesto, timeline y zip code confirmados.' ),
 	array( 'stat', 'Primera respuesta', '78%', 'le compra a quien responde primero', 'Por eso el script de respuesta va incluido.' ),
 	array( 'img', 'reunion-dueno.webp', 'Luis revisando una campaña con un dueño de negocio de closets', 'Placeholder IA → foto real: llamada o visita con un cliente', '03 · Trato directo', 'Hablas conmigo. No eres la cuenta número 847 de un junior.' ),

@@ -33,6 +33,6 @@ jobs:
       - name: Subir el tema
         run: |
           rsync -az --delete \
-            --exclude '.git' --exclude '.github' --exclude '.gitignore' --exclude 'README.md' --exclude 'CLAUDE.md' --exclude '.claude' \
+            --exclude '.git' --exclude '.github' --exclude '.gitignore' --exclude 'README.md' --exclude 'CLAUDE.md' --exclude '.claude' --exclude 'content' --exclude 'docs' \
             -e "ssh -p ${{ secrets.SSH_PORT }} -i ~/.ssh/id_ed25519" \
             ./ "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.THEME_PATH }}/"

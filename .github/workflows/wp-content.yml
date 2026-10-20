@@ -1,0 +1,64 @@
+# Publishes the content kept in code on the staging site: pages and posts from content/
+# (converted by build_content.py) plus the Home and landing assembled from theme patterns.
+# Runs after every deploy to main, or on demand.
+# Backs up the database first. Pages edited in WordPress since the last sync are skipped.
+name: Publicar contenido (staging)
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: ['Deploy a Hostinger']
+    types: [completed]
+
+concurrency:
+  group: content
+  cancel-in-progress: false
+
+jobs:
+  content:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Convertir contenido a bloques
+        run: python3 .github/scripts/build_content.py .
+
+      - name: Configurar SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          for i in 1 2 3 4 5; do
+            ssh-keyscan -T 15 -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null && [ -s ~/.ssh/known_hosts ] && break
+            echo "ssh-keyscan intento $i falló, reintentando..."; sleep $((i * 5))
+          done
+          [ -s ~/.ssh/known_hosts ]
+
+      - name: Subir contenido
+        run: |
+          scp -P "${{ secrets.SSH_PORT }}" -i ~/.ssh/id_ed25519 content/build/content.json .github/scripts/content-sync.php \
+            "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/"
+
+      - name: Publicar
+        env:
+          THEME_PATH: ${{ secrets.THEME_PATH }}
+        run: |
+          ssh -p "${{ secrets.SSH_PORT }}" -i ~/.ssh/id_ed25519 \
+            "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" \
+            "THEME_PATH='$THEME_PATH' bash -s" <<'EOF'
+          set -e
+          WP_ROOT="$(cd "$THEME_PATH/../../.." && pwd)"
+          case "$WP_ROOT" in *hostingersite.com/public_html) ;; *) echo "No es el staging: $WP_ROOT"; exit 1 ;; esac
+          wp() { command wp --path="$WP_ROOT" "$@"; }
+
+          mkdir -p ~/backups
+          F=~/backups/staging-$(date +%Y%m%d-%H%M%S)-pre-content.sql
+          MYSQL_PWD="$(wp config get DB_PASSWORD)" mariadb-dump --single-transaction \
+            -h "$(wp config get DB_HOST)" -u "$(wp config get DB_USER)" "$(wp config get DB_NAME)" > "$F"
+          [ -s "$F" ] || { echo "Backup vacío, me detengo"; exit 1; }
+          echo "Backup: ${F#$HOME/} ($(du -h "$F" | cut -f1))"
+
+          wp eval-file ~/content-sync.php ~/content.json
+          rm -f ~/content-sync.php ~/content.json
+          EOF

@@ -156,6 +156,23 @@ add_action( 'wp_head', function () {
 	}
 }, 2 );
 
+// Thank-you pages are only for people who just applied: keep them out of search results and sitemaps.
+const LH_NOINDEX_PAGES = array( 'gracias', 'thank-you' );
+add_filter( 'wp_robots', function ( $robots ) {
+	if ( is_page( LH_NOINDEX_PAGES ) ) {
+		$robots['noindex'] = true;
+		$robots['follow']  = true;
+	}
+	return $robots;
+} );
+add_filter( 'wp_sitemaps_posts_query_args', function ( $args, $post_type ) {
+	if ( 'page' === $post_type ) {
+		$ids = get_posts( array( 'post_type' => 'page', 'post_name__in' => LH_NOINDEX_PAGES, 'fields' => 'ids', 'numberposts' => -1, 'lang' => '' ) );
+		$args['post__not_in'] = array_merge( $args['post__not_in'] ?? array(), $ids );
+	}
+	return $args;
+}, 10, 2 );
+
 // x-default for visitors in other languages: the English site.
 add_filter( 'pll_rel_hreflang_attributes', function ( $hreflangs ) {
 	if ( isset( $hreflangs['en'] ) && ! isset( $hreflangs['x-default'] ) ) {
@@ -338,6 +355,19 @@ function lh_llms_txt() {
 	$blog_en = function_exists( 'pll_get_post' ) ? get_permalink( pll_get_post( (int) get_option( 'page_for_posts' ), 'en' ) ) : '';
 	$about_es = $page( 'sobre-mi', 'es' );
 	$about_en = $page( 'sobre-mi', 'en' );
+	$landing_es = $page( 'clientes-para-negocios-de-closets', 'es' );
+	$landing_en = $page( 'clientes-para-negocios-de-closets', 'en' );
+	$articles   = function ( $lang, $heading ) {
+		$posts = get_posts( array( 'post_type' => 'post', 'numberposts' => 20, 'lang' => $lang ) );
+		if ( ! $posts ) {
+			return array();
+		}
+		$out = array( '', "### $heading", '' );
+		foreach ( $posts as $p ) {
+			$out[] = '- [' . get_the_title( $p ) . '](' . get_permalink( $p ) . '): ' . wp_strip_all_tags( get_the_excerpt( $p ) );
+		}
+		return $out;
+	};
 
 	$lines = array(
 		'# Luis Henao',
@@ -362,6 +392,10 @@ function lh_llms_txt() {
 	if ( $about_en ) {
 		$lines[] = "- [About]($about_en)";
 	}
+	if ( $landing_en ) {
+		$lines[] = "- [Leads for custom closet companies]($landing_en): the offer, compared with Angi, Thumbtack and referrals";
+	}
+	$lines = array_merge( $lines, $articles( 'en', 'Articles' ) );
 	$lines = array_merge( $lines, array(
 		'',
 		'## Español',
@@ -374,6 +408,10 @@ function lh_llms_txt() {
 	if ( $about_es ) {
 		$lines[] = "- [Sobre mí]($about_es)";
 	}
+	if ( $landing_es ) {
+		$lines[] = "- [Clientes para negocios de custom closets]($landing_es): la oferta, comparada con Angi, Thumbtack y los referidos";
+	}
+	$lines = array_merge( $lines, $articles( 'es', 'Artículos' ) );
 	return implode( "\n", $lines ) . "\n";
 }
 

@@ -1,12 +1,12 @@
 # Screenshots of the staging site (desktop and mobile), pushed to the `screenshots` branch
 # so Claude can review the live design from a session that cannot reach the site.
-# Runs after every deploy, on demand, or on a push to a claude/** branch that touches it.
+# Runs after every content publish (which follows each deploy), on demand, or on a push to a claude/** branch that touches it.
 name: Capturas del sitio
 
 on:
   workflow_dispatch:
   workflow_run:
-    workflows: ['Deploy a Hostinger']
+    workflows: ['Publicar contenido (staging)']
     types: [completed]
   push:
     branches: ['claude/**']

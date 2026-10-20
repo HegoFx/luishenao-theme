@@ -1,11 +1,11 @@
-# Crawls the public staging pages after every deploy and reports titles, descriptions, canonical,
+# Crawls the public staging pages after every content publish (which follows each deploy) and reports titles, descriptions, canonical,
 # hreflang, Open Graph, JSON-LD, llms.txt and robots.txt. Read-only: no secrets, no SSH.
 name: Revisión SEO
 
 on:
   workflow_dispatch:
   workflow_run:
-    workflows: ['Deploy a Hostinger']
+    workflows: ['Publicar contenido (staging)']
     types: [completed]
   push:
     branches: ['claude/**']
