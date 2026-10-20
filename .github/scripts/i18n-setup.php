@@ -34,12 +34,13 @@ if ( method_exists( $model, 'clean_languages_cache' ) ) {
 }
 
 // 2. Settings: language as a directory, Spanish without prefix, no browser redirects, media not duplicated.
+// redirect_lang = "the front page URL contains the language code instead of the page name": /en/, not /en/home/.
 $opts = array(
 	'default_lang'  => 'es',
 	'force_lang'    => 1,
 	'hide_default'  => true,
 	'rewrite'       => true,
-	'redirect_lang' => false,
+	'redirect_lang' => true,
 	'browser'       => false,
 	'media_support' => false,
 );
