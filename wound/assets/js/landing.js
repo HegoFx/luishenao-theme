@@ -70,6 +70,18 @@
 	}
 	$$('.wt-o2').forEach(oxygen);
 
+	/* Background videos: the file loads when the section gets close, and only plays while it is on screen.
+	   With reduced motion the poster stays as a still image. */
+	if (!reduce && 'IntersectionObserver' in window) {
+		const near = new IntersectionObserver(es => es.forEach(e => {
+			if (!e.isIntersecting) return;
+			const v = e.target;
+			v.src = v.dataset.src; v.load(); near.unobserve(v);
+		}), { rootMargin: '600px 0px' });
+		const seen = new IntersectionObserver(es => es.forEach(e => { const v = e.target; e.isIntersecting ? v.play().catch(() => {}) : v.pause(); }), { threshold: 0.05 });
+		$$('video[data-src]').forEach(v => { near.observe(v); seen.observe(v); });
+	}
+
 	/* Split-flap board: cycles its phrases while visible. */
 	const GL = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 	function flap(el, text) {
@@ -174,39 +186,56 @@
 	/* Program flow cascades in */
 	G.from('.wt-flow li', { x: -40, opacity: 0, duration: 0.9, stagger: 0.12, ease: 'expo.out', scrollTrigger: { trigger: '.wt-flow', start: 'top 85%', toggleActions: 'play none none reverse' } });
 
-	/* Zoom through O₂: the letters are a window onto the bubbles; scroll dives into the ring of the O */
-	const zoom = $('.wt-zoom'), zmask = $('.wt-zoom__mask'), zword = $('.wt-zoom__mask span');
-	let zMax = 40;
-	const zOrigin = () => {
-		const cs = getComputedStyle(zword), fs = parseFloat(cs.fontSize);
+	/* Zoom through O₂: a canvas paints the dark panel with "O₂" punched out, so the bubbles video shows through
+	   the letters; scroll dives into the left stroke of the O. Redrawn from scroll progress on every update,
+	   so it behaves the same going down and coming back up. */
+	const zoom = $('.wt-zoom'), zc = $('.wt-zoom__mask'), zx = zc.getContext('2d');
+	const zm = { p: 0, w: 0, h: 0, fs: 0, ox: 0, oy: 0, base: 0, max: 40 };
+	const zMeasure = () => {
+		const dpr = Math.min(2, window.devicePixelRatio || 1);
+		zm.w = zc.clientWidth; zm.h = zc.clientHeight;
+		zc.width = zm.w * dpr; zc.height = zm.h * dpr;
+		zx.setTransform(dpr, 0, 0, dpr, 0, 0);
+		zm.fs = Math.min(zm.w * 0.52, zm.h * 0.82);
+		zx.font = `800 ${zm.fs}px Inter, system-ui, sans-serif`;
+		const tw = zx.measureText('O₂').width, o = zx.measureText('O'), capH = o.actualBoundingBoxAscent;
+		const x0 = (zm.w - tw) / 2;
+		zm.base = zm.h / 2 + capH / 2;
+		// find the ink of the O's left stroke at mid height
 		const cv = d.createElement('canvas'), cx = cv.getContext('2d', { willReadFrequently: true });
-		const font = `${cs.fontWeight} ${fs}px ${cs.fontFamily}`;
-		cx.font = font;
-		const m = cx.measureText('O'), capH = m.actualBoundingBoxAscent, W = Math.ceil(m.width) + 4, H = Math.ceil(capH) + 4;
+		const W = Math.ceil(o.width) + 4, H = Math.ceil(capH) + 4;
 		cv.width = W; cv.height = H;
-		cx.font = font; cx.fillStyle = '#000'; cx.textBaseline = 'alphabetic';
-		cx.fillText('O', 0, H - 2);
+		cx.font = zx.font; cx.fillText('O', 0, H - 2);
 		const row = cx.getImageData(0, Math.round(H - 2 - capH / 2), W, 1).data;
 		let l = -1, r = -1;
-		for (let i = 0; i < W; i++) { if (row[i * 4 + 3] > 128) { if (l < 0) l = i; r = i; } else if (l >= 0) break; }
-		const stemW = l < 0 ? fs * 0.14 : r - l + 1, stemC = l < 0 ? fs * 0.1 : (l + r) / 2;
-		const fm = cx.measureText('O₂'), asc = fm.fontBoundingBoxAscent || capH, desc = fm.fontBoundingBoxDescent || 0;
-		const lh = parseFloat(cs.lineHeight) || fs * 0.8;
-		const baseline = zword.offsetTop + (lh - (asc + desc)) / 2 + asc;
-		zmask.style.transformOrigin = `${(zword.offsetLeft + stemC).toFixed(1)}px ${(baseline - capH / 2).toFixed(1)}px`;
-		zMax = Math.max(innerWidth, innerHeight) * 1.6 / stemW;
+		for (let k = 0; k < W; k++) { if (row[k * 4 + 3] > 128) { if (l < 0) l = k; r = k; } else if (l >= 0) break; }
+		const stemW = l < 0 ? zm.fs * 0.14 : r - l + 1, stemC = l < 0 ? zm.fs * 0.1 : (l + r) / 2;
+		zm.x0 = x0; zm.ox = x0 + stemC; zm.oy = zm.base - capH / 2;
+		zm.max = Math.max(zm.w, zm.h) * 1.6 / stemW;
+		zDraw();
 	};
-	d.fonts.ready.then(zOrigin);
-	addEventListener('resize', zOrigin);
-	ST.create({
-		trigger: zoom, start: 'top top', end: 'bottom bottom', scrub: true,
-		onUpdate: s => {
-			const p = s.progress, ze = Math.pow(clamp(p / 0.7), 2.4);
-			zoom.style.setProperty('--z', (1 + ze * (zMax - 1)).toFixed(3));
-			zmask.style.opacity = (1 - clamp((p - 0.45) / 0.3)).toFixed(3);
-			zoom.style.setProperty('--o', clamp((p - 0.62) / 0.28).toFixed(3));
-		},
-	});
+	const zDraw = () => {
+		const p = zm.p, z = 1 + Math.pow(clamp(p / 0.7), 2.4) * (zm.max - 1);
+		const fade = 1 - clamp((p - 0.45) / 0.3);
+		zx.setTransform(zx.getTransform().a, 0, 0, zx.getTransform().d, 0, 0);
+		zx.clearRect(0, 0, zm.w, zm.h);
+		zc.style.opacity = fade.toFixed(3);
+		zoom.style.setProperty('--o', clamp((p - 0.62) / 0.28).toFixed(3));
+		if (fade <= 0) return;
+		zx.globalCompositeOperation = 'source-over';
+		zx.fillStyle = '#070C1A';
+		zx.fillRect(0, 0, zm.w, zm.h);
+		zx.globalCompositeOperation = 'destination-out';
+		zx.save();
+		zx.translate(zm.ox, zm.oy); zx.scale(z, z); zx.translate(-zm.ox, -zm.oy);
+		zx.font = `800 ${zm.fs}px Inter, system-ui, sans-serif`;
+		zx.fillStyle = '#000';
+		zx.fillText('O₂', zm.x0, zm.base);
+		zx.restore();
+	};
+	d.fonts.ready.then(zMeasure);
+	addEventListener('resize', zMeasure);
+	ST.create({ trigger: zoom, start: 'top top', end: 'bottom bottom', onUpdate: s => { zm.p = s.progress; zDraw(); }, onRefresh: s => { zm.p = s.progress; zDraw(); } });
 
 	/* HBOT: three stages, images crossfade, oxygen goes from room air (21%) to the chamber (100%) */
 	const val = $('[data-o2]'), label = $('[data-o2-label]'), fill = $('.wt-meter__fill');
@@ -246,7 +275,7 @@
 			},
 		});
 		$$('.wt-cond').forEach(card => {
-			G.from(card, { y: 80, rotate: 2, opacity: 0.2, ease: 'none', scrollTrigger: { trigger: card, containerAnimation: tween, start: 'left 100%', end: 'left 65%', scrub: true } });
+			G.from(card, { y: 60, rotate: 1.5, opacity: 0.6, ease: 'none', scrollTrigger: { trigger: card, containerAnimation: tween, start: 'left 100%', end: 'left 65%', scrub: true } });
 			G.fromTo($('img', card), { scale: 1.3 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: card, containerAnimation: tween, start: 'left 100%', end: 'left 40%', scrub: true } });
 		});
 		return () => sec.classList.remove('is-h');
@@ -288,8 +317,9 @@
 	G.from('.wt-paths__plan', { scale: 0.6, opacity: 0, duration: 0.8, delay: 0.9, ease: 'back.out(1.8)', scrollTrigger: { trigger: '.wt-paths', start: 'top 75%', toggleActions: 'play none none reverse' } });
 
 	/* Location and final: slow parallax backgrounds */
+	G.from('.wt-place__card', { y: 80, opacity: 0, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: '.wt-place', start: 'top 65%', toggleActions: 'play none none reverse' } });
 	G.fromTo('.wt-place__media', { yPercent: -8 }, { yPercent: 8, ease: 'none', scrollTrigger: { trigger: '.wt-place', start: 'top bottom', end: 'bottom top', scrub: true } });
-	G.fromTo('.wt-final__media img', { scale: 1.2 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: '.wt-final', start: 'top bottom', end: 'top top', scrub: true } });
+	G.fromTo('.wt-final__media video', { scale: 1.2 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: '.wt-final', start: 'top bottom', end: 'top top', scrub: true } });
 	G.to('.wt-final__title .wt-w', { opacity: 1, stagger: 0.05, ease: 'none', scrollTrigger: { trigger: '.wt-final__title', start: 'top 85%', end: 'bottom 55%', scrub: true } });
 	G.from('.wt-form', { y: 60, opacity: 0, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: '.wt-form', start: 'top 90%' } });
 
@@ -307,7 +337,7 @@
 	$$('.wt-steps__media img').forEach(img => G.fromTo(img, { scale: 1.25 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'center center', scrub: true } }));
 
 	/* Exits: section copy lifts and dims as it leaves the top */
-	$$('.wt-statement__text, .wt-program__copy, .wt-check .wt-split, .wt-lang__copy, .wt-steps__head, .wt-personal .wt-split, .wt-band__in, .wt-place__card').forEach(el =>
+	$$('.wt-statement__text, .wt-program__copy, .wt-check .wt-split, .wt-lang__copy, .wt-steps__head, .wt-personal .wt-split, .wt-band__in').forEach(el =>
 		G.to(el, { y: -60, opacity: 0.35, ease: 'none', scrollTrigger: { trigger: el, start: 'bottom 22%', end: 'bottom -5%', scrub: true } }));
 
 	/* Custom cursor with labels, and magnetic buttons */
@@ -327,5 +357,5 @@
 		});
 	}
 
-	addEventListener('load', () => { zOrigin(); ST.refresh(); });
+	addEventListener('load', () => { zMeasure(); ST.refresh(); });
 })();

@@ -16,6 +16,10 @@ $words = function ( $text, $class = 'wt-w' ) {
 		return '<span class="' . $class . ( $hl ? ' is-hl' : '' ) . '">' . esc_html( ltrim( $w, '*' ) ) . '</span>';
 	}, explode( ' ', $text ) ) );
 };
+// Background video (Pexels): poster first, the file only loads near the viewport (landing.js).
+$vid = function ( $name ) {
+	return sprintf( '<video muted loop playsinline preload="none" poster="%s" data-src="%s"></video>', wt_img( "$name-poster.webp" ), esc_url( get_theme_file_uri( "assets/video/$name.mp4" ) ) );
+};
 // A responsive theme image with explicit size (no layout shift).
 $pic = function ( $file, $alt, $w, $h, $attrs = '' ) {
 	return sprintf( '<img src="%s" alt="%s" width="%d" height="%d" loading="lazy" decoding="async"%s>', wt_img( $file ), esc_attr( $alt ), $w, $h, $attrs ? ' ' . $attrs : '' );
@@ -92,8 +96,8 @@ $pic = function ( $file, $alt, $w, $h, $attrs = '' ) {
 
 	<section class="wt-zoom wt-dark" aria-hidden="true">
 		<div class="wt-zoom__pin">
-			<div class="wt-zoom__media"><img src="<?php echo wt_img( 'bubbles.webp' ); ?>" alt="" width="1920" height="1088" loading="lazy"></div>
-			<div class="wt-zoom__mask"><span>O₂</span></div>
+			<div class="wt-zoom__media"><?php echo $vid( 'bubbles' ); // phpcs:ignore ?></div>
+			<canvas class="wt-zoom__mask"></canvas>
 			<p class="wt-zoom__word"><?php echo esc_html( $c['zoom'] ); ?></p>
 		</div>
 	</section>
@@ -208,7 +212,7 @@ $pic = function ( $file, $alt, $w, $h, $attrs = '' ) {
 				<?php for ( $r = 0; $r < 2; $r++ ) : ?>
 					<span>
 						<?php foreach ( $c['marquee'] as $m ) : ?>
-							<?php echo esc_html( $m ); ?><i>✦</i>
+							<b><?php echo esc_html( $m ); ?></b><i>✦</i>
 						<?php endforeach; ?>
 					</span>
 				<?php endfor; ?>
@@ -275,7 +279,7 @@ $pic = function ( $file, $alt, $w, $h, $attrs = '' ) {
 	<section class="wt-place wt-dark" data-header="dark">
 		<div class="wt-place__media" aria-hidden="true"><?php echo $pic( 'orlando.webp', '', 1920, 1088 ); // phpcs:ignore ?></div>
 		<div class="wt-wrap">
-			<div class="wt-place__card" data-reveal>
+			<div class="wt-place__card">
 				<p class="wt-eyebrow"><span class="wt-dot"></span><?php echo esc_html( $c['location']['eyebrow'] ); ?></p>
 				<h2><?php echo esc_html( $c['location']['title'] ); ?></h2>
 				<address><?php echo esc_html( $b['street'] ); ?><br><?php echo esc_html( "{$b['city']}, {$b['region']} {$b['zip']}" ); ?></address>
@@ -290,7 +294,7 @@ $pic = function ( $file, $alt, $w, $h, $attrs = '' ) {
 	</section>
 
 	<section class="wt-final wt-dark" id="evaluation" data-header="dark">
-		<div class="wt-final__media" aria-hidden="true"><?php echo $pic( 'final.webp', '', 1920, 1088 ); // phpcs:ignore ?></div>
+		<div class="wt-final__media" aria-hidden="true"><?php echo $vid( 'final' ); // phpcs:ignore ?></div>
 		<canvas class="wt-o2" aria-hidden="true"></canvas>
 		<div class="wt-wrap wt-final__in">
 			<div class="wt-final__copy">

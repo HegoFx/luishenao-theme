@@ -45,7 +45,7 @@ function wt_copy() {
 			'eyebrow' => 'Visit us',
 			'title'   => 'Downtown Orlando.',
 			'map'     => 'Get directions',
-			'alt'     => 'Downtown Orlando and Lake Eola at dusk',
+			'alt'     => 'Downtown Orlando and a lake at dusk',
 		),
 		'alts'         => array(
 			'hero'    => 'A patient resting inside a clear hyperbaric oxygen chamber',
@@ -200,7 +200,7 @@ function wt_copy() {
 			'eyebrow' => 'Visítenos',
 			'title'   => 'En el centro de Orlando.',
 			'map'     => 'Cómo llegar',
-			'alt'     => 'El centro de Orlando y el lago Eola al anochecer',
+			'alt'     => 'El centro de Orlando y un lago al anochecer',
 		),
 		'alts'         => array(
 			'hero'    => 'Un paciente descansando dentro de una cámara de oxígeno hiperbárico transparente',
@@ -339,7 +339,7 @@ function wt_biz() {
 		'region'    => 'FL',
 		'zip'       => '32806',
 		'site'      => 'https://woundfl.com',
-		'maps'      => 'https://www.google.com/maps/dir/?api=1&destination=Wound+Therapeutics+of+Florida,+100+W+Gore+St+Suite+302,+Orlando,+FL+32806',
+		'maps'      => 'https://www.google.com/maps/search/?api=1&query=100+W+Gore+St+Suite+302%2C+Orlando%2C+FL+32806',
 		'tz'        => 'America/New_York',
 		'physician' => 'Fernando J. Torres, MD',
 	);
