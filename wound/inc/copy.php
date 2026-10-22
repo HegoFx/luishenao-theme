@@ -22,12 +22,14 @@ function wt_copy() {
 		'cta_short'    => 'Schedule',
 		'hero'         => array(
 			'eyebrow' => 'Advanced Wound Care · Orlando, FL',
-			'title'   => 'When Healing Requires More, Explore Your Options.',
+			'title'   => array( 'When Healing Requires More,', 'Explore Your Options.' ),
+			'scroll'  => 'Scroll to explore',
 			'points'  => array( 'Advanced wound-care evaluation.', 'Physician-directed treatment planning.', 'Access to specialized recovery options.' ),
 			'lead'    => 'Some wounds require more than conventional treatment alone. When healing becomes challenging, understanding your options is an important step toward receiving the care you need.',
 			'note'    => 'Individual evaluation is required. HBOT is not appropriate for every wound or patient.',
 			'spanish' => '¿Prefiere español? Hablamos español.',
 		),
+		'statement'    => 'Some wounds require more than conventional treatment alone. When healing becomes challenging, understanding your options is an important step toward receiving the care you need.',
 		'doctor'       => array(
 			'name'    => 'Fernando J. Torres, MD',
 			'creds'   => 'CWSP, PCWC, WCC, DWC, CHWS, FACCWS',
@@ -38,6 +40,7 @@ function wt_copy() {
 		'program'      => array(
 			'eyebrow' => 'Advanced Wound Care Recovery program',
 			'title'   => 'Evaluation first. Specialized care when it is appropriate.',
+			'flow'    => array( 'Evaluation with Dr. Torres', 'HBOT at a specialized facility', 'Ongoing follow-up with Dr. Torres' ),
 			'body'    => array(
 				'At Wound Therapeutics of Florida, Dr. Fernando J. Torres provides individualized wound-care evaluations and determines whether additional treatment options, including Hyperbaric Oxygen Therapy (HBOT), may be medically appropriate.',
 				'Through an Advanced Wound Care Recovery program, patients for whom HBOT is recommended may receive treatment at a specialized facility while continuing their ongoing wound-care management and follow-up with Dr. Torres.',
@@ -53,6 +56,9 @@ function wt_copy() {
 			),
 			'callout' => 'HBOT is not a replacement for standard wound care. It is an additional treatment option considered when a patient\'s diagnosis, wound characteristics, medical history, and treatment progress support its use.',
 			'facts'   => array( '100% oxygen', 'Pressurized chamber', 'Alongside standard wound care' ),
+			'air'     => 'Room air',
+			'chamber' => 'Inside the chamber',
+			'meter'   => 'Oxygen you breathe',
 			'figure'  => 'Illustration: a patient breathes 100% oxygen inside a pressurized chamber.',
 		),
 		'when'         => array(
@@ -66,6 +72,22 @@ function wt_copy() {
 				array( 'icon' => 'trauma', 'title' => 'Selected Traumatic Injuries', 'text' => 'Certain severe traumatic injuries involving compromised tissue viability may warrant specialized evaluation.' ),
 			),
 		),
+		'check'        => array(
+			'eyebrow' => 'Quick self-check',
+			'title'   => 'Could an HBOT evaluation be worth asking about?',
+			'intro'   => 'Mark what applies to you. This is not a diagnosis, and nothing you mark is sent anywhere.',
+			'items'   => array(
+				'I have a diabetic foot ulcer that has not improved with standard wound care.',
+				'I had surgery and a graft or flap is not healing as expected.',
+				'I have a serious infection, such as osteomyelitis, that keeps coming back.',
+				'I had a severe injury and the tissue is struggling to heal.',
+				'I would like a specialist\'s opinion on my wound treatment.',
+			),
+			'of'      => 'of',
+			'none'    => 'Even if none apply, an evaluation can help you understand your treatment options.',
+			'some'    => 'That is a good reason to schedule an evaluation. Only Dr. Torres can determine whether HBOT is medically appropriate for you.',
+		),
+		'marquee'      => array( 'Evaluation first', 'Physician-directed', 'Coordinated care', 'Ongoing follow-up' ),
 		'eval'         => array(
 			'title' => 'The Right Treatment Begins With the Right Evaluation.',
 			'text'  => 'Dr. Torres reviews your wound, medical history, previous treatments, and overall clinical condition to determine which treatment options may be appropriate.',
@@ -88,6 +110,7 @@ function wt_copy() {
 				'Whether your care involves conventional wound management, advanced treatment technologies, or consideration of HBOT, the goal is to identify an appropriate pathway based on your clinical condition.',
 			),
 			'path'   => array( 'Conventional wound management', 'Advanced treatment technologies', 'Consideration of HBOT' ),
+			'plan'   => 'Your treatment plan',
 		),
 		'final'        => array(
 			'title'      => 'Find Out Whether HBOT May Be Appropriate for You.',
@@ -128,12 +151,14 @@ function wt_copy() {
 		'cta_short'    => 'Agendar',
 		'hero'         => array(
 			'eyebrow' => 'Cuidado avanzado de heridas · Orlando, FL',
-			'title'   => 'Cuando sanar requiere más, conozca sus opciones.',
+			'title'   => array( 'Cuando sanar requiere más,', 'conozca sus opciones.' ),
+			'scroll'  => 'Deslice para explorar',
 			'points'  => array( 'Evaluación avanzada de heridas.', 'Plan de tratamiento dirigido por un médico.', 'Acceso a opciones especializadas de recuperación.' ),
 			'lead'    => 'Algunas heridas necesitan más que el tratamiento convencional. Cuando la cicatrización se complica, conocer sus opciones es un paso importante para recibir la atención que necesita.',
 			'note'    => 'Se requiere una evaluación individual. La HBOT no es adecuada para todas las heridas ni para todos los pacientes.',
 			'spanish' => '',
 		),
+		'statement'    => 'Algunas heridas necesitan más que el tratamiento convencional. Cuando la cicatrización se complica, conocer sus opciones es un paso importante para recibir la atención que necesita.',
 		'doctor'       => array(
 			'name'    => 'Dr. Fernando J. Torres',
 			'creds'   => 'CWSP, PCWC, WCC, DWC, CHWS, FACCWS',
@@ -144,6 +169,7 @@ function wt_copy() {
 		'program'      => array(
 			'eyebrow' => 'Programa de Recuperación Avanzada de Heridas',
 			'title'   => 'Primero la evaluación. Atención especializada cuando es apropiada.',
+			'flow'    => array( 'Evaluación con el Dr. Torres', 'HBOT en un centro especializado', 'Seguimiento continuo con el Dr. Torres' ),
 			'body'    => array(
 				'En Wound Therapeutics of Florida, el Dr. Fernando J. Torres realiza evaluaciones individualizadas de heridas y determina si otras opciones de tratamiento, como la oxigenoterapia hiperbárica (HBOT), pueden ser médicamente adecuadas.',
 				'A través del programa de Recuperación Avanzada de Heridas (Advanced Wound Care Recovery), los pacientes a quienes se les recomienda HBOT pueden recibir el tratamiento en un centro especializado, mientras continúan el manejo de su herida y su seguimiento con el Dr. Torres.',
@@ -159,6 +185,9 @@ function wt_copy() {
 			),
 			'callout' => 'La HBOT no reemplaza el cuidado estándar de heridas. Es una opción adicional que se considera cuando el diagnóstico, las características de la herida, el historial médico y la evolución del tratamiento del paciente respaldan su uso.',
 			'facts'   => array( 'Oxígeno al 100%', 'Cámara presurizada', 'Junto al cuidado estándar' ),
+			'air'     => 'Aire normal',
+			'chamber' => 'Dentro de la cámara',
+			'meter'   => 'Oxígeno que respira',
 			'figure'  => 'Ilustración: el paciente respira oxígeno al 100% dentro de una cámara presurizada.',
 		),
 		'when'         => array(
@@ -172,6 +201,22 @@ function wt_copy() {
 				array( 'icon' => 'trauma', 'title' => 'Lesiones traumáticas seleccionadas', 'text' => 'Algunas lesiones traumáticas graves que comprometen la viabilidad del tejido pueden justificar una evaluación especializada.' ),
 			),
 		),
+		'check'        => array(
+			'eyebrow' => 'Autoevaluación rápida',
+			'title'   => '¿Vale la pena preguntar por una evaluación de HBOT?',
+			'intro'   => 'Marque lo que aplica a su caso. No es un diagnóstico y nada de lo que marque se envía a ninguna parte.',
+			'items'   => array(
+				'Tengo una úlcera de pie diabético que no ha mejorado con el cuidado estándar.',
+				'Me operaron y un injerto o colgajo no está sanando como se esperaba.',
+				'Tengo una infección grave, como osteomielitis, que vuelve a aparecer.',
+				'Tuve una lesión grave y el tejido no termina de sanar.',
+				'Quisiera la opinión de un especialista sobre el tratamiento de mi herida.',
+			),
+			'of'      => 'de',
+			'none'    => 'Aunque ninguna aplique, una evaluación puede ayudarle a entender sus opciones de tratamiento.',
+			'some'    => 'Es una buena razón para agendar una evaluación. Solo el Dr. Torres puede determinar si la HBOT es médicamente adecuada para usted.',
+		),
+		'marquee'      => array( 'Primero la evaluación', 'Dirigido por un médico', 'Atención coordinada', 'Seguimiento continuo' ),
 		'eval'         => array(
 			'title' => 'El tratamiento correcto empieza con la evaluación correcta.',
 			'text'  => 'El Dr. Torres revisa su herida, su historial médico, los tratamientos previos y su condición clínica general para determinar qué opciones de tratamiento pueden ser adecuadas.',
@@ -194,6 +239,7 @@ function wt_copy() {
 				'Ya sea que su atención incluya el manejo convencional de heridas, tecnologías de tratamiento avanzadas o la consideración de la HBOT, el objetivo es encontrar el camino adecuado según su condición clínica.',
 			),
 			'path'  => array( 'Manejo convencional de heridas', 'Tecnologías de tratamiento avanzadas', 'Consideración de la HBOT' ),
+			'plan'  => 'Su plan de tratamiento',
 		),
 		'final'        => array(
 			'title'      => 'Averigüe si la HBOT puede ser adecuada para usted.',

@@ -25,7 +25,11 @@ add_action( 'wp_enqueue_scripts', function () {
 	$uri = get_theme_file_uri( 'assets' );
 	$ver = WP_DEBUG ? time() : WT_VERSION;
 	wp_enqueue_style( 'wt-landing', "$uri/css/landing.css", array(), $ver );
-	wp_enqueue_script( 'wt-landing', "$uri/js/landing.js", array(), $ver, array( 'strategy' => 'defer', 'in_footer' => true ) );
+	$defer = array( 'strategy' => 'defer', 'in_footer' => true );
+	wp_enqueue_script( 'gsap', "$uri/vendor/gsap.min.js", array(), '3.12.5', $defer );
+	wp_enqueue_script( 'gsap-st', "$uri/vendor/ScrollTrigger.min.js", array( 'gsap' ), '3.12.5', $defer );
+	wp_enqueue_script( 'lenis', "$uri/vendor/lenis.min.js", array(), '1.1.13', $defer );
+	wp_enqueue_script( 'wt-landing', "$uri/js/landing.js", array( 'gsap-st', 'lenis' ), $ver, $defer );
 	// Ad click IDs and UTMs → GoHighLevel form once it is embedded (same script as the main theme).
 	wp_enqueue_script( 'wt-track', "$uri/js/track.js", array(), $ver, array( 'strategy' => 'defer' ) );
 	// No block library on a page without blocks.
@@ -33,6 +37,12 @@ add_action( 'wp_enqueue_scripts', function () {
 	wp_dequeue_style( 'global-styles' );
 	wp_dequeue_style( 'classic-theme-styles' );
 }, 20 );
+
+// Motion flag before first paint, so reveal states only hide content when the scripts will show it.
+// If GSAP never arrives (blocked, offline), the flag is dropped and everything stays visible.
+add_action( 'wp_head', function () {
+	echo "<script>(function(d){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.classList.add('wt-js');setTimeout(function(){if(!window.ScrollTrigger)d.classList.remove('wt-js')},3500)})(document.documentElement)</script>\n";
+}, 0 );
 
 add_action( 'wp_head', function () {
 	printf( '<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin>' . "\n", esc_url( get_theme_file_uri( 'assets/fonts/inter.woff2' ) ) );

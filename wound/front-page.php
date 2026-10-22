@@ -1,146 +1,208 @@
 <?php
 /**
  * The HBOT landing. Copy lives in inc/copy.php (English and Spanish).
+ * Every scene reads fine without JavaScript; assets/js/landing.js adds the motion on top.
  */
 
 get_header();
-$c = wt_copy();
-$b = wt_biz();
+$c   = wt_copy();
+$b   = wt_biz();
 $tel = 'tel:' . $b['tel'];
+
+// Words wrapped one by one, for the reveal and fill animations.
+$words = function ( $text, $class = 'wt-w' ) {
+	return implode( ' ', array_map( fn( $w ) => '<span class="' . $class . '">' . esc_html( $w ) . '</span>', explode( ' ', $text ) ) );
+};
 ?>
 <main id="main">
 
-	<section class="wt-hero">
+	<section class="wt-hero wt-dark" data-header="dark">
+		<canvas class="wt-o2" aria-hidden="true"></canvas>
+		<div class="wt-hero__glow" aria-hidden="true"></div>
 		<div class="wt-wrap wt-hero__in">
 			<div class="wt-hero__copy">
-				<p class="wt-eyebrow"><?php echo esc_html( $c['hero']['eyebrow'] ); ?></p>
-				<h1><?php echo esc_html( $c['hero']['title'] ); ?></h1>
-				<ul class="wt-checks">
+				<p class="wt-eyebrow" data-rise><span class="wt-dot"></span><?php echo esc_html( $c['hero']['eyebrow'] ); ?></p>
+				<h1 class="wt-hero__title">
+					<span class="wt-line"><?php echo $words( $c['hero']['title'][0] ); // phpcs:ignore ?></span>
+					<span class="wt-line wt-accent"><?php echo $words( $c['hero']['title'][1] ); // phpcs:ignore ?></span>
+				</h1>
+				<ul class="wt-checks" data-rise>
 					<?php foreach ( $c['hero']['points'] as $p ) : ?>
 						<li><?php echo wt_icon( 'check' ); ?><?php echo esc_html( $p ); ?></li>
 					<?php endforeach; ?>
 				</ul>
-				<p class="wt-lead"><?php echo esc_html( $c['hero']['lead'] ); ?></p>
-				<div class="wt-actions">
-					<a class="wt-btn wt-btn--lg" href="#evaluation"><?php echo esc_html( $c['cta'] ); ?><?php echo wt_icon( 'arrow' ); ?></a>
-					<a class="wt-btn wt-btn--ghost wt-btn--lg" href="<?php echo esc_attr( $tel ); ?>"><?php echo wt_icon( 'phone' ); ?><?php echo esc_html( $c['call'] ); ?></a>
+				<div class="wt-actions" data-rise>
+					<a class="wt-btn wt-btn--lg" href="#evaluation" data-magnetic><?php echo esc_html( $c['cta'] ); ?><?php echo wt_icon( 'arrow' ); ?></a>
+					<a class="wt-btn wt-btn--glass wt-btn--lg" href="<?php echo esc_attr( $tel ); ?>"><?php echo wt_icon( 'phone' ); ?><?php echo esc_html( $c['call'] ); ?></a>
 				</div>
-				<p class="wt-note"><?php echo esc_html( $c['hero']['note'] ); ?></p>
+				<p class="wt-note" data-rise><?php echo esc_html( $c['hero']['note'] ); ?></p>
 				<?php if ( $c['hero']['spanish'] ) : ?>
-					<p class="wt-es"><a href="<?php echo esc_url( wt_other_url() ); ?>" hreflang="es" lang="es"><?php echo esc_html( $c['hero']['spanish'] ); ?> <?php echo wt_icon( 'arrow' ); ?></a></p>
+					<p class="wt-es" data-rise><a href="<?php echo esc_url( wt_other_url() ); ?>" hreflang="es" lang="es"><?php echo esc_html( $c['hero']['spanish'] ); ?> <?php echo wt_icon( 'arrow' ); ?></a></p>
 				<?php endif; ?>
 			</div>
-			<figure class="wt-doc">
-				<img src="<?php echo wt_img( 'dr-torres.webp' ); ?>" alt="<?php echo esc_attr( $c['doctor']['alt'] ); ?>" width="768" height="1024" fetchpriority="high">
+			<figure class="wt-doc" data-rise>
+				<div class="wt-doc__frame">
+					<img src="<?php echo wt_img( 'dr-torres.webp' ); ?>" alt="<?php echo esc_attr( $c['doctor']['alt'] ); ?>" width="768" height="1024" fetchpriority="high">
+				</div>
 				<figcaption class="wt-doc__card">
 					<strong><?php echo esc_html( $c['doctor']['name'] ); ?></strong>
 					<span class="wt-doc__creds"><?php echo esc_html( $c['doctor']['creds'] ); ?></span>
 					<span><?php echo esc_html( $c['doctor']['role'] ); ?></span>
-					<span class="wt-doc__since"><?php echo esc_html( $c['doctor']['since'] ); ?></span>
+					<span class="wt-doc__since"><span class="wt-dot"></span><?php echo esc_html( $c['doctor']['since'] ); ?></span>
 				</figcaption>
 			</figure>
+		</div>
+		<a class="wt-scrollhint" href="#statement"><span><?php echo esc_html( $c['hero']['scroll'] ); ?></span><i aria-hidden="true"></i></a>
+	</section>
+
+	<section class="wt-statement" id="statement">
+		<div class="wt-wrap">
+			<p class="wt-statement__text" data-fill><?php echo $words( $c['statement'] ); // phpcs:ignore ?></p>
 		</div>
 	</section>
 
 	<section class="wt-section wt-program">
 		<div class="wt-wrap wt-split">
-			<div>
-				<p class="wt-eyebrow"><?php echo esc_html( $c['program']['eyebrow'] ); ?></p>
-				<h2><?php echo esc_html( $c['program']['title'] ); ?></h2>
+			<div class="wt-program__head">
+				<p class="wt-eyebrow"><span class="wt-dot"></span><?php echo esc_html( $c['program']['eyebrow'] ); ?></p>
+				<h2 data-reveal><?php echo esc_html( $c['program']['title'] ); ?></h2>
 			</div>
-			<div class="wt-prose">
+			<div class="wt-prose" data-reveal>
 				<?php foreach ( $c['program']['body'] as $p ) : ?>
 					<p><?php echo esc_html( $p ); ?></p>
 				<?php endforeach; ?>
 			</div>
 		</div>
-	</section>
-
-	<section class="wt-section wt-hbot" id="hbot">
-		<div class="wt-wrap wt-split wt-split--media">
-			<div>
-				<p class="wt-eyebrow"><?php echo esc_html( $c['hbot']['eyebrow'] ); ?></p>
-				<h2><?php echo esc_html( $c['hbot']['title'] ); ?></h2>
-				<div class="wt-prose">
-					<?php foreach ( $c['hbot']['body'] as $p ) : ?>
-						<p><?php echo esc_html( $p ); ?></p>
-					<?php endforeach; ?>
-				</div>
-				<p class="wt-callout"><?php echo esc_html( $c['hbot']['callout'] ); ?></p>
-			</div>
-			<figure class="wt-chamber" aria-label="<?php echo esc_attr( $c['hbot']['figure'] ); ?>">
-				<svg viewBox="0 0 480 300" role="img" aria-hidden="true">
-					<defs>
-						<linearGradient id="wtGlass" x1="0" y1="0" x2="0" y2="1">
-							<stop offset="0" stop-color="#ffffff" stop-opacity=".95"/>
-							<stop offset="1" stop-color="#dbe7f5" stop-opacity=".9"/>
-						</linearGradient>
-					</defs>
-					<rect x="40" y="80" width="400" height="140" rx="70" fill="url(#wtGlass)" stroke="#0F1729" stroke-width="3"/>
-					<rect x="40" y="80" width="400" height="140" rx="70" fill="none" stroke="#fff" stroke-width="10" opacity=".35"/>
-					<path d="M110 80v140M370 80v140" stroke="#0F1729" stroke-width="3" opacity=".25"/>
-					<rect x="30" y="226" width="420" height="10" rx="5" fill="#0F1729" opacity=".12"/>
-					<g class="wt-bubbles" fill="#D33131">
-						<circle cx="150" cy="150" r="5"/><circle cx="190" cy="125" r="3.5"/><circle cx="225" cy="170" r="4.5"/>
-						<circle cx="265" cy="135" r="3"/><circle cx="300" cy="165" r="5.5"/><circle cx="335" cy="128" r="3.5"/>
-						<circle cx="240" cy="110" r="2.5"/><circle cx="175" cy="182" r="3"/><circle cx="320" cy="190" r="2.5"/>
-					</g>
-					<text x="240" y="160" text-anchor="middle" class="wt-o2">O<tspan dy="8" font-size="22">2</tspan></text>
-					<g fill="none" stroke="#0F1729" stroke-width="2" opacity=".35">
-						<path d="M240 40v26M226 54l14 12 14-12"/>
-						<path d="M240 260v-26M226 246l14-12 14 12"/>
-					</g>
-				</svg>
-				<ul class="wt-facts">
-					<?php foreach ( $c['hbot']['facts'] as $f ) : ?>
-						<li><?php echo esc_html( $f ); ?></li>
-					<?php endforeach; ?>
-				</ul>
-			</figure>
+		<div class="wt-wrap">
+			<ol class="wt-flow" data-flow>
+				<?php foreach ( $c['program']['flow'] as $i => $f ) : ?>
+					<li class="wt-flow__node<?php echo 1 === $i ? ' is-hbot' : ''; ?>">
+						<span class="wt-flow__dot"><?php echo 1 === $i ? 'O₂' : (int) $i + 1; ?></span>
+						<span class="wt-flow__label"><?php echo esc_html( $f ); ?></span>
+					</li>
+				<?php endforeach; ?>
+				<li class="wt-flow__line" aria-hidden="true"><i></i></li>
+			</ol>
 		</div>
 	</section>
 
-	<section class="wt-section wt-when">
-		<div class="wt-wrap">
-			<div class="wt-head">
-				<p class="wt-eyebrow"><?php echo esc_html( $c['when']['eyebrow'] ); ?></p>
-				<h2><?php echo esc_html( $c['when']['title'] ); ?></h2>
-				<p class="wt-lead"><?php echo esc_html( $c['when']['intro'] ); ?></p>
+	<section class="wt-hbot wt-dark" id="hbot" data-header="dark">
+		<div class="wt-hbot__pin">
+			<div class="wt-wrap wt-hbot__in">
+				<div class="wt-hbot__copy">
+					<p class="wt-eyebrow"><span class="wt-dot"></span><?php echo esc_html( $c['hbot']['eyebrow'] ); ?></p>
+					<h2><?php echo esc_html( $c['hbot']['title'] ); ?></h2>
+					<ol class="wt-stages">
+						<?php foreach ( $c['hbot']['body'] as $i => $p ) : ?>
+							<li class="wt-stage<?php echo 0 === $i ? ' is-on' : ''; ?>">
+								<span class="wt-stage__n">0<?php echo (int) $i + 1; ?></span>
+								<p><?php echo esc_html( $p ); ?></p>
+							</li>
+						<?php endforeach; ?>
+					</ol>
+				</div>
+				<div class="wt-meter" aria-label="<?php echo esc_attr( $c['hbot']['figure'] ); ?>" role="img">
+					<div class="wt-meter__rings" aria-hidden="true"><i></i><i></i><i></i></div>
+					<div class="wt-meter__orb" aria-hidden="true">
+						<div class="wt-meter__fill"></div>
+						<div class="wt-meter__value"><span data-o2>100</span><small>%</small></div>
+						<div class="wt-meter__label" data-o2-label data-air="<?php echo esc_attr( $c['hbot']['air'] ); ?>" data-chamber="<?php echo esc_attr( $c['hbot']['chamber'] ); ?>"><?php echo esc_html( $c['hbot']['chamber'] ); ?></div>
+					</div>
+					<p class="wt-meter__caption"><?php echo esc_html( $c['hbot']['meter'] ); ?></p>
+					<ul class="wt-facts">
+						<?php foreach ( $c['hbot']['facts'] as $f ) : ?>
+							<li><?php echo esc_html( $f ); ?></li>
+						<?php endforeach; ?>
+					</ul>
+				</div>
 			</div>
-			<div class="wt-cards">
-				<?php foreach ( $c['when']['items'] as $item ) : ?>
-					<article class="wt-card">
-						<span class="wt-card__icon"><?php echo wt_icon( $item['icon'] ); ?></span>
+		</div>
+		<div class="wt-wrap">
+			<p class="wt-callout" data-reveal><?php echo esc_html( $c['hbot']['callout'] ); ?></p>
+		</div>
+	</section>
+
+	<section class="wt-when" data-header="light">
+		<div class="wt-when__pin">
+			<div class="wt-when__track">
+				<div class="wt-when__intro">
+					<p class="wt-eyebrow"><span class="wt-dot"></span><?php echo esc_html( $c['when']['eyebrow'] ); ?></p>
+					<h2><?php echo esc_html( $c['when']['title'] ); ?></h2>
+					<p class="wt-lead"><?php echo esc_html( $c['when']['intro'] ); ?></p>
+					<span class="wt-when__drag" aria-hidden="true"><?php echo wt_icon( 'arrow' ); ?></span>
+				</div>
+				<?php foreach ( $c['when']['items'] as $i => $item ) : ?>
+					<article class="wt-cond">
+						<span class="wt-cond__num" aria-hidden="true">0<?php echo (int) $i + 1; ?></span>
+						<span class="wt-cond__icon"><?php echo wt_icon( $item['icon'] ); ?></span>
 						<h3><?php echo esc_html( $item['title'] ); ?></h3>
 						<p><?php echo esc_html( $item['text'] ); ?></p>
+						<a class="wt-cond__cta" href="#evaluation"><?php echo esc_html( $c['eval']['cta'] ); ?><?php echo wt_icon( 'arrow' ); ?></a>
 					</article>
 				<?php endforeach; ?>
 			</div>
 		</div>
+		<div class="wt-when__bar" aria-hidden="true"><i></i></div>
 	</section>
 
-	<section class="wt-band">
+	<section class="wt-section wt-check" id="self-check">
+		<div class="wt-wrap wt-split">
+			<div class="wt-check__head">
+				<p class="wt-eyebrow"><span class="wt-dot"></span><?php echo esc_html( $c['check']['eyebrow'] ); ?></p>
+				<h2 data-reveal><?php echo esc_html( $c['check']['title'] ); ?></h2>
+				<p class="wt-lead"><?php echo esc_html( $c['check']['intro'] ); ?></p>
+				<div class="wt-check__count" aria-hidden="true"><b data-check-count>0</b><span><?php echo esc_html( $c['check']['of'] ); ?> <?php echo count( $c['check']['items'] ); ?></span></div>
+			</div>
+			<div class="wt-check__box">
+				<ul class="wt-check__list">
+					<?php foreach ( $c['check']['items'] as $i => $item ) : ?>
+						<li><label><input type="checkbox" data-check><span class="wt-check__tick" aria-hidden="true"><?php echo wt_icon( 'check' ); ?></span><span><?php echo esc_html( $item ); ?></span></label></li>
+					<?php endforeach; ?>
+				</ul>
+				<div class="wt-check__result" role="status" aria-live="polite" data-none="<?php echo esc_attr( $c['check']['none'] ); ?>" data-some="<?php echo esc_attr( $c['check']['some'] ); ?>">
+					<p><?php echo esc_html( $c['check']['none'] ); ?></p>
+					<a class="wt-btn" href="#evaluation" data-magnetic><?php echo esc_html( $c['cta'] ); ?><?php echo wt_icon( 'arrow' ); ?></a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="wt-band wt-dark" data-header="dark">
+		<div class="wt-marquee" aria-hidden="true">
+			<div class="wt-marquee__row">
+				<?php for ( $r = 0; $r < 2; $r++ ) : ?>
+					<span>
+						<?php foreach ( $c['marquee'] as $m ) : ?>
+							<?php echo esc_html( $m ); ?><i>✦</i>
+						<?php endforeach; ?>
+					</span>
+				<?php endfor; ?>
+			</div>
+		</div>
 		<div class="wt-wrap wt-band__in">
 			<div>
-				<h2><?php echo esc_html( $c['eval']['title'] ); ?></h2>
+				<h2 data-reveal><?php echo esc_html( $c['eval']['title'] ); ?></h2>
 				<p><?php echo esc_html( $c['eval']['text'] ); ?></p>
 			</div>
-			<a class="wt-btn wt-btn--lg wt-btn--light" href="#evaluation"><?php echo esc_html( $c['eval']['cta'] ); ?><?php echo wt_icon( 'arrow' ); ?></a>
+			<a class="wt-btn wt-btn--lg wt-btn--light" href="#evaluation" data-magnetic><?php echo esc_html( $c['eval']['cta'] ); ?><?php echo wt_icon( 'arrow' ); ?></a>
 		</div>
 	</section>
 
 	<section class="wt-section wt-steps-sec">
-		<div class="wt-wrap">
-			<div class="wt-head">
-				<p class="wt-eyebrow"><?php echo esc_html( $c['steps']['eyebrow'] ); ?></p>
-				<h2><?php echo esc_html( $c['steps']['title'] ); ?></h2>
+		<div class="wt-wrap wt-steps-grid">
+			<div class="wt-steps__head">
+				<p class="wt-eyebrow"><span class="wt-dot"></span><?php echo esc_html( $c['steps']['eyebrow'] ); ?></p>
+				<h2 data-reveal><?php echo esc_html( $c['steps']['title'] ); ?></h2>
+				<div class="wt-steps__progress" aria-hidden="true"><i></i></div>
 			</div>
 			<ol class="wt-steps">
 				<?php foreach ( $c['steps']['items'] as $i => $s ) : ?>
-					<li>
-						<span class="wt-steps__n"><?php echo (int) $i + 1; ?></span>
-						<h3><?php echo esc_html( $s['title'] ); ?></h3>
-						<p><?php echo esc_html( $s['text'] ); ?></p>
+					<li style="--i: <?php echo (int) $i; ?>">
+						<span class="wt-steps__n">0<?php echo (int) $i + 1; ?></span>
+						<div>
+							<h3><?php echo esc_html( $s['title'] ); ?></h3>
+							<p><?php echo esc_html( $s['text'] ); ?></p>
+						</div>
 					</li>
 				<?php endforeach; ?>
 			</ol>
@@ -150,25 +212,34 @@ $tel = 'tel:' . $b['tel'];
 	<section class="wt-section wt-personal">
 		<div class="wt-wrap wt-split">
 			<div>
-				<h2><?php echo esc_html( $c['personal']['title'] ); ?></h2>
+				<h2 data-reveal><?php echo esc_html( $c['personal']['title'] ); ?></h2>
 				<div class="wt-prose">
 					<?php foreach ( $c['personal']['body'] as $p ) : ?>
 						<p><?php echo esc_html( $p ); ?></p>
 					<?php endforeach; ?>
 				</div>
 			</div>
-			<ol class="wt-path">
-				<?php foreach ( $c['personal']['path'] as $p ) : ?>
-					<li><?php echo esc_html( $p ); ?></li>
-				<?php endforeach; ?>
-			</ol>
+			<div class="wt-paths" data-paths>
+				<ul>
+					<?php foreach ( $c['personal']['path'] as $p ) : ?>
+						<li><?php echo esc_html( $p ); ?></li>
+					<?php endforeach; ?>
+				</ul>
+				<svg class="wt-paths__lines" viewBox="0 0 120 300" preserveAspectRatio="none" aria-hidden="true">
+					<path d="M0 50 C 70 50, 60 150, 120 150"/>
+					<path d="M0 150 L 120 150"/>
+					<path d="M0 250 C 70 250, 60 150, 120 150"/>
+				</svg>
+				<div class="wt-paths__plan"><span class="wt-dot"></span><?php echo esc_html( $c['personal']['plan'] ); ?></div>
+			</div>
 		</div>
 	</section>
 
-	<section class="wt-section wt-final" id="evaluation">
+	<section class="wt-final wt-dark" id="evaluation" data-header="dark">
+		<canvas class="wt-o2" aria-hidden="true"></canvas>
 		<div class="wt-wrap wt-final__in">
 			<div class="wt-final__copy">
-				<h2><?php echo esc_html( $c['final']['title'] ); ?></h2>
+				<h2 class="wt-final__title"><?php echo $words( $c['final']['title'] ); // phpcs:ignore ?></h2>
 				<p class="wt-lead"><?php echo esc_html( $c['final']['text'] ); ?></p>
 				<div class="wt-callbox">
 					<span><?php echo esc_html( $c['final']['or_call'] ); ?></span>
