@@ -12,14 +12,25 @@ from PIL import Image
 if os.environ.get('DOCS'):
     # Read the official docs from the runner (the Claude session cannot reach them). No credits used.
     os.makedirs('out', exist_ok=True)
-    idx = requests.get('https://docs.higgsfield.ai/llms.txt', timeout=60).text
-    pages = [u for u in re.findall(r'https://docs\.higgsfield\.ai/[^\s)]+\.md', idx)]
-    want = [u for u in pages if re.search(r'image|soul|reference|quickstart|auth|api-reference|openapi|upload', u, re.I)]
-    out = ['# llms.txt', idx]
-    for u in want[:25]:
-        out += [f'\n\n# {u}', requests.get(u, timeout=60).text]
+    seeds = ['https://docs.higgsfield.ai/docs/llms.txt', 'https://docs.higgsfield.ai/llms-full.txt', 'https://docs.higgsfield.ai/docs/llms-full.txt',
+             'https://docs.higgsfield.ai/docs/guides/images.md', 'https://docs.higgsfield.ai/docs/quickstart.md',
+             'https://docs.higgsfield.ai/docs/authentication.md', 'https://docs.higgsfield.ai/docs/how-to/sdk.md']
+    seen, queue, out = set(), list(seeds), []
+    while queue and len(seen) < 40:
+        u = queue.pop(0)
+        if u in seen:
+            continue
+        seen.add(u)
+        r = requests.get(u, timeout=60)
+        if not r.ok:
+            out.append(f'\n\n# {u} -> {r.status_code}')
+            continue
+        out += [f'\n\n# {u}', r.text[:60000]]
+        for link in re.findall(r'https://docs\.higgsfield\.ai/[^\s)\]"]+\.(?:md|txt)', r.text):
+            if re.search(r'image|soul|reference|upload|api-reference|model', link, re.I):
+                queue.append(link)
     open('out/higgsfield-docs.md', 'w').write('\n'.join(out))
-    print(f'docs: {len(pages)} páginas en el índice, {len(want[:25])} guardadas')
+    print(f'docs: {len(seen)} páginas')
     sys.exit(0)
 
 key = os.environ.get('HF_TOKEN', '').strip()
