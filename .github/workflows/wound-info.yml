@@ -1,0 +1,76 @@
+# Read-only inventory of the Wound Therapeutics HBOT landing site (Hostinger temp domain).
+# Runs on demand, or on a push to a claude/** branch that touches this file.
+# It never writes: no plugin, option, content or database changes.
+# The WP root is hard-coded: the SSH key is account-wide and also reaches other sites.
+name: Inventario Wound (solo lectura)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['claude/**']
+    paths: ['.github/workflows/wound-info.yml']
+
+env:
+  WOUND_DOMAIN: lightslategray-okapi-283954.hostingersite.com
+
+jobs:
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configurar SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          # Hostinger sometimes answers slowly: retry instead of failing the whole run
+          for i in 1 2 3 4 5; do
+            ssh-keyscan -T 15 -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null && [ -s ~/.ssh/known_hosts ] && break
+            echo "ssh-keyscan intento $i falló, reintentando..."; sleep $((i * 5))
+          done
+          [ -s ~/.ssh/known_hosts ]
+
+      - name: Inventario
+        run: |
+          ssh -p "${{ secrets.SSH_PORT }}" -i ~/.ssh/id_ed25519 \
+            "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" \
+            "WOUND_DOMAIN='$WOUND_DOMAIN' bash -s" <<'EOF'
+          set +e
+          section() { echo; echo "===== $1 ====="; }
+          section "Sitios en esta cuenta (~/domains)"
+          ls -1 ~/domains 2>/dev/null || echo "sin carpeta domains"
+          WP_ROOT="$HOME/domains/$WOUND_DOMAIN/public_html"
+          section "WP root"
+          echo "${WP_ROOT#$HOME/}"
+          if [ ! -f "$WP_ROOT/wp-config.php" ]; then
+            echo "NO hay wp-config.php en el WP root: el sitio no está en esta cuenta o WordPress no está instalado."
+            ls -la "$WP_ROOT" 2>&1 | head -20
+            exit 0
+          fi
+          wp() { command wp --path="$WP_ROOT" --skip-plugins --skip-themes "$@"; }
+          section "WordPress"
+          wp core version
+          wp option get home
+          wp option get siteurl
+          wp option get blogname
+          wp option get WPLANG
+          wp option get permalink_structure
+          wp option get blog_public
+          wp option get show_on_front
+          wp option get page_on_front
+          section "Temas"
+          wp theme list --fields=name,status,version
+          section "Plugins"
+          wp plugin list --fields=name,status,version,update
+          section "Must-use"
+          ls -1 "$WP_ROOT/wp-content/mu-plugins" 2>/dev/null
+          section "Usuarios (roles)"
+          wp user list --fields=ID,user_login,roles
+          section "Contenido"
+          wp post list --post_type=page --fields=ID,post_title,post_name,post_status --post_status=any
+          echo "Entradas: $(wp post list --post_type=post --post_status=any --format=count)"
+          echo "Medios: $(wp post list --post_type=attachment --format=count)"
+          section "Plantillas editadas en el Editor del sitio"
+          wp post list --post_type=wp_template,wp_template_part --fields=ID,post_name,post_type --post_status=any
+          section "Archivos sueltos en la raíz (llms.txt, robots.txt)"
+          ls -la "$WP_ROOT" | grep -Ei 'llms|robots|\.html?$' || echo "ninguno"
+          EOF
