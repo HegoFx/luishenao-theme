@@ -1,15 +1,22 @@
 """Generates the Wound landing images with the Hugging Face Inference API.
 
-Reads .github/scripts/wound-prompts.json, writes PNG originals and WebP (quality 82) to out/.
+Reads .github/scripts/wound-prompts.json, writes WebP (quality 82) to out/.
 ONLY (comma list) limits which images are generated. Tries FLUX.1-schnell first, then SDXL.
 """
 import io, json, os, sys, time
 import requests
 from PIL import Image
 
-TOKEN = os.environ.get('HF_TOKEN', '')
+TOKEN = os.environ.get('HF_TOKEN', '').strip()
 if not TOKEN:
     sys.exit('Falta el secret HF_TOKEN en el repo (Settings > Secrets and variables > Actions).')
+if not TOKEN.startswith('hf_'):
+    print('Aviso: el token no empieza con "hf_"; los tokens de Hugging Face sí.')
+who = requests.get('https://huggingface.co/api/whoami-v2', headers={'Authorization': f'Bearer {TOKEN}'}, timeout=30)
+if not who.ok:
+    sys.exit(f'Hugging Face rechaza el token ({who.status_code}). Crea uno nuevo en https://huggingface.co/settings/tokens y vuelve a guardarlo como HF_TOKEN.')
+info = who.json()
+print(f"Token válido: cuenta {info.get('name')}, tipo {info.get('auth', {}).get('accessToken', {}).get('role', '?')}")
 
 MODELS = [
     'https://router.huggingface.co/hf-inference/models/black-forest-labs/FLUX.1-schnell',

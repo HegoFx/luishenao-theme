@@ -30,6 +30,7 @@ jobs:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
           ONLY: ${{ inputs.only }}
         run: |
+          set -o pipefail
           pip install -q requests pillow
           python .github/scripts/wound-images.py 2>&1 | tee log.txt
 
