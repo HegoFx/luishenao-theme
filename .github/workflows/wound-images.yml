@@ -8,6 +8,9 @@ on:
       only:
         description: 'Imágenes a generar, separadas por coma (vacío = todas)'
         default: ''
+      docs:
+        description: 'Solo descargar la documentación de Higgsfield (1 = sí)'
+        default: ''
   push:
     branches: ['claude/**']
     paths: ['.github/scripts/wound-prompts.json', '.github/scripts/wound-images.py', '.github/workflows/wound-images.yml']
@@ -30,6 +33,7 @@ jobs:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
           HF_SECRET: ${{ secrets.HF_SECRET }}
           ONLY: ${{ inputs.only }}
+          DOCS: ${{ inputs.docs }}
         run: |
           set -o pipefail
           pip install -q requests pillow
@@ -45,7 +49,7 @@ jobs:
           git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}"
           # keep earlier images when only some are regenerated
           git fetch -q origin wound-images && git reset -q --soft origin/wound-images && git checkout -q origin/wound-images -- . || true
-          cp ../out/*.webp . 2>/dev/null || true
+          cp ../out/*.webp ../out/*.md . 2>/dev/null || true
           cp ../log.txt log.txt 2>/dev/null || true
           git add -A
           git commit -qm "Imágenes wound de ${GITHUB_SHA::7}" || echo "sin cambios"

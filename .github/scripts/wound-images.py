@@ -9,6 +9,19 @@ import io, json, os, re, sys, time
 import requests
 from PIL import Image
 
+if os.environ.get('DOCS'):
+    # Read the official docs from the runner (the Claude session cannot reach them). No credits used.
+    os.makedirs('out', exist_ok=True)
+    idx = requests.get('https://docs.higgsfield.ai/llms.txt', timeout=60).text
+    pages = [u for u in re.findall(r'https://docs\.higgsfield\.ai/[^\s)]+\.md', idx)]
+    want = [u for u in pages if re.search(r'image|soul|reference|quickstart|auth|api-reference|openapi|upload', u, re.I)]
+    out = ['# llms.txt', idx]
+    for u in want[:25]:
+        out += [f'\n\n# {u}', requests.get(u, timeout=60).text]
+    open('out/higgsfield-docs.md', 'w').write('\n'.join(out))
+    print(f'docs: {len(pages)} páginas en el índice, {len(want[:25])} guardadas')
+    sys.exit(0)
+
 key = os.environ.get('HF_TOKEN', '').strip()
 secret = os.environ.get('HF_SECRET', '').strip()
 if not key:
