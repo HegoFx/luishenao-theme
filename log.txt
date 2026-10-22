@@ -1,19 +1,7 @@
-  POST https://platform.higgsfield.ai/higgsfield-ai/soul/standard -> 200 {"status":"queued","request_id":"30b160d4-ec36-48ed-a662-498d183bc731","status_url":"https://api.higgsfield.ai/requests/30b160d4-ec36-48ed-a662-498d183bc731/status","cancel_url":"https://api.higgsfield.ai/requests/30b160d4-ec36-48ed-a662-498d183bc731/cancel"}
-  GET https://api.higgsfield.ai/requests/30b160d4-ec36-48ed-a662-498d183bc731/status -> 200 {"status":"in_progress","request_id":"30b160d4-ec36-48ed-a662-498d183bc731","status_url":"https://api.higgsfield.ai/requests/30b160d4-ec36-48ed-a662-498d183bc731/status","cancel_url":"https://api.higgsfield.ai/requests/30b160d4-ec36-48ed-a662-498d183bc731/cancel"}
-OK hero-chamber 2048x1152 -> 1920x1088
+  POST https://platform.higgsfield.ai/higgsfield-ai/soul/standard -> 200 {"status":"queued","request_id":"ab0b6e2d-5a41-4738-9dd8-e3420a3d4249","status_url":"https://api.higgsfield.ai/requests/ab0b6e2d-5a41-4738-9dd8-e3420a3d4249/status","cancel_url":"https://api.higgsfield.ai/requests/ab0b6e2d-5a41-4738-9dd8-e3420a3d4249/cancel"}
+  GET https://api.higgsfield.ai/requests/ab0b6e2d-5a41-4738-9dd8-e3420a3d4249/status -> 200 {"status":"queued","request_id":"ab0b6e2d-5a41-4738-9dd8-e3420a3d4249","status_url":"https://api.higgsfield.ai/requests/ab0b6e2d-5a41-4738-9dd8-e3420a3d4249/status","cancel_url":"https://api.higgsfield.ai/requests/ab0b6e2d-5a41-4738-9dd8-e3420a3d4249/cancel"}
 OK bubbles 2048x1152 -> 1920x1088
 OK chamber-room 1536x2048 -> 896x1120
 OK o2-cells 1536x2048 -> 896x1120
-OK dressing 1536x2048 -> 896x1120
-OK consult 1536x2048 -> 1216x1520
-OK cond-foot 2048x1536 -> 1152x864
-OK cond-graft 2048x1536 -> 1152x864
-OK cond-xray 2048x1536 -> 1152x864
-OK cond-rehab 2048x1536 -> 1152x864
-OK step-assess 2016x1344 -> 1216x832
-OK step-plan 2016x1344 -> 1216x832
-OK step-coord 2016x1344 -> 1216x832
-OK step-follow 2016x1344 -> 1216x832
 OK familia 1536x2048 -> 896x1120
-OK orlando 2048x1152 -> 1920x1088
 OK final 2048x1152 -> 1920x1088
