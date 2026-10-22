@@ -22,7 +22,7 @@ function wt_copy() {
 		'cta_short'    => 'Schedule',
 		'hero'         => array(
 			'eyebrow' => 'Advanced Wound Care · Orlando, FL',
-			'title'   => array( 'When Healing Requires More,', 'Explore Your Options.' ),
+			'title'   => array( 'Wound Care With', 'Advanced Recovery.' ),
 			'scroll'  => 'Scroll to explore',
 			'points'  => array( 'Advanced wound-care evaluation.', 'Physician-directed treatment planning.', 'Access to specialized recovery options.' ),
 			'lead'    => 'Some wounds require more than conventional treatment alone. When healing becomes challenging, understanding your options is an important step toward receiving the care you need.',
@@ -177,7 +177,7 @@ function wt_copy() {
 		'cta_short'    => 'Agendar',
 		'hero'         => array(
 			'eyebrow' => 'Cuidado avanzado de heridas · Orlando, FL',
-			'title'   => array( 'Cuando sanar requiere más,', 'conozca sus opciones.' ),
+			'title'   => array( 'Cuidado de heridas con', 'recuperación avanzada.' ),
 			'scroll'  => 'Deslice para explorar',
 			'points'  => array( 'Evaluación avanzada de heridas.', 'Plan de tratamiento dirigido por un médico.', 'Acceso a opciones especializadas de recuperación.' ),
 			'lead'    => 'Algunas heridas necesitan más que el tratamiento convencional. Cuando la cicatrización se complica, conocer sus opciones es un paso importante para recibir la atención que necesita.',
