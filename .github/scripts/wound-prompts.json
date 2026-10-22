@@ -1,22 +1,94 @@
 {
   "style": "editorial medical photography, photorealistic, natural soft daylight, clean modern clinic, cool navy blue and white palette with a subtle red accent, shallow depth of field, shot on 35mm, calm and hopeful mood, no text, no logos, no watermarks, no visible wounds or blood",
   "images": {
-    "hero-chamber": { "w": 1920, "h": 1088, "prompt": "a relaxed senior Hispanic man in his sixties lying inside a modern clear acrylic monoplace hyperbaric oxygen chamber, eyes closed, peaceful, soft cool blue light glowing through the transparent tube, dark navy room, cinematic wide shot from the side" },
-    "bubbles": { "w": 1920, "h": 1088, "prompt": "macro photograph of tiny oxygen bubbles rising through deep dark navy blue water, a few bubbles catch a soft red rim light, bokeh, abstract, high contrast, cinematic" },
-    "chamber-room": { "w": 896, "h": 1120, "prompt": "empty modern hyperbaric medicine suite with a sleek clear monoplace hyperbaric chamber and a white padded bed, minimalist clinical room, soft daylight from a large window, navy accents" },
-    "o2-cells": { "w": 896, "h": 1120, "prompt": "scientific microscopic visualization of red blood cells flowing through a capillary with tiny glowing blue oxygen particles dissolving into the plasma, dark navy background, elegant 3D medical illustration, depth of field" },
-    "dressing": { "w": 896, "h": 1120, "prompt": "close-up of a nurse's gloved hands carefully wrapping a clean white compression bandage around the lower leg of a senior patient seated on an exam table, bright clinic, gentle and precise" },
-    "consult": { "w": 1216, "h": 1520, "prompt": "a Hispanic male physician in his fifties wearing a navy suit and white coat listening attentively to a senior woman patient and her adult daughter in a bright modern consultation room in Florida, warm human moment" },
-    "cond-foot": { "w": 1152, "h": 864, "prompt": "a senior man with diabetes seated on a clinic exam table while a physician gently examines his bandaged foot wrapped in clean white gauze, bright natural light, respectful framing, no wound visible" },
-    "cond-graft": { "w": 1152, "h": 864, "prompt": "a middle-aged woman recovering after surgery sitting in a bright hospital recovery room, a clean white dressing on her forearm, a physician reviewing her chart beside her, hopeful" },
-    "cond-xray": { "w": 1152, "h": 864, "prompt": "a physician pointing at a foot bone x-ray displayed on a large monitor in a dim modern radiology reading room, blue glow from the screen, focused" },
-    "cond-rehab": { "w": 1152, "h": 864, "prompt": "a man in his forties with a leg brace walking carefully along parallel bars with a physical therapist supporting him, bright rehabilitation gym, determination" },
-    "step-assess": { "w": 1216, "h": 832, "prompt": "a physician in a white coat examining the ankle of a senior patient on an exam table with a small handheld light, attentive, bright clean clinic" },
-    "step-plan": { "w": 1216, "h": 832, "prompt": "a physician showing a treatment plan on a tablet to a senior couple seated across a desk in a modern clinic office, they are nodding, soft daylight" },
-    "step-coord": { "w": 1216, "h": 832, "prompt": "a smiling bilingual medical care coordinator with a headset talking on the phone at a tidy desk with a computer, modern clinic front office, warm light" },
-    "step-follow": { "w": 1216, "h": 832, "prompt": "a senior woman smiling during a follow-up visit while a physician measures and notes progress on her lower leg dressing, relaxed and friendly atmosphere" },
-    "familia": { "w": 896, "h": 1120, "prompt": "a Hispanic family of three generations, grandmother, mother and grandson, smiling together on a sunny porch in Florida with palm leaves, warm golden afternoon light" },
-    "orlando": { "w": 1920, "h": 1088, "prompt": "aerial view of downtown Orlando Florida skyline and Lake Eola fountain at blue hour, city lights reflecting on the water, cinematic, cool tones" },
-    "final": { "w": 1920, "h": 1088, "prompt": "a senior couple walking slowly hand in hand along a palm-lined path in a Florida park at golden hour, seen from behind, peaceful, hopeful, cinematic wide shot" }
+    "hero-chamber": {
+      "w": 1920,
+      "h": 1088,
+      "prompt": "a relaxed senior Hispanic man in his sixties lying inside a modern clear acrylic monoplace hyperbaric oxygen chamber, eyes closed, peaceful, soft cool blue light glowing through the transparent tube, dark navy room, cinematic wide shot from the side"
+    },
+    "bubbles": {
+      "w": 1920,
+      "h": 1088,
+      "prompt": "abstract macro photograph of countless tiny oxygen bubbles rising through deep dark navy blue water, almost black background, the bubbles lit by soft cool white light from above with a few warm red highlights, bokeh",
+      "style": "photorealistic, cinematic, shallow depth of field, no text, no letters, no signs, no logos, no watermarks"
+    },
+    "chamber-room": {
+      "w": 896,
+      "h": 1120,
+      "prompt": "a sleek modern monoplace hyperbaric oxygen chamber, a long transparent clear acrylic cylinder tube on a white metal base with a padded stretcher inside, standing in an empty minimalist medical suite with a navy accent wall and soft daylight from a large window"
+    },
+    "o2-cells": {
+      "w": 896,
+      "h": 1120,
+      "prompt": "3D medical illustration, cross-section of a blood vessel with many red blood cells flowing inside it, tiny glowing cyan oxygen particles dissolving into the plasma around the cells, dark navy background, soft volumetric light, no tubes, no containers, no pills",
+      "style": "photorealistic, cinematic, shallow depth of field, no text, no letters, no signs, no logos, no watermarks"
+    },
+    "dressing": {
+      "w": 896,
+      "h": 1120,
+      "prompt": "close-up of a nurse's gloved hands carefully wrapping a clean white compression bandage around the lower leg of a senior patient seated on an exam table, bright clinic, gentle and precise"
+    },
+    "consult": {
+      "w": 1216,
+      "h": 1520,
+      "prompt": "a Hispanic male physician in his fifties wearing a navy suit and white coat listening attentively to a senior woman patient and her adult daughter in a bright modern consultation room in Florida, warm human moment"
+    },
+    "cond-foot": {
+      "w": 1152,
+      "h": 864,
+      "prompt": "a senior man with diabetes seated on a clinic exam table while a physician gently examines his bandaged foot wrapped in clean white gauze, bright natural light, respectful framing, no wound visible"
+    },
+    "cond-graft": {
+      "w": 1152,
+      "h": 864,
+      "prompt": "a middle-aged woman recovering after surgery sitting in a bright hospital recovery room, a clean white dressing on her forearm, a physician reviewing her chart beside her, hopeful"
+    },
+    "cond-xray": {
+      "w": 1152,
+      "h": 864,
+      "prompt": "a physician pointing at a foot bone x-ray displayed on a large monitor in a dim modern radiology reading room, blue glow from the screen, focused"
+    },
+    "cond-rehab": {
+      "w": 1152,
+      "h": 864,
+      "prompt": "a man in his forties with a leg brace walking carefully along parallel bars with a physical therapist supporting him, bright rehabilitation gym, determination"
+    },
+    "step-assess": {
+      "w": 1216,
+      "h": 832,
+      "prompt": "a physician in a white coat examining the ankle of a senior patient on an exam table with a small handheld light, attentive, bright clean clinic"
+    },
+    "step-plan": {
+      "w": 1216,
+      "h": 832,
+      "prompt": "a physician showing a treatment plan on a tablet to a senior couple seated across a desk in a modern clinic office, they are nodding, soft daylight"
+    },
+    "step-coord": {
+      "w": 1216,
+      "h": 832,
+      "prompt": "a smiling bilingual medical care coordinator with a headset talking on the phone at a tidy desk with a computer, modern clinic front office, warm light"
+    },
+    "step-follow": {
+      "w": 1216,
+      "h": 832,
+      "prompt": "a senior woman smiling during a follow-up visit while a physician measures and notes progress on her lower leg dressing, relaxed and friendly atmosphere"
+    },
+    "familia": {
+      "w": 896,
+      "h": 1120,
+      "prompt": "candid lifestyle photograph of a Hispanic family of three generations, a grandmother, her adult daughter and a teenage grandson, laughing together on the front porch of a Florida home with palm leaves, warm golden afternoon light, casual clothes, no medical uniforms, no lab coats",
+      "style": "photorealistic, cinematic, shallow depth of field, no text, no letters, no signs, no logos, no watermarks"
+    },
+    "orlando": {
+      "w": 1920,
+      "h": 1088,
+      "prompt": "aerial view of downtown Orlando Florida skyline and Lake Eola fountain at blue hour, city lights reflecting on the water, cinematic, cool tones"
+    },
+    "final": {
+      "w": 1920,
+      "h": 1088,
+      "prompt": "a senior couple seen from behind walking slowly hand in hand along a path in a park with palm trees beside a calm lake at golden hour in Florida, peaceful and hopeful, no buildings",
+      "style": "photorealistic, cinematic, shallow depth of field, no text, no letters, no signs, no logos, no watermarks"
+    }
   }
 }

@@ -91,7 +91,7 @@ names = [n for n in cfg['images'] if not only or n in only]
 failed = []
 for i, name in enumerate(names):
     spec = cfg['images'][name]
-    url = generate(f"{spec['prompt']}, {cfg['style']}", spec['w'], spec['h'], verbose=(i == 0))
+    url = generate(f"{spec['prompt']}, {spec.get('style', cfg['style'])}", spec['w'], spec['h'], verbose=(i == 0))
     if not url:
         failed.append(name)
         print(f'FALLÓ {name}')
