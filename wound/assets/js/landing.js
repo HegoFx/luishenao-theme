@@ -164,21 +164,6 @@
 		.to('.wt-hero [data-rise]', { opacity: 1, y: 0, duration: 1.1, stagger: 0.08 }, 0.6);
 	ST.create({ trigger: '.wt-hero', start: 'top top', end: 'bottom top', onUpdate: s => hero.style.setProperty('--p', s.progress.toFixed(3)) });
 
-	/* Generic reveals: in on the way down, back out on the way up */
-	$$('[data-reveal]').forEach(el => G.to(el, { opacity: 1, y: 0, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 86%', toggleActions: 'play none none reverse' } }));
-
-	/* Images: open from a rounded window on enter, drift on exit */
-	$$('[data-io]').forEach(el => {
-		const img = $('img', el);
-		G.fromTo(el, { clipPath: 'inset(12% 10% 12% 10% round 32px)' }, { clipPath: 'inset(0% 0% 0% 0% round 0px)', ease: 'none', scrollTrigger: { trigger: el, start: 'top bottom', end: 'top 20%', scrub: true } });
-		G.fromTo(img, { scale: 1.3, yPercent: -6 }, { scale: 1, yPercent: 6, ease: 'none', scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true } });
-	});
-	$$('.wt-steps__media img').forEach(img => G.fromTo(img, { scale: 1.25 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'center center', scrub: true } }));
-
-	/* Exits: section copy lifts and dims as it leaves the top */
-	$$('.wt-statement__text, .wt-program__copy, .wt-check .wt-split, .wt-lang__copy, .wt-steps__head, .wt-personal .wt-split, .wt-band__in, .wt-place__card').forEach(el =>
-		G.to(el, { y: -60, opacity: 0.35, ease: 'none', scrollTrigger: { trigger: el, start: 'bottom 22%', end: 'bottom -5%', scrub: true } }));
-
 	/* Statement fills word by word */
 	const sw = $$('.wt-statement__text .wt-w');
 	ST.create({
@@ -307,6 +292,23 @@
 	G.fromTo('.wt-final__media img', { scale: 1.2 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: '.wt-final', start: 'top bottom', end: 'top top', scrub: true } });
 	G.to('.wt-final__title .wt-w', { opacity: 1, stagger: 0.05, ease: 'none', scrollTrigger: { trigger: '.wt-final__title', start: 'top 85%', end: 'bottom 55%', scrub: true } });
 	G.from('.wt-form', { y: 60, opacity: 0, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: '.wt-form', start: 'top 90%' } });
+
+	/* Generic reveals, image windows and exits. Created after the pinned scenes so their positions
+	   include the pin spacing (ScrollTrigger measures in creation order). */
+	/* Reveals: in on the way down, back out on the way up */
+	$$('[data-reveal]').forEach(el => G.to(el, { opacity: 1, y: 0, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 86%', toggleActions: 'play none none reverse' } }));
+
+	/* Images: open from a rounded window on enter, drift on exit */
+	$$('[data-io]').forEach(el => {
+		const img = $('img', el);
+		G.fromTo(el, { clipPath: 'inset(12% 10% 12% 10% round 32px)' }, { clipPath: 'inset(0% 0% 0% 0% round 0px)', ease: 'none', scrollTrigger: { trigger: el, start: 'top bottom', end: 'top 20%', scrub: true } });
+		G.fromTo(img, { scale: 1.3, yPercent: -6 }, { scale: 1, yPercent: 6, ease: 'none', scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true } });
+	});
+	$$('.wt-steps__media img').forEach(img => G.fromTo(img, { scale: 1.25 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'center center', scrub: true } }));
+
+	/* Exits: section copy lifts and dims as it leaves the top */
+	$$('.wt-statement__text, .wt-program__copy, .wt-check .wt-split, .wt-lang__copy, .wt-steps__head, .wt-personal .wt-split, .wt-band__in, .wt-place__card').forEach(el =>
+		G.to(el, { y: -60, opacity: 0.35, ease: 'none', scrollTrigger: { trigger: el, start: 'bottom 22%', end: 'bottom -5%', scrub: true } }));
 
 	/* Custom cursor with labels, and magnetic buttons */
 	if (fine) {
