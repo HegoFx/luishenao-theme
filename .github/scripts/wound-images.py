@@ -78,9 +78,21 @@ def status_of(j):
     return str(j.get('status') or j.get('state') or (j.get('data') or {}).get('status') or '').lower()
 
 
-def generate(prompt, w, h, verbose):
-    body = {'prompt': prompt, 'aspect_ratio': ratio(w, h), 'resolution': '1080p'}
-    for ep in ENDPOINTS:
+GROK = 'https://api.higgsfield.ai/xai/grok-imagine-image-2.0'
+
+
+def generate(prompt, w, h, verbose, spec=None):
+    spec = spec or {}
+    if spec.get('model') == 'grok':
+        # Grok Image 2.0: text to image, or edit with up to 10 public reference URLs (image_urls)
+        body = {'prompt': prompt, 'aspect_ratio': ratio(w, h), 'resolution': '2k', 'quality': 'medium'}
+        if spec.get('refs'):
+            body['image_urls'] = spec['refs']
+        eps = [GROK]
+    else:
+        body = {'prompt': prompt, 'aspect_ratio': ratio(w, h), 'resolution': '1080p'}
+        eps = ENDPOINTS
+    for ep in eps:
         r = requests.post(ep, headers=HEAD, json=body, timeout=120)
         if verbose:
             print(f'  POST {ep} -> {r.status_code} {r.text[:600]}')
@@ -94,7 +106,7 @@ def generate(prompt, w, h, verbose):
         if not poll and rid:
             poll = f"{ep.split('/higgsfield-ai')[0]}/requests/{rid}/status"
         for _ in range(90):
-            found = urls(j)
+            found = [im['url'] for im in (j.get('images') or []) if isinstance(im, dict) and im.get('url')] or urls(j)
             st = status_of(j)
             if found and st in ('', 'completed', 'succeeded', 'success', 'done', 'finished'):
                 return found[0]
@@ -118,7 +130,7 @@ names = [n for n in cfg['images'] if not only or n in only]
 failed = []
 for i, name in enumerate(names):
     spec = cfg['images'][name]
-    url = generate(f"{spec['prompt']}, {spec.get('style', cfg['style'])}", spec['w'], spec['h'], verbose=(i == 0))
+    url = generate(f"{spec['prompt']}, {spec.get('style', cfg['style'])}", spec['w'], spec['h'], verbose=(i == 0), spec=spec)
     if not url:
         failed.append(name)
         print(f'FALLÓ {name}')

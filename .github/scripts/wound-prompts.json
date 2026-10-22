@@ -4,7 +4,15 @@
     "hero-chamber": {
       "w": 1920,
       "h": 1088,
-      "prompt": "a relaxed senior Hispanic man in his sixties lying inside a modern clear acrylic monoplace hyperbaric oxygen chamber, eyes closed, peaceful, soft cool blue light glowing through the transparent tube, dark navy room, cinematic wide shot from the side"
+      "prompt": "Use the hyperbaric chamber shown in the reference images exactly as it is: a white Perry Sigma 40 medical monoplace hyperbaric chamber, a long clear acrylic cylinder with thick round white end rings, a round white hinged door with small round ports, a white base cabinet and a padded stretcher tray inside. Keep its real proportions and details. Do not copy the people from the reference images. New photo: a calm Hispanic man in his sixties lies inside the closed chamber on the padded tray, eyes closed, relaxed, wearing a light blue 100% cotton hospital gown, a white cotton sheet over his legs, completely barefoot, no shoes, no socks, no jewelry. Seen from the side in a dim, modern medical suite with a navy blue wall, soft cool light glowing through the acrylic, cinematic, wide 16:9 composition with empty dark space on the left.",
+      "model": "grok",
+      "refs": [
+        "https://seagreen-turtle-651513.hostingersite.com/wp-content/uploads/2026/10/perry-session-hd-scaled.webp",
+        "https://seagreen-turtle-651513.hostingersite.com/wp-content/uploads/2026/10/perry-patient-hd-scaled.webp",
+        "https://seagreen-turtle-651513.hostingersite.com/wp-content/uploads/2026/10/perry-door-hd-scaled.webp",
+        "https://seagreen-turtle-651513.hostingersite.com/wp-content/uploads/2026/10/perry-room-v-hd-scaled.webp"
+      ],
+      "style": "photorealistic editorial medical photography, shallow depth of field, no text added, no watermarks"
     },
     "bubbles": {
       "w": 1920,
@@ -15,13 +23,23 @@
     "chamber-room": {
       "w": 896,
       "h": 1120,
-      "prompt": "a sleek modern monoplace hyperbaric oxygen chamber, a long transparent clear acrylic cylinder tube on a white metal base with a padded stretcher inside, standing in an empty minimalist medical suite with a navy accent wall and soft daylight from a large window"
+      "prompt": "Use the hyperbaric chamber shown in the reference images exactly as it is: a white Perry Sigma 40 medical monoplace hyperbaric chamber, a long clear acrylic cylinder with thick round white end rings, a round white hinged door with small round ports, a white base cabinet and a padded stretcher tray inside. Keep its real proportions and details. Do not copy the people from the reference images. New photo: the same chamber standing empty and ready in a clean, minimalist private medical suite, door open, crisp white sheet and pillow on the stretcher tray, a navy blue accent wall, soft daylight from a window, nobody in the room, vertical composition.",
+      "model": "grok",
+      "refs": [
+        "https://seagreen-turtle-651513.hostingersite.com/wp-content/uploads/2026/10/perry-session-hd-scaled.webp",
+        "https://seagreen-turtle-651513.hostingersite.com/wp-content/uploads/2026/10/perry-patient-hd-scaled.webp",
+        "https://seagreen-turtle-651513.hostingersite.com/wp-content/uploads/2026/10/perry-door-hd-scaled.webp",
+        "https://seagreen-turtle-651513.hostingersite.com/wp-content/uploads/2026/10/perry-room-v-hd-scaled.webp"
+      ],
+      "style": "photorealistic editorial medical photography, no text added, no watermarks"
     },
     "o2-cells": {
       "w": 896,
       "h": 1120,
-      "prompt": "3D medical illustration, cross-section of a blood vessel with many red blood cells flowing inside it, tiny glowing cyan oxygen particles dissolving into the plasma around the cells, dark navy background, soft volumetric light, no tubes, no containers, no pills",
-      "style": "photorealistic, cinematic, shallow depth of field, no text, no letters, no signs, no logos, no watermarks"
+      "prompt": "Scientific 3D medical illustration: microscopic view inside a small blood vessel, many glossy red blood cells (biconcave discs) floating through clear plasma, thousands of tiny glowing cyan oxygen particles dissolving between them and diffusing through the thin translucent vessel wall into the surrounding tissue. Deep navy background, soft volumetric light, shallow depth of field, elegant and calm, vertical composition.",
+      "style": "high-end 3D medical visualization, no text, no labels, no tubes, no containers, no pills",
+      "model": "grok",
+      "refs": []
     },
     "dressing": {
       "w": 896,
@@ -36,7 +54,10 @@
     "cond-foot": {
       "w": 1152,
       "h": 864,
-      "prompt": "a senior man with diabetes seated on a clinic exam table while a physician gently examines his bandaged foot wrapped in clean white gauze, bright natural light, respectful framing, no wound visible"
+      "prompt": "A senior Hispanic man with diabetes sits on a clinic exam table wearing casual clothes, his right foot resting on a small padded footrest and wrapped in a clean white gauze bandage. A physician in a white coat kneels in front of him and gently checks the bandaged foot with gloved hands while they talk. Bright modern clinic, navy accent wall, respectful framing, two distinct people, natural anatomy, no wound visible.",
+      "model": "grok",
+      "refs": [],
+      "style": "photorealistic editorial medical photography, natural daylight, no text, no watermarks"
     },
     "cond-graft": {
       "w": 1152,
@@ -76,8 +97,10 @@
     "familia": {
       "w": 896,
       "h": 1120,
-      "prompt": "candid lifestyle photograph of a Hispanic family of three generations, a grandmother, her adult daughter and a teenage grandson, laughing together on the front porch of a Florida home with palm leaves, warm golden afternoon light, casual clothes, no medical uniforms, no lab coats",
-      "style": "photorealistic, cinematic, shallow depth of field, no text, no letters, no signs, no logos, no watermarks"
+      "prompt": "Candid lifestyle photo of a Hispanic family of three generations, a grandmother, her adult daughter and a ten-year-old grandson, laughing together while sitting on the front porch steps of a pastel Florida house with palm leaves, warm golden afternoon light, casual summer clothes, nobody wears a uniform or a lab coat, vertical composition.",
+      "style": "photorealistic, cinematic, shallow depth of field, no text, no watermarks",
+      "model": "grok",
+      "refs": []
     },
     "orlando": {
       "w": 1920,
