@@ -305,9 +305,6 @@
 		$$('.wt-cond').forEach(card => G.from(card, { y: 60, opacity: 0, duration: 0.9, ease: 'expo.out', scrollTrigger: { trigger: card, start: 'top 88%', toggleActions: 'play none none reverse' } }));
 	});
 
-	/* Studies cascade in */
-	G.from('.wt-study', { y: 50, opacity: 0, duration: 0.9, stagger: 0.1, ease: 'expo.out', scrollTrigger: { trigger: '.wt-evidence__grid', start: 'top 82%', toggleActions: 'play none none reverse' } });
-
 	/* Self-check items cascade in */
 	G.from('.wt-check__list li', { x: 40, opacity: 0, duration: 0.8, stagger: 0.08, ease: 'expo.out', scrollTrigger: { trigger: '.wt-check__box', start: 'top 80%', toggleActions: 'play none none reverse' } });
 
@@ -361,7 +358,7 @@
 	$$('.wt-steps__media img').forEach(img => G.fromTo(img, { scale: 1.25 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'center center', scrub: true } }));
 
 	/* Exits: section copy lifts and dims as it leaves the top */
-	$$('.wt-statement__text, .wt-program__copy, .wt-evidence__head, .wt-check .wt-split, .wt-lang__copy, .wt-steps__head, .wt-personal .wt-split, .wt-band__in').forEach(el =>
+	$$('.wt-statement__text, .wt-program__copy, .wt-check .wt-split, .wt-lang__copy, .wt-steps__head, .wt-personal .wt-split, .wt-band__in').forEach(el =>
 		G.to(el, { y: -60, opacity: 0.35, ease: 'none', scrollTrigger: { trigger: el, start: 'bottom 22%', end: 'bottom -5%', scrub: true } }));
 
 	/* Custom cursor with labels, and magnetic buttons */

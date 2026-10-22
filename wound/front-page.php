@@ -169,27 +169,6 @@ $pic = function ( $file, $alt, $w, $h, $attrs = '' ) {
 		<div class="wt-when__bar" aria-hidden="true"><i></i></div>
 	</section>
 
-	<section class="wt-section wt-evidence wt-dark" id="evidence" data-header="dark">
-		<div class="wt-wrap">
-			<div class="wt-evidence__head">
-				<p class="wt-eyebrow"><span class="wt-dot"></span><?php echo esc_html( $c['evidence']['eyebrow'] ); ?></p>
-				<h2 data-reveal><?php echo esc_html( $c['evidence']['title'] ); ?></h2>
-				<p class="wt-lead"><?php echo esc_html( $c['evidence']['intro'] ); ?></p>
-			</div>
-			<div class="wt-evidence__grid">
-				<?php foreach ( $c['evidence']['items'] as $i => $e ) : ?>
-					<article class="wt-study<?php echo count( $c['evidence']['items'] ) - 1 === $i ? ' is-caveat' : ''; ?>">
-						<p class="wt-study__stat"><?php echo esc_html( $e['stat'] ); ?></p>
-						<h3><?php echo esc_html( $e['label'] ); ?></h3>
-						<p><?php echo esc_html( $e['text'] ); ?></p>
-						<p class="wt-study__cite"><?php echo esc_html( $c['evidence']['source'] ); ?>: <a href="<?php echo esc_url( $e['url'] ); ?>" target="_blank" rel="noopener"><?php echo esc_html( $e['cite'] ); ?></a></p>
-					</article>
-				<?php endforeach; ?>
-			</div>
-			<p class="wt-note wt-evidence__note"><?php echo esc_html( $c['evidence']['note'] ); ?></p>
-		</div>
-	</section>
-
 	<section class="wt-section wt-check" id="self-check">
 		<div class="wt-wrap wt-split">
 			<div class="wt-check__head">
