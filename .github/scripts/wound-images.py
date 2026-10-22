@@ -16,6 +16,8 @@ if os.environ.get('DOCS'):
              'https://docs.higgsfield.ai/docs/llms.txt', 'https://docs.higgsfield.ai/llms-full.txt', 'https://docs.higgsfield.ai/docs/llms-full.txt',
              'https://docs.higgsfield.ai/docs/guides/images.md', 'https://docs.higgsfield.ai/docs/quickstart.md',
              'https://docs.higgsfield.ai/docs/authentication.md', 'https://docs.higgsfield.ai/docs/how-to/sdk.md']
+    if os.environ['DOCS'].startswith('http'):
+        seeds = [u.strip() for u in os.environ['DOCS'].split(',') if u.strip()]
     seen, queue, out = set(), list(seeds), []
     while queue and len(seen) < 40:
         u = queue.pop(0)
