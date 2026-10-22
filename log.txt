@@ -1,0 +1,1 @@
+Falta el secret PEXELS_API_KEY en el repo (Settings > Secrets and variables > Actions).
