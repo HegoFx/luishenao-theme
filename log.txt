@@ -1,7 +1,1 @@
-  POST https://platform.higgsfield.ai/higgsfield-ai/soul/standard -> 200 {"status":"queued","request_id":"ab0b6e2d-5a41-4738-9dd8-e3420a3d4249","status_url":"https://api.higgsfield.ai/requests/ab0b6e2d-5a41-4738-9dd8-e3420a3d4249/status","cancel_url":"https://api.higgsfield.ai/requests/ab0b6e2d-5a41-4738-9dd8-e3420a3d4249/cancel"}
-  GET https://api.higgsfield.ai/requests/ab0b6e2d-5a41-4738-9dd8-e3420a3d4249/status -> 200 {"status":"queued","request_id":"ab0b6e2d-5a41-4738-9dd8-e3420a3d4249","status_url":"https://api.higgsfield.ai/requests/ab0b6e2d-5a41-4738-9dd8-e3420a3d4249/status","cancel_url":"https://api.higgsfield.ai/requests/ab0b6e2d-5a41-4738-9dd8-e3420a3d4249/cancel"}
-OK bubbles 2048x1152 -> 1920x1088
-OK chamber-room 1536x2048 -> 896x1120
-OK o2-cells 1536x2048 -> 896x1120
-OK familia 1536x2048 -> 896x1120
-OK final 2048x1152 -> 1920x1088
+docs: 0 páginas en el índice, 0 guardadas
