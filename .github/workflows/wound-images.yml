@@ -1,0 +1,50 @@
+# Generates the Wound landing images with the Hugging Face Inference API (secret HF_TOKEN) and pushes
+# them to the `wound-images` branch for review. It never touches a server or the theme itself.
+name: Imágenes Wound (Hugging Face)
+
+on:
+  workflow_dispatch:
+    inputs:
+      only:
+        description: 'Imágenes a generar, separadas por coma (vacío = todas)'
+        default: ''
+  push:
+    branches: ['claude/**']
+    paths: ['.github/scripts/wound-prompts.json', '.github/scripts/wound-images.py', '.github/workflows/wound-images.yml']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: wound-images
+  cancel-in-progress: false
+
+jobs:
+  images:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generar
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          ONLY: ${{ inputs.only }}
+        run: |
+          pip install -q requests pillow
+          python .github/scripts/wound-images.py 2>&1 | tee log.txt
+
+      - name: Publicar en la rama wound-images
+        if: always()
+        run: |
+          mkdir -p pub && cd pub
+          git init -q -b wound-images
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}"
+          # keep earlier images when only some are regenerated
+          git fetch -q origin wound-images && git reset -q --soft origin/wound-images && git checkout -q origin/wound-images -- . || true
+          cp ../out/*.webp . 2>/dev/null || true
+          cp ../log.txt log.txt 2>/dev/null || true
+          git add -A
+          git commit -qm "Imágenes wound de ${GITHUB_SHA::7}" || echo "sin cambios"
+          git push -q origin HEAD:wound-images
