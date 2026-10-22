@@ -76,7 +76,7 @@
 		const near = new IntersectionObserver(es => es.forEach(e => {
 			if (!e.isIntersecting) return;
 			const v = e.target;
-			v.src = v.dataset.src; v.load(); near.unobserve(v);
+			v.src = innerWidth < 900 && v.dataset.srcSm ? v.dataset.srcSm : v.dataset.src; v.load(); near.unobserve(v);
 		}), { rootMargin: '600px 0px' });
 		const seen = new IntersectionObserver(es => es.forEach(e => { const v = e.target; e.isIntersecting ? v.play().catch(() => {}) : v.pause(); }), { threshold: 0.05 });
 		$$('video[data-src]').forEach(v => { near.observe(v); seen.observe(v); });

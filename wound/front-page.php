@@ -18,7 +18,8 @@ $words = function ( $text, $class = 'wt-w' ) {
 };
 // Background video (Pexels): poster first, the file only loads near the viewport (landing.js).
 $vid = function ( $name ) {
-	return sprintf( '<video muted loop playsinline preload="none" poster="%s" data-src="%s"></video>', wt_img( "$name-poster.webp" ), esc_url( get_theme_file_uri( "assets/video/$name.mp4" ) ) );
+	$sm = is_file( get_theme_file_path( "assets/video/$name-sm.mp4" ) ) ? sprintf( ' data-src-sm="%s"', esc_url( get_theme_file_uri( "assets/video/$name-sm.mp4" ) ) ) : '';
+	return sprintf( '<video muted loop playsinline preload="none" poster="%s" data-src="%s"%s></video>', wt_img( "$name-poster.webp" ), esc_url( get_theme_file_uri( "assets/video/$name.mp4" ) ), $sm );
 };
 // A responsive theme image with explicit size (no layout shift).
 $pic = function ( $file, $alt, $w, $h, $attrs = '' ) {
