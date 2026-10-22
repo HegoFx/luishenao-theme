@@ -21,6 +21,7 @@ $b = wt_biz();
 		</div>
 	</div>
 	<div class="wt-wrap wt-footer__legal">
+		<p><?php echo esc_html( $c['illustrative'] ); ?></p>
 		<p>&copy; <?php echo esc_html( gmdate( 'Y' ) . ' ' . $b['name'] . '. ' . $c['footer']['rights'] ); ?></p>
 	</div>
 </footer>
