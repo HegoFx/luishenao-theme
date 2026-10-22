@@ -156,6 +156,14 @@ html.wt-menu-open, html.wt-menu-open body { overflow: hidden; }
 .wt-hero .wt-o2 { z-index: -1; }
 .wt-hero__in { display: grid; gap: 32px; align-items: end; transform: translateY(calc(var(--p) * -80px)); opacity: calc(1 - var(--p) * 1.1); }
 @media (min-width: 1000px) { .wt-hero__in { grid-template-columns: 1fr 330px; } }
+/* Phones: the photo sits on top, framed on the patient's face, and the copy starts below it */
+@media (max-width: 760px) {
+	.wt-hero { padding-top: calc(min(52svh, 470px) - 40px); }
+	.wt-hero__media { bottom: auto; height: min(56svh, 500px); }
+	.wt-hero__media img { object-position: 74% 42%; }
+	.wt-hero__media::after { background: linear-gradient(180deg, rgba(7, 12, 26, .35) 0%, rgba(7, 12, 26, 0) 22%, rgba(7, 12, 26, 0) 55%, var(--abyss) 100%); }
+	.wt-hero { background: var(--abyss); }
+}
 .wt-hero__copy { max-width: 760px; }
 .wt-status { display: inline-flex; align-items: center; gap: 10px; padding: 9px 16px 9px 12px; border-radius: 999px; background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .18); backdrop-filter: blur(10px); font: 600 13.5px/1.2 var(--display); color: rgba(255, 255, 255, .9); margin-bottom: 26px; }
 .wt-hero__title { color: #fff; margin-bottom: 26px; }
