@@ -1,1 +1,8 @@
-docs: 3 páginas
+  POST https://api.higgsfield.ai/xai/grok-imagine-image-2.0 -> 200 {"status":"queued","request_id":"04ad20ed-10b1-4339-bb67-e3a0421aca76","status_url":"https://api.higgsfield.ai/requests/04ad20ed-10b1-4339-bb67-e3a0421aca76/status","cancel_url":"https://api.higgsfield.ai/requests/04ad20ed-10b1-4339-bb67-e3a0421aca76/cancel"}
+  GET https://api.higgsfield.ai/requests/04ad20ed-10b1-4339-bb67-e3a0421aca76/status -> 200 {"status":"queued","request_id":"04ad20ed-10b1-4339-bb67-e3a0421aca76","status_url":"https://api.higgsfield.ai/requests/04ad20ed-10b1-4339-bb67-e3a0421aca76/status","cancel_url":"https://api.higgsfield.ai/requests/04ad20ed-10b1-4339-bb67-e3a0421aca76/cancel"}
+  GET https://api.higgsfield.ai/requests/04ad20ed-10b1-4339-bb67-e3a0421aca76/status -> 200 {"status":"in_progress","request_id":"04ad20ed-10b1-4339-bb67-e3a0421aca76","status_url":"https://api.higgsfield.ai/requests/04ad20ed-10b1-4339-bb67-e3a0421aca76/status","cancel_url":"https://api.higgsfield.ai/requests/04ad20ed-10b1-4339-bb67-e3a0421aca76/cancel"}
+OK hero-chamber 2816x1584 -> 1920x1088
+OK chamber-room 1776x2368 -> 896x1120
+OK o2-cells 1776x2368 -> 896x1120
+OK cond-foot 2368x1776 -> 1152x864
+OK familia 1776x2368 -> 896x1120
