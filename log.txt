@@ -1,0 +1,86 @@
+  FLUX.1-schnell (1920, 1088) intento 1: 401 {"error":"Invalid username or password."}
+  FLUX.1-schnell (1280, 720) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (1920, 1088) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (1280, 720) intento 1: 401 {"error":"Invalid username or password."}
+FALLÓ hero-chamber
+  FLUX.1-schnell (1920, 1088) intento 1: 401 {"error":"Invalid username or password."}
+  FLUX.1-schnell (1280, 720) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (1920, 1088) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (1280, 720) intento 1: 401 {"error":"Invalid username or password."}
+FALLÓ bubbles
+  FLUX.1-schnell (896, 1120) intento 1: 401 {"error":"Invalid username or password."}
+  FLUX.1-schnell (592, 736) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (896, 1120) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (592, 736) intento 1: 401 {"error":"Invalid username or password."}
+FALLÓ chamber-room
+  FLUX.1-schnell (896, 1120) intento 1: 401 {"error":"Invalid username or password."}
+  FLUX.1-schnell (592, 736) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (896, 1120) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (592, 736) intento 1: 401 {"error":"Invalid username or password."}
+FALLÓ o2-cells
+  FLUX.1-schnell (896, 1120) intento 1: 401 {"error":"Invalid username or password."}
+  FLUX.1-schnell (592, 736) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (896, 1120) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (592, 736) intento 1: 401 {"error":"Invalid username or password."}
+FALLÓ dressing
+  FLUX.1-schnell (1216, 1520) intento 1: 401 {"error":"Invalid username or password."}
+  FLUX.1-schnell (800, 1008) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (1216, 1520) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (800, 1008) intento 1: 401 {"error":"Invalid username or password."}
+FALLÓ consult
+  FLUX.1-schnell (1152, 864) intento 1: 401 {"error":"Invalid username or password."}
+  FLUX.1-schnell (768, 576) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (1152, 864) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (768, 576) intento 1: 401 {"error":"Invalid username or password."}
+FALLÓ cond-foot
+  FLUX.1-schnell (1152, 864) intento 1: 401 {"error":"Invalid username or password."}
+  FLUX.1-schnell (768, 576) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (1152, 864) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (768, 576) intento 1: 401 {"error":"Invalid username or password."}
+FALLÓ cond-graft
+  FLUX.1-schnell (1152, 864) intento 1: 401 {"error":"Invalid username or password."}
+  FLUX.1-schnell (768, 576) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (1152, 864) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (768, 576) intento 1: 401 {"error":"Invalid username or password."}
+FALLÓ cond-xray
+  FLUX.1-schnell (1152, 864) intento 1: 401 {"error":"Invalid username or password."}
+  FLUX.1-schnell (768, 576) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (1152, 864) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (768, 576) intento 1: 401 {"error":"Invalid username or password."}
+FALLÓ cond-rehab
+  FLUX.1-schnell (1216, 832) intento 1: 401 {"error":"Invalid username or password."}
+  FLUX.1-schnell (800, 544) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (1216, 832) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (800, 544) intento 1: 401 {"error":"Invalid username or password."}
+FALLÓ step-assess
+  FLUX.1-schnell (1216, 832) intento 1: 401 {"error":"Invalid username or password."}
+  FLUX.1-schnell (800, 544) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (1216, 832) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (800, 544) intento 1: 401 {"error":"Invalid username or password."}
+FALLÓ step-plan
+  FLUX.1-schnell (1216, 832) intento 1: 401 {"error":"Invalid username or password."}
+  FLUX.1-schnell (800, 544) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (1216, 832) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (800, 544) intento 1: 401 {"error":"Invalid username or password."}
+FALLÓ step-coord
+  FLUX.1-schnell (1216, 832) intento 1: 401 {"error":"Invalid username or password."}
+  FLUX.1-schnell (800, 544) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (1216, 832) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (800, 544) intento 1: 401 {"error":"Invalid username or password."}
+FALLÓ step-follow
+  FLUX.1-schnell (896, 1120) intento 1: 401 {"error":"Invalid username or password."}
+  FLUX.1-schnell (592, 736) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (896, 1120) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (592, 736) intento 1: 401 {"error":"Invalid username or password."}
+FALLÓ familia
+  FLUX.1-schnell (1920, 1088) intento 1: 401 {"error":"Invalid username or password."}
+  FLUX.1-schnell (1280, 720) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (1920, 1088) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (1280, 720) intento 1: 401 {"error":"Invalid username or password."}
+FALLÓ orlando
+  FLUX.1-schnell (1920, 1088) intento 1: 401 {"error":"Invalid username or password."}
+  FLUX.1-schnell (1280, 720) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (1920, 1088) intento 1: 401 {"error":"Invalid username or password."}
+  stable-diffusion-xl-base-1.0 (1280, 720) intento 1: 401 {"error":"Invalid username or password."}
+FALLÓ final
+Fallaron: hero-chamber, bubbles, chamber-room, o2-cells, dressing, consult, cond-foot, cond-graft, cond-xray, cond-rehab, step-assess, step-plan, step-coord, step-follow, familia, orlando, final
