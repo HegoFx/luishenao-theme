@@ -12,7 +12,8 @@ from PIL import Image
 if os.environ.get('DOCS'):
     # Read the official docs from the runner (the Claude session cannot reach them). No credits used.
     os.makedirs('out', exist_ok=True)
-    seeds = ['https://docs.higgsfield.ai/docs/llms.txt', 'https://docs.higgsfield.ai/llms-full.txt', 'https://docs.higgsfield.ai/docs/llms-full.txt',
+    seeds = ['https://docs.higgsfield.ai/docs/models/image-generation.md', 'https://docs.higgsfield.ai/docs/models.md', 'https://docs.higgsfield.ai/docs/openapi.json',
+             'https://docs.higgsfield.ai/docs/llms.txt', 'https://docs.higgsfield.ai/llms-full.txt', 'https://docs.higgsfield.ai/docs/llms-full.txt',
              'https://docs.higgsfield.ai/docs/guides/images.md', 'https://docs.higgsfield.ai/docs/quickstart.md',
              'https://docs.higgsfield.ai/docs/authentication.md', 'https://docs.higgsfield.ai/docs/how-to/sdk.md']
     seen, queue, out = set(), list(seeds), []
@@ -25,9 +26,9 @@ if os.environ.get('DOCS'):
         if not r.ok:
             out.append(f'\n\n# {u} -> {r.status_code}')
             continue
-        out += [f'\n\n# {u}', r.text[:60000]]
+        out += [f'\n\n# {u}', r.text[:120000]]
         for link in re.findall(r'https://docs\.higgsfield\.ai/[^\s)\]"]+\.(?:md|txt)', r.text):
-            if re.search(r'image|soul|reference|upload|api-reference|model', link, re.I):
+            if re.search(r'image|soul|edit|banana|seedream|kontext|gpt|flux|reve|qwen', link, re.I) and 'video' not in link:
                 queue.append(link)
     open('out/higgsfield-docs.md', 'w').write('\n'.join(out))
     print(f'docs: {len(seen)} páginas')
