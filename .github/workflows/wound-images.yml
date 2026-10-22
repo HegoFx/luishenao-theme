@@ -1,6 +1,6 @@
-# Generates the Wound landing images with the Hugging Face Inference API (secret HF_TOKEN) and pushes
+# Generates the Wound landing images with the Higgsfield API (secret HF_TOKEN = KEY_ID:KEY_SECRET) and pushes
 # them to the `wound-images` branch for review. It never touches a server or the theme itself.
-name: Imágenes Wound (Hugging Face)
+name: Imágenes Wound (Higgsfield)
 
 on:
   workflow_dispatch:
@@ -28,6 +28,7 @@ jobs:
       - name: Generar
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_SECRET: ${{ secrets.HF_SECRET }}
           ONLY: ${{ inputs.only }}
         run: |
           set -o pipefail

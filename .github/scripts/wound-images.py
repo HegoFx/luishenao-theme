@@ -1,63 +1,113 @@
-"""Generates the Wound landing images with the Hugging Face Inference API.
+"""Generates the Wound landing images with the Higgsfield API (Soul model).
 
-Reads .github/scripts/wound-prompts.json, writes WebP (quality 82) to out/.
-ONLY (comma list) limits which images are generated. Tries FLUX.1-schnell first, then SDXL.
+Credentials: secret HF_TOKEN as "KEY_ID:KEY_SECRET", or HF_TOKEN = key id plus HF_SECRET = secret.
+Reads .github/scripts/wound-prompts.json and writes WebP (quality 82), cropped to each slot's size, to out/.
+ONLY (comma list) limits which images are generated. The first image doubles as a probe: if it fails,
+the run stops before spending credits on the rest, and raw API responses are logged to adapt the client.
 """
-import io, json, os, sys, time
+import io, json, os, re, sys, time
 import requests
 from PIL import Image
 
-TOKEN = os.environ.get('HF_TOKEN', '').strip()
-if not TOKEN:
-    sys.exit('Falta el secret HF_TOKEN en el repo (Settings > Secrets and variables > Actions).')
-if not TOKEN.startswith('hf_'):
-    print('Aviso: el token no empieza con "hf_"; los tokens de Hugging Face sí.')
-who = requests.get('https://huggingface.co/api/whoami-v2', headers={'Authorization': f'Bearer {TOKEN}'}, timeout=30)
-if not who.ok:
-    sys.exit(f'Hugging Face rechaza el token ({who.status_code}). Crea uno nuevo en https://huggingface.co/settings/tokens y vuelve a guardarlo como HF_TOKEN.')
-info = who.json()
-print(f"Token válido: cuenta {info.get('name')}, tipo {info.get('auth', {}).get('accessToken', {}).get('role', '?')}")
+key = os.environ.get('HF_TOKEN', '').strip()
+secret = os.environ.get('HF_SECRET', '').strip()
+if not key:
+    sys.exit('Falta el secret HF_TOKEN (Higgsfield "KEY_ID:KEY_SECRET").')
+if ':' not in key:
+    if not secret:
+        sys.exit('HF_TOKEN no trae ":" y falta HF_SECRET. Guarda HF_TOKEN como KEY_ID:KEY_SECRET.')
+    key = f'{key}:{secret}'
+HEAD = {'Authorization': f'Key {key}', 'Content-Type': 'application/json', 'Accept': 'application/json'}
 
-MODELS = [
-    'https://router.huggingface.co/hf-inference/models/black-forest-labs/FLUX.1-schnell',
-    'https://router.huggingface.co/hf-inference/models/stabilityai/stable-diffusion-xl-base-1.0',
+ENDPOINTS = [
+    'https://platform.higgsfield.ai/higgsfield-ai/soul/standard',
+    'https://api.higgsfield.ai/higgsfield-ai/soul/v2/standard',
 ]
 cfg = json.load(open('.github/scripts/wound-prompts.json'))
 only = [s.strip() for s in os.environ.get('ONLY', '').split(',') if s.strip()]
 os.makedirs('out', exist_ok=True)
 
 
-def generate(prompt, w, h):
-    for url in MODELS:
-        for size in ((w, h), (w * 2 // 3 // 16 * 16, h * 2 // 3 // 16 * 16)):
-            for attempt in range(3):
-                r = requests.post(url, headers={'Authorization': f'Bearer {TOKEN}', 'Accept': 'image/png'},
-                                  json={'inputs': prompt, 'parameters': {'width': size[0], 'height': size[1]}}, timeout=180)
-                if r.ok and r.headers.get('content-type', '').startswith('image/'):
-                    return Image.open(io.BytesIO(r.content)), url.rsplit('/', 1)[-1], size
-                print(f'  {url.rsplit("/", 1)[-1]} {size} intento {attempt + 1}: {r.status_code} {r.text[:200]}')
-                if r.status_code in (503, 429):
-                    time.sleep(20)
-                    continue
-                break
-    return None, None, None
+def ratio(w, h):
+    r = w / h
+    return min({'16:9': 16 / 9, '4:3': 4 / 3, '3:2': 3 / 2, '1:1': 1, '3:4': 3 / 4, '2:3': 2 / 3, '9:16': 9 / 16}.items(), key=lambda kv: abs(kv[1] - r))[0]
 
 
+def urls(obj):
+    """Every image URL anywhere in a JSON response."""
+    found = []
+    if isinstance(obj, dict):
+        for v in obj.values():
+            found += urls(v)
+    elif isinstance(obj, list):
+        for v in obj:
+            found += urls(v)
+    elif isinstance(obj, str) and re.match(r'https?://\S+\.(png|jpe?g|webp)(\?\S*)?$', obj, re.I):
+        found.append(obj)
+    return found
+
+
+def status_of(j):
+    return str(j.get('status') or j.get('state') or (j.get('data') or {}).get('status') or '').lower()
+
+
+def generate(prompt, w, h, verbose):
+    body = {'prompt': prompt, 'aspect_ratio': ratio(w, h), 'resolution': '1080p'}
+    for ep in ENDPOINTS:
+        r = requests.post(ep, headers=HEAD, json=body, timeout=120)
+        if verbose:
+            print(f'  POST {ep} -> {r.status_code} {r.text[:600]}')
+        if r.status_code in (401, 403):
+            sys.exit(f'Higgsfield rechaza la credencial ({r.status_code}). Revisa que HF_TOKEN sea KEY_ID:KEY_SECRET.')
+        if not r.ok:
+            continue
+        j = r.json()
+        poll = j.get('status_url') or j.get('statusUrl') or (j.get('urls') or {}).get('status')
+        rid = j.get('request_id') or j.get('id') or j.get('requestId')
+        if not poll and rid:
+            poll = f"{ep.split('/higgsfield-ai')[0]}/requests/{rid}/status"
+        for _ in range(90):
+            found = urls(j)
+            st = status_of(j)
+            if found and st in ('', 'completed', 'succeeded', 'success', 'done', 'finished'):
+                return found[0]
+            if st in ('failed', 'error', 'nsfw', 'canceled', 'cancelled'):
+                print(f'  estado {st}: {json.dumps(j)[:600]}')
+                return None
+            if not poll:
+                print(f'  sin URL de estado: {json.dumps(j)[:600]}')
+                return None
+            time.sleep(4)
+            pr = requests.get(poll, headers=HEAD, timeout=60)
+            j = pr.json() if pr.ok else {}
+            if verbose and _ in (0, 5):
+                print(f'  GET {poll} -> {pr.status_code} {pr.text[:600]}')
+        print('  tiempo agotado esperando la imagen')
+        return None
+    return None
+
+
+names = [n for n in cfg['images'] if not only or n in only]
 failed = []
-for name, spec in cfg['images'].items():
-    if only and name not in only:
-        continue
-    prompt = f"{spec['prompt']}, {cfg['style']}"
-    img, model, size = generate(prompt, spec['w'], spec['h'])
-    if not img:
+for i, name in enumerate(names):
+    spec = cfg['images'][name]
+    url = generate(f"{spec['prompt']}, {cfg['style']}", spec['w'], spec['h'], verbose=(i == 0))
+    if not url:
         failed.append(name)
         print(f'FALLÓ {name}')
+        if i == 0:
+            sys.exit('La primera imagen falló: me detengo para no gastar créditos. Revisa las respuestas de arriba.')
         continue
-    img = img.convert('RGB')
-    if img.size != (spec['w'], spec['h']):
-        img = img.resize((spec['w'], spec['h']), Image.LANCZOS)
-    img.save(f'out/{name}.webp', quality=82)
-    print(f'OK {name} {model} {size} -> {spec["w"]}x{spec["h"]}')
+    img = Image.open(io.BytesIO(requests.get(url, timeout=120).content)).convert('RGB')
+    # crop to the slot's aspect, then scale to its size
+    tw, th = spec['w'], spec['h']
+    sw, sh = img.size
+    if sw / sh > tw / th:
+        nw = int(sh * tw / th); img = img.crop(((sw - nw) // 2, 0, (sw - nw) // 2 + nw, sh))
+    else:
+        nh = int(sw * th / tw); img = img.crop((0, (sh - nh) // 2, sw, (sh - nh) // 2 + nh))
+    img.resize((tw, th), Image.LANCZOS).save(f'out/{name}.webp', quality=82)
+    print(f'OK {name} {sw}x{sh} -> {tw}x{th}')
 
 if failed:
     sys.exit('Fallaron: ' + ', '.join(failed))
