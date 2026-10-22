@@ -1,0 +1,125 @@
+# Wound Therapeutics HBOT landing on its own Hostinger temporary site.
+# Uploads wound/ as the theme "wound-hbot", installs Polylang, runs wound-setup.php (idempotent, after a
+# database backup), purges LiteSpeed, then takes screenshots into the `screenshots-wound` branch.
+# Every server path is hard-coded to WOUND_DOMAIN: the SSH key is account-wide and also reaches production.
+name: Landing Wound (HBOT)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, 'claude/**']
+    paths: ['wound/**', '.github/workflows/wound.yml', '.github/scripts/wound-setup.php', '.github/scripts/wound-shots.mjs']
+
+concurrency:
+  group: wound
+  cancel-in-progress: false
+
+env:
+  WOUND_DOMAIN: lightslategray-okapi-283954.hostingersite.com
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configurar SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          for i in 1 2 3 4 5; do
+            ssh-keyscan -T 15 -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null && [ -s ~/.ssh/known_hosts ] && break
+            echo "ssh-keyscan intento $i falló, reintentando..."; sleep $((i * 5))
+          done
+          [ -s ~/.ssh/known_hosts ]
+
+      - name: Subir el tema y el script
+        run: |
+          SSH="ssh -p ${{ secrets.SSH_PORT }} -i ~/.ssh/id_ed25519"
+          DEST="domains/$WOUND_DOMAIN/public_html/wp-content/themes/wound-hbot/"
+          rsync -az --delete -e "$SSH" ./wound/ "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$DEST"
+          scp -P "${{ secrets.SSH_PORT }}" -i ~/.ssh/id_ed25519 .github/scripts/wound-setup.php "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/wound-setup.php"
+
+      - name: Configurar el sitio
+        run: |
+          ssh -p "${{ secrets.SSH_PORT }}" -i ~/.ssh/id_ed25519 \
+            "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" \
+            "WOUND_DOMAIN='$WOUND_DOMAIN' bash -s" <<'EOF'
+          set -e
+          WP_ROOT="$HOME/domains/$WOUND_DOMAIN/public_html"
+          [ -f "$WP_ROOT/wp-config.php" ] || { echo "No hay WordPress en $WP_ROOT"; exit 1; }
+          wp() { command wp --path="$WP_ROOT" "$@"; }
+          section() { echo; echo "===== $1 ====="; }
+
+          section "Backup"
+          mkdir -p ~/backups
+          F=~/backups/wound-$(date +%Y%m%d-%H%M%S).sql
+          MYSQL_PWD="$(wp config get DB_PASSWORD)" mariadb-dump --single-transaction \
+            -h "$(wp config get DB_HOST)" -u "$(wp config get DB_USER)" "$(wp config get DB_NAME)" > "$F"
+          [ -s "$F" ] || { echo "Backup vacío, me detengo"; exit 1; }
+          echo "Backup: ${F#$HOME/} ($(du -h "$F" | cut -f1))"
+          # keep the last 5
+          ls -1t ~/backups/wound-*.sql | tail -n +6 | xargs -r rm -f
+
+          section "Tema y Polylang"
+          wp theme activate wound-hbot
+          wp plugin is-installed polylang || wp plugin install polylang
+          wp plugin activate polylang
+
+          section "Configuración"
+          wp eval-file ~/wound-setup.php
+          rm -f ~/wound-setup.php
+          wp rewrite flush
+
+          section "llms.txt de Hostinger"
+          if [ -f "$WP_ROOT/llms.txt" ]; then
+            mv "$WP_ROOT/llms.txt" ~/backups/llms.txt.wound-$(date +%Y%m%d-%H%M%S)
+            echo "Movido a ~/backups"
+          else
+            echo "No hay"
+          fi
+
+          section "Caché"
+          wp litespeed-purge all 2>/dev/null || wp cache flush
+
+          section "Estado"
+          wp option get blog_public
+          wp post list --post_type=page --fields=ID,post_title,post_name,post_status --lang=
+          for p in / /es/; do
+            curl -s -o /dev/null -A "Mozilla/5.0" -w "%{http_code}  $p\n" "https://$WOUND_DOMAIN$p"
+          done
+          EOF
+
+  shots:
+    needs: deploy
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    container: mcr.microsoft.com/playwright:v1.47.2-jammy
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Capturar
+        env:
+          SITE_URL: https://${{ env.WOUND_DOMAIN }}
+        run: |
+          (command -v git >/dev/null || (apt-get update -qq && apt-get install -y -qq git >/dev/null)) &
+          npm init -y >/dev/null && npm i --no-audit --no-fund playwright@1.47.2 >/dev/null
+          wait
+          sleep 10
+          mkdir -p shots
+          node .github/scripts/wound-shots.mjs | tee shots/log.txt || true
+
+      - name: Publicar en la rama screenshots-wound
+        run: |
+          cd shots
+          git init -q -b screenshots-wound
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -qm "Capturas wound de ${GITHUB_SHA::7}"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" screenshots-wound

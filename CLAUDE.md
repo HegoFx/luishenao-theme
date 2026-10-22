@@ -64,3 +64,12 @@ Lee esto antes de investigar. Actualízalo cuando confirmes algo nuevo del servi
 - Plugins: `litespeed-cache` inactivo; must-use de Hostinger: `hostinger-preview-domain`, `hostinger-auto-updates`.
 - Usuarios: solo el admin (ID 1).
 - OJO: la llave SSH de deploy es de cuenta, no de sitio. Alcanza también `henaoconversion.com` y `luishenaoai.online` (producción). Cualquier workflow nuevo debe apuntar explícitamente al WP root del staging.
+
+## Landing Wound Therapeutics (HBOT), sitio aparte
+- Cliente: Wound Therapeutics of Florida (woundfl.com, hecho en Base44), Dr. Fernando J. Torres, Orlando. Landing para pacientes y familiares: evaluación de heridas y HBOT.
+- La clínica no tiene cámara: el Dr. Torres evalúa y coordina, el HBOT se hace en un centro especializado. Copy aprobado por el jefe de Luis en `wound/inc/copy.php` (inglés tal cual; español escrito para pacientes en Florida, de usted). No mencionar seguros salvo el disclaimer final.
+- Sitio temporal: https://lightslategray-okapi-283954.hostingersite.com (misma cuenta y llave SSH). WP root `~/domains/lightslategray-okapi-283954.hostingersite.com/public_html`, fijo en los workflows.
+- Tema clásico en `wound/` (se sube como `wound-hbot`; `deploy.yml` lo excluye del tema principal). Todo el contenido se renderiza desde código (`front-page.php` + `inc/copy.php`); las páginas Home (en) ↔ Inicio (es) existen vacías solo para las URLs de Polylang.
+- Inglés por defecto en `/`, español en `/es/`. En inglés, "Hablamos Español" (header y hero) lleva a `/es/`, además del selector EN | ES.
+- `.github/workflows/wound.yml`: push a `main` o `claude/**` que toque `wound/**` → backup de la base (deja 5), rsync del tema, Polylang + `wound-setup.php` (idempotente, `blog_public`=0), purga LiteSpeed y capturas en la rama `screenshots-wound`. `wound-info.yml`: inventario de solo lectura.
+- Pendientes: formulario real de GHL (hoy es placeholder en `#evaluation`; reemplazar el `<form>`), fotos reales del centro de HBOT, cifra correcta de pacientes (el sitio dice 4,000+ y 6,000+), política de privacidad.
