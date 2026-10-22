@@ -99,7 +99,7 @@ $pic = function ( $file, $alt, $w, $h, $attrs = '' ) {
 		<div class="wt-zoom__pin">
 			<div class="wt-zoom__media"><?php echo $vid( 'bubbles' ); // phpcs:ignore ?></div>
 			<canvas class="wt-zoom__mask"></canvas>
-			<p class="wt-zoom__word"><?php echo esc_html( $c['zoom'] ); ?></p>
+			<p class="wt-zoom__word"><?php echo esc_html( $c['zoom'] ); ?><span><?php echo esc_html( $c['zoom_sub'] ); ?></span></p>
 		</div>
 	</section>
 
@@ -141,7 +141,7 @@ $pic = function ( $file, $alt, $w, $h, $attrs = '' ) {
 		</div>
 	</section>
 
-	<section class="wt-when" data-header="light">
+	<section class="wt-when" id="conditions" data-header="light">
 		<div class="wt-when__pin">
 			<div class="wt-when__track">
 				<div class="wt-when__intro">
@@ -167,6 +167,27 @@ $pic = function ( $file, $alt, $w, $h, $attrs = '' ) {
 			</div>
 		</div>
 		<div class="wt-when__bar" aria-hidden="true"><i></i></div>
+	</section>
+
+	<section class="wt-section wt-evidence wt-dark" id="evidence" data-header="dark">
+		<div class="wt-wrap">
+			<div class="wt-evidence__head">
+				<p class="wt-eyebrow"><span class="wt-dot"></span><?php echo esc_html( $c['evidence']['eyebrow'] ); ?></p>
+				<h2 data-reveal><?php echo esc_html( $c['evidence']['title'] ); ?></h2>
+				<p class="wt-lead"><?php echo esc_html( $c['evidence']['intro'] ); ?></p>
+			</div>
+			<div class="wt-evidence__grid">
+				<?php foreach ( $c['evidence']['items'] as $i => $e ) : ?>
+					<article class="wt-study<?php echo count( $c['evidence']['items'] ) - 1 === $i ? ' is-caveat' : ''; ?>">
+						<p class="wt-study__stat"><?php echo esc_html( $e['stat'] ); ?></p>
+						<h3><?php echo esc_html( $e['label'] ); ?></h3>
+						<p><?php echo esc_html( $e['text'] ); ?></p>
+						<p class="wt-study__cite"><?php echo esc_html( $c['evidence']['source'] ); ?>: <a href="<?php echo esc_url( $e['url'] ); ?>" target="_blank" rel="noopener"><?php echo esc_html( $e['cite'] ); ?></a></p>
+					</article>
+				<?php endforeach; ?>
+			</div>
+			<p class="wt-note wt-evidence__note"><?php echo esc_html( $c['evidence']['note'] ); ?></p>
+		</div>
 	</section>
 
 	<section class="wt-section wt-check" id="self-check">
@@ -228,7 +249,7 @@ $pic = function ( $file, $alt, $w, $h, $attrs = '' ) {
 		</div>
 	</section>
 
-	<section class="wt-section wt-steps-sec">
+	<section class="wt-section wt-steps-sec" id="visit">
 		<div class="wt-wrap">
 			<div class="wt-steps__head">
 				<p class="wt-eyebrow"><span class="wt-dot"></span><?php echo esc_html( $c['steps']['eyebrow'] ); ?></p>
@@ -277,7 +298,7 @@ $pic = function ( $file, $alt, $w, $h, $attrs = '' ) {
 		</div>
 	</section>
 
-	<section class="wt-place wt-dark" data-header="dark">
+	<section class="wt-place wt-dark" id="location" data-header="dark">
 		<div class="wt-place__media" aria-hidden="true"><?php echo $pic( 'orlando.webp', '', 1920, 1088 ); // phpcs:ignore ?></div>
 		<div class="wt-wrap">
 			<div class="wt-place__card">
