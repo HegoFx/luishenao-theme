@@ -7,6 +7,7 @@ Lee esto antes de investigar. Actualízalo cuando confirmes algo nuevo del servi
 - Hoy se publica en el dominio temporal de Hostinger https://navajowhite-whale-731377.hostingersite.com (staging, `blog_public`=0, no indexa).
 - Diseño y efectos en el tema; el contenido vive en páginas de WordPress armadas con los patterns de `/patterns`.
 - Estilo de escritura del usuario: nunca usar "—" en textos.
+- "HF" siempre es Higgsfield (generación de imágenes), nunca Hugging Face. El secret `HF_TOKEN` = `KEY_ID:KEY_SECRET` de Higgsfield, lo usa `wound-images.yml` (rama `claude/nifty-ritchie-137g4z`).
 
 ## Deploy
 - Push a `main` → `.github/workflows/deploy.yml` → rsync por SSH de esta carpeta a `THEME_PATH`. Solo toca el tema.
