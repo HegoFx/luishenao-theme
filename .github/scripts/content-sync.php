@@ -161,8 +161,9 @@ function lh_sync_upsert( array $it, $existing_id, $backup_dir, array &$report ) 
 }
 
 // Pages assembled from theme patterns.
-$home_es  = array( 'home-hero', 'home-problema', 'home-beneficios', 'home-closet', 'home-como', 'home-piloto', 'home-por-que', 'home-para-ti', 'faq', 'cta-final' );
-$landing  = array( 'landing-hero', 'home-beneficios', 'landing-comparativa', 'home-como', 'home-piloto', 'faq', 'cta-final' );
+// Oferta v6 (23 nov 2026). home-beneficios, home-closet y landing-comparativa quedan fuera: traían la oferta vieja y cifras de mercado sin fuente propia.
+$home_es  = array( 'home-hero', 'landing-prueba', 'home-problema', 'home-como', 'home-piloto', 'landing-garantias', 'landing-precio', 'home-para-ti', 'home-por-que', 'faq', 'cta-final' );
+$landing  = array( 'landing-hero', 'landing-prueba', 'home-problema', 'home-como', 'home-piloto', 'landing-garantias', 'landing-precio', 'home-para-ti', 'home-por-que', 'faq', 'cta-final' );
 $compose  = fn( $slugs, $lang ) => implode( "\n\n", array_map( fn( $s ) => lh_sync_pattern( 'en' === $lang ? "en-$s" : $s ), $slugs ) );
 $front_es = (int) get_option( 'page_on_front' );
 $front_en = (int) pll_get_post( $front_es, 'en' );
@@ -174,14 +175,14 @@ if ( $front_en ) {
 }
 $items[] = array(
 	'type' => 'page', 'lang' => 'es', 'slug' => 'clientes-para-negocios-de-closets', 'pair' => 'landing', 'template' => 'page-landing',
-	'title' => 'Clientes para negocios de custom closets',
-	'excerpt' => 'Home owners de tu zona que ya confirmaron presupuesto, timeline y ubicación, directo a tu WhatsApp. Piloto de $650/mes con garantía de 21 días.',
+	'title' => 'Sistema de Estimates para Custom Closets',
+	'excerpt' => 'Homeowners prefiltrados de tu zona. Closet Ads Lab, 3 garantías por escrito y precio de fundador desde ' . lh_usd( lh_pricing()['tier']['price'] ) . '/mes.',
 	'content' => $compose( $landing, 'es' ),
 );
 $items[] = array(
 	'type' => 'page', 'lang' => 'en', 'slug' => 'custom-closet-leads', 'pair' => 'landing', 'template' => 'page-landing',
-	'title' => 'Leads for Custom Closet Companies',
-	'excerpt' => 'Exclusive, pre-qualified homeowners in your area, texted to your phone and saved in your CRM. $650/mo pilot with a 21-day launch guarantee.',
+	'title' => 'Custom Closet Estimate System',
+	'excerpt' => 'Pre-qualified homeowners from your area. Closet Ads Lab, 3 guarantees in writing and founder pricing from ' . lh_usd( lh_pricing()['tier']['price'] ) . '/mo.',
 	'content' => $compose( $landing, 'en' ),
 );
 

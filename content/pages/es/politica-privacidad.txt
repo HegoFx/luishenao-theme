@@ -1,6 +1,6 @@
 ---
 title: Política de privacidad
-excerpt: Qué datos recojo cuando aplicas al piloto o visitas este sitio, para qué los uso y cómo puedes pedir que los borre.
+excerpt: Qué datos recojo cuando agendas una llamada o visitas este sitio, para qué los uso y cómo puedes pedir que los borre.
 pair: privacy
 ---
 Última actualización: 20 de octubre de 2026.
@@ -15,7 +15,7 @@ Este sitio pertenece a Luis Henao, que ofrece servicios de publicidad en Meta Ad
 
 ## Para qué los uso
 
-- Para responderte y evaluar si el piloto tiene sentido para tu negocio.
+- Para responderte y evaluar si trabajar juntos tiene sentido para tu negocio.
 - Para prestarte el servicio si llegamos a trabajar juntos.
 - Para medir y mejorar mis anuncios, por ejemplo saber cuántas personas llenaron el formulario después de ver un anuncio.
 

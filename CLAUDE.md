@@ -28,8 +28,16 @@ Lee esto antes de investigar. Actualízalo cuando confirmes algo nuevo del servi
 - Páginas: Inicio (1) ↔ Home (10, portada /en/), Blog (2, /blog/) ↔ Blog (11, /en/articles/), Sobre mí (5) ↔ About (12). Polylang free no comparte slugs entre idiomas: por eso `/en/articles/`.
 - El tema traduce lo que Polylang free no puede en un tema de bloques (`functions.php`, `lh_is_en()`): en inglés usa `parts/header-en.html` y `footer-en.html`, los patterns `luishenao/en-*` en vez de `luishenao/*` y prueba primero las plantillas `templates/en-*.html`.
 - Al cambiar un texto del tema, cambia también su gemelo en inglés. Selector de idioma: shortcode `[lh_lang]` en la nav.
-- El inglés no es traducción literal: el dueño americano recibe los leads por SMS en su pipeline de GoHighLevel, el CTA es "Book a 15-min call" (#book) y Colombia se presenta como ventaja.
-- Pendiente: calendario de GHL real en #book.
+- El inglés no es traducción literal: Colombia se presenta como ventaja. CTA único: "Agenda una llamada" #agendar / "Book a call" #book (sin "20 minutos", decisión de Luis 24 nov 2026), con "Cómo funciona" como botón secundario en el hero.
+- Pendiente: calendario de GHL real (`calendar` en `inc/offer.php`).
+
+## Oferta (v7, refresh 2026-11)
+- Fuente: contexto v7 y registro v3 en la carpeta local "lead-gen-custom-closets" de Luis. Nombre: "Sistema de Estimates para Custom Closets", método "Closet Ads System".
+- `inc/offer.php`: `lh_offer()` es la única fuente de precio por cupos (tiers 499/699/799, `spots_taken`), mínimos, contacto, reels, línea legal y URL de condiciones. Vacío = se muestra `[CONFIRM]`. `lh_pricing()` calcula el precio vigente; lo usan patterns, `inc/seo.php` y llms.txt.
+- Lenguaje: "homeowners prefiltrados", nunca prometer estimates agendados ni ventas. Los 60 días cuentan desde que los anuncios salen al aire. Mínimo 3 meses, después mes a mes con aviso de 30 días.
+- Landing: una sola acción (agendar). WhatsApp, correo e Instagram solo en la página de gracias (`[lh_contacto]`).
+- Páginas de condiciones: `condiciones-garantias` ↔ `guarantee-terms` (texto legal pendiente de revisión de abogado [CONFIRM]).
+- Dominio: hoy luishenaoai.online; el final será closetleadgen.com (aún no comprado).
 
 ## Tracking (`docs/tracking.md`)
 - Conversiones de Google Ads y Meta salen de GHL (gclid / CAPI), no del sitio. GA4 y etiqueta base de Ads con Site Kit; Meta Pixel por código (falta el ID).
@@ -52,6 +60,7 @@ Lee esto antes de investigar. Actualízalo cuando confirmes algo nuevo del servi
 
 ## Imágenes
 - Tema: solo WebP en `assets/img`, cada una al ancho en que se muestra (hero/panorámica 1920, retrato 1200, tarjetas del rod 900).
+- Videos cortos del tema en `assets/video` (MP4 H.264 sin audio, 270x480, 4 s, <120 KB) con póster WebP del mismo nombre en `assets/img`. Fuente: biblioteca de b-roll de Luis (solo lectura).
 - Uploads: `functions.php` convierte JPG/PNG a WebP calidad 80 y genera solo thumbnail, 768 y 1536; originales >1920 se reducen a 1920.
 - El contenido del Home vive en la página "Inicio" de la base: cambiar un pattern no cambia esa página.
 

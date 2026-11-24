@@ -12,19 +12,29 @@
 <p class="is-style-label lh-r">Sound familiar?</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:group {"className":"lh-statement"} -->
+<!-- wp:group {"className":"lh-problem-top"} -->
+<div class="wp-block-group lh-problem-top"><!-- wp:group {"className":"lh-statement"} -->
 <div class="wp-block-group lh-statement"><!-- wp:paragraph {"className":"lh-st-a"} -->
-<p class="lh-st-a">Your ads bring you <s>tire kickers.</s></p>
+<p class="lh-st-a">Fewer <s>tire-kickers.</s></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"lh-st-b"} -->
-<p class="lh-st-b">You need</p>
+<p class="lh-st-b">More</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"lh-hol"} -->
 <p class="lh-hol">ready homeowners.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
+
+<!-- wp:image {"sizeSlug":"full","className":"lh-ph lh-r-img lh-problem-photo"} -->
+<figure class="wp-block-image size-full lh-ph lh-r-img lh-problem-photo"><img src="<?php echo lh_img( 'reunion-dueno.webp' ); ?>" alt="Closet business owner reviewing his ads"/><figcaption class="wp-element-caption">AI placeholder → real photo [CONFIRM]</figcaption></figure>
+<!-- /wp:image --></div>
+<!-- /wp:group -->
+
+<!-- wp:html -->
+<?php echo lh_ui( 'funnel' ); ?>
+<!-- /wp:html -->
 
 <!-- wp:group {"className":"lh-pains"} -->
 <div class="wp-block-group lh-pains"><!-- wp:group {"className":"lh-pain lh-r"} -->
@@ -33,11 +43,11 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading">Estimates that never close</h3>
+<h3 class="wp-block-heading">Estimates with price shoppers</h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>You drive across town, measure the space, spend an hour with the homeowner. Turns out they were just pricing it out.</p>
+<p>You drive across town, measure, design, spend an hour with the homeowner. Turns out they were just pricing it out. Your week goes to people who were never going to buy.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
@@ -47,11 +57,11 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading">Lead forms full of junk</h3>
+<h3 class="wp-block-heading">Junk leads</h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>8 out of 10 aren't real buyers. Wrong zip code, no budget, or just browsing.</p>
+<p>Wrong zip codes, renters, fake numbers, people who never answer. And you pay for every one of them.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
@@ -61,11 +71,25 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading">Stuck on word of mouth</h3>
+<h3 class="wp-block-heading">Word of mouth, and agencies that didn't deliver</h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Referrals are great until they dry up. You can't plan your schedule around who your last client happened to talk to.</p>
+<p>Referrals are great until a slow month hits. And the agency you tried ran a few generic ads and sent a report nobody could read.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"lh-pain lh-r is-new"} -->
+<div class="wp-block-group lh-pain lh-r is-new"><!-- wp:paragraph {"className":"is-style-label"} -->
+<p class="is-style-label">04</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">You are not running ads yet</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>You know you need them, but you do not want to burn money testing blind, or hire someone who does not know your business.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group --></div>

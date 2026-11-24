@@ -12,19 +12,29 @@
 <p class="is-style-label lh-r">¿Te suena?</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:group {"className":"lh-statement"} -->
+<!-- wp:group {"className":"lh-problem-top"} -->
+<div class="wp-block-group lh-problem-top"><!-- wp:group {"className":"lh-statement"} -->
 <div class="wp-block-group lh-statement"><!-- wp:paragraph {"className":"lh-st-a"} -->
-<p class="lh-st-a">Tus anuncios te traen <s>curiosos.</s></p>
+<p class="lh-st-a">Menos <s>curiosos.</s></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"lh-st-b"} -->
-<p class="lh-st-b">Tú necesitas</p>
+<p class="lh-st-b">Más</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"lh-hol"} -->
-<p class="lh-hol">home owners listos.</p>
+<p class="lh-hol">homeowners listos.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
+
+<!-- wp:image {"sizeSlug":"full","className":"lh-ph lh-r-img lh-problem-photo"} -->
+<figure class="wp-block-image size-full lh-ph lh-r-img lh-problem-photo"><img src="<?php echo lh_img( 'reunion-dueno.webp' ); ?>" alt="Dueño de un negocio de closets revisando sus anuncios"/><figcaption class="wp-element-caption">Imagen IA temporal → foto real [CONFIRM]</figcaption></figure>
+<!-- /wp:image --></div>
+<!-- /wp:group -->
+
+<!-- wp:html -->
+<?php echo lh_ui( 'funnel' ); ?>
+<!-- /wp:html -->
 
 <!-- wp:group {"className":"lh-pains"} -->
 <div class="wp-block-group lh-pains"><!-- wp:group {"className":"lh-pain lh-r"} -->
@@ -33,11 +43,11 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading">Estimates que nunca cierran</h3>
+<h3 class="wp-block-heading">Estimates con gente que solo compara precios</h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Cruzas la ciudad, mides el espacio, pasas una hora con el home owner. Y resulta que solo estaba comparando precios.</p>
+<p>Cruzas la ciudad, mides, diseñas, pasas una hora con el homeowner. Y resulta que solo estaba cotizando. Tu semana se va en gente que nunca iba a comprar.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
@@ -47,11 +57,11 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading">Formularios llenos de leads basura</h3>
+<h3 class="wp-block-heading">Leads basura</h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>8 de cada 10 no son compradores reales. Zona equivocada, sin presupuesto o solo curiosos.</p>
+<p>Zonas que no cubres, gente que renta, números falsos, gente que nunca contesta. Y pagas por cada uno.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
@@ -61,11 +71,25 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading">Atrapado en el boca a boca</h3>
+<h3 class="wp-block-heading">Boca a boca, y agencias que no cumplieron</h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Los referidos son geniales hasta que se frenan. No puedes planear tu calendario según con quién habló tu último cliente.</p>
+<p>Los referidos son lo mejor hasta que llega un mes lento. Y la agencia que probaste puso unos ads genéricos y mandó un reporte que nadie entendía.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"lh-pain lh-r is-new"} -->
+<div class="wp-block-group lh-pain lh-r is-new"><!-- wp:paragraph {"className":"is-style-label"} -->
+<p class="is-style-label">04</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Todavía no corres anuncios</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Sabes que los necesitas, pero no quieres botar plata probando sin saber qué funciona, ni contratar a alguien que no conoce tu negocio.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group --></div>

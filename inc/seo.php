@@ -21,25 +21,25 @@ function lh_seo( $lang = null ) {
 		'lang'        => 'en',
 		'locale'      => 'en_US',
 		'home_title'  => 'Meta Ads for Custom Closet Companies in the US | Luis Henao',
-		'home_desc'   => 'Meta Ads for custom closet companies in the US: 6 to 8 pre-qualified homeowners a month, texted to your phone and CRM. $650/mo pilot, 21-day guarantee.',
+		'home_desc'   => 'Custom Closet Estimate System: pre-qualified homeowners from your area. Closet Ads System, 3 guarantees in writing, founder pricing from ' . lh_usd( lh_pricing()['tier']['price'] ) . '/mo.',
 		'blog_title'  => 'Blog: ideas to sell more closets | Luis Henao',
 		'blog_desc'   => 'What I learn running Meta Ads for custom closet companies in the US. No fluff, just numbers.',
 		'job'         => 'Meta Ads specialist for custom closet companies',
 		'service'     => 'Meta Ads lead generation for custom closet companies',
-		'service_desc' => 'Meta Ads campaigns plus SMS pre-qualification for independent custom closet companies. Homeowners confirm budget, timeline and location before they reach the owner, and land in a GoHighLevel pipeline.',
-		'offer'       => 'One-month pilot: campaign, ad creative, SMS pre-qualification flow, GoHighLevel pipeline, daily lead review, optimization every 7 to 10 days and an end-of-month report. Ad spend (minimum $900/mo) is paid by the client in their own Meta account. No commission, no long-term contract. 21-day launch guarantee.',
+		'service_desc' => 'Custom Closet Estimate System: Meta Ads for independent custom closet companies in the US, shown only to homeowners in the service area. Homeowners share area, budget, product and style before booking an estimate on the owner’s calendar.',
+		'offer'       => 'Closet Ads System (6 new ads a month, every dollar tracked to the booked estimate, adjustments every 7 to 10 days), pre-qualified homeowners, instant alerts by email (WhatsApp or SMS available at extra cost), a sales board, automatic scheduling with reminders by email, SMS or WhatsApp, follow-up on sent quotes and a monthly report. Bonuses: one-page landing, Google Maps profile optimization (one time) and the CRM included the first year. ' . lh_offer()['min_months'] . '-month minimum, then month to month with 30 days notice. Ad spend (minimum ' . lh_usd( lh_offer()['min_spend'] ) . '/mo) is paid by the client directly to Meta. Guarantees: ads live in 21 days or the first month back, 20 pre-qualified homeowners within 60 days of ads going live or the third month free (booked estimates are not guaranteed), and the ad account, ads and CRM belong to the client. Full terms on the Guarantee Terms page.',
 		'og_image'    => 'og-en.jpg',
 	) : array(
 		'lang'        => 'es',
 		'locale'      => 'es_MX',
 		'home_title'  => 'Meta Ads para negocios de custom closets en USA | Luis Henao',
-		'home_desc'   => 'Meta Ads para negocios de custom closets en USA: de 6 a 8 home owners pre-calificados al mes, directo a tu WhatsApp. Piloto de $650/mes con garantía de 21 días.',
+		'home_desc'   => 'Sistema de Estimates para Custom Closets: homeowners prefiltrados de tu zona. Closet Ads System, 3 garantías por escrito, precio de fundador desde ' . lh_usd( lh_pricing()['tier']['price'] ) . '/mes.',
 		'blog_title'  => 'Blog: ideas para vender más closets | Luis Henao',
 		'blog_desc'   => 'Lo que aprendo corriendo Meta Ads para negocios de custom closets en USA. Sin humo, con números.',
 		'job'         => 'Especialista en Meta Ads para negocios de custom closets',
 		'service'     => 'Generación de leads con Meta Ads para negocios de custom closets',
-		'service_desc' => 'Campañas de Meta Ads con pre-filtro por WhatsApp para negocios independientes de custom closets en USA. Los home owners confirman presupuesto, timeline y ubicación antes de hablar con el dueño.',
-		'offer'       => 'Piloto de un mes: campaña, diseño de anuncios, script de pre-filtro para WhatsApp, Messenger e Instagram, revisión diaria de leads, optimización cada 7 a 10 días y reporte al cierre. El presupuesto de anuncios (mínimo $900/mes) lo paga el cliente en su propia cuenta de Meta. Sin comisión ni contratos largos. Garantía de ejecución de 21 días.',
+		'service_desc' => 'Sistema de Estimates para Custom Closets: Meta Ads para negocios independientes de custom closets en USA, solo para homeowners de su zona. Los homeowners dicen zona, presupuesto, producto y estilo antes de agendar el estimate en el calendario del dueño.',
+		'offer'       => 'Closet Ads System (6 anuncios nuevos al mes, cada dólar medido hasta el estimate agendado, ajustes cada 7 a 10 días), homeowners prefiltrados, aviso inmediato por correo (WhatsApp o SMS disponibles con costo adicional), tablero de seguimiento, agenda automática con recordatorios por email, SMS o WhatsApp, seguimiento a presupuestos enviados y reporte mensual. Bonos: landing de una página, optimización del perfil de Google Maps (una vez) y el CRM incluido el primer año. Mínimo ' . lh_offer()['min_months'] . ' meses, después mes a mes con aviso de 30 días. La pauta (mínimo ' . lh_usd( lh_offer()['min_spend'] ) . '/mes) la paga el cliente directo a Meta. Garantías: anuncios al aire en 21 días o se devuelve el primer mes, 20 homeowners prefiltrados en los 60 días después de salir al aire o el tercer mes gratis (no se garantizan estimates agendados), y la cuenta, los anuncios y el CRM son del cliente. Condiciones completas en la página Condiciones de las garantías.',
 		'og_image'    => 'og-es.jpg',
 	);
 }
@@ -248,12 +248,12 @@ function lh_schema() {
 			'availableLanguage' => array( 'es', 'en' ),
 			'offers'            => array(
 				'@type'              => 'Offer',
-				'name'               => 'en' === $s['lang'] ? 'Pilot' : 'Piloto',
+				'name'               => 'en' === $s['lang'] ? 'Custom Closet Estimate System (founder price)' : 'Sistema de Estimates para Custom Closets (precio de fundador)',
 				'description'        => $s['offer'],
-				'price'              => '650',
+				'price'              => (string) lh_pricing()['tier']['price'],
 				'priceCurrency'      => 'USD',
-				'priceSpecification' => array( '@type' => 'UnitPriceSpecification', 'price' => '650', 'priceCurrency' => 'USD', 'unitText' => 'MONTH', 'referenceQuantity' => array( '@type' => 'QuantitativeValue', 'value' => 1, 'unitCode' => 'MON' ) ),
-				'url'                => $home . ( 'en' === $s['lang'] ? '#pilot' : '#piloto' ),
+				'priceSpecification' => array( '@type' => 'UnitPriceSpecification', 'price' => (string) lh_pricing()['tier']['price'], 'priceCurrency' => 'USD', 'unitText' => 'MONTH', 'referenceQuantity' => array( '@type' => 'QuantitativeValue', 'value' => 1, 'unitCode' => 'MON' ) ),
+				'url'                => $home . ( 'en' === $s['lang'] ? '#price' : '#precio' ),
 			),
 		),
 		array(
@@ -385,10 +385,10 @@ function lh_llms_txt() {
 		'## Offer',
 		'',
 		'- ' . $en['offer'],
-		'- Price: $650 USD per month during the pilot (standard rate will be $1,500/mo).',
-		'- Goal: 6 to 8 pre-qualified homeowners in the month. No guaranteed sales.',
-		'- Best fit: independent custom closet companies, 1 to 4 years operating, 10+ Google reviews rated 4.4+, selling 3 to 8 closets a month at $5k to $8k, able to spend $900/mo or more on ads. Not for franchises (California Closets, Closet Factory and similar).',
-		'- English clients get leads by SMS in a GoHighLevel pipeline; Spanish-speaking clients get them on WhatsApp.',
+		'- Price ladder (USD per month): ' . implode( ', ', array_map( fn( $t ) => 'clients ' . $t['from'] . ( null === $t['to'] ? ' and up ' : ' to ' . $t['to'] . ' ' ) . lh_usd( $t['price'] ), lh_offer()['tiers'] ) ) . '. Current price: ' . lh_usd( lh_pricing()['tier']['price'] ) . '. Each client keeps their price while the subscription stays active.',
+		'- No guaranteed sales or revenue. Guarantees apply under the conditions described.',
+		'- Best fit: independent custom closet businesses in the US with finished projects, able to spend ' . lh_usd( lh_offer()['min_spend'] ) . '/mo or more on ads. Not for national franchises.',
+		'- One action: book a call on the calendar.',
 		'',
 		'## English',
 		'',
@@ -401,7 +401,7 @@ function lh_llms_txt() {
 		$lines[] = "- [About]($about_en)";
 	}
 	if ( $landing_en ) {
-		$lines[] = "- [Leads for custom closet companies]($landing_en): the offer, compared with Angi, Thumbtack and referrals";
+		$lines[] = "- [Leads for custom closet companies]($landing_en): the offer, guarantees and price";
 	}
 	$lines = array_merge( $lines, $articles( 'en', 'Articles' ) );
 	$lines = array_merge( $lines, array(

@@ -3,35 +3,41 @@
  * Title: Landing EN · Sales hero
  * Slug: luishenao/en-landing-hero
  * Categories: lh-secciones
- * Description: Sales page hero: promise, one-line benefit, CTAs and image (English).
+ * Description: Centered hero: headline, subheadline, one action (book) and the full system live, from the ad to the install (English).
  */
 ?>
-<!-- wp:group {"tagName":"section","align":"full","className":"lh-sec lh-page-hero"} -->
-<section class="wp-block-group alignfull lh-sec lh-page-hero"><!-- wp:group {"className":"lh-wrap"} -->
-<div class="wp-block-group lh-wrap"><!-- wp:paragraph {"className":"is-style-label lh-r"} -->
-<p class="is-style-label lh-r">For custom closet companies in the US</p>
+<!-- wp:group {"tagName":"section","align":"full","className":"lh-sec lh-page-hero lh-hero-c"} -->
+<section class="wp-block-group alignfull lh-sec lh-page-hero lh-hero-c"><!-- wp:group {"className":"lh-wrap"} -->
+<div class="wp-block-group lh-wrap"><!-- wp:group {"className":"lh-hero-txt"} -->
+<div class="wp-block-group lh-hero-txt"><!-- wp:paragraph {"className":"lh-pill lh-r"} -->
+<p class="lh-pill lh-r"><span></span>Custom Closet Estimate System</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":1,"className":"lh-giant-title lh-r-mask"} -->
-<h1 class="wp-block-heading lh-giant-title lh-r-mask">Homeowners ready to buy <em>your closets.</em></h1>
+<h1 class="wp-block-heading lh-giant-title lh-r-mask">Get pre-qualified <em>homeowners from your area.</em></h1>
 <!-- /wp:heading -->
 
+<!-- wp:paragraph {"className":"lh-sub lh-r"} -->
+<p class="lh-sub lh-r">Stop burning ad budget on tire-kickers.</p>
+<!-- /wp:paragraph -->
+
 <!-- wp:paragraph {"className":"lh-intro lh-r"} -->
-<p class="lh-intro lh-r">Every month you get 6 to 8 homeowners in your area who already confirmed budget, timeline and location. You reply to the text and go run the estimate. That's it.</p>
+<p class="lh-intro lh-r">For custom closet companies already running ads that want better results, or about to launch their first ones. Ads, pre-qualifying and follow-up in one system, with written guarantees.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons {"className":"lh-r lh-hero-ctas"} -->
 <div class="wp-block-buttons lh-r lh-hero-ctas"><!-- wp:button -->
-<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="#book">Book a 15-min call →</a></div>
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="#book">Book a call →</a></div>
 <!-- /wp:button -->
 
 <!-- wp:button {"className":"is-style-ghost"} -->
-<div class="wp-block-button is-style-ghost"><a class="wp-block-button__link wp-element-button" href="#pilot">What's included</a></div>
+<div class="wp-block-button is-style-ghost"><a class="wp-block-button__link wp-element-button" href="#how">How it works</a></div>
 <!-- /wp:button --></div>
-<!-- /wp:buttons -->
+<!-- /wp:buttons --></div>
+<!-- /wp:group -->
 
-<!-- wp:image {"sizeSlug":"full","className":"lh-ph lh-r-img lh-parallax"} -->
-<figure class="wp-block-image size-full lh-ph lh-r-img lh-parallax"><img src="<?php echo lh_img( 'homeowners-closet.webp' ); ?>" alt="Happy homeowners in their new walk-in closet"/></figure>
-<!-- /wp:image --></div>
+<!-- wp:html -->
+<?php echo lh_ui( 'flow' ); ?>
+<!-- /wp:html --></div>
 <!-- /wp:group --></section>
 <!-- /wp:group -->

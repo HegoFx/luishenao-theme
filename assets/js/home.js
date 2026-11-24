@@ -8,7 +8,7 @@
 	const en = root.lang.startsWith('en');
 
 	/* ---------- 2. live leads (sample data until GHL feeds real ones) ---------- */
-	// English leads arrive by SMS into the CRM; Spanish ones by WhatsApp
+	// Pre-qualified homeowners arrive as an instant email alert (offer v7)
 	const leadData = en ? [
 		['MG', 'Megan G.', 'Tampa, FL', 'Walk-in · $8k–12k · this month'],
 		['JR', 'Jason R.', 'Orlando, FL', '2 reach-ins · $5k–7k · 30 days'],
@@ -22,7 +22,7 @@
 		['CP', 'Carlos P.', 'Miami, FL', 'Primary closet · $7k–9k · este mes'],
 		['DT', 'Dana T.', 'Austin, TX', 'Walk-in · $9k–11k · 45 días'],
 	];
-	const t = en ? { head: 'NEW LEAD · SMS', now: 'now', ok: '✓ pre-qualified' } : { head: 'NUEVO LEAD · WHATSAPP', now: 'ahora', ok: '✓ pre-filtrado' };
+	const t = en ? { head: 'NEW HOMEOWNER · EMAIL', now: 'now', ok: '✓ pre-qualified' } : { head: 'NUEVO HOMEOWNER · CORREO', now: 'ahora', ok: '✓ prefiltrado' };
 	let leadTimer, li = 0;
 	const leadsBox = document.createElement('div');
 	leadsBox.className = 'lh-leads';

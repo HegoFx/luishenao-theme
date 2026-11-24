@@ -6,14 +6,19 @@
  * Description: Title on the left and expandable questions (English).
  */
 
+$lh_o   = lh_offer();
+$lh_c   = $lh_o['confirm']['en'];
+$lh_cf  = fn( $v, $label ) => $v ? ' ' . $v : ' [CONFIRM: ' . $label . ']';
 $lh_faq = array(
-	array( 'Who pays for the ads?', 'You do, directly in your own Meta ad account. $900/mo minimum. My $650 fee is separate. You keep control and ownership of the account and the data.' ),
-	array( 'How do you measure if it is working?', 'By how many pre-qualified homeowners land in your CRM and what each one costs. You get a clear report at the end of the month.' ),
-	array( "What if it doesn't work?", "If the campaign isn't built and approved by Meta within 21 days, you get 100% of the fee back. After the first month, if the numbers don't work for you, you just stop." ),
-	array( 'Can I cancel?', 'Yes. The pilot is a one-month trial. No long-term commitment and no commission on your sales.' ),
-	array( 'Do you guarantee sales?', 'No, and be wary of anyone who does. I commit to delivering pre-qualified homeowners. Closing the job is still your craft.' ),
-	array( 'Do I need to know GoHighLevel?', 'No. I set up the pipeline for you. Leads reach you by text and in the GHL mobile app, so you can work them from your phone.' ),
-	array( 'Do I still need to post on social?', "It's not included, but I recommend you keep posting on Instagram while the ads run. The two together work much better." ),
+	array( 'Who pays for the ads?', 'You do, directly to Meta from your own ad account. The minimum is ' . lh_usd( $lh_o['min_spend'] ) . '/month. My monthly fee is separate.' ),
+	array( 'What is a pre-qualified homeowner?', 'They own the home, are inside your service area, left a valid phone and email, and answered their budget range, the type of project (walk-in, reach-in, garage, pantry or other) and when they want to do it. We deliver the homeowner; booking the estimate is on you. Details in our Guarantee Terms.' ),
+	array( 'What happens if it does not work?', 'Two guarantees cover you. If your ads are not live and approved within 21 days, you get your first month back. If 20 pre-qualified homeowners do not come in within 60 days of your ads going live, your third month is free.' ),
+	array( 'How long is the commitment?', $lh_o['min_months'] . '-month minimum. After that, it\'s month to month. Cancel with 30 days\' notice.' ),
+	array( 'Who owns the CRM?', 'You do. It is included for the first year from the start of service, with all its automations. If you leave earlier, you keep it until that year is over, and you can export your contacts anytime. After the first year, if you want to keep it, we coordinate and it is quoted separately.' . $lh_cf( $lh_c['crm_renewal'], 'renewal amount' ) ),
+	array( 'When will I see results?', 'The first weeks the system is learning: new angles get tested and what does not work gets turned off. You get a clear checkpoint at 60 days with the homeowner guarantee.' ),
+	array( 'Do you guarantee sales?', 'No, and be wary of anyone who does. I commit to pre-qualified homeowners and the guarantees above. Closing the job is still your craft.' ),
+	array( 'Do you work with franchises?', 'No. Only independent custom closet businesses.' ),
+	array( 'Do you work alone?', 'Yes. You talk to me directly, and I take a limited number of businesses at a time.' ),
 );
 ?>
 <!-- wp:group {"tagName":"section","align":"full","anchor":"faq","className":"lh-sec lh-faq"} -->
