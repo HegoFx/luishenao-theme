@@ -9,10 +9,10 @@ $lh_o     = lh_offer();
 $lh_items = array(
 	array( 'Closet Ads Lab', 'Ads shown only to homeowners in your area, 6 new ads a month, every dollar tracked to the booked estimate, adjustments every 7 to 10 days.' ),
 	array( 'Pre-qualified homeowners', 'Homeowners in your area with a valid phone and email who already told you their budget range, the type of project and when they want it done.' ),
-	array( 'Instant email alert', 'You get an email every time a homeowner comes in or books an estimate.' ),
+	array( 'Instant alert for every homeowner', 'You hear about every new homeowner or booked estimate right away by email. Prefer WhatsApp or SMS? Also available, at an extra cost.' ),
 	array( 'Sales board', 'See every homeowner by stage of your sales process, in one place.' ),
-	array( 'Automatic scheduling', 'Homeowners can book straight on your calendar and get email reminders before the visit.' ),
-	array( 'Follow-up on sent quotes', 'The board tells you which quotes have gone days without an answer, so none slip through.' ),
+	array( 'Automatic scheduling', 'Homeowners book straight on your calendar and get reminders before the visit by email, SMS or WhatsApp.' ),
+	array( 'Follow-up on sent quotes', 'The board flags quotes that have gone days without an answer and can follow up automatically by email, SMS or WhatsApp.' ),
 	array( 'Monthly report', 'What you spent, how many homeowners came in, how many booked. Clear numbers, no fluff.' ),
 );
 $lh_bonus = array(
@@ -23,13 +23,21 @@ $lh_bonus = array(
 ?>
 <!-- wp:group {"tagName":"section","align":"full","anchor":"offer","className":"lh-sec lh-pilot"} -->
 <section id="offer" class="wp-block-group alignfull lh-sec lh-pilot"><!-- wp:group {"className":"lh-wrap"} -->
-<div class="wp-block-group lh-wrap"><!-- wp:paragraph {"className":"is-style-label lh-r"} -->
+<div class="wp-block-group lh-wrap"><!-- wp:group {"className":"lh-split-head"} -->
+<div class="wp-block-group lh-split-head"><!-- wp:group -->
+<div class="wp-block-group"><!-- wp:paragraph {"className":"is-style-label lh-r"} -->
 <p class="is-style-label lh-r">What you get</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"className":"lh-title lh-r-mask"} -->
 <h2 class="wp-block-heading lh-title lh-r-mask">Everything you get <em>every month.</em></h2>
-<!-- /wp:heading -->
+<!-- /wp:heading --></div>
+<!-- /wp:group -->
+
+<!-- wp:image {"sizeSlug":"full","className":"lh-ph lh-r-img lh-head-photo"} -->
+<figure class="wp-block-image size-full lh-ph lh-r-img lh-head-photo"><img src="<?php echo lh_img( 'closet-rod.webp' ); ?>" alt="Custom closet rod with hangers"/><figcaption class="wp-element-caption">AI placeholder → real project photo [CONFIRM]</figcaption></figure>
+<!-- /wp:image --></div>
+<!-- /wp:group -->
 
 <!-- wp:group {"className":"lh-gains-grid lh-get"} -->
 <div class="wp-block-group lh-gains-grid lh-get"><?php foreach ( $lh_items as $i => $g ) : ?><!-- wp:group {"className":"lh-card lh-gain lh-r-card"} -->
@@ -50,6 +58,10 @@ $lh_bonus = array(
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --><?php endforeach; ?></div>
 <!-- /wp:group -->
+
+<!-- wp:paragraph {"className":"lh-fine lh-r"} -->
+<p class="lh-fine lh-r">Messages by SMS, WhatsApp and email have a per-message cost, billed separately. <?php echo lh_confirm( 'rate and who pays it' ); ?></p>
+<!-- /wp:paragraph -->
 
 <!-- wp:group {"className":"lh-pilot-grid"} -->
 <div class="wp-block-group lh-pilot-grid"><!-- wp:group {"className":"lh-card lh-r-card lh-bonus"} -->
@@ -73,7 +85,7 @@ $lh_bonus = array(
 <h3 class="wp-block-heading">Not included</h3>
 <!-- /wp:heading -->
 
-<?php echo lh_list( array( 'SEO or blog', 'Google Ads', 'Organic social content', 'Automatic text messages', 'AI chat assistants', 'Review management' ), 'lh-checks is-no' ); ?></div>
+<?php echo lh_list( array( 'SEO or blog', 'Google Ads', 'Organic social content', 'Per-message cost of SMS, WhatsApp and email', 'AI chat assistants', 'Review management' ), 'lh-checks is-no' ); ?></div>
 <!-- /wp:group --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group --></section>

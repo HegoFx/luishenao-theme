@@ -31,15 +31,19 @@ $lh_diffs = array(
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"lh-r"} -->
-<p class="lh-r">I've worked in digital marketing since 2020, running ads from the start, plus SEO, analytics, content and websites, including a global project with a team at Zebra Technologies. For the last 2 years I've run Meta Ads mainly for an agency in Florida, bringing in leads, booked appointments and new clients every month. I also designed and managed 10+ web projects in the past year.</p>
+<p class="lh-r">I've worked in digital marketing since 2020: ads, SEO, analytics, content and websites, including a global project with a team at Zebra Technologies.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"lh-r"} -->
-<p class="lh-r">That mix is why I do this differently. Most ad people stop at the click. I look at the whole path: the ad, the page, the message and the follow-up, because that's where leads get lost.</p>
+<p class="lh-r">I chose custom closets because I saw a clear opportunity. Most ads in this niche look the same: the same photos, the same promos, the same "free consultation". When everyone says the same thing, homeowners pick on price or go with the biggest brand.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"lh-r"} -->
-<p class="lh-r">Now I focus on one niche: independent custom closet businesses in the US. I take a limited number of businesses at a time so each one gets real attention.</p>
+<p class="lh-r">That is where an independent business has the edge. With more creative ads, a sharper strategy and every dollar measured, you can go head to head with the franchises and win homeowners in your own area.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"lh-r"} -->
+<p class="lh-r">That's why I take only a few businesses at a time and look at the whole path: the ad, the page, the message and the follow-up. And I talk to you in clear numbers.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:group {"className":"lh-diffs"} -->

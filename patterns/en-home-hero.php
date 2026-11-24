@@ -41,11 +41,11 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":1} -->
-<h1 class="wp-block-heading">Stop burning ad budget on <em>tire-kickers.</em></h1>
+<h1 class="wp-block-heading">Get <em>pre-qualified homeowners</em> from your area.</h1>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Get pre-qualified homeowners from your area. Before the estimate you already know if they are in your area, their budget, the product they need and their style.</p>
+<p>Stop burning ad budget on tire-kickers. Before the estimate you already know if they are in your area, their budget, the product they need and their style.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons -->

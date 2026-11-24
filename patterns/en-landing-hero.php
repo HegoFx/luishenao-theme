@@ -13,9 +13,13 @@
 <p class="is-style-label lh-r">Custom Closet Estimate System</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"level":1,"className":"lh-giant-title is-long lh-r-mask"} -->
-<h1 class="wp-block-heading lh-giant-title is-long lh-r-mask">Stop burning ad budget on tire-kickers. <em>Get pre-qualified homeowners</em> from your area.</h1>
+<!-- wp:heading {"level":1,"className":"lh-giant-title lh-r-mask"} -->
+<h1 class="wp-block-heading lh-giant-title lh-r-mask">Get <em>pre-qualified homeowners</em> from your area.</h1>
 <!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"lh-sub lh-r"} -->
+<p class="lh-sub lh-r">Stop burning ad budget on tire-kickers.</p>
+<!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"lh-intro lh-r"} -->
 <p class="lh-intro lh-r">The bilingual ad specialist for Custom Closets, with an implementation guarantee and a pre-qualified homeowner guarantee.</p>
@@ -33,8 +37,14 @@
 </div>
 <!-- /wp:group -->
 
+<!-- wp:group {"className":"lh-hero-media"} -->
+<div class="wp-block-group lh-hero-media"><!-- wp:image {"sizeSlug":"full","className":"lh-ph lh-hero-photo"} -->
+<figure class="wp-block-image size-full lh-ph lh-hero-photo"><img src="<?php echo lh_img( 'homeowners-closet.webp' ); ?>" alt="Homeowners in their new custom walk-in closet"/><figcaption class="wp-element-caption">AI placeholder → real photo of a finished closet [CONFIRM]</figcaption></figure>
+<!-- /wp:image -->
+
 <!-- wp:html -->
 <?php echo lh_ui( 'feed' ); ?>
 <!-- /wp:html --></div>
+<!-- /wp:group --></div>
 <!-- /wp:group --></section>
 <!-- /wp:group -->

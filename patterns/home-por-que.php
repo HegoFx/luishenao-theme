@@ -31,15 +31,19 @@ $lh_diffs = array(
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"lh-r"} -->
-<p class="lh-r">Trabajo en marketing digital desde 2020, haciendo anuncios desde el inicio, además de SEO, analítica, contenido y sitios web, incluso en un proyecto global con un equipo de Zebra Technologies. Hace 2 años manejo Meta Ads, principalmente para una agencia en Florida, generando leads, citas y clientes nuevos cada mes. Además diseñé y gestioné más de 10 proyectos web en el último año.</p>
+<p class="lh-r">Trabajo en marketing digital desde 2020: anuncios, SEO, analítica, contenido y sitios web, incluso en un proyecto global con un equipo de Zebra Technologies.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"lh-r"} -->
-<p class="lh-r">Por eso trabajo distinto. Mucha gente de anuncios se queda en el clic. Yo reviso todo el camino: el anuncio, la página, el mensaje y el seguimiento, porque ahí se pierden los leads.</p>
+<p class="lh-r">Elegí los custom closets porque vi una oportunidad clara. La mayoría de los anuncios del nicho se parecen: las mismas fotos, las mismas promos, el mismo "free consultation". Cuando todos dicen lo mismo, el homeowner elige por precio o por la marca más grande.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"lh-r"} -->
-<p class="lh-r">Ahora me enfoco en un solo nicho: negocios independientes de custom closets en USA. Trabajo con pocos negocios a la vez para dar atención real a cada uno.</p>
+<p class="lh-r">Ahí está la ventaja de un negocio independiente. Con anuncios más creativos, una estrategia mejor pensada y cada dólar medido, puedes competir de tú a tú con las franquicias y ganarles homeowners en tu propia zona.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"className":"lh-r"} -->
+<p class="lh-r">Por eso trabajo con pocos negocios a la vez y reviso todo el camino: el anuncio, la página, el mensaje y el seguimiento. Y te hablo con números claros.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:group {"className":"lh-diffs"} -->

@@ -69,9 +69,9 @@ function lh_ui( $name ) {
 			$chips = $en ? array( 'Area', 'Budget', 'Project', 'Timeline' ) : array( 'Zona', 'Presupuesto', 'Proyecto', 'Plazo' );
 			return '<div class="lh-ui lh-ui-funnel" aria-hidden="true"><div class="lh-ui-win">'
 				. '<div class="lh-fn-track">' . $dots
-				. '<div class="lh-fn-in"><b>' . ( $en ? 'Ad clicks' : 'Clics de anuncios' ) . '</b><span>' . ( $en ? 'everyone' : 'de todo' ) . '</span></div>'
+				. '<div class="lh-fn-in">' . ( $en ? 'Ad traffic' : 'Tráfico de los anuncios' ) . '</div>'
 				. '<div class="lh-fn-gate"><span class="lh-fn-gate-t">' . ( $en ? 'Filter' : 'Filtro' ) . '</span>' . implode( '', array_map( fn( $c ) => '<em>' . esc_html( $c ) . '</em>', $chips ) ) . '</div>'
-				. '<div class="lh-fn-out"><b>' . ( $en ? 'Pre-qualified' : 'Prefiltrados' ) . '</b><span>' . ( $en ? 'to you' : 'a ti' ) . '</span></div>'
+				. '<div class="lh-fn-out">' . ( $en ? 'Pre-qualified homeowners' : 'Homeowners prefiltrados' ) . '</div>'
 				. '</div></div>' . lh_ui_cap() . '</div>';
 
 		/* Closet Ads Lab scenes. */
@@ -123,7 +123,7 @@ function lh_ui( $name ) {
 			return '<ul class="lh-mini lh-mini-check" aria-hidden="true">' . implode( '', array_map( fn( $x, $k ) => sprintf( '<li style="--d:%.1fs"><i></i>%s</li>', $k * 0.6, esc_html( $x ) ), $c, array_keys( $c ) ) ) . '</ul>';
 
 		case 'mini-mail':
-			return '<div class="lh-mini lh-mini-mail" aria-hidden="true"><div class="lh-mm-card"><b>' . ( $en ? 'New pre-qualified homeowner' : 'Nuevo homeowner prefiltrado' ) . '</b><span>Megan G. · Tampa, FL · $8k–12k</span></div><span class="lh-mm-badge">1</span></div>';
+			return '<div class="lh-mini lh-mini-mail" aria-hidden="true"><div class="lh-mm-card"><b>' . ( $en ? 'New pre-qualified homeowner' : 'Nuevo homeowner prefiltrado' ) . '</b><span>Megan G. · Tampa, FL · $8k–12k</span></div><span class="lh-mm-badge">1</span><ul class="lh-mm-ch"><li class="on">Email</li><li>SMS</li><li>WhatsApp</li></ul></div>';
 
 		case 'mini-board':
 			$cols = $en ? array( 'New', 'Estimate', 'Sold' ) : array( 'Nuevo', 'Estimate', 'Vendido' );

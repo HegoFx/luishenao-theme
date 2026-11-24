@@ -9,10 +9,10 @@ $lh_o     = lh_offer();
 $lh_items = array(
 	array( 'Closet Ads Lab', 'Anuncios solo para homeowners de tu zona, 6 anuncios nuevos al mes, cada dólar medido hasta el estimate agendado, ajustes cada 7 a 10 días.' ),
 	array( 'Homeowners prefiltrados', 'Dueños de vivienda en tu zona, con teléfono y correo válidos, que ya dijeron su rango de presupuesto, el tipo de proyecto y cuándo lo quieren hacer.' ),
-	array( 'Aviso inmediato a tu correo', 'Te llega un correo cada vez que entra un homeowner o se agenda un estimate.' ),
+	array( 'Aviso inmediato de cada homeowner', 'Te enteras al instante de cada homeowner nuevo o estimate agendado por correo. ¿Prefieres WhatsApp o SMS? También está disponible, con costo adicional.' ),
 	array( 'Tablero de seguimiento', 'Ves cada homeowner según la etapa de tu proceso de venta, en un solo lugar.' ),
-	array( 'Agenda automática', 'Los homeowners pueden agendar directo en tu calendario y reciben recordatorios por email antes de la visita.' ),
-	array( 'Seguimiento a presupuestos enviados', 'El tablero te avisa cuáles presupuestos llevan días sin respuesta, para que ninguno se quede quieto.' ),
+	array( 'Agenda automática', 'Los homeowners agendan directo en tu calendario y reciben recordatorios antes de la visita por email, SMS o WhatsApp.' ),
+	array( 'Seguimiento a presupuestos enviados', 'El tablero te avisa cuáles presupuestos llevan días sin respuesta y les puede hacer seguimiento automático por email, SMS o WhatsApp.' ),
 	array( 'Reporte mensual', 'Cuánto se invirtió, cuántos homeowners entraron, cuántos agendaron. Números claros, sin relleno.' ),
 );
 $lh_bonus = array(
@@ -23,13 +23,21 @@ $lh_bonus = array(
 ?>
 <!-- wp:group {"tagName":"section","align":"full","anchor":"oferta","className":"lh-sec lh-pilot"} -->
 <section id="oferta" class="wp-block-group alignfull lh-sec lh-pilot"><!-- wp:group {"className":"lh-wrap"} -->
-<div class="wp-block-group lh-wrap"><!-- wp:paragraph {"className":"is-style-label lh-r"} -->
+<div class="wp-block-group lh-wrap"><!-- wp:group {"className":"lh-split-head"} -->
+<div class="wp-block-group lh-split-head"><!-- wp:group -->
+<div class="wp-block-group"><!-- wp:paragraph {"className":"is-style-label lh-r"} -->
 <p class="is-style-label lh-r">Lo que recibes</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"className":"lh-title lh-r-mask"} -->
 <h2 class="wp-block-heading lh-title lh-r-mask">Todo lo que recibes <em>cada mes.</em></h2>
-<!-- /wp:heading -->
+<!-- /wp:heading --></div>
+<!-- /wp:group -->
+
+<!-- wp:image {"sizeSlug":"full","className":"lh-ph lh-r-img lh-head-photo"} -->
+<figure class="wp-block-image size-full lh-ph lh-r-img lh-head-photo"><img src="<?php echo lh_img( 'closet-rod.webp' ); ?>" alt="Barra de closet a la medida con ganchos"/><figcaption class="wp-element-caption">Imagen IA temporal → foto real de proyecto [CONFIRM]</figcaption></figure>
+<!-- /wp:image --></div>
+<!-- /wp:group -->
 
 <!-- wp:group {"className":"lh-gains-grid lh-get"} -->
 <div class="wp-block-group lh-gains-grid lh-get"><?php foreach ( $lh_items as $i => $g ) : ?><!-- wp:group {"className":"lh-card lh-gain lh-r-card"} -->
@@ -50,6 +58,10 @@ $lh_bonus = array(
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --><?php endforeach; ?></div>
 <!-- /wp:group -->
+
+<!-- wp:paragraph {"className":"lh-fine lh-r"} -->
+<p class="lh-fine lh-r">Los mensajes por SMS, WhatsApp y email tienen un costo por envío que se cobra aparte. <?php echo lh_confirm( 'tarifa y quién la paga' ); ?></p>
+<!-- /wp:paragraph -->
 
 <!-- wp:group {"className":"lh-pilot-grid"} -->
 <div class="wp-block-group lh-pilot-grid"><!-- wp:group {"className":"lh-card lh-r-card lh-bonus"} -->
@@ -73,7 +85,7 @@ $lh_bonus = array(
 <h3 class="wp-block-heading">Qué no incluye</h3>
 <!-- /wp:heading -->
 
-<?php echo lh_list( array( 'SEO ni blog', 'Google Ads', 'Contenido orgánico en redes', 'Mensajes de texto automáticos', 'Agentes de IA conversacionales', 'Gestión de reseñas' ), 'lh-checks is-no' ); ?></div>
+<?php echo lh_list( array( 'SEO ni blog', 'Google Ads', 'Contenido orgánico en redes', 'El costo por mensaje de SMS, WhatsApp y email', 'Agentes de IA conversacionales', 'Gestión de reseñas' ), 'lh-checks is-no' ); ?></div>
 <!-- /wp:group --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group --></section>

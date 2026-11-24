@@ -13,24 +13,26 @@ $lh_steps = array(
 );
 ?>
 <!-- wp:group {"tagName":"section","align":"full","anchor":"how","className":"lh-sec lh-how"} -->
-<section id="how" class="wp-block-group alignfull lh-sec lh-how"><!-- wp:group {"className":"lh-wrap lh-how-grid"} -->
-<div class="wp-block-group lh-wrap lh-how-grid"><!-- wp:group {"className":"lh-how-intro"} -->
+<section id="how" class="wp-block-group alignfull lh-sec lh-how"><!-- wp:group {"className":"lh-wrap"} -->
+<div class="wp-block-group lh-wrap"><!-- wp:group {"className":"lh-how-intro"} -->
 <div class="wp-block-group lh-how-intro"><!-- wp:paragraph {"className":"is-style-label lh-r"} -->
 <p class="is-style-label lh-r">Closet Ads Lab</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"className":"lh-title lh-r-mask"} -->
-<h2 class="wp-block-heading lh-title lh-r-mask">A lab for your ads. <em>We measure everything.</em></h2>
+<h2 class="wp-block-heading lh-title lh-r-mask">An ad lab where we <em>measure and improve everything.</em></h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"lh-r"} -->
 <p class="lh-r">Not "Facebook and Instagram campaigns". A lab for your ads: we measure everything and test new angles every month.</p>
-<!-- /wp:paragraph -->
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
 
-<!-- wp:html -->
+<!-- wp:group {"className":"lh-how-grid"} -->
+<div class="wp-block-group lh-how-grid"><!-- wp:group {"className":"lh-how-stage"} -->
+<div class="wp-block-group lh-how-stage"><!-- wp:html -->
 <?php echo lh_ui( 'stage' ); ?>
-<!-- /wp:html -->
-</div>
+<!-- /wp:html --></div>
 <!-- /wp:group -->
 
 <!-- wp:group {"className":"lh-stack"} -->
@@ -59,6 +61,7 @@ $lh_steps = array(
 <div class="lh-ui lh-step-scene" aria-hidden="true"><div class="lh-ui-win"><?php echo lh_ui( 'scene-' . ( $lh_i + 1 ) ); ?></div></div>
 <!-- /wp:html --></div>
 <!-- /wp:group --><?php endforeach; ?></div>
+<!-- /wp:group --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group --></section>
 <!-- /wp:group -->

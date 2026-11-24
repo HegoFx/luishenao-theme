@@ -13,9 +13,13 @@
 <p class="is-style-label lh-r">Sistema de Estimates para Custom Closets</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:heading {"level":1,"className":"lh-giant-title is-long lh-r-mask"} -->
-<h1 class="wp-block-heading lh-giant-title is-long lh-r-mask">Deja de quemar presupuesto en curiosos. <em>Recibe homeowners prefiltrados</em> de tu zona.</h1>
+<!-- wp:heading {"level":1,"className":"lh-giant-title lh-r-mask"} -->
+<h1 class="wp-block-heading lh-giant-title lh-r-mask">Recibe <em>homeowners prefiltrados</em> de tu zona.</h1>
 <!-- /wp:heading -->
+
+<!-- wp:paragraph {"className":"lh-sub lh-r"} -->
+<p class="lh-sub lh-r">No quemes más presupuesto en curiosos.</p>
+<!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"lh-intro lh-r"} -->
 <p class="lh-intro lh-r">El especialista bilingüe en anuncios para Custom Closets, con garantía de implementación y de leads prefiltrados.</p>
@@ -33,8 +37,14 @@
 </div>
 <!-- /wp:group -->
 
+<!-- wp:group {"className":"lh-hero-media"} -->
+<div class="wp-block-group lh-hero-media"><!-- wp:image {"sizeSlug":"full","className":"lh-ph lh-hero-photo"} -->
+<figure class="wp-block-image size-full lh-ph lh-hero-photo"><img src="<?php echo lh_img( 'homeowners-closet.webp' ); ?>" alt="Homeowners en su nuevo walk-in closet a la medida"/><figcaption class="wp-element-caption">Imagen IA temporal → foto real de un closet terminado [CONFIRM]</figcaption></figure>
+<!-- /wp:image -->
+
 <!-- wp:html -->
 <?php echo lh_ui( 'feed' ); ?>
 <!-- /wp:html --></div>
+<!-- /wp:group --></div>
 <!-- /wp:group --></section>
 <!-- /wp:group -->

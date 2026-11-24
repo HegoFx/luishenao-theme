@@ -12,18 +12,24 @@
 <p class="is-style-label lh-r">Sound familiar?</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:group {"className":"lh-statement"} -->
+<!-- wp:group {"className":"lh-problem-top"} -->
+<div class="wp-block-group lh-problem-top"><!-- wp:group {"className":"lh-statement"} -->
 <div class="wp-block-group lh-statement"><!-- wp:paragraph {"className":"lh-st-a"} -->
-<p class="lh-st-a">Your ads bring you <s>tire-kickers.</s></p>
+<p class="lh-st-a">Fewer <s>tire-kickers.</s></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"lh-st-b"} -->
-<p class="lh-st-b">You need</p>
+<p class="lh-st-b">More</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"lh-hol"} -->
 <p class="lh-hol">ready homeowners.</p>
 <!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:image {"sizeSlug":"full","className":"lh-ph lh-r-img lh-problem-photo"} -->
+<figure class="wp-block-image size-full lh-ph lh-r-img lh-problem-photo"><img src="<?php echo lh_img( 'reunion-dueno.webp' ); ?>" alt="Closet business owner reviewing his ads"/><figcaption class="wp-element-caption">AI placeholder → real photo [CONFIRM]</figcaption></figure>
+<!-- /wp:image --></div>
 <!-- /wp:group -->
 
 <!-- wp:html -->

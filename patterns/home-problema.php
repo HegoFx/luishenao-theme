@@ -12,18 +12,24 @@
 <p class="is-style-label lh-r">¿Te suena?</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:group {"className":"lh-statement"} -->
+<!-- wp:group {"className":"lh-problem-top"} -->
+<div class="wp-block-group lh-problem-top"><!-- wp:group {"className":"lh-statement"} -->
 <div class="wp-block-group lh-statement"><!-- wp:paragraph {"className":"lh-st-a"} -->
-<p class="lh-st-a">Tus anuncios te traen <s>curiosos.</s></p>
+<p class="lh-st-a">Menos <s>curiosos.</s></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"lh-st-b"} -->
-<p class="lh-st-b">Tú necesitas</p>
+<p class="lh-st-b">Más</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"lh-hol"} -->
 <p class="lh-hol">homeowners listos.</p>
 <!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:image {"sizeSlug":"full","className":"lh-ph lh-r-img lh-problem-photo"} -->
+<figure class="wp-block-image size-full lh-ph lh-r-img lh-problem-photo"><img src="<?php echo lh_img( 'reunion-dueno.webp' ); ?>" alt="Dueño de un negocio de closets revisando sus anuncios"/><figcaption class="wp-element-caption">Imagen IA temporal → foto real [CONFIRM]</figcaption></figure>
+<!-- /wp:image --></div>
 <!-- /wp:group -->
 
 <!-- wp:html -->

@@ -41,11 +41,11 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":1} -->
-<h1 class="wp-block-heading">Deja de quemar presupuesto en <em>curiosos.</em></h1>
+<h1 class="wp-block-heading">Recibe <em>homeowners prefiltrados</em> de tu zona.</h1>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Recibe homeowners prefiltrados de tu zona. Antes del estimate ya sabes si están en tu zona, qué presupuesto tienen, qué producto necesitan y en qué estilo.</p>
+<p>No quemes más presupuesto en curiosos. Antes del estimate ya sabes si están en tu zona, qué presupuesto tienen, qué producto necesitan y en qué estilo.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons -->

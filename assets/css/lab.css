@@ -189,8 +189,6 @@ body.lh-lab {
 .lh-fn-gate-t { color: var(--accent-2) !important; border-color: rgba(77, 124, 255, .5); }
 
 /* ---------- Closet Ads Lab stage ---------- */
-.lh-lab .lh-how-intro { position: static; align-self: stretch; }
-.lh-lab .lh-ui-stage { position: sticky; top: 110px; }
 .lh-lab .lh-how-intro > p.lh-r { color: var(--ink-2); max-width: 44ch; margin-top: 20px !important; }
 .lh-ui-stage { margin-top: 36px; }
 .lh-ui-stage .lh-ui-win { height: 340px; }
@@ -344,3 +342,104 @@ body.lh-lab {
 .lh-lab .lh-page-hero { padding-top: clamp(110px, 10vw, 140px); }
 .lh-lab .lh-page-hero .lh-intro { margin-top: 18px !important; }
 .lh-lab .lh-hero-ctas { margin-top: 26px !important; }
+
+/* ==========================================================================
+   Round 2: shorter headlines, images 50/50, more blue, boxed pains, wide lab header
+   ========================================================================== */
+
+/* hero: short headline, subheadline in between, photo with the live feed on top */
+.lh-lab .lh-page-hero .lh-giant-title { font-size: clamp(42px, 5vw, 80px) !important; line-height: .98; max-width: 12ch; }
+.lh-sub { font-size: clamp(20px, 1.9vw, 28px); font-weight: 600; letter-spacing: -.02em; color: var(--accent-2); margin-top: 18px !important; }
+.lh-lab .lh-page-hero .lh-intro { font-size: clamp(16px, 1.25vw, 19px); }
+.lh-hero-media { position: relative; }
+.lh-hero-media > * { margin: 0; }
+.lh-hero-photo { border-radius: 20px; overflow: hidden; aspect-ratio: 4 / 5; box-shadow: 0 40px 100px -30px rgba(0, 0, 0, .9); }
+.lh-hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.lh-hero-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(8, 8, 10, .75)); pointer-events: none; }
+.lh-hero-media .lh-ui-feed { position: absolute; left: -12%; right: 18%; bottom: -8%; z-index: 2; }
+.lh-hero-media .lh-ui-feed .lh-ui-win { min-height: 0; backdrop-filter: blur(14px); background: linear-gradient(180deg, rgba(20, 20, 26, .86), rgba(14, 14, 18, .92)); }
+.lh-hero-media .lh-feed-list { min-height: 0; }
+.lh-hero-media .lh-fc:nth-child(3) { display: none; }
+.lh-hero-media .lh-ui-cap { position: absolute; right: 0; bottom: -26px; }
+.lh-lab .lh-page-hero { padding-bottom: clamp(90px, 9vw, 140px); }
+
+/* image figures: rounded, with a soft blue edge */
+.lh-lab .lh-problem-photo, .lh-lab .lh-head-photo { margin: 0; border-radius: 20px; overflow: hidden; position: relative; border: 1px solid var(--line-2); }
+.lh-lab .lh-problem-photo img, .lh-lab .lh-head-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.lh-lab .lh-ph figcaption { font-size: 10px; }
+
+/* problem: short statement next to a photo */
+.lh-problem-top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); align-items: center; margin-top: 8px; }
+.lh-lab .lh-problem-top .lh-statement { font-size: clamp(44px, 6vw, 96px); margin: 0 !important; }
+.lh-lab .lh-problem-top .lh-hol { white-space: normal; font-weight: 700; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.lh-problem-photo { aspect-ratio: 5 / 4; }
+
+/* funnel: bigger, readable labels */
+.lh-fn-in, .lh-fn-out { font-size: clamp(15px, 1.4vw, 19px); font-weight: 500; letter-spacing: -.01em; bottom: 18px; color: var(--ink); }
+.lh-fn-in { left: 22px; } .lh-fn-out { right: 22px; color: var(--accent-2); }
+.lh-fn-track { height: 280px; }
+.lh-fn-track > i { width: 14px; height: 14px; }
+.lh-fn-gate em, .lh-fn-gate-t { font-size: 12px; padding: 5px 11px; }
+.lh-fn-gate em { color: var(--ink) !important; border-color: rgba(77, 124, 255, .4); }
+
+/* pains: each one in its own box */
+.lh-lab .lh-pains { gap: 18px; margin-top: 28px !important; }
+.lh-lab .lh-pain {
+	border: 1px solid var(--line-2); border-radius: 18px; padding: clamp(24px, 2.4vw, 34px);
+	background: linear-gradient(160deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .01)), var(--paper);
+}
+.lh-lab .lh-pain .is-style-label { color: var(--no); font-weight: 600; }
+.lh-lab .lh-pain h3 { font-size: clamp(20px, 1.7vw, 24px); line-height: 1.2; }
+
+/* Closet Ads Lab: wide header on top, stage sticky from step 1 to the end of step 3 */
+.lh-lab .lh-how-intro { position: static; max-width: none; margin-bottom: clamp(36px, 5vw, 64px); }
+.lh-lab .lh-how-intro .lh-title { max-width: 20ch; }
+.lh-lab .lh-how-intro > p.lh-r { max-width: 60ch; }
+.lh-lab .lh-how-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: stretch; }
+.lh-how-stage { position: relative; }
+.lh-lab .lh-how-stage .lh-ui-stage { position: sticky; top: calc(50vh - 190px); margin: 0; }
+.lh-lab .lh-ui-stage .lh-ui-win { height: 380px; }
+.lh-lab .lh-stack { display: grid; gap: 18px; }
+.lh-lab .lh-step { min-height: 380px; display: flex; flex-direction: column; justify-content: space-between; }
+
+/* titles wider everywhere */
+.lh-lab .lh-title { max-width: 22ch; }
+
+/* deliverables header with a photo */
+.lh-split-head { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(24px, 4vw, 56px); align-items: end; margin-bottom: clamp(28px, 4vw, 48px); }
+.lh-split-head > .wp-block-group > * { margin-block: 0; }
+.lh-head-photo { aspect-ratio: 16 / 9; }
+.lh-lab .lh-fine { color: var(--muted); font-size: 13px; margin-top: 16px !important; }
+.lh-mm-ch { position: absolute; left: 14px; bottom: 8px; display: flex; gap: 6px; list-style: none; margin: 0; padding: 0; }
+.lh-mm-ch li { font-family: var(--mono); font-size: 9px; padding: 2px 7px; border-radius: 999px; border: 1px solid var(--line-2); color: var(--muted); }
+.lh-mm-ch li.on { color: #fff; background: var(--accent); border-color: var(--accent); }
+.lh-mini-mail .lh-mm-card { top: 10px; }
+
+/* more blue and more hierarchy */
+.lh-lab .is-style-label { color: var(--accent-2); }
+.lh-lab .is-style-label::before { background: var(--accent) !important; }
+.lh-lab .lh-checks li::before { color: var(--accent); }
+.lh-lab .lh-checks.is-no li::before { color: #6B6B76; }
+.lh-lab .lh-gain h3, .lh-lab .lh-step h3 { color: #fff; }
+.lh-lab .lh-gain .is-style-label { color: var(--accent); font-weight: 600; }
+.lh-lab .lh-card h3 + p, .lh-lab .lh-gain p { color: var(--ink-2); }
+.lh-lab .lh-dash li::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin: 0 10px 2px 0; }
+.lh-lab .lh-guarantee .lh-n { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.lh-lab .lh-guarantee { border-color: rgba(77, 124, 255, .25); }
+.lh-lab .lh-diff h3 { color: #fff; }
+.lh-lab .lh-diff .is-style-label { color: var(--accent); }
+.lh-lab .lh-sec:not(.lh-dark):nth-of-type(even) { background: radial-gradient(60% 50% at 0% 50%, rgba(77, 124, 255, .07), transparent 70%); }
+.lh-lab .lh-faq summary::marker, .lh-lab .lh-faq summary::after { color: var(--accent); }
+
+@media (max-width: 820px) {
+	.lh-hero-media { margin-top: 12px; }
+	.lh-hero-photo { aspect-ratio: 4 / 3; }
+	.lh-hero-media .lh-ui-feed { position: relative; left: auto; right: auto; bottom: auto; margin: -70px 10px 0; }
+	.lh-hero-media .lh-ui-cap { position: static; }
+	.lh-problem-top, .lh-split-head { grid-template-columns: 1fr; }
+	.lh-lab .lh-how-grid { grid-template-columns: 1fr; }
+	.lh-how-stage { display: none; }
+	.lh-lab .lh-step { min-height: 0; }
+	.lh-fn-track { height: 260px; }
+	.lh-fn-in, .lh-fn-out { font-size: 13px; max-width: 9ch; line-height: 1.2; }
+}
