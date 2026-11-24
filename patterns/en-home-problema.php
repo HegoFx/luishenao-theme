@@ -26,6 +26,10 @@
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
+<!-- wp:html -->
+<?php echo lh_ui( 'funnel' ); ?>
+<!-- /wp:html -->
+
 <!-- wp:group {"className":"lh-pains"} -->
 <div class="wp-block-group lh-pains"><!-- wp:group {"className":"lh-pain lh-r"} -->
 <div class="wp-block-group lh-pain lh-r"><!-- wp:paragraph {"className":"is-style-label"} -->

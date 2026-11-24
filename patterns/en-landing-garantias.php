@@ -22,6 +22,10 @@ $lh_g = array(
 <h2 class="wp-block-heading lh-title lh-r-mask">Three guarantees, <em>in writing.</em></h2>
 <!-- /wp:heading -->
 
+<!-- wp:html -->
+<?php echo lh_ui( 'timeline' ); ?>
+<!-- /wp:html -->
+
 <!-- wp:group {"className":"lh-three"} -->
 <div class="wp-block-group lh-three"><?php foreach ( $lh_g as $i => $g ) : ?><!-- wp:group {"className":"lh-card lh-guarantee lh-r-card"} -->
 <div class="wp-block-group lh-card lh-guarantee lh-r-card"><!-- wp:paragraph {"className":"lh-n"} -->

@@ -34,7 +34,14 @@ add_action( 'wp_enqueue_scripts', function () {
 
 	wp_enqueue_script( 'gsap', "$uri/vendor/gsap.min.js", array(), '3.12.5', array( 'strategy' => 'defer', 'in_footer' => true ) );
 	wp_enqueue_script( 'gsap-st', "$uri/vendor/ScrollTrigger.min.js", array( 'gsap' ), '3.12.5', array( 'strategy' => 'defer', 'in_footer' => true ) );
-	wp_enqueue_script( 'lh-site', "$uri/js/site.js", array( 'gsap-st' ), $ver, array( 'strategy' => 'defer', 'in_footer' => true ) );
+	// Home + landing: dark lab look, interface loops, smooth scroll. lab.js runs before site.js (it takes over the headings).
+	$lab = lh_is_lab();
+	if ( $lab ) {
+		wp_enqueue_style( 'lh-lab', "$uri/css/lab.css", array( 'lh-main' ), $ver );
+		wp_enqueue_script( 'lenis', "$uri/vendor/lenis.min.js", array(), '1.3.28', array( 'strategy' => 'defer', 'in_footer' => true ) );
+		wp_enqueue_script( 'lh-lab', "$uri/js/lab.js", array( 'gsap-st', 'lenis' ), $ver, array( 'strategy' => 'defer', 'in_footer' => true ) );
+	}
+	wp_enqueue_script( 'lh-site', "$uri/js/site.js", $lab ? array( 'gsap-st', 'lh-lab' ) : array( 'gsap-st' ), $ver, array( 'strategy' => 'defer', 'in_footer' => true ) );
 
 	// The heavy home experience (doors, leads, closet rod, stacked steps) only loads on the front page.
 	if ( is_front_page() ) {
@@ -42,8 +49,22 @@ add_action( 'wp_enqueue_scripts', function () {
 	}
 } );
 
-// Color mode before first paint: the visitor's saved choice, else their device setting.
+/**
+ * Pages with the dark "lab" look: Home and the sales landing (ES and EN).
+ */
+function lh_is_lab() {
+	return is_front_page() || is_page( array( 'clientes-para-negocios-de-closets', 'custom-closet-leads' ) );
+}
+add_filter( 'body_class', function ( $c ) {
+	return lh_is_lab() ? array_merge( $c, array( 'lh-lab' ) ) : $c;
+} );
+
+// Color mode before first paint: the visitor's saved choice, else their device setting. Lab pages are always dark.
 add_action( 'wp_head', function () {
+	if ( lh_is_lab() ) {
+		echo "<script>document.documentElement.dataset.theme='dark'</script>\n";
+		return;
+	}
 	echo "<script>(function(d){var t;try{t=localStorage.getItem('lh-theme')}catch(e){}d.dataset.theme=t||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')})(document.documentElement)</script>\n";
 }, 0 );
 
@@ -168,6 +189,7 @@ function lh_img( $file ) {
 }
 
 require get_theme_file_path( 'inc/offer.php' );
+require get_theme_file_path( 'inc/ui.php' );
 require get_theme_file_path( 'inc/seo.php' );
 
 /**

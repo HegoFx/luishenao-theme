@@ -33,7 +33,11 @@ $lh_bonus = array(
 
 <!-- wp:group {"className":"lh-gains-grid lh-get"} -->
 <div class="wp-block-group lh-gains-grid lh-get"><?php foreach ( $lh_items as $i => $g ) : ?><!-- wp:group {"className":"lh-card lh-gain lh-r-card"} -->
-<div class="wp-block-group lh-card lh-gain lh-r-card"><!-- wp:paragraph {"className":"is-style-label"} -->
+<div class="wp-block-group lh-card lh-gain lh-r-card"><!-- wp:html -->
+<?php echo lh_ui( array( 'mini-ads', 'mini-check', 'mini-mail', 'mini-board', 'mini-cal', 'mini-quote', 'mini-report' )[ $i ] ?? '' ); ?>
+<!-- /wp:html -->
+
+<!-- wp:paragraph {"className":"is-style-label"} -->
 <p class="is-style-label"><?php printf( '%02d', $i + 1 ); ?></p>
 <!-- /wp:paragraph -->
 

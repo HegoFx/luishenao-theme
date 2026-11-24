@@ -7,8 +7,9 @@
  */
 ?>
 <!-- wp:group {"tagName":"section","align":"full","className":"lh-sec lh-page-hero"} -->
-<section class="wp-block-group alignfull lh-sec lh-page-hero"><!-- wp:group {"className":"lh-wrap"} -->
-<div class="wp-block-group lh-wrap"><!-- wp:paragraph {"className":"is-style-label lh-r"} -->
+<section class="wp-block-group alignfull lh-sec lh-page-hero"><!-- wp:group {"className":"lh-wrap lh-hero-split"} -->
+<div class="wp-block-group lh-wrap lh-hero-split"><!-- wp:group {"className":"lh-hero-txt"} -->
+<div class="wp-block-group lh-hero-txt"><!-- wp:paragraph {"className":"is-style-label lh-r"} -->
 <p class="is-style-label lh-r">Sistema de Estimates para Custom Closets</p>
 <!-- /wp:paragraph -->
 
@@ -29,9 +30,11 @@
 <!-- wp:paragraph {"className":"lh-hero-note lh-r"} -->
 <p class="lh-hero-note lh-r">20 minutos conmigo. Sales sabiendo si esto le sirve a tu negocio.</p>
 <!-- /wp:paragraph -->
+</div>
+<!-- /wp:group -->
 
-<!-- wp:image {"sizeSlug":"full","className":"lh-ph lh-r-img lh-parallax"} -->
-<figure class="wp-block-image size-full lh-ph lh-r-img lh-parallax"><img src="<?php echo lh_img( 'hero-luis.webp' ); ?>" alt="Luis Henao"/><figcaption class="wp-element-caption">Placeholder → foto real de Luis, natural [CONFIRM]</figcaption></figure>
-<!-- /wp:image --></div>
+<!-- wp:html -->
+<?php echo lh_ui( 'feed' ); ?>
+<!-- /wp:html --></div>
 <!-- /wp:group --></section>
 <!-- /wp:group -->

@@ -25,11 +25,16 @@ $lh_steps = array(
 
 <!-- wp:paragraph {"className":"lh-r"} -->
 <p class="lh-r">Not "Facebook and Instagram campaigns". A lab for your ads: we measure everything and test new angles every month.</p>
-<!-- /wp:paragraph --></div>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<?php echo lh_ui( 'stage' ); ?>
+<!-- /wp:html -->
+</div>
 <!-- /wp:group -->
 
 <!-- wp:group {"className":"lh-stack"} -->
-<div class="wp-block-group lh-stack"><?php foreach ( $lh_steps as $s ) : ?><!-- wp:group {"className":"lh-step"} -->
+<div class="wp-block-group lh-stack"><?php foreach ( $lh_steps as $lh_i => $s ) : ?><!-- wp:group {"className":"lh-step"} -->
 <div class="wp-block-group lh-step"><!-- wp:group {"className":"lh-step-row"} -->
 <div class="wp-block-group lh-step-row"><!-- wp:paragraph {"className":"is-style-label"} -->
 <p class="is-style-label">Step</p>
@@ -48,7 +53,11 @@ $lh_steps = array(
 <!-- wp:paragraph -->
 <p><?php echo esc_html( $s[2] ); ?></p>
 <!-- /wp:paragraph --></div>
-<!-- /wp:group --></div>
+<!-- /wp:group -->
+
+<!-- wp:html -->
+<div class="lh-ui lh-step-scene" aria-hidden="true"><div class="lh-ui-win"><?php echo lh_ui( 'scene-' . ( $lh_i + 1 ) ); ?></div></div>
+<!-- /wp:html --></div>
 <!-- /wp:group --><?php endforeach; ?></div>
 <!-- /wp:group --></div>
 <!-- /wp:group --></section>

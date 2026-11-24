@@ -16,6 +16,6 @@
 		try { localStorage.setItem('lh-theme', root.dataset.theme); } catch (err) {}
 		sync();
 	});
-	dark.addEventListener('change', () => { if (!saved()) { root.dataset.theme = dark.matches ? 'dark' : 'light'; sync(); } });
+	dark.addEventListener('change', () => { if (!saved() && !document.body.classList.contains('lh-lab')) { root.dataset.theme = dark.matches ? 'dark' : 'light'; sync(); } });
 	sync();
 })();
