@@ -14,7 +14,7 @@
 
 <!-- wp:group {"className":"lh-statement"} -->
 <div class="wp-block-group lh-statement"><!-- wp:paragraph {"className":"lh-st-a"} -->
-<p class="lh-st-a">Your ads bring you <s>tire kickers.</s></p>
+<p class="lh-st-a">Your ads bring you <s>tire-kickers.</s></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"lh-st-b"} -->
@@ -33,11 +33,11 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading">Estimates that never close</h3>
+<h3 class="wp-block-heading">Estimates with price shoppers</h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>You drive across town, measure the space, spend an hour with the homeowner. Turns out they were just pricing it out.</p>
+<p>You drive across town, measure, design, spend an hour with the homeowner. Turns out they were just pricing it out. Your week goes to people who were never going to buy.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
@@ -47,11 +47,11 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading">Lead forms full of junk</h3>
+<h3 class="wp-block-heading">Junk leads</h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>8 out of 10 aren't real buyers. Wrong zip code, no budget, or just browsing.</p>
+<p>Wrong zip codes, renters, fake numbers, people who never answer. And you pay for every one of them.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
@@ -61,11 +61,11 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading">Stuck on word of mouth</h3>
+<h3 class="wp-block-heading">Word of mouth, and agencies that didn't deliver</h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Referrals are great until they dry up. You can't plan your schedule around who your last client happened to talk to.</p>
+<p>Referrals are great until a slow month hits. And the agency you tried ran a few generic ads and sent a report nobody could read.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group --></div>

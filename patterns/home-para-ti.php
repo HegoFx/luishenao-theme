@@ -23,12 +23,11 @@
 <!-- /wp:heading -->
 
 <?php echo lh_list( array(
-	'Eres dueño de un negocio independiente de custom closets',
-	'Llevas de 1 a 4 años operando con tracción real',
-	'Tienes 10+ reviews en Google con rating de 4.4+',
-	'Vendes de 3 a 8 closets al mes, con ticket de $5k a $8k',
-	'Puedes invertir mínimo $900/mes en anuncios',
-	'Estás en Florida, Texas o Arizona',
+	'Tienes un negocio independiente de custom closets en USA',
+	'Tienes proyectos terminados que te enorgullece mostrar',
+	'Llevas de 1 a 4 años operando y tienes reseñas reales en Google',
+	'Puedes invertir al menos $1,200 al mes en anuncios',
+	'Quieres un sistema que se mide, no solo "poner ads"',
 ) ); ?></div>
 <!-- /wp:group -->
 
@@ -38,10 +37,10 @@
 <!-- /wp:heading -->
 
 <?php echo lh_list( array(
-	'Eres una franquicia (California Closets, Closet Factory y similares)',
-	'Ahora mismo no tienes presupuesto para anuncios',
-	'Estás arrancando y todavía no tienes tracción',
-	'Quieres que alguien te garantice un número de ventas',
+	'Eres una franquicia nacional',
+	'No tienes presupuesto para anuncios',
+	'Todavía no tienes trabajos terminados',
+	'Buscas ventas garantizadas',
 ), 'lh-checks is-no' ); ?></div>
 <!-- /wp:group --></div>
 <!-- /wp:group --></div>

@@ -28,8 +28,16 @@ Lee esto antes de investigar. Actualízalo cuando confirmes algo nuevo del servi
 - Páginas: Inicio (1) ↔ Home (10, portada /en/), Blog (2, /blog/) ↔ Blog (11, /en/articles/), Sobre mí (5) ↔ About (12). Polylang free no comparte slugs entre idiomas: por eso `/en/articles/`.
 - El tema traduce lo que Polylang free no puede en un tema de bloques (`functions.php`, `lh_is_en()`): en inglés usa `parts/header-en.html` y `footer-en.html`, los patterns `luishenao/en-*` en vez de `luishenao/*` y prueba primero las plantillas `templates/en-*.html`.
 - Al cambiar un texto del tema, cambia también su gemelo en inglés. Selector de idioma: shortcode `[lh_lang]` en la nav.
-- El inglés no es traducción literal: el dueño americano recibe los leads por SMS en su pipeline de GoHighLevel, el CTA es "Book a 15-min call" (#book) y Colombia se presenta como ventaja.
-- Pendiente: calendario de GHL real en #book.
+- El inglés no es traducción literal: Colombia se presenta como ventaja. CTA único: llamada de 20 minutos ("Agenda una llamada de 20 minutos" #agendar / "Book a 20-minute call" #book).
+- Pendiente: calendario de GHL real (`calendar` en `inc/offer.php`).
+
+## Oferta (v7, refresh 2026-11)
+- Fuente: contexto v7 y registro v3 en la carpeta local "lead-gen-custom-closets" de Luis. Nombre: "Sistema de Estimates para Custom Closets", método "Closet Ads Lab".
+- `inc/offer.php`: `lh_offer()` es la única fuente de precio por cupos (tiers 499/699/799, `spots_taken`), mínimos, contacto, reels, línea legal y URL de condiciones. Vacío = se muestra `[CONFIRM]`. `lh_pricing()` calcula el precio vigente; lo usan patterns, `inc/seo.php` y llms.txt.
+- Lenguaje: "homeowners prefiltrados", nunca prometer estimates agendados ni ventas. Los 60 días cuentan desde que los anuncios salen al aire. Mínimo 3 meses, después mes a mes con aviso de 30 días.
+- Landing: una sola acción (agendar). WhatsApp, correo e Instagram solo en la página de gracias (`[lh_contacto]`).
+- Páginas de condiciones: `condiciones-garantias` ↔ `guarantee-terms` (texto legal pendiente de revisión de abogado [CONFIRM]).
+- Dominio: hoy luishenaoai.online; el final será closetleadgen.com (aún no comprado).
 
 ## Tracking (`docs/tracking.md`)
 - Conversiones de Google Ads y Meta salen de GHL (gclid / CAPI), no del sitio. GA4 y etiqueta base de Ads con Site Kit; Meta Pixel por código (falta el ID).

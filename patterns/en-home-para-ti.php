@@ -23,12 +23,11 @@
 <!-- /wp:heading -->
 
 <?php echo lh_list( array(
-	'You own an independent custom closet company',
-	"You've been operating 1 to 4 years with real traction",
-	'You have 10+ Google reviews rated 4.4 or higher',
-	'You sell 3 to 8 closets a month at $5k to $8k each',
-	'You can invest at least $900/mo in ads',
-	"You're in Florida, Texas or Arizona",
+	'You own an independent custom closet business in the US',
+	'You have finished projects you are proud to show',
+	'You have been operating 1 to 4 years and have real Google reviews',
+	'You can invest at least $1,200 a month in ads',
+	'You want a system that is measured, not just "running ads"',
 ) ); ?></div>
 <!-- /wp:group -->
 
@@ -38,10 +37,10 @@
 <!-- /wp:heading -->
 
 <?php echo lh_list( array(
-	"You're a franchise (California Closets, Closet Factory and the like)",
-	"You don't have an ad budget right now",
-	"You're just starting out and don't have traction yet",
-	'You want someone to guarantee a number of sales',
+	'You are a national franchise',
+	'You have no budget for ads',
+	'You do not have finished jobs yet',
+	'You are looking for guaranteed sales',
 ), 'lh-checks is-no' ); ?></div>
 <!-- /wp:group --></div>
 <!-- /wp:group --></div>

@@ -22,7 +22,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"is-style-label"} -->
-<p class="is-style-label">Cupos piloto: 3</p>
+<p class="is-style-label"><?php $lh_p = lh_pricing(); echo null === $lh_p['left'] ? 'Cupos abiertos' : esc_html( sprintf( 'Cupos a %s: %d', lh_usd( $lh_p['tier']['price'] ), $lh_p['left'] ) ); ?></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
@@ -45,27 +45,27 @@
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Recibe de 6 a 8 home owners pre-calificados al mes, directo en tu WhatsApp. Presupuesto, timeline y ubicación verificados antes de que hables con ellos.</p>
+<p>Recibe homeowners prefiltrados de tu zona. Antes del estimate ya sabes si están en tu zona, qué presupuesto tienen, qué producto necesitan y en qué estilo.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons -->
 <div class="wp-block-buttons"><!-- wp:button -->
-<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="#aplicar">Aplica al piloto →</a></div>
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="#agendar">Agenda una llamada de 20 minutos →</a></div>
 <!-- /wp:button -->
 
 <!-- wp:button {"className":"is-style-ghost"} -->
-<div class="wp-block-button is-style-ghost"><a class="wp-block-button__link wp-element-button" href="#como">Cómo funciona</a></div>
+<div class="wp-block-button is-style-ghost"><a class="wp-block-button__link wp-element-button" href="#como">Closet Ads Lab</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons -->
 
 <!-- wp:paragraph {"className":"is-style-label lh-note"} -->
-<p class="is-style-label lh-note">$650/mes · Garantía de 21 días · Sin contratos largos</p>
+<p class="is-style-label lh-note"><?php echo esc_html( 'Precio de fundador ' . lh_usd( lh_pricing()['tier']['price'] ) . '/mes · 3 garantías por escrito · Todo es tuyo' ); ?></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
 <!-- wp:paragraph {"className":"lh-marquee"} -->
-<p class="lh-marquee">Más estimates que cierran · Menos curiosos · Tu calendario lleno · Solo custom closets · Florida · Texas · Arizona · Español e inglés</p>
+<p class="lh-marquee">Homeowners prefiltrados · Closet Ads Lab · 6 anuncios nuevos al mes · Solo custom closets · Florida · Texas · Arizona · Español e inglés</p>
 <!-- /wp:paragraph --></section>
 <!-- /wp:group -->

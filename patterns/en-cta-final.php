@@ -1,48 +1,34 @@
 <?php
 /**
- * Title: Final CTA with booking (English)
+ * Title: Final CTA with calendar (EN)
  * Slug: luishenao/en-cta-final
  * Categories: lh-home, lh-secciones
- * Description: Dark block with headline, contact alternative and the GHL booking calendar (English).
+ * Description: Dark block with the embedded GHL calendar: the only conversion action (20-minute call). URL in inc/offer.php.
  */
+$lh_o = lh_offer();
 ?>
 <!-- wp:group {"tagName":"section","align":"full","anchor":"book","className":"lh-sec lh-dark lh-final"} -->
 <section id="book" class="wp-block-group alignfull lh-sec lh-dark lh-final"><!-- wp:group {"className":"lh-wrap lh-final-grid"} -->
 <div class="wp-block-group lh-wrap lh-final-grid"><!-- wp:group -->
 <div class="wp-block-group"><!-- wp:paragraph {"className":"is-style-label lh-r"} -->
-<p class="is-style-label lh-r">Book a call</p>
+<p class="is-style-label lh-r">Book a 20-minute call</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"className":"lh-title lh-r-mask"} -->
-<h2 class="wp-block-heading lh-title lh-r-mask">Ready to fill your calendar with <em>real homeowners?</em></h2>
+<h2 class="wp-block-heading lh-title lh-r-mask">Let’s see if your business is <em>a fit.</em></h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"lh-r"} -->
-<p class="lh-r">Grab 15 minutes on my calendar. We'll look at your area, your numbers and whether this makes sense for you. No pitch deck.</p>
+<p class="lh-r">20 minutes with me. If it is not a fit, I will tell you. When you book I ask for this so I come prepared:</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:buttons {"className":"lh-r"} -->
-<div class="wp-block-buttons lh-r"><!-- wp:button {"className":"is-style-ghost"} -->
-<div class="wp-block-button is-style-ghost"><a class="wp-block-button__link wp-element-button" href="https://instagram.com/">Rather DM? Send "audit" on Instagram</a></div>
-<!-- /wp:button --></div>
-<!-- /wp:buttons --></div>
+<?php echo lh_list( array( 'Name, email and phone', 'Business name and city', 'What you spend on ads today' ), 'lh-dash lh-r' ); ?></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"className":"lh-form lh-r-card"} -->
-<div class="wp-block-group lh-form lh-r-card"><!-- wp:paragraph {"className":"lh-ph-note"} -->
-<p class="lh-ph-note">Placeholder → GHL booking calendar embed goes here (Phase 5)</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:html -->
-<div class="lh-mock-form" aria-hidden="true">
-  <label>Name</label><div class="f"></div>
-  <label>Company name</label><div class="f"></div>
-  <label>Mobile number</label><div class="f"></div>
-  <label>What state do you operate in?</label><div class="f"></div>
-  <label>How many closets do you sell a month?</label><div class="f"></div>
-  <span class="lh-mock-btn">Book my call →</span>
-  <small>After booking you land on the thank-you page, which fires Meta's Schedule event.</small>
-</div>
+<!-- wp:group {"className":"lh-form lh-cal lh-r-card"} -->
+<div class="wp-block-group lh-form lh-cal lh-r-card"><!-- wp:html -->
+<?php if ( $lh_o['calendar'] ) : ?><iframe class="lh-cal-frame" src="<?php echo esc_url( $lh_o['calendar'] ); ?>" title="Book a 20-minute call" loading="lazy" scrolling="yes"></iframe><?php else : ?><p class="lh-ph-note">[CONFIRM] GoHighLevel calendar goes here (URL in inc/offer.php)</p><div class="lh-mock-form" aria-hidden="true"><span class="lh-mock-btn">Book a 20-minute call</span></div><?php endif; ?>
+<p class="lh-consent">By booking you agree to be contacted by email or phone about your call. <a href="/en/privacy-policy/">Privacy policy</a></p>
 <!-- /wp:html --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group --></section>

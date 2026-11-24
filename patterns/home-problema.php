@@ -22,7 +22,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"lh-hol"} -->
-<p class="lh-hol">home owners listos.</p>
+<p class="lh-hol">homeowners listos.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
@@ -33,11 +33,11 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading">Estimates que nunca cierran</h3>
+<h3 class="wp-block-heading">Estimates con gente que solo compara precios</h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Cruzas la ciudad, mides el espacio, pasas una hora con el home owner. Y resulta que solo estaba comparando precios.</p>
+<p>Cruzas la ciudad, mides, diseñas, pasas una hora con el homeowner. Y resulta que solo estaba cotizando. Tu semana se va en gente que nunca iba a comprar.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
@@ -47,11 +47,11 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading">Formularios llenos de leads basura</h3>
+<h3 class="wp-block-heading">Leads basura</h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>8 de cada 10 no son compradores reales. Zona equivocada, sin presupuesto o solo curiosos.</p>
+<p>Zonas que no cubres, gente que renta, números falsos, gente que nunca contesta. Y pagas por cada uno.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
@@ -61,11 +61,11 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading">Atrapado en el boca a boca</h3>
+<h3 class="wp-block-heading">Boca a boca, y agencias que no cumplieron</h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Los referidos son geniales hasta que se frenan. No puedes planear tu calendario según con quién habló tu último cliente.</p>
+<p>Los referidos son lo mejor hasta que llega un mes lento. Y la agencia que probaste puso unos ads genéricos y mandó un reporte que nadie entendía.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group --></div>

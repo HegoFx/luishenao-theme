@@ -22,7 +22,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"is-style-label"} -->
-<p class="is-style-label">Pilot spots: 3</p>
+<p class="is-style-label"><?php $lh_p = lh_pricing(); echo null === $lh_p['left'] ? 'Spots open' : esc_html( sprintf( 'Spots at %s: %d', lh_usd( $lh_p['tier']['price'] ), $lh_p['left'] ) ); ?></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
@@ -41,31 +41,31 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":1} -->
-<h1 class="wp-block-heading">Stop paying for <em>tire kickers.</em></h1>
+<h1 class="wp-block-heading">Stop burning ad budget on <em>tire-kickers.</em></h1>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p>Get 6 to 8 pre-qualified homeowners a month, texted straight to your phone and logged in your CRM. Budget, timeline and location confirmed before you ever pick up.</p>
+<p>Get pre-qualified homeowners from your area. Before the estimate you already know if they are in your area, their budget, the product they need and their style.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons -->
 <div class="wp-block-buttons"><!-- wp:button -->
-<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="#book">Book a 15-min call →</a></div>
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="#book">Book a 20-minute call →</a></div>
 <!-- /wp:button -->
 
 <!-- wp:button {"className":"is-style-ghost"} -->
-<div class="wp-block-button is-style-ghost"><a class="wp-block-button__link wp-element-button" href="#how">How it works</a></div>
+<div class="wp-block-button is-style-ghost"><a class="wp-block-button__link wp-element-button" href="#how">Closet Ads Lab</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons -->
 
 <!-- wp:paragraph {"className":"is-style-label lh-note"} -->
-<p class="is-style-label lh-note">$650/mo · 21-day launch guarantee · No long-term contract</p>
+<p class="is-style-label lh-note"><?php echo esc_html( 'Founder price ' . lh_usd( lh_pricing()['tier']['price'] ) . '/mo · 3 guarantees in writing · Everything is yours' ); ?></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
 <!-- wp:paragraph {"className":"lh-marquee"} -->
-<p class="lh-marquee">More estimates that close · Fewer tire kickers · A full calendar · Custom closets only · Florida · Texas · Arizona · English and Spanish</p>
+<p class="lh-marquee">Pre-qualified homeowners · Closet Ads Lab · 6 new ads a month · Custom closets only · Florida · Texas · Arizona · English and Spanish</p>
 <!-- /wp:paragraph --></section>
 <!-- /wp:group -->

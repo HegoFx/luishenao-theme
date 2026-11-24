@@ -167,4 +167,23 @@ function lh_img( $file ) {
 	return esc_url( get_theme_file_uri( "assets/img/$file" ) );
 }
 
+require get_theme_file_path( 'inc/offer.php' );
 require get_theme_file_path( 'inc/seo.php' );
+
+/**
+ * [lh_contacto]: WhatsApp, correo e Instagram desde inc/offer.php. Solo va en la página de gracias
+ * (regla v6: una sola acción en la landing; otros canales después de agendar).
+ */
+add_shortcode( 'lh_contacto', function () {
+	$o   = lh_offer();
+	$rows = array(
+		array( 'WhatsApp', $o['whatsapp'] ? 'https://wa.me/' . $o['whatsapp'] : '', $o['whatsapp'] ? '+' . $o['whatsapp'] : '' ),
+		array( lh_is_en() ? 'Email' : 'Correo', $o['email'] ? 'mailto:' . $o['email'] : '', $o['email'] ),
+		array( 'Instagram', $o['instagram'], $o['instagram'] ? preg_replace( '#^https?://(www\.)?instagram\.com/#', '@', untrailingslashit( $o['instagram'] ) ) : '' ),
+	);
+	$out = '<ul class="lh-contact">';
+	foreach ( $rows as $r ) {
+		$out .= '<li><span>' . esc_html( $r[0] ) . '</span>' . ( $r[1] ? '<a href="' . esc_url( $r[1] ) . '" target="_blank" rel="noopener">' . esc_html( $r[2] ) . '</a>' : lh_confirm( $r[0] ) ) . '</li>';
+	}
+	return $out . '</ul>';
+} );
