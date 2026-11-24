@@ -77,6 +77,20 @@
 <!-- wp:paragraph -->
 <p>Los referidos son lo mejor hasta que llega un mes lento. Y la agencia que probaste puso unos ads genéricos y mandó un reporte que nadie entendía.</p>
 <!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"lh-pain lh-r is-new"} -->
+<div class="wp-block-group lh-pain lh-r is-new"><!-- wp:paragraph {"className":"is-style-label"} -->
+<p class="is-style-label">04</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Todavía no corres anuncios</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Sabes que los necesitas, pero no quieres botar plata probando sin saber qué funciona, ni contratar a alguien que no conoce tu negocio.</p>
+<!-- /wp:paragraph --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group --></section>

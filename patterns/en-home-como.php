@@ -1,30 +1,30 @@
 <?php
 /**
- * Title: Home EN · Closet Ads Lab (how it works)
+ * Title: Home EN · Closet Ads System (how it works)
  * Slug: luishenao/en-home-como
  * Categories: lh-home, lh-secciones
  * Description: Sticky intro on the left and steps that stack on scroll (English).
  */
 
 $lh_steps = array(
-	array( '01', 'Only your homeowners see the ads', 'Ads are shown only to homeowners in your service area. People who are not your ideal client are left out from day one.' ),
-	array( '02', 'New ads every month', '6 new ads a month (image, carousel and video), with angles different from what every other closet company is running.' ),
-	array( '03', 'Measure, cut, adjust', 'Every dollar tracked to the booked estimate. What does not work gets turned off. Adjustments every 7 to 10 days, and a monthly report with clear numbers.' ),
+	array( '01', 'Your budget only reaches your area', 'Ads are shown only to homeowners in your service area. You do not pay for people you cannot serve.' ),
+	array( '02', 'Ads that do not look like everyone else’s', '6 new ads a month (image, carousel and video). While competitors repeat the same thing, yours stand out and stay fresh.' ),
+	array( '03', 'What brings homeowners stays, the rest gets cut', 'Every dollar tracked to the booked estimate. Adjustments every 7 to 10 days so your money moves to what works, and a monthly report with clear numbers.' ),
 );
 ?>
 <!-- wp:group {"tagName":"section","align":"full","anchor":"how","className":"lh-sec lh-how"} -->
 <section id="how" class="wp-block-group alignfull lh-sec lh-how"><!-- wp:group {"className":"lh-wrap"} -->
 <div class="wp-block-group lh-wrap"><!-- wp:group {"className":"lh-how-intro"} -->
 <div class="wp-block-group lh-how-intro"><!-- wp:paragraph {"className":"is-style-label lh-r"} -->
-<p class="is-style-label lh-r">Closet Ads Lab</p>
+<p class="is-style-label lh-r">Closet Ads System</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"className":"lh-title lh-r-mask"} -->
-<h2 class="wp-block-heading lh-title lh-r-mask">An ad lab where we <em>measure and improve everything.</em></h2>
+<h2 class="wp-block-heading lh-title lh-r-mask">Every dollar works to bring you <em>homeowners ready to buy.</em></h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"lh-r"} -->
-<p class="lh-r">Not "Facebook and Instagram campaigns". A lab for your ads: we measure everything and test new angles every month.</p>
+<p class="lh-r">This is how the Closet Ads System works, whether you already run ads or are about to launch your first ones. Everything we do has one goal: your budget goes to homeowners who can actually buy.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 

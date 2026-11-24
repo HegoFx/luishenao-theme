@@ -54,7 +54,7 @@ function lh_ui( $name ) {
 				$cards .= lh_ui_lead_card( $p );
 			}
 			return '<div class="lh-ui lh-ui-feed" aria-hidden="true" data-people="' . esc_attr( wp_json_encode( $people ) ) . '">'
-				. '<div class="lh-ui-glow"></div><div class="lh-ui-win">' . lh_ui_bar( 'Closet Ads Lab', $en ? 'Live' : 'En vivo' )
+				. '<div class="lh-ui-glow"></div><div class="lh-ui-win">' . lh_ui_bar( 'Closet Ads System', $en ? 'Live' : 'En vivo' )
 				. '<div class="lh-feed-list">' . $cards . '</div>'
 				. '<div class="lh-feed-foot"><span>' . ( $en ? 'Pre-qualified this week' : 'Prefiltrados esta semana' ) . '</span><b class="lh-feed-count">3</b></div>'
 				. '</div>' . lh_ui_cap() . '</div>';
@@ -74,7 +74,7 @@ function lh_ui( $name ) {
 				. '<div class="lh-fn-out">' . ( $en ? 'Pre-qualified homeowners' : 'Homeowners prefiltrados' ) . '</div>'
 				. '</div></div>' . lh_ui_cap() . '</div>';
 
-		/* Closet Ads Lab scenes. */
+		/* Closet Ads System scenes. */
 		case 'scene-1':
 			$pins = '';
 			$spots = array( array( 46, 40, 1 ), array( 58, 55, 1 ), array( 40, 62, 1 ), array( 52, 33, 1 ), array( 63, 44, 1 ), array( 45, 50, 1 ),
@@ -107,7 +107,7 @@ function lh_ui( $name ) {
 				. '<ul class="lh-toggles">' . $list . '</ul></div>';
 
 		case 'stage':
-			return '<div class="lh-ui lh-ui-stage" aria-hidden="true" data-scene="1"><div class="lh-ui-win">' . lh_ui_bar( 'Closet Ads Lab', $en ? 'Step 1 of 3' : 'Paso 1 de 3' )
+			return '<div class="lh-ui lh-ui-stage" aria-hidden="true" data-scene="1"><div class="lh-ui-win">' . lh_ui_bar( 'Closet Ads System', $en ? 'Step 1 of 3' : 'Paso 1 de 3' )
 				. '<div class="lh-scenes">' . lh_ui( 'scene-1' ) . lh_ui( 'scene-2' ) . lh_ui( 'scene-3' ) . '</div></div>' . lh_ui_cap() . '</div>';
 
 		/* Small loops for the deliverable cards. */
@@ -146,6 +146,34 @@ function lh_ui( $name ) {
 				$b .= sprintf( '<i style="--h:%d%%;--d:%.2fs"></i>', $h, $k * 0.12 );
 			}
 			return '<div class="lh-mini lh-mini-report" aria-hidden="true">' . $b . '</div>';
+
+		/* Hero: the whole system live, from the ad to the install. Luis's part ends when the homeowner reaches the owner. */
+		case 'flow':
+			$ic = array(
+				'ad'    => '<path d="M4 10v4h3l6 4V6L7 10H4z"/><path d="M17 9a4 4 0 0 1 0 6"/>',
+				'form'  => '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/>',
+				'check' => '<circle cx="10" cy="8" r="4"/><path d="M3 21a7 7 0 0 1 14 0"/><path d="m16 11 2 2 4-4"/>',
+				'mail'  => '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',
+				'phone' => '<path d="M5 4h4l2 5-3 2a11 11 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/>',
+				'home'  => '<path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/>',
+				'doc'   => '<path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 13h6M9 17h6"/>',
+				'deal'  => '<path d="M12 3v18M16 7H10a3 3 0 0 0 0 6h4a3 3 0 0 1 0 6H8"/>',
+				'box'   => '<path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/>',
+			);
+			$steps = $en
+				? array( array( 'ad', 'Ads', 'Only in your area' ), array( 'form', 'Pre-qualifying form', 'Budget, project, timeline' ), array( 'check', 'Pre-qualified homeowner', 'Owner in your area' ), array( 'mail', 'Instant alert', 'Straight to your email' ),
+					array( 'phone', 'You call', 'You know what they want' ), array( 'home', 'In-home estimate', 'On your calendar' ), array( 'doc', 'Proposal', 'With follow-up' ), array( 'deal', 'Closed sale', '' ), array( 'box', 'Install', '' ) )
+				: array( array( 'ad', 'Anuncios', 'Solo en tu zona' ), array( 'form', 'Formulario de prefiltro', 'Presupuesto, proyecto, plazo' ), array( 'check', 'Homeowner prefiltrado', 'Dueño en tu zona' ), array( 'mail', 'Aviso inmediato', 'Directo a tu correo' ),
+					array( 'phone', 'Lo llamas', 'Ya sabes qué quiere' ), array( 'home', 'Estimate en casa', 'En tu calendario' ), array( 'doc', 'Propuesta', 'Con seguimiento' ), array( 'deal', 'Venta cerrada', '' ), array( 'box', 'Instalación', '' ) );
+			$n     = count( $steps );
+			$nodes = '';
+			foreach ( $steps as $k => $st ) {
+				$nodes .= sprintf( '<li class="%s" style="--i:%d"><span class="lh-fl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">%s</svg></span><b>%s</b>%s</li>',
+					$k < 4 ? 'us' : 'you', $k, $ic[ $st[0] ], esc_html( $st[1] ), $st[2] ? '<small>' . esc_html( $st[2] ) . '</small>' : '' );
+			}
+			return '<div class="lh-ui lh-ui-flow" aria-hidden="true" style="--n:' . $n . '"><div class="lh-ui-glow"></div><div class="lh-ui-win">' . lh_ui_bar( 'Closet Ads System', $en ? 'Live' : 'En vivo' )
+				. '<div class="lh-fl-body"><div class="lh-fl-groups"><span class="g-us">' . ( $en ? 'The system brings them' : 'El sistema te los trae' ) . '</span><span class="g-you">' . ( $en ? 'You close the sale' : 'Tú cierras la venta' ) . '</span></div>'
+				. '<div class="lh-fl-rail"><div class="lh-fl-track"><i class="lh-fl-fill"></i><i class="lh-fl-dot"></i></div><ol class="lh-fl-nodes">' . $nodes . '</ol></div></div></div>' . lh_ui_cap() . '</div>';
 
 		/* Guarantees: day 0 → ads live by day 21 → 20 pre-qualified homeowners within 60 days of going live. */
 		case 'timeline':

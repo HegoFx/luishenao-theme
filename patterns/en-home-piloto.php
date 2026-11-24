@@ -7,7 +7,7 @@
  */
 $lh_o     = lh_offer();
 $lh_items = array(
-	array( 'Closet Ads Lab', 'Ads shown only to homeowners in your area, 6 new ads a month, every dollar tracked to the booked estimate, adjustments every 7 to 10 days.' ),
+	array( 'Closet Ads System', 'Ads shown only to homeowners in your area, 6 new ads a month, every dollar tracked to the booked estimate, adjustments every 7 to 10 days.' ),
 	array( 'Pre-qualified homeowners', 'Homeowners in your area with a valid phone and email who already told you their budget range, the type of project and when they want it done.' ),
 	array( 'Instant alert for every homeowner', 'You hear about every new homeowner or booked estimate right away by email. Prefer WhatsApp or SMS? Also available, at an extra cost.' ),
 	array( 'Sales board', 'See every homeowner by stage of your sales process, in one place.' ),

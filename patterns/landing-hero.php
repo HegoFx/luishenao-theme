@@ -3,18 +3,18 @@
  * Title: Landing · Hero de venta
  * Slug: luishenao/landing-hero
  * Categories: lh-secciones
- * Description: Hero de la página de venta: oferta v6, una sola acción (agendar llamada) e imagen.
+ * Description: Hero centrado: titular, subtítulo, una acción (agendar) y el sistema completo en vivo, del anuncio a la instalación.
  */
 ?>
-<!-- wp:group {"tagName":"section","align":"full","className":"lh-sec lh-page-hero"} -->
-<section class="wp-block-group alignfull lh-sec lh-page-hero"><!-- wp:group {"className":"lh-wrap lh-hero-split"} -->
-<div class="wp-block-group lh-wrap lh-hero-split"><!-- wp:group {"className":"lh-hero-txt"} -->
-<div class="wp-block-group lh-hero-txt"><!-- wp:paragraph {"className":"is-style-label lh-r"} -->
-<p class="is-style-label lh-r">Sistema de Estimates para Custom Closets</p>
+<!-- wp:group {"tagName":"section","align":"full","className":"lh-sec lh-page-hero lh-hero-c"} -->
+<section class="wp-block-group alignfull lh-sec lh-page-hero lh-hero-c"><!-- wp:group {"className":"lh-wrap"} -->
+<div class="wp-block-group lh-wrap"><!-- wp:group {"className":"lh-hero-txt"} -->
+<div class="wp-block-group lh-hero-txt"><!-- wp:paragraph {"className":"lh-pill lh-r"} -->
+<p class="lh-pill lh-r"><span></span>Sistema de Estimates para Custom Closets</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":1,"className":"lh-giant-title lh-r-mask"} -->
-<h1 class="wp-block-heading lh-giant-title lh-r-mask">Recibe <em>homeowners prefiltrados</em> de tu zona.</h1>
+<h1 class="wp-block-heading lh-giant-title lh-r-mask">Recibe homeowners <em>prefiltrados de tu zona.</em></h1>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"lh-sub lh-r"} -->
@@ -22,29 +22,22 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"lh-intro lh-r"} -->
-<p class="lh-intro lh-r">El especialista bilingüe en anuncios para Custom Closets, con garantía de implementación y de leads prefiltrados.</p>
+<p class="lh-intro lh-r">Para negocios de custom closets que ya corren anuncios y quieren mejores resultados, o que van a lanzar los primeros. Anuncios, prefiltro y seguimiento en un solo sistema, con garantías por escrito.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons {"className":"lh-r lh-hero-ctas"} -->
 <div class="wp-block-buttons lh-r lh-hero-ctas"><!-- wp:button -->
-<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="#agendar">Agenda una llamada de 20 minutos →</a></div>
-<!-- /wp:button --></div>
-<!-- /wp:buttons -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="#agendar">Agenda una llamada →</a></div>
+<!-- /wp:button -->
 
-<!-- wp:paragraph {"className":"lh-hero-note lh-r"} -->
-<p class="lh-hero-note lh-r">20 minutos conmigo. Sales sabiendo si esto le sirve a tu negocio.</p>
-<!-- /wp:paragraph -->
-</div>
+<!-- wp:button {"className":"is-style-ghost"} -->
+<div class="wp-block-button is-style-ghost"><a class="wp-block-button__link wp-element-button" href="#como">Cómo funciona</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"className":"lh-hero-media"} -->
-<div class="wp-block-group lh-hero-media"><!-- wp:image {"sizeSlug":"full","className":"lh-ph lh-hero-photo"} -->
-<figure class="wp-block-image size-full lh-ph lh-hero-photo"><img src="<?php echo lh_img( 'homeowners-closet.webp' ); ?>" alt="Homeowners en su nuevo walk-in closet a la medida"/><figcaption class="wp-element-caption">Imagen IA temporal → foto real de un closet terminado [CONFIRM]</figcaption></figure>
-<!-- /wp:image -->
-
 <!-- wp:html -->
-<?php echo lh_ui( 'feed' ); ?>
+<?php echo lh_ui( 'flow' ); ?>
 <!-- /wp:html --></div>
-<!-- /wp:group --></div>
 <!-- /wp:group --></section>
 <!-- /wp:group -->

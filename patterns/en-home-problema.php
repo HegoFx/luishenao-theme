@@ -77,6 +77,20 @@
 <!-- wp:paragraph -->
 <p>Referrals are great until a slow month hits. And the agency you tried ran a few generic ads and sent a report nobody could read.</p>
 <!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"lh-pain lh-r is-new"} -->
+<div class="wp-block-group lh-pain lh-r is-new"><!-- wp:paragraph {"className":"is-style-label"} -->
+<p class="is-style-label">04</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">You are not running ads yet</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>You know you need them, but you do not want to burn money testing blind, or hire someone who does not know your business.</p>
+<!-- /wp:paragraph --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group --></section>

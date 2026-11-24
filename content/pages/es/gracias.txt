@@ -1,6 +1,6 @@
 ---
 title: Listo, quedó agendada
-excerpt: Tu llamada de 20 minutos quedó en mi calendario. Qué pasa ahora y qué tener a mano para que rinda.
+excerpt: Tu llamada quedó en mi calendario. Qué pasa ahora y qué tener a mano para que rinda.
 pair: thanks
 ---
 Tu llamada quedó en mi calendario. Te llega la confirmación y los recordatorios por correo. No tienes que hacer nada más por ahora.
@@ -8,8 +8,8 @@ Tu llamada quedó en mi calendario. Te llega la confirmación y los recordatorio
 ## Qué pasa ahora
 
 1. Antes de la llamada reviso tu negocio: tu zona, tus reseñas y el tipo de closets que haces.
-2. En los 20 minutos hablamos de tu zona, tus proyectos y cuánto inviertes hoy en anuncios.
-3. Si encaja, te explico cómo arrancaría el Closet Ads Lab en tu negocio. Si no encaja, te lo digo.
+2. En la llamada hablamos de tu zona, tus proyectos y cuánto inviertes hoy en anuncios.
+3. Si encaja, te explico cómo arrancaría el Closet Ads System en tu negocio. Si no encaja, te lo digo.
 
 ## Para que la llamada rinda
 

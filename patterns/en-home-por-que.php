@@ -23,7 +23,7 @@ $lh_diffs = array(
 
 <!-- wp:group -->
 <div class="wp-block-group"><!-- wp:paragraph {"className":"is-style-label lh-r"} -->
-<p class="is-style-label lh-r">Who I am</p>
+<p class="is-style-label lh-r">Based in Colombia · Working with US custom closet businesses</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"className":"lh-title lh-r-mask"} -->

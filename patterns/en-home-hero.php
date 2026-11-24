@@ -50,11 +50,11 @@
 
 <!-- wp:buttons -->
 <div class="wp-block-buttons"><!-- wp:button -->
-<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="#book">Book a 20-minute call →</a></div>
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="#book">Book a call →</a></div>
 <!-- /wp:button -->
 
 <!-- wp:button {"className":"is-style-ghost"} -->
-<div class="wp-block-button is-style-ghost"><a class="wp-block-button__link wp-element-button" href="#how">Closet Ads Lab</a></div>
+<div class="wp-block-button is-style-ghost"><a class="wp-block-button__link wp-element-button" href="#how">How it works</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons -->
 
@@ -66,6 +66,6 @@
 <!-- /wp:group -->
 
 <!-- wp:paragraph {"className":"lh-marquee"} -->
-<p class="lh-marquee">Pre-qualified homeowners · Closet Ads Lab · 6 new ads a month · Custom closets only · Florida · Texas · Arizona · English and Spanish</p>
+<p class="lh-marquee">Pre-qualified homeowners · Closet Ads System · 6 new ads a month · Custom closets only · Florida · Texas · Arizona · English and Spanish</p>
 <!-- /wp:paragraph --></section>
 <!-- /wp:group -->

@@ -43,6 +43,23 @@
 		}).observe(feed);
 	});
 
+	/* ---------- hero flow: the homeowner travels from the ad to the install ---------- */
+	document.querySelectorAll('.lh-ui-flow').forEach(flow => {
+		const rail = flow.querySelector('.lh-fl-rail'), nodes = [...flow.querySelectorAll('.lh-fl-nodes li')];
+		if (!rail || !nodes.length || !gsap) return;
+		flow.classList.add('is-js');
+		const st = { p: 0 }, last = nodes.length - 1;
+		const draw = () => rail.style.setProperty('--p', st.p.toFixed(4));
+		const tl = gsap.timeline({ repeat: -1, paused: true, onRepeat: () => nodes.forEach(n => n.classList.remove('on')) });
+		nodes.forEach((n, k) => {
+			if (k) tl.to(st, { p: k / last, duration: k === 4 ? 1.1 : .75, ease: 'power2.inOut', onUpdate: draw });
+			tl.call(() => n.classList.add('on'));
+			tl.to({}, { duration: k === 3 || k === last - 1 ? .7 : .25 });
+		});
+		tl.to({}, { duration: 1.6 }).set(st, { p: 0, onComplete: draw });
+		new IntersectionObserver(([e]) => e.isIntersecting ? tl.play() : tl.pause()).observe(flow);
+	});
+
 	/* ---------- card spotlight ---------- */
 	if (fine) {
 		document.addEventListener('pointermove', e => {
@@ -71,13 +88,13 @@
 		});
 	}
 
-	/* ---------- Closet Ads Lab: the stage follows the step in view ---------- */
+	/* ---------- Closet Ads System: the stage follows the step in view ---------- */
 	const stage = document.querySelector('.lh-ui-stage');
 	if (stage) {
 		const label = stage.querySelector('.lh-ui-live');
 		const tpl = label ? label.lastChild.textContent.replace(/\d+/, '#') : '';
 		document.querySelectorAll('.lh-step').forEach((step, k) => ScrollTrigger.create({
-			trigger: step, start: 'top 60%', end: 'bottom 60%',
+			trigger: step, start: 'top 72%', end: 'bottom 72%',
 			onToggle(self) {
 				if (!self.isActive) return;
 				stage.dataset.scene = k + 1;
@@ -122,7 +139,7 @@
 	});
 
 	/* ---------- mockups float in ---------- */
-	gsap.utils.toArray('.lh-ui-feed, .lh-ui-funnel, .lh-ui-stage').forEach(el => gsap.fromTo(el, { y: 60, opacity: 0, rotateX: 8, transformPerspective: 1200 }, {
+	gsap.utils.toArray('.lh-ui-feed, .lh-ui-funnel, .lh-ui-stage, .lh-ui-flow').forEach(el => gsap.fromTo(el, { y: 60, opacity: 0, rotateX: 8, transformPerspective: 1200 }, {
 		y: 0, opacity: 1, rotateX: 0, duration: 1.2, ease: 'power3.out',
 		scrollTrigger: { trigger: el, start: 'top 92%', end: 'bottom 4%', toggleActions: 'play reverse play reverse' },
 	}));

@@ -1,30 +1,30 @@
 <?php
 /**
- * Title: Home · Closet Ads Lab (cómo funciona)
+ * Title: Home · Closet Ads System (cómo funciona)
  * Slug: luishenao/home-como
  * Categories: lh-home, lh-secciones
  * Description: Intro fija a la izquierda y pasos que se apilan al hacer scroll.
  */
 
 $lh_steps = array(
-	array( '01', 'Solo tus homeowners ven los anuncios', 'Los anuncios se muestran solo a homeowners de tu zona de servicio. Quien no es tu cliente ideal queda fuera desde el día uno.' ),
-	array( '02', 'Anuncios nuevos cada mes', '6 anuncios nuevos al mes (imagen, carrusel y video), con ángulos distintos a los que corre el resto del mercado.' ),
-	array( '03', 'Medir, apagar, ajustar', 'Cada dólar medido hasta el estimate agendado. Lo que no funciona se apaga. Ajustes cada 7 a 10 días y un reporte mensual con números claros.' ),
+	array( '01', 'Tu presupuesto solo llega a tu zona', 'Los anuncios se muestran solo a homeowners de tu zona de servicio. No pagas por gente que no puedes atender.' ),
+	array( '02', 'Anuncios que no se ven como los de todos', '6 anuncios nuevos al mes (imagen, carrusel y video). Mientras la competencia repite lo mismo, los tuyos se notan y no se cansan.' ),
+	array( '03', 'Lo que trae homeowners se queda, lo demás se apaga', 'Cada dólar medido hasta el estimate agendado. Ajustes cada 7 a 10 días para que tu dinero se mueva hacia lo que funciona, y un reporte mensual con números claros.' ),
 );
 ?>
 <!-- wp:group {"tagName":"section","align":"full","anchor":"como","className":"lh-sec lh-how"} -->
 <section id="como" class="wp-block-group alignfull lh-sec lh-how"><!-- wp:group {"className":"lh-wrap"} -->
 <div class="wp-block-group lh-wrap"><!-- wp:group {"className":"lh-how-intro"} -->
 <div class="wp-block-group lh-how-intro"><!-- wp:paragraph {"className":"is-style-label lh-r"} -->
-<p class="is-style-label lh-r">Closet Ads Lab</p>
+<p class="is-style-label lh-r">Closet Ads System</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"className":"lh-title lh-r-mask"} -->
-<h2 class="wp-block-heading lh-title lh-r-mask">Un laboratorio para tus anuncios donde <em>medimos y mejoramos todo.</em></h2>
+<h2 class="wp-block-heading lh-title lh-r-mask">Cada dólar trabaja para traerte <em>homeowners listos para comprar.</em></h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"lh-r"} -->
-<p class="lh-r">No son "campañas en Facebook e Instagram". Es un laboratorio de anuncios: medimos todo y probamos ángulos nuevos cada mes.</p>
+<p class="lh-r">Así funciona el Closet Ads System, tanto si ya corres anuncios como si vas a lanzar los primeros. Todo lo que hacemos tiene un solo objetivo: que tu presupuesto se vaya en homeowners que sí pueden comprar.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 

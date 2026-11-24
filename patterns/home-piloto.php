@@ -7,7 +7,7 @@
  */
 $lh_o     = lh_offer();
 $lh_items = array(
-	array( 'Closet Ads Lab', 'Anuncios solo para homeowners de tu zona, 6 anuncios nuevos al mes, cada dólar medido hasta el estimate agendado, ajustes cada 7 a 10 días.' ),
+	array( 'Closet Ads System', 'Anuncios solo para homeowners de tu zona, 6 anuncios nuevos al mes, cada dólar medido hasta el estimate agendado, ajustes cada 7 a 10 días.' ),
 	array( 'Homeowners prefiltrados', 'Dueños de vivienda en tu zona, con teléfono y correo válidos, que ya dijeron su rango de presupuesto, el tipo de proyecto y cuándo lo quieren hacer.' ),
 	array( 'Aviso inmediato de cada homeowner', 'Te enteras al instante de cada homeowner nuevo o estimate agendado por correo. ¿Prefieres WhatsApp o SMS? También está disponible, con costo adicional.' ),
 	array( 'Tablero de seguimiento', 'Ves cada homeowner según la etapa de tu proceso de venta, en un solo lugar.' ),

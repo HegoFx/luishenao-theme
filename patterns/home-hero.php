@@ -50,11 +50,11 @@
 
 <!-- wp:buttons -->
 <div class="wp-block-buttons"><!-- wp:button -->
-<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="#agendar">Agenda una llamada de 20 minutos →</a></div>
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="#agendar">Agenda una llamada →</a></div>
 <!-- /wp:button -->
 
 <!-- wp:button {"className":"is-style-ghost"} -->
-<div class="wp-block-button is-style-ghost"><a class="wp-block-button__link wp-element-button" href="#como">Closet Ads Lab</a></div>
+<div class="wp-block-button is-style-ghost"><a class="wp-block-button__link wp-element-button" href="#como">Cómo funciona</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons -->
 
@@ -66,6 +66,6 @@
 <!-- /wp:group -->
 
 <!-- wp:paragraph {"className":"lh-marquee"} -->
-<p class="lh-marquee">Homeowners prefiltrados · Closet Ads Lab · 6 anuncios nuevos al mes · Solo custom closets · Florida · Texas · Arizona · Español e inglés</p>
+<p class="lh-marquee">Homeowners prefiltrados · Closet Ads System · 6 anuncios nuevos al mes · Solo custom closets · Florida · Texas · Arizona · Español e inglés</p>
 <!-- /wp:paragraph --></section>
 <!-- /wp:group -->

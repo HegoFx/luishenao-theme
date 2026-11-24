@@ -18,7 +18,7 @@ $lh_o = lh_offer();
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"lh-intro lh-r"} -->
-<p class="lh-intro lh-r">Aquí no hay testimonios. Mejor mira cómo analizo anuncios de marcas de closets: qué hacen bien y cómo los haría más ganadores.</p>
+<p class="lh-intro lh-r">Mira cómo analizo anuncios de marcas de closets: qué hacen bien y cómo los haría más ganadores.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:html -->

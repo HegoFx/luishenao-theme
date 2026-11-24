@@ -45,7 +45,7 @@ $lh_tier = fn( $t ) => null === $t['to'] ? sprintf( 'Clientes %d en adelante', $
 
 <!-- wp:buttons {"className":"lh-full"} -->
 <div class="wp-block-buttons lh-full"><!-- wp:button -->
-<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="#agendar">Agenda una llamada de 20 minutos →</a></div>
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="#agendar">Agenda una llamada →</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group -->

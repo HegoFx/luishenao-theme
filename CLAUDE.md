@@ -28,11 +28,11 @@ Lee esto antes de investigar. Actualízalo cuando confirmes algo nuevo del servi
 - Páginas: Inicio (1) ↔ Home (10, portada /en/), Blog (2, /blog/) ↔ Blog (11, /en/articles/), Sobre mí (5) ↔ About (12). Polylang free no comparte slugs entre idiomas: por eso `/en/articles/`.
 - El tema traduce lo que Polylang free no puede en un tema de bloques (`functions.php`, `lh_is_en()`): en inglés usa `parts/header-en.html` y `footer-en.html`, los patterns `luishenao/en-*` en vez de `luishenao/*` y prueba primero las plantillas `templates/en-*.html`.
 - Al cambiar un texto del tema, cambia también su gemelo en inglés. Selector de idioma: shortcode `[lh_lang]` en la nav.
-- El inglés no es traducción literal: Colombia se presenta como ventaja. CTA único: llamada de 20 minutos ("Agenda una llamada de 20 minutos" #agendar / "Book a 20-minute call" #book).
+- El inglés no es traducción literal: Colombia se presenta como ventaja. CTA único: "Agenda una llamada" #agendar / "Book a call" #book (sin "20 minutos", decisión de Luis 24 nov 2026), con "Cómo funciona" como botón secundario en el hero.
 - Pendiente: calendario de GHL real (`calendar` en `inc/offer.php`).
 
 ## Oferta (v7, refresh 2026-11)
-- Fuente: contexto v7 y registro v3 en la carpeta local "lead-gen-custom-closets" de Luis. Nombre: "Sistema de Estimates para Custom Closets", método "Closet Ads Lab".
+- Fuente: contexto v7 y registro v3 en la carpeta local "lead-gen-custom-closets" de Luis. Nombre: "Sistema de Estimates para Custom Closets", método "Closet Ads System".
 - `inc/offer.php`: `lh_offer()` es la única fuente de precio por cupos (tiers 499/699/799, `spots_taken`), mínimos, contacto, reels, línea legal y URL de condiciones. Vacío = se muestra `[CONFIRM]`. `lh_pricing()` calcula el precio vigente; lo usan patterns, `inc/seo.php` y llms.txt.
 - Lenguaje: "homeowners prefiltrados", nunca prometer estimates agendados ni ventas. Los 60 días cuentan desde que los anuncios salen al aire. Mínimo 3 meses, después mes a mes con aviso de 30 días.
 - Landing: una sola acción (agendar). WhatsApp, correo e Instagram solo en la página de gracias (`[lh_contacto]`).
