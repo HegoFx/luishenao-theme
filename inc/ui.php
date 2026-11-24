@@ -86,12 +86,26 @@ function lh_ui( $name ) {
 				. '<span class="lh-map-tag">' . ( $en ? 'Your service area' : 'Tu zona de servicio' ) . '</span></div></div>';
 
 		case 'scene-2':
-			$kinds = $en ? array( 'Image', 'Carousel', 'Video', 'Image', 'Video', 'Carousel' ) : array( 'Imagen', 'Carrusel', 'Video', 'Imagen', 'Video', 'Carrusel' );
-			$ads   = '';
-			foreach ( $kinds as $k => $kind ) {
-				$ads .= sprintf( '<div class="lh-ad" style="--d:%.2fs"><div class="lh-ad-img a%d"></div><span>%s · %02d</span><i style="--w:%d%%"></i></div>', $k * 0.18, $k % 3, esc_html( $kind ), $k + 1, array( 64, 38, 82, 47, 71, 29 )[ $k ] );
+			/* Real closet creatives (videos and images from Luis's library); two angles win. */
+			$media = array(
+				array( 'v', 'ad-closet-acabados', 'Video', 38, 0 ),
+				array( 'i', 'ad-closet-2', $en ? 'Image' : 'Imagen', 44, 0 ),
+				array( 'v', 'ad-closet-pareja', 'Video', 86, 1 ),
+				array( 'i', 'ad-closet-walkin', $en ? 'Carousel' : 'Carrusel', 31, 0 ),
+				array( 'v', 'ad-closet-cajon', 'Video', 78, 1 ),
+				array( 'i', 'ad-closet-4', $en ? 'Image' : 'Imagen', 27, 0 ),
+			);
+			$win = $en ? 'Winner' : 'Ganador';
+			$ads = '';
+			foreach ( $media as $k => $m ) {
+				$poster = esc_url( get_theme_file_uri( 'assets/img/' . $m[1] . '.webp' ) );
+				$fig    = 'v' === $m[0]
+					? '<video muted loop playsinline preload="none" poster="' . $poster . '" src="' . esc_url( get_theme_file_uri( 'assets/video/' . $m[1] . '.mp4' ) ) . '"></video>'
+					: '<img src="' . $poster . '" alt="" loading="lazy" decoding="async">';
+				$ads .= sprintf( '<div class="lh-ad%s" style="--d:%.2fs"><div class="lh-ad-img">%s%s</div><span>%s · %02d</span><i style="--w:%d%%"></i></div>',
+					$m[4] ? ' is-win' : '', $k * 0.18, $fig, $m[4] ? '<b class="lh-ad-win">' . $win . '</b>' : '', esc_html( $m[2] ), $k + 1, $m[3] );
 			}
-			return '<div class="lh-scene lh-scene-ads" data-scene="2"><div class="lh-ads">' . $ads . '</div><span class="lh-ad-win">' . ( $en ? 'Winning angle' : 'Ángulo ganador' ) . '</span></div>';
+			return '<div class="lh-scene lh-scene-ads" data-scene="2"><div class="lh-ads">' . $ads . '</div><span class="lh-ad-sum">' . ( $en ? '2 winning angles' : '2 ángulos ganadores' ) . '</span></div>';
 
 		case 'scene-3':
 			$rows = $en ? array( array( 'Walk-in · video', 'On' ), array( 'Before/after · image', 'On' ), array( 'Generic promo', 'Off' ) ) : array( array( 'Walk-in · video', 'Activo' ), array( 'Antes/después · imagen', 'Activo' ), array( 'Promo genérica', 'Apagado' ) );
@@ -113,8 +127,8 @@ function lh_ui( $name ) {
 		/* Small loops for the deliverable cards. */
 		case 'mini-ads':
 			$t = '';
-			for ( $i = 0; $i < 6; $i++ ) {
-				$t .= sprintf( '<i class="a%d" style="--d:%.1fs"></i>', $i % 3, $i * 0.5 );
+			foreach ( array( 'ad-closet-1', 'ad-closet-pareja', 'ad-closet-3', 'ad-closet-lujo', 'ad-closet-acabados', 'ad-closet-2' ) as $i => $f ) {
+				$t .= sprintf( '<i style="--d:%.1fs"><img src="%s" alt="" loading="lazy" decoding="async"></i>', $i * 0.5, esc_url( get_theme_file_uri( 'assets/img/' . $f . '.webp' ) ) );
 			}
 			return '<div class="lh-mini lh-mini-ads" aria-hidden="true">' . $t . '</div>';
 

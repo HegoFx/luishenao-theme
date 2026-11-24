@@ -60,6 +60,7 @@ Lee esto antes de investigar. Actualízalo cuando confirmes algo nuevo del servi
 
 ## Imágenes
 - Tema: solo WebP en `assets/img`, cada una al ancho en que se muestra (hero/panorámica 1920, retrato 1200, tarjetas del rod 900).
+- Videos cortos del tema en `assets/video` (MP4 H.264 sin audio, 270x480, 4 s, <120 KB) con póster WebP del mismo nombre en `assets/img`. Fuente: biblioteca de b-roll de Luis (solo lectura).
 - Uploads: `functions.php` convierte JPG/PNG a WebP calidad 80 y genera solo thumbnail, 768 y 1536; originales >1920 se reducen a 1920.
 - El contenido del Home vive en la página "Inicio" de la base: cambiar un pattern no cambia esa página.
 

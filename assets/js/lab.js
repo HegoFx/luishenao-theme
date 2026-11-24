@@ -7,7 +7,12 @@
 	const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
 
 	/* ---------- mockup loops only run while visible ---------- */
-	const io = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle('is-on', e.isIntersecting)), { rootMargin: '80px' });
+	const io = new IntersectionObserver(es => es.forEach(e => {
+		e.target.classList.toggle('is-on', e.isIntersecting);
+		e.target.querySelectorAll('video').forEach(v => {
+			if (e.isIntersecting && motion) { const p = v.play(); if (p) p.catch(() => {}); } else v.pause();
+		});
+	}), { rootMargin: '80px' });
 	document.querySelectorAll('.lh-ui, .lh-mini').forEach(el => io.observe(el));
 
 	/* ---------- hero feed: a new pre-qualified homeowner every few seconds ---------- */
@@ -137,6 +142,28 @@
 			scrollTrigger: { trigger: h, start: 'top 88%', end: 'bottom 6%', toggleActions: 'play reverse play reverse' },
 		});
 	});
+
+	/* ---------- one gradient flows through the whole phrase, not word by word ---------- */
+	const grads = [...document.querySelectorAll('.lh-main h1 em, .lh-main h2 em')].filter(em => em.querySelector('.lw'));
+	const tweens = [];
+	const layoutGrad = () => {
+		tweens.splice(0).forEach(t => t.kill());
+		grads.forEach(em => {
+			const ws = [...em.querySelectorAll('.lw')];
+			const rs = ws.map(w => w.getBoundingClientRect());
+			const left = Math.min(...rs.map(r => r.left)), width = Math.max(...rs.map(r => r.right)) - left;
+			const tile = Math.round(width * 2);
+			em.classList.add('is-grad');
+			em.style.setProperty('--gw', tile + 'px');
+			ws.forEach((w, k) => w.firstElementChild.style.setProperty('--gx', Math.round(rs[k].left - left) + 'px'));
+			tweens.push(gsap.fromTo(em, { '--gs': '0px' }, { '--gs': tile + 'px', duration: 7, ease: 'none', repeat: -1 }));
+		});
+	};
+	if (grads.length) {
+		layoutGrad();
+		let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(layoutGrad, 200); });
+		if (document.fonts) document.fonts.ready.then(layoutGrad);
+	}
 
 	/* ---------- mockups float in ---------- */
 	gsap.utils.toArray('.lh-ui-feed, .lh-ui-funnel, .lh-ui-stage, .lh-ui-flow').forEach(el => gsap.fromTo(el, { y: 60, opacity: 0, rotateX: 8, transformPerspective: 1200 }, {

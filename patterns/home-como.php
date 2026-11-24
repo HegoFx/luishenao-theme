@@ -24,7 +24,7 @@ $lh_steps = array(
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"lh-r"} -->
-<p class="lh-r">Así funciona el Closet Ads System, tanto si ya corres anuncios como si vas a lanzar los primeros. Todo lo que hacemos tiene un solo objetivo: que tu presupuesto se vaya en homeowners que sí pueden comprar.</p>
+<p class="lh-r">Así funciona el Closet Ads System, tanto si ya corres anuncios como si vas a lanzar los primeros. Todo lo que hacemos tiene un solo objetivo: que tu presupuesto te traiga homeowners que sí pueden comprar.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
