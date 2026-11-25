@@ -93,6 +93,7 @@ html[data-theme="light"] .lh-lab img { filter: none; }
 .lh-lab h1 em, .lh-lab h2 em, .lh-lab .lh-title em, .lh-lab .lh-giant-title em {
 	font-family: inherit !important; font-style: normal !important; font-weight: inherit !important; letter-spacing: inherit !important;
 	background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent;
+	padding-inline: .06em .14em; margin-inline: -.06em -.14em; -webkit-box-decoration-break: clone; box-decoration-break: clone;
 }
 .lh-lab p em, .lh-lab li em { background: none; color: var(--ink); font-weight: 600 !important; }
 .lh-lab h1, .lh-lab h2, .lh-lab .lh-title { letter-spacing: -.035em; }
@@ -101,10 +102,10 @@ html[data-theme="light"] .lh-lab img { filter: none; }
 .lh-lab .lh-hol { color: var(--accent-2); }
 
 /* split headings: each word rises from its own mask (assets/js/lab.js) */
-.lw { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .08em; margin-bottom: -.08em; }
+.lw { display: inline-block; overflow: hidden; vertical-align: top; padding: 0 .14em .14em .06em; margin: 0 -.14em -.14em -.06em; }
 .lwi { display: inline-block; will-change: transform; }
 .lh-lab em .lw { background: none; }
-.lh-lab em .lwi { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.lh-lab em .lwi { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; padding: 0 .12em; margin: 0 -.12em; }
 
 /* ---------- buttons: glow + magnetic (lab.js) ---------- */
 .lh-lab .wp-block-button:not(.is-style-ghost) .wp-block-button__link {
