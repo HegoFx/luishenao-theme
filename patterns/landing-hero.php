@@ -10,7 +10,7 @@
 <section class="wp-block-group alignfull lh-sec lh-page-hero lh-hero-c"><!-- wp:group {"className":"lh-wrap"} -->
 <div class="wp-block-group lh-wrap"><!-- wp:group {"className":"lh-hero-txt"} -->
 <div class="wp-block-group lh-hero-txt"><!-- wp:paragraph {"className":"lh-pill lh-r"} -->
-<p class="lh-pill lh-r"><span></span>Sistema de estimates para custom closets</p>
+<p class="lh-pill lh-r"><span></span>Sistema de Estimates para Custom Closets</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":1,"className":"lh-giant-title lh-r-mask"} -->
