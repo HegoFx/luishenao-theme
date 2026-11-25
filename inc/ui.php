@@ -100,7 +100,7 @@ function lh_ui( $name ) {
 			foreach ( $media as $k => $m ) {
 				$poster = esc_url( get_theme_file_uri( 'assets/img/' . $m[1] . '.webp' ) );
 				$fig    = 'v' === $m[0]
-					? '<video muted loop playsinline preload="none" poster="' . $poster . '" src="' . esc_url( get_theme_file_uri( 'assets/video/' . $m[1] . '.mp4' ) ) . '"></video>'
+					? '<video muted autoplay loop playsinline preload="none" poster="' . $poster . '" src="' . esc_url( get_theme_file_uri( 'assets/video/' . $m[1] . '.mp4' ) ) . '"></video>'
 					: '<img src="' . $poster . '" alt="" loading="lazy" decoding="async">';
 				$ads .= sprintf( '<div class="lh-ad%s" style="--d:%.2fs"><div class="lh-ad-img">%s%s</div><span>%s · %02d</span><i style="--w:%d%%"></i></div>',
 					$m[4] ? ' is-win' : '', $k * 0.18, $fig, $m[4] ? '<b class="lh-ad-win">' . $win . '</b>' : '', esc_html( $m[2] ), $k + 1, $m[3] );
@@ -117,7 +117,7 @@ function lh_ui( $name ) {
 				. '<path class="grid" d="M0 30H320M0 60H320M0 90H320"/>'
 				. '<path class="area" d="M0 104 C40 98 60 92 90 80 S150 70 180 52 S250 36 320 18 V120 H0Z"/>'
 				. '<path class="line" pathLength="1" d="M0 104 C40 98 60 92 90 80 S150 70 180 52 S250 36 320 18"/></svg>'
-				. '<span class="lh-chart-tag">' . ( $en ? 'Cost per pre-qualified homeowner ↓' : 'Costo por homeowner prefiltrado ↓' ) . '</span>'
+				. '<span class="lh-chart-tag">' . ( $en ? 'Estimates booked this month' : 'Estimates agendados este mes' ) . ' <b>' . ( $en ? '↑ Going up' : '↑ Subiendo' ) . '</b></span>'
 				. '<ul class="lh-toggles">' . $list . '</ul></div>';
 
 		case 'stage':

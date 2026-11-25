@@ -609,3 +609,24 @@ body.lh-lab { --mono: var(--wp--preset--font-family--display); }
 .lh-lab .lh-pill { font-weight: 400; font-size: 14px; letter-spacing: .01em; text-transform: none; padding: 8px 16px 8px 12px; }
 .lh-lab .is-style-label { font-weight: 400; letter-spacing: .14em; }
 .lh-lab .lh-ui, .lh-lab .lh-mini { font-feature-settings: "tnum" 1; }
+
+/* ==========================================================================
+   Round 6: each step lingers longer, scene 3 shows booked estimates going up, bigger UI text
+   ========================================================================== */
+@media (min-width: 821px) {
+	.lh-lab .lh-stack { gap: 34vh; padding-bottom: 30vh; }
+}
+.lh-chart .line { stroke: var(--ok); filter: drop-shadow(0 0 6px rgba(61, 220, 151, .7)); }
+.lh-chart .area { fill: rgba(61, 220, 151, .12); }
+.lh-chart-tag { font-size: 14px !important; font-weight: 500; color: var(--ink) !important; top: 14px !important; }
+.lh-chart-tag b { color: var(--ok); font-weight: 600; margin-left: 8px; }
+
+/* interface text readable on large screens */
+.lh-mini { height: 116px; }
+.lh-mini-check li, .lh-toggles li, .lh-mm-card b, .lh-mini-quote b { font-size: 14px; }
+.lh-mm-card span, .lh-ad span, .lh-mini-quote .age, .lh-mini-quote .sent { font-size: 12px; }
+.lh-mini-board .col span, .lh-mini-cal .h span, .lh-mm-ch li, .lh-ad-sum, .lh-ad .lh-ad-win, .lh-map-tag { font-size: 11px; }
+.lh-ui-bar, .lh-ui-bar * { font-size: 13px; }
+@media (min-width: 1800px) {
+	.lh-lab .lh-ui-win, .lh-lab .lh-mini { zoom: 1.2; }
+}
