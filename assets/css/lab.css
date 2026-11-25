@@ -601,3 +601,11 @@ body.lh-lab {
 }
 @keyframes lh-aurora { from { background-position: 0 50%; } to { background-position: 640px 50%; } }
 @media (prefers-reduced-motion: reduce) { .lh-lab em:not(.is-grad), .lh-lab .lh-hol, .lh-lab .lh-n { animation: none !important; } }
+
+/* ==========================================================================
+   Round 5b: no typewriter font. Pills, labels and interface text use the site sans, light.
+   ========================================================================== */
+body.lh-lab { --mono: var(--wp--preset--font-family--display); }
+.lh-lab .lh-pill { font-weight: 400; font-size: 13px; letter-spacing: .14em; padding: 8px 16px 8px 12px; }
+.lh-lab .is-style-label { font-weight: 400; letter-spacing: .14em; }
+.lh-lab .lh-ui, .lh-lab .lh-mini { font-feature-settings: "tnum" 1; }
