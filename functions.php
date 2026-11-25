@@ -23,7 +23,8 @@ add_action( 'after_setup_theme', function () {
 
 add_action( 'wp_enqueue_scripts', function () {
 	$uri = get_theme_file_uri( 'assets' );
-	$ver = WP_DEBUG ? time() : LH_VERSION;
+	// Each deploy rewrites the files, so their mtime busts the host's CDN cache even when Version is unchanged.
+	$ver = WP_DEBUG ? time() : LH_VERSION . '.' . filemtime( get_theme_file_path( 'assets/css/lab.css' ) );
 
 	wp_enqueue_style( 'lh-main', "$uri/css/main.css", array(), $ver );
 	// No GSAP dependency: menu and mode switch work even if it never loads. ui.js first, it clones the switch.
