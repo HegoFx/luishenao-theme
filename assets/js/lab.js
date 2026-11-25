@@ -152,11 +152,11 @@
 			const ws = [...em.querySelectorAll('.lw')];
 			const rs = ws.map(w => w.getBoundingClientRect());
 			const left = Math.min(...rs.map(r => r.left)), width = Math.max(...rs.map(r => r.right)) - left;
-			const tile = Math.round(width * 2);
+			const tile = Math.max(420, Math.round(width * 1.3));
 			em.classList.add('is-grad');
 			em.style.setProperty('--gw', tile + 'px');
 			ws.forEach((w, k) => w.firstElementChild.style.setProperty('--gx', Math.round(rs[k].left - left) + 'px'));
-			tweens.push(gsap.fromTo(em, { '--gs': '0px' }, { '--gs': tile + 'px', duration: 7, ease: 'none', repeat: -1 }));
+			tweens.push(gsap.fromTo(em, { '--gs': '0px' }, { '--gs': tile + 'px', duration: 6.5, ease: 'none', repeat: -1 }));
 		});
 	};
 	if (grads.length) {

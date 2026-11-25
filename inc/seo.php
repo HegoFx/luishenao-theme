@@ -363,8 +363,9 @@ function lh_llms_txt() {
 	$blog_en = function_exists( 'pll_get_post' ) ? get_permalink( pll_get_post( (int) get_option( 'page_for_posts' ), 'en' ) ) : '';
 	$about_es = $page( 'sobre-mi', 'es' );
 	$about_en = $page( 'sobre-mi', 'en' );
-	$landing_es = $page( 'clientes-para-negocios-de-closets', 'es' );
-	$landing_en = $page( 'clientes-para-negocios-de-closets', 'en' );
+	// The sales page is now the home page; the old landing URLs redirect there.
+	$landing_es = '';
+	$landing_en = '';
 	$articles   = function ( $lang, $heading ) {
 		$posts = get_posts( array( 'post_type' => 'post', 'numberposts' => 20, 'lang' => $lang ) );
 		if ( ! $posts ) {

@@ -55,6 +55,19 @@ add_action( 'wp_enqueue_scripts', function () {
 function lh_is_lab() {
 	return is_front_page() || is_page( array( 'clientes-para-negocios-de-closets', 'custom-closet-leads' ) );
 }
+/**
+ * The sales landing became the home page (Luis, 24 nov 2026): its old URLs go to the home of the same language.
+ */
+add_action( 'template_redirect', function () {
+	if ( is_page( 'clientes-para-negocios-de-closets' ) ) {
+		wp_safe_redirect( home_url( '/' ), 301 );
+		exit;
+	}
+	if ( is_page( 'custom-closet-leads' ) ) {
+		wp_safe_redirect( home_url( '/en/' ), 301 );
+		exit;
+	}
+} );
 add_filter( 'body_class', function ( $c ) {
 	return lh_is_lab() ? array_merge( $c, array( 'lh-lab' ) ) : $c;
 } );

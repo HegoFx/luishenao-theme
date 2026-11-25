@@ -577,3 +577,27 @@ body.lh-lab {
 .lh-ad-sum { position: absolute; right: 16px; top: 12px; font-family: var(--mono); font-size: 10px; color: var(--ok); padding: 3px 8px; border-radius: 999px; border: 1px solid rgba(61, 220, 151, .45); background: rgba(61, 220, 151, .1); }
 .lh-mini-ads i { position: relative; overflow: hidden; aspect-ratio: 4 / 5; min-height: 0; background: #15151A; }
 .lh-mini-ads i img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* ==========================================================================
+   Round 5: the accent words are lit from inside. Soft blurred lights (cyan, violet, white)
+   drift through a bold blue, with a faint glow. Seamless tile: lights never touch its edges.
+   ========================================================================== */
+.lh-lab {
+	--aurora:
+		radial-gradient(22% 70% at 18% 42%, rgba(140, 232, 255, .95) 0%, rgba(140, 232, 255, 0) 100%),
+		radial-gradient(20% 80% at 46% 62%, rgba(176, 140, 255, .9) 0%, rgba(176, 140, 255, 0) 100%),
+		radial-gradient(14% 60% at 68% 36%, rgba(255, 255, 255, .95) 0%, rgba(255, 255, 255, 0) 100%),
+		radial-gradient(18% 75% at 86% 58%, rgba(92, 200, 255, .85) 0%, rgba(92, 200, 255, 0) 100%),
+		linear-gradient(#2F58FF, #2F58FF);
+}
+.lh-lab em.is-grad .lwi {
+	background-image: var(--aurora) !important;
+	background-size: var(--gw) 100% !important;
+}
+.lh-lab em:not(.is-grad), .lh-lab .lh-problem-top .lh-hol, .lh-lab .lh-guarantee .lh-n {
+	background-image: var(--aurora) !important; background-repeat: repeat-x;
+	background-size: 640px 100% !important; animation: lh-aurora 7s linear infinite !important;
+	filter: drop-shadow(0 0 22px rgba(70, 110, 255, .4));
+}
+@keyframes lh-aurora { from { background-position: 0 50%; } to { background-position: 640px 50%; } }
+@media (prefers-reduced-motion: reduce) { .lh-lab em:not(.is-grad), .lh-lab .lh-hol, .lh-lab .lh-n { animation: none !important; } }
