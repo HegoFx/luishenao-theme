@@ -117,7 +117,7 @@ function lh_ui( $name ) {
 				. '<path class="grid" d="M0 30H320M0 60H320M0 90H320"/>'
 				. '<path class="area" d="M0 104 C40 98 60 92 90 80 S150 70 180 52 S250 36 320 18 V120 H0Z"/>'
 				. '<path class="line" pathLength="1" d="M0 104 C40 98 60 92 90 80 S150 70 180 52 S250 36 320 18"/></svg>'
-				. '<span class="lh-chart-tag">' . ( $en ? 'Estimates booked this month' : 'Estimates agendados este mes' ) . ' <b>' . ( $en ? '↑ Going up' : '↑ Subiendo' ) . '</b></span>'
+				. '<span class="lh-chart-tag">' . ( $en ? 'Pre-qualified homeowners this month' : 'Homeowners prefiltrados este mes' ) . ' <b>' . ( $en ? '↑ Going up' : '↑ Subiendo' ) . '</b></span>'
 				. '<ul class="lh-toggles">' . $list . '</ul></div>';
 
 		case 'stage':
