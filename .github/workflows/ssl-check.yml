@@ -1,0 +1,21 @@
+name: Revisión SSL
+on:
+  workflow_dispatch:
+  push:
+    branches: ['claude/ssl-check']
+    paths: ['.github/workflows/ssl-check.yml']
+jobs:
+  ssl:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Certificados y respuesta de cada host
+        run: |
+          for h in closetleadgen.com www.closetleadgen.com luishenaoai.online navajowhite-whale-731377.hostingersite.com; do
+            echo "=== $h"
+            echo | openssl s_client -connect $h:443 -servername $h 2>/dev/null | openssl x509 -noout -subject -issuer -dates -ext subjectAltName 2>&1 | head -8
+            curl -sS -o /dev/null -m 20 -A "Mozilla/5.0" -w "https: %{http_code} verify=%{ssl_verify_result} -> %{redirect_url}\n" https://$h/ 2>&1
+            curl -sS -o /dev/null -m 20 -A "Mozilla/5.0" -w "http: %{http_code} -> %{redirect_url}\n" http://$h/ 2>&1
+          done
+      - name: Contenido mixto en la home
+        run: |
+          curl -sS -A "Mozilla/5.0" https://closetleadgen.com/ | grep -oE '(src|href|data-src)="http://[^"]+' | sort -u | head -20; echo fin
