@@ -169,9 +169,9 @@ $front_es = (int) get_option( 'page_on_front' );
 $front_en = (int) pll_get_post( $front_es, 'en' );
 
 $pairs = array();
-$id    = lh_sync_upsert( array( 'type' => 'page', 'lang' => 'es', 'title' => 'Inicio', 'content' => $compose( $home_es, 'es' ) ), $front_es, $backup_dir, $report );
+$id    = lh_sync_upsert( array( 'type' => 'page', 'lang' => 'es', 'title' => 'Inicio', 'content' => $compose( $landing, 'es' ) ), $front_es, $backup_dir, $report );
 if ( $front_en ) {
-	lh_sync_upsert( array( 'type' => 'page', 'lang' => 'en', 'title' => 'Home', 'content' => $compose( $home_es, 'en' ) ), $front_en, $backup_dir, $report );
+	lh_sync_upsert( array( 'type' => 'page', 'lang' => 'en', 'title' => 'Home', 'content' => $compose( $landing, 'en' ) ), $front_en, $backup_dir, $report );
 }
 $items[] = array(
 	'type' => 'page', 'lang' => 'es', 'slug' => 'clientes-para-negocios-de-closets', 'pair' => 'landing', 'template' => 'page-landing',

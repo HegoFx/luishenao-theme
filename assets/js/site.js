@@ -37,12 +37,12 @@
 
 	/* reveals: play when entering from below or above, reverse when leaving */
 	const variants = {
-		'lh-r':      [{ opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: .9, ease: 'power3.out' }],
+		'lh-r':      [{ opacity: 0, y: 56, filter: 'blur(8px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1, ease: 'power3.out' }],
 		'lh-r-mask': [{ clipPath: 'inset(0 0 100% 0)', y: 50 }, { clipPath: 'inset(0 0 -15% 0)', y: 0, duration: 1.1, ease: 'power4.out' }],
-		'lh-r-card': [{ opacity: 0, y: 70, scale: .96, rotate: .6 }, { opacity: 1, y: 0, scale: 1, rotate: 0, duration: 1, ease: 'power3.out' }],
+		'lh-r-card': [{ opacity: 0, y: 90, scale: .94, rotate: .8, filter: 'blur(6px)' }, { opacity: 1, y: 0, scale: 1, rotate: 0, filter: 'blur(0px)', duration: 1.1, ease: 'power3.out' }],
 		'lh-r-img':  [{ clipPath: 'inset(18% 10% 18% 10% round 18px)' }, { clipPath: 'inset(0% 0% 0% 0% round 18px)', duration: 1.3, ease: 'power3.inOut' }],
 	};
-	const both = { start: 'top 90%', end: 'bottom 8%', toggleActions: 'play reverse play reverse' };
+	const both = { start: 'top 88%', end: 'bottom 12%', toggleActions: 'play reverse play reverse' };
 	Object.keys(variants).forEach(cls => {
 		document.querySelectorAll('.' + cls).forEach(el => {
 			const [from, to] = variants[cls];

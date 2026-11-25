@@ -54,7 +54,7 @@ Lee esto antes de investigar. Actualízalo cuando confirmes algo nuevo del servi
 
 ## Contenido en código
 - `content/pages/<es|en>/*.txt` y `content/posts/<es|en>/*.txt`: front matter + sintaxis simple (## títulos, - listas, | tablas, ?? pregunta FAQ, !cta). `build_content.py` los pasa a bloques (rechaza "—").
-- `content-sync.php` (vía `wp-content.yml`, corre tras cada deploy) publica eso más Inicio/Home y la landing (`clientes-para-negocios-de-closets` ↔ `custom-closet-leads`) armados con patterns. Guarda `_lh_sync_hash`: si alguien editó la página en WordPress, la omite.
+- `content-sync.php` (vía `wp-content.yml`, corre tras cada deploy) publica eso más Inicio/Home armados con los patterns de la landing (desde el 24 nov 2026 la landing ES la home; `clientes-para-negocios-de-closets` ↔ `custom-closet-leads` redirigen 301 a `/` y `/en/` desde `functions.php`). Guarda `_lh_sync_hash`: si alguien editó la página en WordPress, la omite.
 - Orden de workflows: deploy → contenido → capturas y revisión SEO.
 - Los artículos ES y EN no son traducciones entre sí (keywords distintas). Investigación y criterio de quick wins: `docs/seo-geo.md`.
 

@@ -10,7 +10,7 @@
 	const io = new IntersectionObserver(es => es.forEach(e => {
 		e.target.classList.toggle('is-on', e.isIntersecting);
 		e.target.querySelectorAll('video').forEach(v => {
-			if (e.isIntersecting && motion) { const p = v.play(); if (p) p.catch(() => {}); } else v.pause();
+			if (e.isIntersecting && motion) { v.muted = true; const p = v.play(); if (p) p.catch(() => {}); } else v.pause();
 		});
 	}), { rootMargin: '80px' });
 	document.querySelectorAll('.lh-ui, .lh-mini').forEach(el => io.observe(el));
@@ -99,7 +99,7 @@
 		const label = stage.querySelector('.lh-ui-live');
 		const tpl = label ? label.lastChild.textContent.replace(/\d+/, '#') : '';
 		document.querySelectorAll('.lh-step').forEach((step, k) => ScrollTrigger.create({
-			trigger: step, start: 'top 72%', end: 'bottom 72%',
+			trigger: step, start: 'top 55%', end: 'bottom 55%',
 			onToggle(self) {
 				if (!self.isActive) return;
 				stage.dataset.scene = k + 1;
@@ -152,11 +152,11 @@
 			const ws = [...em.querySelectorAll('.lw')];
 			const rs = ws.map(w => w.getBoundingClientRect());
 			const left = Math.min(...rs.map(r => r.left)), width = Math.max(...rs.map(r => r.right)) - left;
-			const tile = Math.round(width * 2);
+			const tile = Math.max(420, Math.round(width * 1.3));
 			em.classList.add('is-grad');
 			em.style.setProperty('--gw', tile + 'px');
 			ws.forEach((w, k) => w.firstElementChild.style.setProperty('--gx', Math.round(rs[k].left - left) + 'px'));
-			tweens.push(gsap.fromTo(em, { '--gs': '0px' }, { '--gs': tile + 'px', duration: 7, ease: 'none', repeat: -1 }));
+			tweens.push(gsap.fromTo(em, { '--gs': '0px' }, { '--gs': tile + 'px', duration: 6.5, ease: 'none', repeat: -1 }));
 		});
 	};
 	if (grads.length) {
@@ -168,7 +168,7 @@
 	/* ---------- mockups float in ---------- */
 	gsap.utils.toArray('.lh-ui-feed, .lh-ui-funnel, .lh-ui-stage, .lh-ui-flow').forEach(el => gsap.fromTo(el, { y: 60, opacity: 0, rotateX: 8, transformPerspective: 1200 }, {
 		y: 0, opacity: 1, rotateX: 0, duration: 1.2, ease: 'power3.out',
-		scrollTrigger: { trigger: el, start: 'top 92%', end: 'bottom 4%', toggleActions: 'play reverse play reverse' },
+		scrollTrigger: { trigger: el.closest('.lh-how-stage') || el, start: 'top 92%', end: 'bottom 4%', toggleActions: 'play reverse play reverse' },
 	}));
 	const feed = document.querySelector('.lh-ui-feed .lh-ui-win');
 	if (feed && fine) gsap.to(feed, { y: -40, ease: 'none', scrollTrigger: { trigger: feed, start: 'top 60%', end: 'bottom top', scrub: true } });
