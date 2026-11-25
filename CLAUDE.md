@@ -4,7 +4,7 @@ Lee esto antes de investigar. Actualízalo cuando confirmes algo nuevo del servi
 
 ## Proyecto
 - Tema de bloques WordPress para luishenaoai.online: Meta Ads para negocios de custom closets en USA.
-- Hoy se publica en el dominio temporal de Hostinger https://navajowhite-whale-731377.hostingersite.com (staging, `blog_public`=0, no indexa).
+- Dominio final desde el 25 nov 2026: https://closetleadgen.com (sigue en el sitio WP que antes era el staging, carpeta `navajowhite-whale-731377.hostingersite.com`, `blog_public`=0 hasta el lanzamiento). El dominio temporal y luishenaoai.online redirigen 301 al nuevo (`functions.php` + redirección de Hostinger). El dominio se conectó con el conector de Hostinger (dominio parqueado + SSL); `.github/workflows/wp-domain.yml` cambia las URLs de la base con backup y no corre si el dominio nuevo no sirve HTTPS.
 - Diseño y efectos en el tema; el contenido vive en páginas de WordPress armadas con los patterns de `/patterns`.
 - Estilo de escritura del usuario: nunca usar "—" en textos.
 
@@ -37,7 +37,7 @@ Lee esto antes de investigar. Actualízalo cuando confirmes algo nuevo del servi
 - Lenguaje: "homeowners prefiltrados", nunca prometer estimates agendados ni ventas. Los 60 días cuentan desde que los anuncios salen al aire. Mínimo 3 meses, después mes a mes con aviso de 30 días.
 - Landing: una sola acción (agendar). WhatsApp, correo e Instagram solo en la página de gracias (`[lh_contacto]`).
 - Páginas de condiciones: `condiciones-garantias` ↔ `guarantee-terms` (texto legal pendiente de revisión de abogado [CONFIRM]).
-- Dominio: hoy luishenaoai.online; el final será closetleadgen.com (aún no comprado).
+- Dominio: closetleadgen.com (comprado en Hostinger el 25 nov 2026).
 
 ## Tracking (`docs/tracking.md`)
 - Conversiones de Google Ads y Meta salen de GHL (gclid / CAPI), no del sitio. GA4 y etiqueta base de Ads con Site Kit; Meta Pixel por código (falta el ID).
@@ -73,3 +73,6 @@ Lee esto antes de investigar. Actualízalo cuando confirmes algo nuevo del servi
 - Plugins: `litespeed-cache` inactivo; must-use de Hostinger: `hostinger-preview-domain`, `hostinger-auto-updates`.
 - Usuarios: solo el admin (ID 1).
 - OJO: la llave SSH de deploy es de cuenta, no de sitio. Alcanza también `henaoconversion.com` y `luishenaoai.online` (producción). Cualquier workflow nuevo debe apuntar explícitamente al WP root del staging.
+
+- Hostinger Connector (conector de claude.ai, activo desde 2026-11-25): lista sitios y dominios, DNS, SSL, redirecciones y archivos. Cuenta de este sitio: usuario `u281733138`. No toca la base de WordPress: eso sigue por workflows.
+- Con `blog_public`=0 WordPress no genera `/wp-sitemap.xml` (404 esperado); aparece al activar la indexación.
