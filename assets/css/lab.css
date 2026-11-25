@@ -37,7 +37,37 @@ body.lh-lab {
 	background: var(--bone);
 	color: var(--ink);
 }
-.lh-lab .lh-mode { display: none; }
+
+/* Light variant (the toggle): same layout, cool white surface, same blue */
+html[data-theme="light"] body.lh-lab {
+	color-scheme: light;
+	--wp--preset--color--bone: #F5F6FA;
+	--wp--preset--color--paper: #FFFFFF;
+	--wp--preset--color--ink: #0B0B10;
+	--wp--preset--color--ink-2: #464651;
+	--wp--preset--color--muted: #737380;
+	--wp--preset--color--dark: #E9ECF4;
+	--wp--preset--color--on-dark: #0B0B10;
+	--wp--preset--color--accent: #2F58FF;
+	--accent-2: #2F58FF;
+	--dark-2: #DEE3EF;
+	--on-dark-2: #55555F;
+	--line: rgba(11, 11, 16, .09);
+	--line-2: rgba(11, 11, 16, .16);
+	--nav-bg: rgba(255, 255, 255, .78);
+	--glass: linear-gradient(160deg, rgba(255, 255, 255, .95), rgba(255, 255, 255, .7));
+	--glass-edge: rgba(11, 11, 16, .08);
+	--glass-hi: rgba(255, 255, 255, .9);
+	--ok: #0E9F63;
+	--no: #E5484D;
+}
+html[data-theme="light"] .lh-lab .wp-site-blocks::before {
+	background:
+		radial-gradient(60% 50% at 75% 18%, rgba(51, 97, 255, .14), transparent 70%),
+		linear-gradient(rgba(11, 11, 16, .05) 1px, transparent 1px) 0 0 / 64px 64px,
+		linear-gradient(90deg, rgba(11, 11, 16, .05) 1px, transparent 1px) 0 0 / 64px 64px;
+}
+html[data-theme="light"] .lh-lab img { filter: none; }
 
 /* page texture: faint grid + a blue glow behind the hero */
 .lh-lab .wp-site-blocks { position: relative; isolation: isolate; }

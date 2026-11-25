@@ -3,7 +3,7 @@
  * Title: Landing · Comparativa de opciones
  * Slug: luishenao/landing-comparativa
  * Categories: lh-secciones
- * Description: Plataformas de leads vs referidos vs el piloto, en tres tarjetas.
+ * Description: Plataformas de leads vs referidos vs el sistema, en tres tarjetas.
  */
 
 $lh_options = array(
@@ -40,7 +40,7 @@ $lh_options = array(
 <?php echo lh_list( $o[2], $o[1] ); ?></div>
 <!-- /wp:group --><?php endforeach; ?><!-- wp:group {"className":"lh-card lh-price lh-r-card"} -->
 <div class="wp-block-group lh-card lh-price lh-r-card"><!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading">Con el piloto</h3>
+<h3 class="wp-block-heading">Con el sistema</h3>
 <!-- /wp:heading -->
 
 <?php echo lh_list( array(

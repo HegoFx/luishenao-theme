@@ -13,19 +13,19 @@ const pages = pick({ home: '/', blog: '/blog/', sobre: '/sobre-mi/', e404: '/no-
 const devices = pick({
 	desk: { viewport: { width: 1440, height: 900 } },
 	mob: { viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true },
-	// dark mode follows the device setting until the visitor picks one: only the home, to keep runs short
-	deskdark: { viewport: { width: 1440, height: 900 }, colorScheme: 'dark', only: ['home'] },
-	mobdark: { viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, colorScheme: 'dark', only: ['home'] },
+	// the site is dark by default; these two run with the visitor's saved choice set to light
+	desklight: { viewport: { width: 1440, height: 900 }, light: true, only: ['home', 'blog', 'sobre', 'post'] },
+	moblight: { viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, light: true, only: ['home', 'blog', 'sobre'] },
 }, process.env.DEVICES);
 
 mkdirSync('shots', { recursive: true });
 const browser = await chromium.launch();
 
 async function run(dname, dev) {
-	const { only, ...opts } = dev;
+	const { only, light, ...opts } = dev;
 	const ctx = await browser.newContext(opts);
 	// skip the closet-doors intro
-	await ctx.addInitScript(() => { try { sessionStorage.setItem('lh-doors', '1'); } catch (e) {} });
+	await ctx.addInitScript(l => { try { sessionStorage.setItem('lh-doors', '1'); if (l) localStorage.setItem('lh-theme', 'light'); } catch (e) {} }, !!light);
 	const page = await ctx.newPage();
 	const errors = [], lines = [];
 	page.on('pageerror', e => errors.push(String(e)));

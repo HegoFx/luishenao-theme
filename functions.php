@@ -51,10 +51,10 @@ add_action( 'wp_enqueue_scripts', function () {
 } );
 
 /**
- * Pages with the dark "lab" look: Home and the sales landing (ES and EN).
+ * The "lab" look (dark premium surface, light variant behind the toggle) runs on every page of the site (Luis, 25 Nov 2026).
  */
 function lh_is_lab() {
-	return is_front_page() || is_page( array( 'clientes-para-negocios-de-closets', 'custom-closet-leads' ) );
+	return ! is_admin();
 }
 /**
  * The sales landing became the home page (Luis, 24 nov 2026): its old URLs go to the home of the same language.
@@ -73,13 +73,9 @@ add_filter( 'body_class', function ( $c ) {
 	return lh_is_lab() ? array_merge( $c, array( 'lh-lab' ) ) : $c;
 } );
 
-// Color mode before first paint: the visitor's saved choice, else their device setting. Lab pages are always dark.
+// Color mode before first paint: the visitor's saved choice, else dark (the brand look). One toggle for the whole site.
 add_action( 'wp_head', function () {
-	if ( lh_is_lab() ) {
-		echo "<script>document.documentElement.dataset.theme='dark'</script>\n";
-		return;
-	}
-	echo "<script>(function(d){var t;try{t=localStorage.getItem('lh-theme')}catch(e){}d.dataset.theme=t||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')})(document.documentElement)</script>\n";
+	echo "<script>(function(d){var t;try{t=localStorage.getItem('lh-theme')}catch(e){}d.dataset.theme=t==='light'?'light':'dark'})(document.documentElement)</script>\n";
 }, 0 );
 
 // Flag that motion is on so reveal states only hide content when the scripts will show it again.

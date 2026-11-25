@@ -11,7 +11,7 @@ on:
         description: 'Páginas, separadas por coma (home, en, blog, landing, post...) o "all"'
         default: all
       devices:
-        description: 'Dispositivos: desk, mob, deskdark, mobdark, o "all"'
+        description: 'Dispositivos: desk, mob, desklight, moblight, o "all"'
         default: all
   workflow_run:
     workflows: ['Publicar contenido (staging)']

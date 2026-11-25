@@ -60,7 +60,7 @@ $lh_tier = fn( $t ) => null === $t['to'] ? sprintf( 'Clientes %d en adelante', $
 <!-- /wp:html -->
 
 <!-- wp:paragraph {"className":"lh-tip"} -->
-<p class="lh-tip">Conservas tu precio de por vida mientras tu suscripción siga activa y sin interrupciones. Si cancelas y vuelves, pagas el precio vigente en ese momento.</p>
+<p class="lh-tip">Conservas tu precio de por vida mientras tu suscripción siga activa y sin interrupciones. El sistema va a seguir mejorando y se le irán sumando funciones: todas las actualizaciones están incluidas en tu precio de fundador. Si cancelas y vuelves, pagas el precio vigente en ese momento.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group --></div>
