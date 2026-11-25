@@ -29,11 +29,11 @@ ROOT = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else '.')
 SRC = ROOT / 'content'
 
 CTA = {
-    'es': ('¿Prefieres home owners pre-filtrados en vez de leads compartidos?',
-           'Piloto de un mes por $650, sin contratos largos y con garantía de 21 días.',
+    'es': ('¿Prefieres homeowners prefiltrados en vez de leads compartidos?',
+           'Precio de fundador con cupos limitados: lo conservas mientras tu servicio siga activo y recibes cada mejora del sistema.',
            'Ver cómo funciona →', '/clientes-para-negocios-de-closets/'),
     'en': ('Want pre-qualified homeowners instead of shared leads?',
-           'A one-month pilot for $650, no long-term contract and a 21-day launch guarantee.',
+           'Founder pricing with limited spots: you keep it as long as your service stays active, and you get every improvement to the system.',
            'See how it works →', '/en/custom-closet-leads/'),
 }
 

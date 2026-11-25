@@ -3,7 +3,7 @@
  * Title: Landing EN · Options compared
  * Slug: luishenao/en-landing-comparativa
  * Categories: lh-secciones
- * Description: Lead platforms vs referrals vs the pilot, in three cards (English).
+ * Description: Lead platforms vs referrals vs the system, in three cards (English).
  */
 
 $lh_options = array(
@@ -40,7 +40,7 @@ $lh_options = array(
 <?php echo lh_list( $o[2], $o[1] ); ?></div>
 <!-- /wp:group --><?php endforeach; ?><!-- wp:group {"className":"lh-card lh-price lh-r-card"} -->
 <div class="wp-block-group lh-card lh-price lh-r-card"><!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading">With the pilot</h3>
+<h3 class="wp-block-heading">With the system</h3>
 <!-- /wp:heading -->
 
 <?php echo lh_list( array(
