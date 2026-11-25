@@ -26,8 +26,9 @@ function lh_ui_bar( $title, $live = '' ) {
 		. ( $live ? '<span class="lh-ui-live"><i></i>' . esc_html( $live ) . '</span>' : '' ) . '</div>';
 }
 
+/** No visible footnote under the mockups (Luis, 25 Nov 2026): it is obvious they are illustrative. */
 function lh_ui_cap() {
-	return '<p class="lh-ui-cap">' . ( lh_is_en() ? 'Illustrative example' : 'Ejemplo ilustrativo' ) . '</p>';
+	return '';
 }
 
 function lh_ui_lead_card( $p ) {
