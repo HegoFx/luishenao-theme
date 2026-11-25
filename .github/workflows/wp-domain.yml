@@ -1,0 +1,80 @@
+# Moves the site to its final domain: replaces the staging URL by NEW_URL in the whole database
+# (serialized-safe), sets home/siteurl and flushes caches. Backs up the database first, outside
+# public_html. Refuses to run unless NEW_URL already answers over HTTPS with a valid certificate,
+# so the site is never left unreachable. Only touches the staging WP root.
+name: Cambiar dominio del sitio
+
+on:
+  workflow_dispatch:
+    inputs:
+      new_url:
+        description: 'URL final (https, sin barra final)'
+        default: 'https://closetleadgen.com'
+  push:
+    branches: ['claude/**']
+    paths: ['.github/workflows/wp-domain.yml']
+
+jobs:
+  domain:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configurar SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          for i in 1 2 3 4 5; do
+            ssh-keyscan -T 15 -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null && [ -s ~/.ssh/known_hosts ] && break
+            echo "ssh-keyscan intento $i falló, reintentando..."; sleep $((i * 5))
+          done
+          [ -s ~/.ssh/known_hosts ]
+
+      - name: Cambiar dominio
+        env:
+          THEME_PATH: ${{ secrets.THEME_PATH }}
+          NEW_URL: ${{ github.event.inputs.new_url || 'https://closetleadgen.com' }}
+        run: |
+          ssh -p "${{ secrets.SSH_PORT }}" -i ~/.ssh/id_ed25519 \
+            "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" \
+            "THEME_PATH='$THEME_PATH' NEW_URL='$NEW_URL' bash -s" <<'EOF'
+          set -e
+          WP_ROOT="$(cd "$THEME_PATH/../../.." && pwd)"
+          case "$WP_ROOT" in *hostingersite.com/public_html) ;; *) echo "No es el staging: $WP_ROOT"; exit 1 ;; esac
+          wp() { command wp --path="$WP_ROOT" "$@"; }
+          section() { echo; echo "===== $1 ====="; }
+          OLD_URL="$(wp option get home)"
+          echo "Antes: $OLD_URL  ->  Ahora: $NEW_URL"
+          if [ "$OLD_URL" = "$NEW_URL" ]; then echo "Ya está en $NEW_URL"; exit 0; fi
+
+          section "El dominio nuevo responde por HTTPS?"
+          HOST="${NEW_URL#https://}"
+          CODE="$(curl -s -o /dev/null -w '%{http_code}' --max-time 30 "$NEW_URL/" || true)"
+          echo "HTTP $CODE en $NEW_URL/"
+          case "$CODE" in 2*|3*|403) ;; *) echo "El dominio nuevo aún no sirve HTTPS válido. Me detengo sin cambiar nada."; exit 1 ;; esac
+
+          section "Backup"
+          mkdir -p ~/backups
+          F=~/backups/staging-dominio-$(date +%Y%m%d-%H%M%S).sql
+          MYSQL_PWD="$(wp config get DB_PASSWORD)" mariadb-dump --single-transaction \
+            -h "$(wp config get DB_HOST)" -u "$(wp config get DB_USER)" "$(wp config get DB_NAME)" > "$F"
+          [ -s "$F" ] || { echo "Backup vacío, me detengo"; exit 1; }
+          echo "Backup: ${F#$HOME/} ($(du -h "$F" | cut -f1))"
+
+          section "Reemplazo de URLs"
+          wp search-replace "$OLD_URL" "$NEW_URL" --all-tables-with-prefix --skip-columns=guid --report-changed-only
+          OLD_HOST="${OLD_URL#https://}"
+          wp search-replace "//$OLD_HOST" "//$HOST" --all-tables-with-prefix --skip-columns=guid --report-changed-only
+          wp option update home "$NEW_URL"
+          wp option update siteurl "$NEW_URL"
+
+          section "Caches"
+          wp rewrite flush 2>&1 || true
+          wp cache flush 2>&1 || true
+          wp litespeed-purge all 2>&1 || true
+
+          section "Verificación"
+          wp option get home; wp option get siteurl; wp option get blog_public
+          for p in / /en/ /blog/ /en/articles/; do
+            curl -s -o /dev/null -w "$p -> HTTP %{http_code}\n" --max-time 30 "$NEW_URL$p"
+          done
+          EOF

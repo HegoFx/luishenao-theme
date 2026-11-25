@@ -223,3 +223,17 @@ add_shortcode( 'lh_contacto', function () {
 	}
 	return $out . '</ul>';
 } );
+
+/* One host only: staging address, www and any alias send visitors (301) to the site's own address (home). */
+add_action( 'template_redirect', function () {
+	if ( is_admin() || wp_doing_ajax() || wp_doing_cron() || ( defined( 'WP_CLI' ) && WP_CLI ) || empty( $_SERVER['HTTP_HOST'] ) ) {
+		return;
+	}
+	$want = wp_parse_url( home_url(), PHP_URL_HOST );
+	$have = strtolower( preg_replace( '/:\d+$/', '', $_SERVER['HTTP_HOST'] ) );
+	if ( ! $want || $have === $want || in_array( $have, array( 'localhost', '127.0.0.1' ), true ) || substr( $have, -6 ) === '.local' ) {
+		return;
+	}
+	wp_redirect( home_url( $_SERVER['REQUEST_URI'] ?? '/' ), 301 );
+	exit;
+}, 1 );

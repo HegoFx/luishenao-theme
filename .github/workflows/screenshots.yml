@@ -37,7 +37,7 @@ jobs:
       run:
         shell: bash
     env:
-      SITE_URL: https://navajowhite-whale-731377.hostingersite.com
+      SITE_URL: https://closetleadgen.com
       PAGES: ${{ inputs.pages || 'all' }}
       DEVICES: ${{ inputs.devices || 'all' }}
     steps:

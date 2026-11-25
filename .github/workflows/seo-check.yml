@@ -16,7 +16,7 @@ jobs:
     if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     env:
-      SITE_URL: https://navajowhite-whale-731377.hostingersite.com
+      SITE_URL: https://closetleadgen.com
     steps:
       - uses: actions/checkout@v4
       - name: Revisar
