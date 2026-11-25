@@ -233,3 +233,15 @@ add_action( 'template_redirect', function () {
 	wp_redirect( home_url( $_SERVER['REQUEST_URI'] ?? '/' ), 301 );
 	exit;
 }, 1 );
+
+/* Spanish pages: the site locale has no Spanish month names loaded, so translate them in formatted dates. */
+add_filter( 'date_i18n', function ( $date ) {
+	if ( is_admin() || lh_is_en() ) {
+		return $date;
+	}
+	static $m = array(
+		'January' => 'enero', 'February' => 'febrero', 'March' => 'marzo', 'April' => 'abril', 'May' => 'mayo', 'June' => 'junio',
+		'July' => 'julio', 'August' => 'agosto', 'September' => 'septiembre', 'October' => 'octubre', 'November' => 'noviembre', 'December' => 'diciembre',
+	);
+	return strtr( $date, $m );
+} );
